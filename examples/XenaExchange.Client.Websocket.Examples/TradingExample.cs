@@ -57,7 +57,7 @@ namespace XenaExchange.Client.Websocket.Examples
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, $"Reconnect attemp failed, trying again after {reconnectInterval.ToString()}");
+                    _logger.LogError(ex, $"Reconnect attempt failed, trying again after {reconnectInterval.ToString()}");
                 }
             });
 

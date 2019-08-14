@@ -35,7 +35,7 @@ wsClient.OnDisconnect.Subscribe(async info =>
 	}
 	catch (Exception ex)
 	{
-		logger.LogError(ex, $"Reconnect attemp failed, trying again after {reconnectInterval.ToString()}");
+		logger.LogError(ex, $"Reconnect attempt failed, trying again after {reconnectInterval.ToString()}");
 	}
 });
 
@@ -83,7 +83,7 @@ var options = new TradingWsClientOptions()
 };
 
 var serializer = new FixSerializer();
-var logger = CreateLogger(); // Any logger implementation returning ILogger.
+var logger = CreateLogger(); // Any logger implementation returning ILogger abstraction.
 var wsClient = new TradingWsClient(options, serializer, logger);
 
 wsClient.OnDisconnect.Subscribe(async info =>
@@ -101,7 +101,7 @@ wsClient.OnDisconnect.Subscribe(async info =>
 	}
 	catch (Exception ex)
 	{
-		logger.LogError(ex, $"Reconnect attemp failed, trying again after {reconnectInterval.ToString()}");
+		logger.LogError(ex, $"Reconnect attempt failed, trying again after {reconnectInterval.ToString()}");
 	}
 });
 
