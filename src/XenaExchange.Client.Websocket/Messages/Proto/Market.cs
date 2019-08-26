@@ -24,36 +24,37 @@ namespace Api {
     static MarketReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxtYXJrZXQucHJvdG8SA2FwaSKzAwoHTURFbnRyeRIXCg5NRFVwZGF0ZUFj",
-            "dGlvbhiXAiABKAkSFAoLTURFbnRyeVR5cGUYjQIgASgJEhIKCU1ERW50cnlQ",
-            "eBiOAiABKAkSFAoLTURFbnRyeVNpemUYjwIgASgJEhcKDk51bWJlck9mT3Jk",
-            "ZXJzGNoCIAEoDRIUCgxUcmFuc2FjdFRpbWUYPCABKAMSEAoHVHJhZGVJRBjr",
-            "ByABKAkSFgoNQWdncmVzc29yU2lkZRjdCyABKAkSEAoHRmlyc3RQeBiBCCAB",
-            "KAkSDgoGTGFzdFB4GB8gASgJEg8KBkhpZ2hQeBjMAiABKAkSDgoFTG93UHgY",
-            "zQIgASgJEhIKCUJ1eVZvbHVtZRjKAiABKAkSEwoKU2VsbFZvbHVtZRjLAiAB",
-            "KAkSDAoDQmlkGN4LIAEoCRIMCgNBc2sY3wsgASgJEhQKCkxvd1JhbmdlUHgY",
-            "kZYCIAEoCRIVCgtIaWdoUmFuZ2VQeBiSlgIgASgJEhQKCkxvd0xpbWl0UHgY",
-            "k5YCIAEoCRIVCgtIaWdoTGltaXRQeBiUlgIgASgJEhQKCkNsZWFyaW5nUHgY",
-            "lZYCIAEoCSLKAgoRTWFya2V0RGF0YVJlZnJlc2gSDwoHTXNnVHlwZRgjIAEo",
-            "CRITCgpNRFN0cmVhbUlEGNwLIAEoCRIXCg5MYXN0VXBkYXRlVGltZRiLBiAB",
-            "KAMSEwoKTURCb29rVHlwZRj9ByABKAkSDgoGU3ltYm9sGDcgASgJEhQKCkxv",
-            "d1JhbmdlUHgYkZYCIAEoCRIVCgtIaWdoUmFuZ2VQeBiSlgIgASgJEhQKCkxv",
-            "d0xpbWl0UHgYk5YCIAEoCRIVCgtIaWdoTGltaXRQeBiUlgIgASgJEhQKCkNs",
-            "ZWFyaW5nUHgYlZYCIAEoCRIQCgdCZXN0QmlkGN4LIAEoCRIQCgdCZXN0QXNr",
-            "GN8LIAEoCRIeCgdNREVudHJ5GIwCIAMoCzIMLmFwaS5NREVudHJ5Eh0KBlJh",
-            "dGlvcxjgCyADKAsyDC5hcGkuTURFbnRyeSKsAQoRTWFya2V0RGF0YVJlcXVl",
-            "c3QSDwoHTXNnVHlwZRgjIAEoCRITCgpNRFN0cmVhbUlEGNwLIAEoCRIgChdT",
-            "dWJzY3JpcHRpb25SZXF1ZXN0VHlwZRiHAiABKAkSFQoMVGhyb3R0bGVUeXBl",
-            "GMwMIAEoCRIdChRUaHJvdHRsZVRpbWVJbnRlcnZhbBjODCABKAMSGQoQVGhy",
-            "b3R0bGVUaW1lVW5pdBjPDCABKAkiVAoXTWFya2V0RGF0YVJlcXVlc3RSZWpl",
-            "Y3QSDwoHTXNnVHlwZRgjIAEoCRITCgpNRFN0cmVhbUlEGNwLIAEoCRITCgpS",
-            "ZWplY3RUZXh0GLAKIAEoCWIGcHJvdG8z"));
+            "CgxtYXJrZXQucHJvdG8SA2FwaSLDAwoHTURFbnRyeRIOCgZTeW1ib2wYNyAB",
+            "KAkSFwoOTURVcGRhdGVBY3Rpb24YlwIgASgJEhQKC01ERW50cnlUeXBlGI0C",
+            "IAEoCRISCglNREVudHJ5UHgYjgIgASgJEhQKC01ERW50cnlTaXplGI8CIAEo",
+            "CRIXCg5OdW1iZXJPZk9yZGVycxjaAiABKA0SFAoMVHJhbnNhY3RUaW1lGDwg",
+            "ASgDEhAKB1RyYWRlSUQY6wcgASgJEhYKDUFnZ3Jlc3NvclNpZGUY3QsgASgJ",
+            "EhAKB0ZpcnN0UHgYgQggASgJEg4KBkxhc3RQeBgfIAEoCRIPCgZIaWdoUHgY",
+            "zAIgASgJEg4KBUxvd1B4GM0CIAEoCRISCglCdXlWb2x1bWUYygIgASgJEhMK",
+            "ClNlbGxWb2x1bWUYywIgASgJEgwKA0JpZBjeCyABKAkSDAoDQXNrGN8LIAEo",
+            "CRIUCgpMb3dSYW5nZVB4GJGWAiABKAkSFQoLSGlnaFJhbmdlUHgYkpYCIAEo",
+            "CRIUCgpMb3dMaW1pdFB4GJOWAiABKAkSFQoLSGlnaExpbWl0UHgYlJYCIAEo",
+            "CRIUCgpDbGVhcmluZ1B4GJWWAiABKAkiygIKEU1hcmtldERhdGFSZWZyZXNo",
+            "Eg8KB01zZ1R5cGUYIyABKAkSEwoKTURTdHJlYW1JRBjcCyABKAkSFwoOTGFz",
+            "dFVwZGF0ZVRpbWUYiwYgASgDEhMKCk1EQm9va1R5cGUY/QcgASgJEg4KBlN5",
+            "bWJvbBg3IAEoCRIUCgpMb3dSYW5nZVB4GJGWAiABKAkSFQoLSGlnaFJhbmdl",
+            "UHgYkpYCIAEoCRIUCgpMb3dMaW1pdFB4GJOWAiABKAkSFQoLSGlnaExpbWl0",
+            "UHgYlJYCIAEoCRIUCgpDbGVhcmluZ1B4GJWWAiABKAkSEAoHQmVzdEJpZBje",
+            "CyABKAkSEAoHQmVzdEFzaxjfCyABKAkSHgoHTURFbnRyeRiMAiADKAsyDC5h",
+            "cGkuTURFbnRyeRIdCgZSYXRpb3MY4AsgAygLMgwuYXBpLk1ERW50cnkixQEK",
+            "EU1hcmtldERhdGFSZXF1ZXN0Eg8KB01zZ1R5cGUYIyABKAkSEwoKTURTdHJl",
+            "YW1JRBjcCyABKAkSIAoXU3Vic2NyaXB0aW9uUmVxdWVzdFR5cGUYhwIgASgJ",
+            "EhUKDFRocm90dGxlVHlwZRjMDCABKAkSHQoUVGhyb3R0bGVUaW1lSW50ZXJ2",
+            "YWwYzgwgASgDEhkKEFRocm90dGxlVGltZVVuaXQYzwwgASgJEhcKDkFnZ3Jl",
+            "Z2F0ZWRCb29rGIoCIAEoAyJUChdNYXJrZXREYXRhUmVxdWVzdFJlamVjdBIP",
+            "CgdNc2dUeXBlGCMgASgJEhMKCk1EU3RyZWFtSUQY3AsgASgJEhMKClJlamVj",
+            "dFRleHQYsAogASgJYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MDEntry), global::Api.MDEntry.Parser, new[]{ "MDUpdateAction", "MDEntryType", "MDEntryPx", "MDEntrySize", "NumberOfOrders", "TransactTime", "TradeID", "AggressorSide", "FirstPx", "LastPx", "HighPx", "LowPx", "BuyVolume", "SellVolume", "Bid", "Ask", "LowRangePx", "HighRangePx", "LowLimitPx", "HighLimitPx", "ClearingPx" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MDEntry), global::Api.MDEntry.Parser, new[]{ "Symbol", "MDUpdateAction", "MDEntryType", "MDEntryPx", "MDEntrySize", "NumberOfOrders", "TransactTime", "TradeID", "AggressorSide", "FirstPx", "LastPx", "HighPx", "LowPx", "BuyVolume", "SellVolume", "Bid", "Ask", "LowRangePx", "HighRangePx", "LowLimitPx", "HighLimitPx", "ClearingPx" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRefresh), global::Api.MarketDataRefresh.Parser, new[]{ "MsgType", "MDStreamID", "LastUpdateTime", "MDBookType", "Symbol", "LowRangePx", "HighRangePx", "LowLimitPx", "HighLimitPx", "ClearingPx", "BestBid", "BestAsk", "MDEntry", "Ratios" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRequest), global::Api.MarketDataRequest.Parser, new[]{ "MsgType", "MDStreamID", "SubscriptionRequestType", "ThrottleType", "ThrottleTimeInterval", "ThrottleTimeUnit" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRequest), global::Api.MarketDataRequest.Parser, new[]{ "MsgType", "MDStreamID", "SubscriptionRequestType", "ThrottleType", "ThrottleTimeInterval", "ThrottleTimeUnit", "AggregatedBook" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRequestReject), global::Api.MarketDataRequestReject.Parser, new[]{ "MsgType", "MDStreamID", "RejectText" }, null, null, null)
           }));
     }
@@ -86,6 +87,7 @@ namespace Api {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MDEntry(MDEntry other) : this() {
+      symbol_ = other.symbol_;
       mDUpdateAction_ = other.mDUpdateAction_;
       mDEntryType_ = other.mDEntryType_;
       mDEntryPx_ = other.mDEntryPx_;
@@ -113,6 +115,17 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MDEntry Clone() {
       return new MDEntry(this);
+    }
+
+    /// <summary>Field number for the "Symbol" field.</summary>
+    public const int SymbolFieldNumber = 55;
+    private string symbol_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Symbol {
+      get { return symbol_; }
+      set {
+        symbol_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     /// <summary>Field number for the "MDUpdateAction" field.</summary>
@@ -359,6 +372,7 @@ namespace Api {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Symbol != other.Symbol) return false;
       if (MDUpdateAction != other.MDUpdateAction) return false;
       if (MDEntryType != other.MDEntryType) return false;
       if (MDEntryPx != other.MDEntryPx) return false;
@@ -386,6 +400,7 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Symbol.Length != 0) hash ^= Symbol.GetHashCode();
       if (MDUpdateAction.Length != 0) hash ^= MDUpdateAction.GetHashCode();
       if (MDEntryType.Length != 0) hash ^= MDEntryType.GetHashCode();
       if (MDEntryPx.Length != 0) hash ^= MDEntryPx.GetHashCode();
@@ -423,6 +438,10 @@ namespace Api {
       if (LastPx.Length != 0) {
         output.WriteRawTag(250, 1);
         output.WriteString(LastPx);
+      }
+      if (Symbol.Length != 0) {
+        output.WriteRawTag(186, 3);
+        output.WriteString(Symbol);
       }
       if (TransactTime != 0L) {
         output.WriteRawTag(224, 3);
@@ -512,6 +531,9 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Symbol.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Symbol);
+      }
       if (MDUpdateAction.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(MDUpdateAction);
       }
@@ -585,6 +607,9 @@ namespace Api {
     public void MergeFrom(MDEntry other) {
       if (other == null) {
         return;
+      }
+      if (other.Symbol.Length != 0) {
+        Symbol = other.Symbol;
       }
       if (other.MDUpdateAction.Length != 0) {
         MDUpdateAction = other.MDUpdateAction;
@@ -662,6 +687,10 @@ namespace Api {
             break;
           case 250: {
             LastPx = input.ReadString();
+            break;
+          }
+          case 442: {
+            Symbol = input.ReadString();
             break;
           }
           case 480: {
@@ -1258,6 +1287,7 @@ namespace Api {
       throttleType_ = other.throttleType_;
       throttleTimeInterval_ = other.throttleTimeInterval_;
       throttleTimeUnit_ = other.throttleTimeUnit_;
+      aggregatedBook_ = other.aggregatedBook_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1332,6 +1362,17 @@ namespace Api {
       }
     }
 
+    /// <summary>Field number for the "AggregatedBook" field.</summary>
+    public const int AggregatedBookFieldNumber = 266;
+    private long aggregatedBook_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long AggregatedBook {
+      get { return aggregatedBook_; }
+      set {
+        aggregatedBook_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as MarketDataRequest);
@@ -1351,6 +1392,7 @@ namespace Api {
       if (ThrottleType != other.ThrottleType) return false;
       if (ThrottleTimeInterval != other.ThrottleTimeInterval) return false;
       if (ThrottleTimeUnit != other.ThrottleTimeUnit) return false;
+      if (AggregatedBook != other.AggregatedBook) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1363,6 +1405,7 @@ namespace Api {
       if (ThrottleType.Length != 0) hash ^= ThrottleType.GetHashCode();
       if (ThrottleTimeInterval != 0L) hash ^= ThrottleTimeInterval.GetHashCode();
       if (ThrottleTimeUnit.Length != 0) hash ^= ThrottleTimeUnit.GetHashCode();
+      if (AggregatedBook != 0L) hash ^= AggregatedBook.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1383,6 +1426,10 @@ namespace Api {
       if (SubscriptionRequestType.Length != 0) {
         output.WriteRawTag(186, 16);
         output.WriteString(SubscriptionRequestType);
+      }
+      if (AggregatedBook != 0L) {
+        output.WriteRawTag(208, 16);
+        output.WriteInt64(AggregatedBook);
       }
       if (MDStreamID.Length != 0) {
         output.WriteRawTag(226, 93);
@@ -1426,6 +1473,9 @@ namespace Api {
       if (ThrottleTimeUnit.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(ThrottleTimeUnit);
       }
+      if (AggregatedBook != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(AggregatedBook);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1455,6 +1505,9 @@ namespace Api {
       if (other.ThrottleTimeUnit.Length != 0) {
         ThrottleTimeUnit = other.ThrottleTimeUnit;
       }
+      if (other.AggregatedBook != 0L) {
+        AggregatedBook = other.AggregatedBook;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1472,6 +1525,10 @@ namespace Api {
           }
           case 2106: {
             SubscriptionRequestType = input.ReadString();
+            break;
+          }
+          case 2128: {
+            AggregatedBook = input.ReadInt64();
             break;
           }
           case 12002: {

@@ -46,10 +46,13 @@ namespace XenaExchange.Client.Websocket.Client.Interfaces
         ///     - MarketDataRequestReject.</param>
         /// <param name="throttlingMs">Throttling interval. Default is 0 - every single update is sent to stream.
         /// Available values are listed in ThrottlingMs.DOM constants.</param>
+        /// <param name="aggregation">DOM prices are rounded to TickSize*aggregation and than aggregated.
+        /// Symbol TickSize could be obtained from https://trading.xena.exchange/en/platform-specification/instruments
+        /// Available aggregation values are listed in DOMAggregation constants.</param>
         /// <returns>Stream id which can be used later to unsubscribe.</returns>
         /// <exception cref="DuplicateSubscriptionException">Already subsribed on DOM stream with provided symbol.</exception>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
-        Task<string> SubscribeDOMAggregatedAsync(string symbol, XenaMdWsHandler handler, long throttlingMs = 0);
+        Task<string> SubscribeDOMAggregatedAsync(string symbol, XenaMdWsHandler handler, long throttlingMs = 0, long aggregation = 0);
 
         /// <summary>
         /// Subscribes to market-watch stream.

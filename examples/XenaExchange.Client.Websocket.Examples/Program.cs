@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using XenaExchange.Client.Websocket.Client;
+using XenaExchange.Client.Websocket.Client.MarketData;
 using XenaExchange.Client.Websocket.Client.TradingApi;
 using XenaExchange.Client.Websocket.Serialization;
 

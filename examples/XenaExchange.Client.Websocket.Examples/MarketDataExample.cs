@@ -115,7 +115,7 @@ namespace XenaExchange.Client.Websocket.Examples
                         break;
                 }
                 return Task.CompletedTask;
-            }).ConfigureAwait(false);
+            }, aggregation: DOMAggregation.Aggregation2).ConfigureAwait(false);
         }
 
         private async Task SubscribeTradesAsync()

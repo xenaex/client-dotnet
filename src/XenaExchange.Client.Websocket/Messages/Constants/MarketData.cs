@@ -80,4 +80,14 @@ namespace XenaExchange.Client.Websocket.Messages.Constants
             public const long Throttling5s = 5000;
         }
     }
+
+    public static class DOMAggregation
+    {
+        public const long Aggregation0 = 0;
+        public const long Aggregation2 = 2;
+        public const long Aggregation5 = 5;
+        public const long Aggregation10 = 10;
+        public const long Aggregation100 = 100;
+        public const long Aggregation1000 = 1000;
+    }
 }
