@@ -24,30 +24,41 @@ namespace Api {
     static BalanceReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg1iYWxhbmNlLnByb3RvEgNhcGkiPgoaQWNjb3VudFN0YXR1c1JlcG9ydFJl",
-            "cXVlc3QSDwoHTXNnVHlwZRgjIAEoCRIPCgdBY2NvdW50GAEgASgEInAKCFBv",
-            "c2l0aW9uEhAKCEN1cnJlbmN5GA8gASgJEg0KBUF2Z1B4GAYgASgJEhMKClBv",
-            "c2l0aW9uSUQY0gwgASgEEhkKEFBvc2l0aW9uT3BlblRpbWUYjQ4gASgDEhMK",
-            "ClJlYWxpemVkUEwYjg4gASgJIsEBCgdCYWxhbmNlEg8KB0FjY291bnQYASAB",
-            "KAQSEAoIQ3VycmVuY3kYDyABKAkSFwoOTGFzdFVwZGF0ZVRpbWUYiwYgASgD",
-            "EhIKCUF2YWlsYWJsZRiJDiABKAkSDwoGT25Ib2xkGIoOIAEoCRIQCgdTZXR0",
-            "bGVkGIsOIAEoCRIPCgZFcXVpdHkY/w0gASgJEg8KBUJvbnVzGNmYAyABKAkS",
-            "IQoJUG9zaXRpb25zGIwOIAMoCzINLmFwaS5Qb3NpdGlvbiKcAQoZQmFsYW5j",
-            "ZUluY3JlbWVudGFsUmVmcmVzaBIPCgdNc2dUeXBlGCMgASgJEg8KB0FjY291",
-            "bnQYASABKAQSFwoOTGFzdFVwZGF0ZVRpbWUYiwYgASgDEh8KCEJhbGFuY2Vz",
-            "GIgOIAMoCzIMLmFwaS5CYWxhbmNlEhUKDFJlamVjdFJlYXNvbhj8AiABKAkS",
-            "DAoEVGV4dBg6IAEoCSKZAQoWQmFsYW5jZVNuYXBzaG90UmVmcmVzaBIPCgdN",
-            "c2dUeXBlGCMgASgJEg8KB0FjY291bnQYASABKAQSFwoOTGFzdFVwZGF0ZVRp",
-            "bWUYiwYgASgDEh8KCEJhbGFuY2VzGIgOIAMoCzIMLmFwaS5CYWxhbmNlEhUK",
-            "DFJlamVjdFJlYXNvbhj8AiABKAkSDAoEVGV4dBg6IAEoCWIGcHJvdG8z"));
+            "Cg1iYWxhbmNlLnByb3RvEgNhcGkiigEKGkFjY291bnRTdGF0dXNSZXBvcnRS",
+            "ZXF1ZXN0EhgKB01zZ1R5cGUYIyABKAlSB21zZ1R5cGUSGAoHQWNjb3VudBgB",
+            "IAEoBFIHYWNjb3VudBI4ChZBY2NvdW50U3RhdHVzUmVxdWVzdElkGJHMAiAB",
+            "KAlSFmFjY291bnRTdGF0dXNSZXF1ZXN0SWQiqwEKCFBvc2l0aW9uEhoKCEN1",
+            "cnJlbmN5GA8gASgJUghjdXJyZW5jeRIUCgVBdmdQeBgGIAEoCVIFYXZnUHgS",
+            "HwoKUG9zaXRpb25JZBjSDCABKARSCnBvc2l0aW9uSWQSKwoQUG9zaXRpb25P",
+            "cGVuVGltZRiNDiABKANSEHBvc2l0aW9uT3BlblRpbWUSHwoKUmVhbGl6ZWRQ",
+            "TBiODiABKAlSCnJlYWxpemVkUEwimgIKB0JhbGFuY2USGAoHQWNjb3VudBgB",
+            "IAEoBFIHYWNjb3VudBIaCghDdXJyZW5jeRgPIAEoCVIIY3VycmVuY3kSJwoO",
+            "TGFzdFVwZGF0ZVRpbWUYiwYgASgDUg5sYXN0VXBkYXRlVGltZRIdCglBdmFp",
+            "bGFibGUYiQ4gASgJUglhdmFpbGFibGUSFwoGT25Ib2xkGIoOIAEoCVIGb25I",
+            "b2xkEhkKB1NldHRsZWQYiw4gASgJUgdzZXR0bGVkEhcKBkVxdWl0eRj/DSAB",
+            "KAlSBmVxdWl0eRIWCgVCb251cxjZmAMgASgJUgVib251cxIsCglQb3NpdGlv",
+            "bnMYjA4gAygLMg0uYXBpLlBvc2l0aW9uUglwb3NpdGlvbnMilgIKGUJhbGFu",
+            "Y2VJbmNyZW1lbnRhbFJlZnJlc2gSGAoHTXNnVHlwZRgjIAEoCVIHbXNnVHlw",
+            "ZRIYCgdBY2NvdW50GAEgASgEUgdhY2NvdW50EjgKFkFjY291bnRTdGF0dXNS",
+            "ZXF1ZXN0SWQYkcwCIAEoCVIWYWNjb3VudFN0YXR1c1JlcXVlc3RJZBInCg5M",
+            "YXN0VXBkYXRlVGltZRiLBiABKANSDmxhc3RVcGRhdGVUaW1lEikKCEJhbGFu",
+            "Y2VzGIgOIAMoCzIMLmFwaS5CYWxhbmNlUghiYWxhbmNlcxIjCgxSZWplY3RS",
+            "ZWFzb24Y/AIgASgJUgxyZWplY3RSZWFzb24SEgoEVGV4dBg6IAEoCVIEdGV4",
+            "dCKTAgoWQmFsYW5jZVNuYXBzaG90UmVmcmVzaBIYCgdNc2dUeXBlGCMgASgJ",
+            "Ugdtc2dUeXBlEhgKB0FjY291bnQYASABKARSB2FjY291bnQSOAoWQWNjb3Vu",
+            "dFN0YXR1c1JlcXVlc3RJZBiRzAIgASgJUhZhY2NvdW50U3RhdHVzUmVxdWVz",
+            "dElkEicKDkxhc3RVcGRhdGVUaW1lGIsGIAEoA1IObGFzdFVwZGF0ZVRpbWUS",
+            "KQoIQmFsYW5jZXMYiA4gAygLMgwuYXBpLkJhbGFuY2VSCGJhbGFuY2VzEiMK",
+            "DFJlamVjdFJlYXNvbhj8AiABKAlSDHJlamVjdFJlYXNvbhISCgRUZXh0GDog",
+            "ASgJUgR0ZXh0YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.AccountStatusReportRequest), global::Api.AccountStatusReportRequest.Parser, new[]{ "MsgType", "Account" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Position), global::Api.Position.Parser, new[]{ "Currency", "AvgPx", "PositionID", "PositionOpenTime", "RealizedPL" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.AccountStatusReportRequest), global::Api.AccountStatusReportRequest.Parser, new[]{ "MsgType", "Account", "AccountStatusRequestId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Position), global::Api.Position.Parser, new[]{ "Currency", "AvgPx", "PositionId", "PositionOpenTime", "RealizedPL" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.Balance), global::Api.Balance.Parser, new[]{ "Account", "Currency", "LastUpdateTime", "Available", "OnHold", "Settled", "Equity", "Bonus", "Positions" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.BalanceIncrementalRefresh), global::Api.BalanceIncrementalRefresh.Parser, new[]{ "MsgType", "Account", "LastUpdateTime", "Balances", "RejectReason", "Text" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.BalanceSnapshotRefresh), global::Api.BalanceSnapshotRefresh.Parser, new[]{ "MsgType", "Account", "LastUpdateTime", "Balances", "RejectReason", "Text" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.BalanceIncrementalRefresh), global::Api.BalanceIncrementalRefresh.Parser, new[]{ "MsgType", "Account", "AccountStatusRequestId", "LastUpdateTime", "Balances", "RejectReason", "Text" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.BalanceSnapshotRefresh), global::Api.BalanceSnapshotRefresh.Parser, new[]{ "MsgType", "Account", "AccountStatusRequestId", "LastUpdateTime", "Balances", "RejectReason", "Text" }, null, null, null)
           }));
     }
     #endregion
@@ -81,6 +92,7 @@ namespace Api {
     public AccountStatusReportRequest(AccountStatusReportRequest other) : this() {
       msgType_ = other.msgType_;
       account_ = other.account_;
+      accountStatusRequestId_ = other.accountStatusRequestId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -111,6 +123,17 @@ namespace Api {
       }
     }
 
+    /// <summary>Field number for the "AccountStatusRequestId" field.</summary>
+    public const int AccountStatusRequestIdFieldNumber = 42513;
+    private string accountStatusRequestId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string AccountStatusRequestId {
+      get { return accountStatusRequestId_; }
+      set {
+        accountStatusRequestId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as AccountStatusReportRequest);
@@ -126,6 +149,7 @@ namespace Api {
       }
       if (MsgType != other.MsgType) return false;
       if (Account != other.Account) return false;
+      if (AccountStatusRequestId != other.AccountStatusRequestId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -134,6 +158,7 @@ namespace Api {
       int hash = 1;
       if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
       if (Account != 0UL) hash ^= Account.GetHashCode();
+      if (AccountStatusRequestId.Length != 0) hash ^= AccountStatusRequestId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -155,6 +180,10 @@ namespace Api {
         output.WriteRawTag(154, 2);
         output.WriteString(MsgType);
       }
+      if (AccountStatusRequestId.Length != 0) {
+        output.WriteRawTag(138, 225, 20);
+        output.WriteString(AccountStatusRequestId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -168,6 +197,9 @@ namespace Api {
       }
       if (Account != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Account);
+      }
+      if (AccountStatusRequestId.Length != 0) {
+        size += 3 + pb::CodedOutputStream.ComputeStringSize(AccountStatusRequestId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -186,6 +218,9 @@ namespace Api {
       if (other.Account != 0UL) {
         Account = other.Account;
       }
+      if (other.AccountStatusRequestId.Length != 0) {
+        AccountStatusRequestId = other.AccountStatusRequestId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -203,6 +238,10 @@ namespace Api {
           }
           case 282: {
             MsgType = input.ReadString();
+            break;
+          }
+          case 340106: {
+            AccountStatusRequestId = input.ReadString();
             break;
           }
         }
@@ -238,7 +277,7 @@ namespace Api {
     public Position(Position other) : this() {
       currency_ = other.currency_;
       avgPx_ = other.avgPx_;
-      positionID_ = other.positionID_;
+      positionId_ = other.positionId_;
       positionOpenTime_ = other.positionOpenTime_;
       realizedPL_ = other.realizedPL_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -271,14 +310,14 @@ namespace Api {
       }
     }
 
-    /// <summary>Field number for the "PositionID" field.</summary>
-    public const int PositionIDFieldNumber = 1618;
-    private ulong positionID_;
+    /// <summary>Field number for the "PositionId" field.</summary>
+    public const int PositionIdFieldNumber = 1618;
+    private ulong positionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong PositionID {
-      get { return positionID_; }
+    public ulong PositionId {
+      get { return positionId_; }
       set {
-        positionID_ = value;
+        positionId_ = value;
       }
     }
 
@@ -319,7 +358,7 @@ namespace Api {
       }
       if (Currency != other.Currency) return false;
       if (AvgPx != other.AvgPx) return false;
-      if (PositionID != other.PositionID) return false;
+      if (PositionId != other.PositionId) return false;
       if (PositionOpenTime != other.PositionOpenTime) return false;
       if (RealizedPL != other.RealizedPL) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -330,7 +369,7 @@ namespace Api {
       int hash = 1;
       if (Currency.Length != 0) hash ^= Currency.GetHashCode();
       if (AvgPx.Length != 0) hash ^= AvgPx.GetHashCode();
-      if (PositionID != 0UL) hash ^= PositionID.GetHashCode();
+      if (PositionId != 0UL) hash ^= PositionId.GetHashCode();
       if (PositionOpenTime != 0L) hash ^= PositionOpenTime.GetHashCode();
       if (RealizedPL.Length != 0) hash ^= RealizedPL.GetHashCode();
       if (_unknownFields != null) {
@@ -354,9 +393,9 @@ namespace Api {
         output.WriteRawTag(122);
         output.WriteString(Currency);
       }
-      if (PositionID != 0UL) {
+      if (PositionId != 0UL) {
         output.WriteRawTag(144, 101);
-        output.WriteUInt64(PositionID);
+        output.WriteUInt64(PositionId);
       }
       if (PositionOpenTime != 0L) {
         output.WriteRawTag(232, 112);
@@ -380,8 +419,8 @@ namespace Api {
       if (AvgPx.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(AvgPx);
       }
-      if (PositionID != 0UL) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(PositionID);
+      if (PositionId != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(PositionId);
       }
       if (PositionOpenTime != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(PositionOpenTime);
@@ -406,8 +445,8 @@ namespace Api {
       if (other.AvgPx.Length != 0) {
         AvgPx = other.AvgPx;
       }
-      if (other.PositionID != 0UL) {
-        PositionID = other.PositionID;
+      if (other.PositionId != 0UL) {
+        PositionId = other.PositionId;
       }
       if (other.PositionOpenTime != 0L) {
         PositionOpenTime = other.PositionOpenTime;
@@ -435,7 +474,7 @@ namespace Api {
             break;
           }
           case 12944: {
-            PositionID = input.ReadUInt64();
+            PositionId = input.ReadUInt64();
             break;
           }
           case 14440: {
@@ -824,6 +863,7 @@ namespace Api {
     public BalanceIncrementalRefresh(BalanceIncrementalRefresh other) : this() {
       msgType_ = other.msgType_;
       account_ = other.account_;
+      accountStatusRequestId_ = other.accountStatusRequestId_;
       lastUpdateTime_ = other.lastUpdateTime_;
       balances_ = other.balances_.Clone();
       rejectReason_ = other.rejectReason_;
@@ -855,6 +895,17 @@ namespace Api {
       get { return account_; }
       set {
         account_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "AccountStatusRequestId" field.</summary>
+    public const int AccountStatusRequestIdFieldNumber = 42513;
+    private string accountStatusRequestId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string AccountStatusRequestId {
+      get { return accountStatusRequestId_; }
+      set {
+        accountStatusRequestId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -919,6 +970,7 @@ namespace Api {
       }
       if (MsgType != other.MsgType) return false;
       if (Account != other.Account) return false;
+      if (AccountStatusRequestId != other.AccountStatusRequestId) return false;
       if (LastUpdateTime != other.LastUpdateTime) return false;
       if(!balances_.Equals(other.balances_)) return false;
       if (RejectReason != other.RejectReason) return false;
@@ -931,6 +983,7 @@ namespace Api {
       int hash = 1;
       if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
       if (Account != 0UL) hash ^= Account.GetHashCode();
+      if (AccountStatusRequestId.Length != 0) hash ^= AccountStatusRequestId.GetHashCode();
       if (LastUpdateTime != 0L) hash ^= LastUpdateTime.GetHashCode();
       hash ^= balances_.GetHashCode();
       if (RejectReason.Length != 0) hash ^= RejectReason.GetHashCode();
@@ -969,6 +1022,10 @@ namespace Api {
         output.WriteInt64(LastUpdateTime);
       }
       balances_.WriteTo(output, _repeated_balances_codec);
+      if (AccountStatusRequestId.Length != 0) {
+        output.WriteRawTag(138, 225, 20);
+        output.WriteString(AccountStatusRequestId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -982,6 +1039,9 @@ namespace Api {
       }
       if (Account != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Account);
+      }
+      if (AccountStatusRequestId.Length != 0) {
+        size += 3 + pb::CodedOutputStream.ComputeStringSize(AccountStatusRequestId);
       }
       if (LastUpdateTime != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(LastUpdateTime);
@@ -1009,6 +1069,9 @@ namespace Api {
       }
       if (other.Account != 0UL) {
         Account = other.Account;
+      }
+      if (other.AccountStatusRequestId.Length != 0) {
+        AccountStatusRequestId = other.AccountStatusRequestId;
       }
       if (other.LastUpdateTime != 0L) {
         LastUpdateTime = other.LastUpdateTime;
@@ -1055,6 +1118,10 @@ namespace Api {
             balances_.AddEntriesFrom(input, _repeated_balances_codec);
             break;
           }
+          case 340106: {
+            AccountStatusRequestId = input.ReadString();
+            break;
+          }
         }
       }
     }
@@ -1088,6 +1155,7 @@ namespace Api {
     public BalanceSnapshotRefresh(BalanceSnapshotRefresh other) : this() {
       msgType_ = other.msgType_;
       account_ = other.account_;
+      accountStatusRequestId_ = other.accountStatusRequestId_;
       lastUpdateTime_ = other.lastUpdateTime_;
       balances_ = other.balances_.Clone();
       rejectReason_ = other.rejectReason_;
@@ -1119,6 +1187,17 @@ namespace Api {
       get { return account_; }
       set {
         account_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "AccountStatusRequestId" field.</summary>
+    public const int AccountStatusRequestIdFieldNumber = 42513;
+    private string accountStatusRequestId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string AccountStatusRequestId {
+      get { return accountStatusRequestId_; }
+      set {
+        accountStatusRequestId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1183,6 +1262,7 @@ namespace Api {
       }
       if (MsgType != other.MsgType) return false;
       if (Account != other.Account) return false;
+      if (AccountStatusRequestId != other.AccountStatusRequestId) return false;
       if (LastUpdateTime != other.LastUpdateTime) return false;
       if(!balances_.Equals(other.balances_)) return false;
       if (RejectReason != other.RejectReason) return false;
@@ -1195,6 +1275,7 @@ namespace Api {
       int hash = 1;
       if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
       if (Account != 0UL) hash ^= Account.GetHashCode();
+      if (AccountStatusRequestId.Length != 0) hash ^= AccountStatusRequestId.GetHashCode();
       if (LastUpdateTime != 0L) hash ^= LastUpdateTime.GetHashCode();
       hash ^= balances_.GetHashCode();
       if (RejectReason.Length != 0) hash ^= RejectReason.GetHashCode();
@@ -1233,6 +1314,10 @@ namespace Api {
         output.WriteInt64(LastUpdateTime);
       }
       balances_.WriteTo(output, _repeated_balances_codec);
+      if (AccountStatusRequestId.Length != 0) {
+        output.WriteRawTag(138, 225, 20);
+        output.WriteString(AccountStatusRequestId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1246,6 +1331,9 @@ namespace Api {
       }
       if (Account != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Account);
+      }
+      if (AccountStatusRequestId.Length != 0) {
+        size += 3 + pb::CodedOutputStream.ComputeStringSize(AccountStatusRequestId);
       }
       if (LastUpdateTime != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(LastUpdateTime);
@@ -1273,6 +1361,9 @@ namespace Api {
       }
       if (other.Account != 0UL) {
         Account = other.Account;
+      }
+      if (other.AccountStatusRequestId.Length != 0) {
+        AccountStatusRequestId = other.AccountStatusRequestId;
       }
       if (other.LastUpdateTime != 0L) {
         LastUpdateTime = other.LastUpdateTime;
@@ -1317,6 +1408,10 @@ namespace Api {
           }
           case 14402: {
             balances_.AddEntriesFrom(input, _repeated_balances_codec);
+            break;
+          }
+          case 340106: {
+            AccountStatusRequestId = input.ReadString();
             break;
           }
         }

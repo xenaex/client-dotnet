@@ -1,7 +1,7 @@
 using System.Linq;
 using Api;
 using XenaExchange.Client.Messages.Constants;
-using XenaExchange.Client.WsClient.Common;
+using XenaExchange.Client.Ws.Common;
 
 namespace XenaExchange.Client.Messages
 {
@@ -39,7 +39,7 @@ namespace XenaExchange.Client.Messages
                 OrdType = ordType.Proto(),
                 StopPx = stopPx.ToFixString(),
                 TimeInForce = timeInForce.Proto(),
-                PositionID = positionId,
+                PositionId = positionId,
             };
 
             if (positionId != 0)
@@ -216,7 +216,7 @@ namespace XenaExchange.Client.Messages
 
         public static void ForPosition(this NewOrderSingle command, ulong positionId)
         {
-            command.PositionID = positionId;
+            command.PositionId = positionId;
             command.PositionEffect = PositionEffect.Close;
         }
 

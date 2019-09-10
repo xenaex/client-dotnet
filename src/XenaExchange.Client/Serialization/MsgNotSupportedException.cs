@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace XenaExchange.Client.Serialization
 {
     /// <summary>
-    /// Is thrown when received message isn't tracked in Fix.DeserializeMap.
+    /// Is thrown when received message isn't presented in Fix.DeserializeMap.
     /// </summary>
     public class MsgNotSupportedException : Exception
     {

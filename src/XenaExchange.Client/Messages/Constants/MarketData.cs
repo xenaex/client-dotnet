@@ -31,14 +31,14 @@ namespace XenaExchange.Client.Messages.Constants
     {
         public const string SnapshotAndUpdates = "1";
         public const string DisablePreviousSnapshot = "2";
-        public static readonly IReadOnlyCollection<string> All = new[] { SnapshotAndUpdates, DisablePreviousSnapshot };
+        public static readonly IReadOnlyCollection<string> All = new[] {SnapshotAndUpdates, DisablePreviousSnapshot};
     }
 
     public static class ThrottleType
     {
         public const string InboundRate = "0";
         public const string OutstandingRequests = "1";
-        public static readonly IReadOnlyCollection<string> All = new[] { InboundRate, OutstandingRequests };
+        public static readonly IReadOnlyCollection<string> All = new[] {InboundRate, OutstandingRequests};
     }
 
     public static class ThrottleTimeUnit

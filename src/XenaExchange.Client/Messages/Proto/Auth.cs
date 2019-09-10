@@ -27,12 +27,12 @@ namespace Api {
             "CgphdXRoLnByb3RvEgNhcGkitgEKBUxvZ29uEg8KB01zZ1R5cGUYIyABKAkS",
             "EgoKSGVhcnRCdEludBhsIAEoBRITCgpSZWplY3RUZXh0GLAKIAEoCRIPCgdB",
             "Y2NvdW50GAEgAygEEhMKC1NlbmRpbmdUaW1lGDQgASgDEhYKDUNzdG1BcHBs",
-            "VmVySUQY6QggASgJEhEKCFVzZXJuYW1lGKkEIAEoCRIRCghQYXNzd29yZBiq",
+            "VmVySWQY6QggASgJEhEKCFVzZXJuYW1lGKkEIAEoCRIRCghQYXNzd29yZBiq",
             "BCABKAkSDwoHUmF3RGF0YRhgIAEoCWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Logon), global::Api.Logon.Parser, new[]{ "MsgType", "HeartBtInt", "RejectText", "Account", "SendingTime", "CstmApplVerID", "Username", "Password", "RawData" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Logon), global::Api.Logon.Parser, new[]{ "MsgType", "HeartBtInt", "RejectText", "Account", "SendingTime", "CstmApplVerId", "Username", "Password", "RawData" }, null, null, null)
           }));
     }
     #endregion
@@ -69,7 +69,7 @@ namespace Api {
       rejectText_ = other.rejectText_;
       account_ = other.account_.Clone();
       sendingTime_ = other.sendingTime_;
-      cstmApplVerID_ = other.cstmApplVerID_;
+      cstmApplVerId_ = other.cstmApplVerId_;
       username_ = other.username_;
       password_ = other.password_;
       rawData_ = other.rawData_;
@@ -138,14 +138,14 @@ namespace Api {
       }
     }
 
-    /// <summary>Field number for the "CstmApplVerID" field.</summary>
-    public const int CstmApplVerIDFieldNumber = 1129;
-    private string cstmApplVerID_ = "";
+    /// <summary>Field number for the "CstmApplVerId" field.</summary>
+    public const int CstmApplVerIdFieldNumber = 1129;
+    private string cstmApplVerId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string CstmApplVerID {
-      get { return cstmApplVerID_; }
+    public string CstmApplVerId {
+      get { return cstmApplVerId_; }
       set {
-        cstmApplVerID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        cstmApplVerId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -200,7 +200,7 @@ namespace Api {
       if (RejectText != other.RejectText) return false;
       if(!account_.Equals(other.account_)) return false;
       if (SendingTime != other.SendingTime) return false;
-      if (CstmApplVerID != other.CstmApplVerID) return false;
+      if (CstmApplVerId != other.CstmApplVerId) return false;
       if (Username != other.Username) return false;
       if (Password != other.Password) return false;
       if (RawData != other.RawData) return false;
@@ -215,7 +215,7 @@ namespace Api {
       if (RejectText.Length != 0) hash ^= RejectText.GetHashCode();
       hash ^= account_.GetHashCode();
       if (SendingTime != 0L) hash ^= SendingTime.GetHashCode();
-      if (CstmApplVerID.Length != 0) hash ^= CstmApplVerID.GetHashCode();
+      if (CstmApplVerId.Length != 0) hash ^= CstmApplVerId.GetHashCode();
       if (Username.Length != 0) hash ^= Username.GetHashCode();
       if (Password.Length != 0) hash ^= Password.GetHashCode();
       if (RawData.Length != 0) hash ^= RawData.GetHashCode();
@@ -257,9 +257,9 @@ namespace Api {
         output.WriteRawTag(210, 34);
         output.WriteString(Password);
       }
-      if (CstmApplVerID.Length != 0) {
+      if (CstmApplVerId.Length != 0) {
         output.WriteRawTag(202, 70);
-        output.WriteString(CstmApplVerID);
+        output.WriteString(CstmApplVerId);
       }
       if (RejectText.Length != 0) {
         output.WriteRawTag(130, 83);
@@ -286,8 +286,8 @@ namespace Api {
       if (SendingTime != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(SendingTime);
       }
-      if (CstmApplVerID.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(CstmApplVerID);
+      if (CstmApplVerId.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(CstmApplVerId);
       }
       if (Username.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(Username);
@@ -322,8 +322,8 @@ namespace Api {
       if (other.SendingTime != 0L) {
         SendingTime = other.SendingTime;
       }
-      if (other.CstmApplVerID.Length != 0) {
-        CstmApplVerID = other.CstmApplVerID;
+      if (other.CstmApplVerId.Length != 0) {
+        CstmApplVerId = other.CstmApplVerId;
       }
       if (other.Username.Length != 0) {
         Username = other.Username;
@@ -375,7 +375,7 @@ namespace Api {
             break;
           }
           case 9034: {
-            CstmApplVerID = input.ReadString();
+            CstmApplVerId = input.ReadString();
             break;
           }
           case 10626: {

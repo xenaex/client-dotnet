@@ -24,43 +24,56 @@ namespace Api {
     static PositionsReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9wb3NpdGlvbnMucHJvdG8SA2FwaRoMbWFyZ2luLnByb3RvIlQKB1BheW1l",
-            "bnQSFQoLUGF5bWVudFR5cGUYlboCIAEoCRIZCg9QYXltZW50Q3VycmVuY3kY",
-            "mLoCIAEoCRIXCg1QYXltZW50QW1vdW50GJm6AiABKAkiQgoMUmVsYXRlZFRy",
-            "YWRlEhcKDlJlbGF0ZWRUcmFkZUlEGMAOIAEoCRIZChBSZWxhdGVkVHJhZGVU",
-            "eXBlGMEOIAEoCSK1AwoOUG9zaXRpb25SZXBvcnQSDwoHTXNnVHlwZRgjIAEo",
-            "CRIPCgdBY2NvdW50GAEgASgEEhMKClBvc2l0aW9uSUQYuhQgASgEEhQKDFRy",
-            "YW5zYWN0VGltZRg8IAEoAxIOCgZTeW1ib2wYNyABKAkSGQoQUG9zaXRpb25P",
-            "cGVuVGltZRiNDiABKAMSDQoFQXZnUHgYBiABKAkSDgoGVm9sdW1lGDUgASgJ",
-            "EgwKBFNpZGUYNiABKAkSEQoJU2V0dGxEYXRlGEAgASgDEhMKClNldHRsUHJp",
-            "Y2UY2gUgASgJEhgKD1ByaW9yU2V0dGxQcmljZRjeBSABKAkSJQocUHJldmlv",
-            "dXNDbGVhcmluZ0J1c2luZXNzRGF0ZRi8CCABKAMSHQoUQ2xlYXJpbmdCdXNp",
-            "bmVzc0RhdGUYywUgASgDEikKDU1hcmdpbkFtb3VudHMY6wwgAygLMhEuYXBp",
-            "Lk1hcmdpbkFtb3VudBIgCghQYXltZW50cxiUugIgAygLMgwuYXBpLlBheW1l",
-            "bnQSKQoNUmVsYXRlZFRyYWRlcxi/DiADKAsyES5hcGkuUmVsYXRlZFRyYWRl",
-            "Is0BChJNYXNzUG9zaXRpb25SZXBvcnQSDwoHTXNnVHlwZRgjIAEoCRIPCgdB",
-            "Y2NvdW50GAEgASgEEhQKDFRyYW5zYWN0VGltZRg8IAEoAxIrCg1PcGVuUG9z",
-            "aXRpb25zGNcFIAMoCzITLmFwaS5Qb3NpdGlvblJlcG9ydBItCg9Qb3NpdGlv",
-            "bkhpc3RvcnkY1gUgAygLMhMuYXBpLlBvc2l0aW9uUmVwb3J0EhUKDFJlamVj",
-            "dFJlYXNvbhj8AiABKAkSDAoEVGV4dBg6IAEoCSI0ChBQb3NpdGlvbnNSZXF1",
-            "ZXN0Eg8KB01zZ1R5cGUYIyABKAkSDwoHQWNjb3VudBgBIAEoBCKRAQoaUG9z",
-            "aXRpb25NYWludGVuYW5jZVJlcXVlc3QSDwoHTXNnVHlwZRgjIAEoCRIRCghQ",
-            "b3NSZXFJRBjGBSABKAkSFQoMUG9zVHJhbnNUeXBlGMUFIAEoCRIXCg5Qb3NN",
-            "YWludEFjdGlvbhjkNiABKAkSDwoHQWNjb3VudBgBIAEoBBIOCgZTeW1ib2wY",
-            "NyABKAkikAEKGVBvc2l0aW9uTWFpbnRlbmFuY2VSZXBvcnQSDwoHTXNnVHlw",
-            "ZRgjIAEoCRIRCghQb3NSZXFJRBjGBSABKAkSFQoMUG9zVHJhbnNUeXBlGMUF",
-            "IAEoCRIXCg5Qb3NNYWludEFjdGlvbhjkNiABKAkSDwoHQWNjb3VudBgBIAEo",
-            "BBIOCgZTeW1ib2wYNyABKAliBnByb3RvMw=="));
+            "Cg9wb3NpdGlvbnMucHJvdG8SA2FwaRoMbWFyZ2luLnByb3RvIoEBCgdQYXlt",
+            "ZW50EiIKC1BheW1lbnRUeXBlGJW6AiABKAlSC3BheW1lbnRUeXBlEioKD1Bh",
+            "eW1lbnRDdXJyZW5jeRiYugIgASgJUg9wYXltZW50Q3VycmVuY3kSJgoNUGF5",
+            "bWVudEFtb3VudBiZugIgASgJUg1wYXltZW50QW1vdW50ImQKDFJlbGF0ZWRU",
+            "cmFkZRInCg5SZWxhdGVkVHJhZGVJZBjADiABKAlSDnJlbGF0ZWRUcmFkZUlk",
+            "EisKEFJlbGF0ZWRUcmFkZVR5cGUYwQ4gASgJUhByZWxhdGVkVHJhZGVUeXBl",
+            "IpQFCg5Qb3NpdGlvblJlcG9ydBIYCgdNc2dUeXBlGCMgASgJUgdtc2dUeXBl",
+            "EhgKB0FjY291bnQYASABKARSB2FjY291bnQSHwoKUG9zaXRpb25JZBi6FCAB",
+            "KARSCnBvc2l0aW9uSWQSIgoMVHJhbnNhY3RUaW1lGDwgASgDUgx0cmFuc2Fj",
+            "dFRpbWUSFgoGU3ltYm9sGDcgASgJUgZzeW1ib2wSKwoQUG9zaXRpb25PcGVu",
+            "VGltZRiNDiABKANSEHBvc2l0aW9uT3BlblRpbWUSFAoFQXZnUHgYBiABKAlS",
+            "BWF2Z1B4EhYKBlZvbHVtZRg1IAEoCVIGdm9sdW1lEhIKBFNpZGUYNiABKAlS",
+            "BHNpZGUSHAoJU2V0dGxEYXRlGEAgASgDUglzZXR0bERhdGUSHwoKU2V0dGxQ",
+            "cmljZRjaBSABKAlSCnNldHRsUHJpY2USKQoPUHJpb3JTZXR0bFByaWNlGN4F",
+            "IAEoCVIPcHJpb3JTZXR0bFByaWNlEkMKHFByZXZpb3VzQ2xlYXJpbmdCdXNp",
+            "bmVzc0RhdGUYvAggASgDUhxwcmV2aW91c0NsZWFyaW5nQnVzaW5lc3NEYXRl",
+            "EjMKFENsZWFyaW5nQnVzaW5lc3NEYXRlGMsFIAEoA1IUY2xlYXJpbmdCdXNp",
+            "bmVzc0RhdGUSOAoNTWFyZ2luQW1vdW50cxjrDCADKAsyES5hcGkuTWFyZ2lu",
+            "QW1vdW50Ug1tYXJnaW5BbW91bnRzEioKCFBheW1lbnRzGJS6AiADKAsyDC5h",
+            "cGkuUGF5bWVudFIIcGF5bWVudHMSOAoNUmVsYXRlZFRyYWRlcxi/DiADKAsy",
+            "ES5hcGkuUmVsYXRlZFRyYWRlUg1yZWxhdGVkVHJhZGVzIr4CChJNYXNzUG9z",
+            "aXRpb25SZXBvcnQSGAoHTXNnVHlwZRgjIAEoCVIHbXNnVHlwZRIbCghQb3NS",
+            "ZXFJZBjGBSABKAlSCHBvc1JlcUlkEhgKB0FjY291bnQYASABKARSB2FjY291",
+            "bnQSIgoMVHJhbnNhY3RUaW1lGDwgASgDUgx0cmFuc2FjdFRpbWUSOgoNT3Bl",
+            "blBvc2l0aW9ucxjXBSADKAsyEy5hcGkuUG9zaXRpb25SZXBvcnRSDW9wZW5Q",
+            "b3NpdGlvbnMSPgoPUG9zaXRpb25IaXN0b3J5GNYFIAMoCzITLmFwaS5Qb3Np",
+            "dGlvblJlcG9ydFIPcG9zaXRpb25IaXN0b3J5EiMKDFJlamVjdFJlYXNvbhj8",
+            "AiABKAlSDHJlamVjdFJlYXNvbhISCgRUZXh0GDogASgJUgR0ZXh0ImMKEFBv",
+            "c2l0aW9uc1JlcXVlc3QSGAoHTXNnVHlwZRgjIAEoCVIHbXNnVHlwZRIbCghQ",
+            "b3NSZXFJZBjGBSABKAlSCHBvc1JlcUlkEhgKB0FjY291bnQYASABKARSB2Fj",
+            "Y291bnQi0wEKGlBvc2l0aW9uTWFpbnRlbmFuY2VSZXF1ZXN0EhgKB01zZ1R5",
+            "cGUYIyABKAlSB21zZ1R5cGUSGwoIUG9zUmVxSWQYxgUgASgJUghwb3NSZXFJ",
+            "ZBIjCgxQb3NUcmFuc1R5cGUYxQUgASgJUgxwb3NUcmFuc1R5cGUSJwoOUG9z",
+            "TWFpbnRBY3Rpb24Y5DYgASgJUg5wb3NNYWludEFjdGlvbhIYCgdBY2NvdW50",
+            "GAEgASgEUgdhY2NvdW50EhYKBlN5bWJvbBg3IAEoCVIGc3ltYm9sItIBChlQ",
+            "b3NpdGlvbk1haW50ZW5hbmNlUmVwb3J0EhgKB01zZ1R5cGUYIyABKAlSB21z",
+            "Z1R5cGUSGwoIUG9zUmVxSWQYxgUgASgJUghwb3NSZXFJZBIjCgxQb3NUcmFu",
+            "c1R5cGUYxQUgASgJUgxwb3NUcmFuc1R5cGUSJwoOUG9zTWFpbnRBY3Rpb24Y",
+            "5DYgASgJUg5wb3NNYWludEFjdGlvbhIYCgdBY2NvdW50GAEgASgEUgdhY2Nv",
+            "dW50EhYKBlN5bWJvbBg3IAEoCVIGc3ltYm9sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Api.MarginReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.Payment), global::Api.Payment.Parser, new[]{ "PaymentType", "PaymentCurrency", "PaymentAmount" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.RelatedTrade), global::Api.RelatedTrade.Parser, new[]{ "RelatedTradeID", "RelatedTradeType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.PositionReport), global::Api.PositionReport.Parser, new[]{ "MsgType", "Account", "PositionID", "TransactTime", "Symbol", "PositionOpenTime", "AvgPx", "Volume", "Side", "SettlDate", "SettlPrice", "PriorSettlPrice", "PreviousClearingBusinessDate", "ClearingBusinessDate", "MarginAmounts", "Payments", "RelatedTrades" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MassPositionReport), global::Api.MassPositionReport.Parser, new[]{ "MsgType", "Account", "TransactTime", "OpenPositions", "PositionHistory", "RejectReason", "Text" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.PositionsRequest), global::Api.PositionsRequest.Parser, new[]{ "MsgType", "Account" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.PositionMaintenanceRequest), global::Api.PositionMaintenanceRequest.Parser, new[]{ "MsgType", "PosReqID", "PosTransType", "PosMaintAction", "Account", "Symbol" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.PositionMaintenanceReport), global::Api.PositionMaintenanceReport.Parser, new[]{ "MsgType", "PosReqID", "PosTransType", "PosMaintAction", "Account", "Symbol" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.RelatedTrade), global::Api.RelatedTrade.Parser, new[]{ "RelatedTradeId", "RelatedTradeType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.PositionReport), global::Api.PositionReport.Parser, new[]{ "MsgType", "Account", "PositionId", "TransactTime", "Symbol", "PositionOpenTime", "AvgPx", "Volume", "Side", "SettlDate", "SettlPrice", "PriorSettlPrice", "PreviousClearingBusinessDate", "ClearingBusinessDate", "MarginAmounts", "Payments", "RelatedTrades" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MassPositionReport), global::Api.MassPositionReport.Parser, new[]{ "MsgType", "PosReqId", "Account", "TransactTime", "OpenPositions", "PositionHistory", "RejectReason", "Text" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.PositionsRequest), global::Api.PositionsRequest.Parser, new[]{ "MsgType", "PosReqId", "Account" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.PositionMaintenanceRequest), global::Api.PositionMaintenanceRequest.Parser, new[]{ "MsgType", "PosReqId", "PosTransType", "PosMaintAction", "Account", "Symbol" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.PositionMaintenanceReport), global::Api.PositionMaintenanceReport.Parser, new[]{ "MsgType", "PosReqId", "PosTransType", "PosMaintAction", "Account", "Symbol" }, null, null, null)
           }));
     }
     #endregion
@@ -277,7 +290,7 @@ namespace Api {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public RelatedTrade(RelatedTrade other) : this() {
-      relatedTradeID_ = other.relatedTradeID_;
+      relatedTradeId_ = other.relatedTradeId_;
       relatedTradeType_ = other.relatedTradeType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -287,14 +300,14 @@ namespace Api {
       return new RelatedTrade(this);
     }
 
-    /// <summary>Field number for the "RelatedTradeID" field.</summary>
-    public const int RelatedTradeIDFieldNumber = 1856;
-    private string relatedTradeID_ = "";
+    /// <summary>Field number for the "RelatedTradeId" field.</summary>
+    public const int RelatedTradeIdFieldNumber = 1856;
+    private string relatedTradeId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string RelatedTradeID {
-      get { return relatedTradeID_; }
+    public string RelatedTradeId {
+      get { return relatedTradeId_; }
       set {
-        relatedTradeID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        relatedTradeId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -322,7 +335,7 @@ namespace Api {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (RelatedTradeID != other.RelatedTradeID) return false;
+      if (RelatedTradeId != other.RelatedTradeId) return false;
       if (RelatedTradeType != other.RelatedTradeType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -330,7 +343,7 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (RelatedTradeID.Length != 0) hash ^= RelatedTradeID.GetHashCode();
+      if (RelatedTradeId.Length != 0) hash ^= RelatedTradeId.GetHashCode();
       if (RelatedTradeType.Length != 0) hash ^= RelatedTradeType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -345,9 +358,9 @@ namespace Api {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (RelatedTradeID.Length != 0) {
+      if (RelatedTradeId.Length != 0) {
         output.WriteRawTag(130, 116);
-        output.WriteString(RelatedTradeID);
+        output.WriteString(RelatedTradeId);
       }
       if (RelatedTradeType.Length != 0) {
         output.WriteRawTag(138, 116);
@@ -361,8 +374,8 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (RelatedTradeID.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(RelatedTradeID);
+      if (RelatedTradeId.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(RelatedTradeId);
       }
       if (RelatedTradeType.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(RelatedTradeType);
@@ -378,8 +391,8 @@ namespace Api {
       if (other == null) {
         return;
       }
-      if (other.RelatedTradeID.Length != 0) {
-        RelatedTradeID = other.RelatedTradeID;
+      if (other.RelatedTradeId.Length != 0) {
+        RelatedTradeId = other.RelatedTradeId;
       }
       if (other.RelatedTradeType.Length != 0) {
         RelatedTradeType = other.RelatedTradeType;
@@ -396,7 +409,7 @@ namespace Api {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 14850: {
-            RelatedTradeID = input.ReadString();
+            RelatedTradeId = input.ReadString();
             break;
           }
           case 14858: {
@@ -436,7 +449,7 @@ namespace Api {
     public PositionReport(PositionReport other) : this() {
       msgType_ = other.msgType_;
       account_ = other.account_;
-      positionID_ = other.positionID_;
+      positionId_ = other.positionId_;
       transactTime_ = other.transactTime_;
       symbol_ = other.symbol_;
       positionOpenTime_ = other.positionOpenTime_;
@@ -481,14 +494,14 @@ namespace Api {
       }
     }
 
-    /// <summary>Field number for the "PositionID" field.</summary>
-    public const int PositionIDFieldNumber = 2618;
-    private ulong positionID_;
+    /// <summary>Field number for the "PositionId" field.</summary>
+    public const int PositionIdFieldNumber = 2618;
+    private ulong positionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong PositionID {
-      get { return positionID_; }
+    public ulong PositionId {
+      get { return positionId_; }
       set {
-        positionID_ = value;
+        positionId_ = value;
       }
     }
 
@@ -658,7 +671,7 @@ namespace Api {
       }
       if (MsgType != other.MsgType) return false;
       if (Account != other.Account) return false;
-      if (PositionID != other.PositionID) return false;
+      if (PositionId != other.PositionId) return false;
       if (TransactTime != other.TransactTime) return false;
       if (Symbol != other.Symbol) return false;
       if (PositionOpenTime != other.PositionOpenTime) return false;
@@ -681,7 +694,7 @@ namespace Api {
       int hash = 1;
       if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
       if (Account != 0UL) hash ^= Account.GetHashCode();
-      if (PositionID != 0UL) hash ^= PositionID.GetHashCode();
+      if (PositionId != 0UL) hash ^= PositionId.GetHashCode();
       if (TransactTime != 0L) hash ^= TransactTime.GetHashCode();
       if (Symbol.Length != 0) hash ^= Symbol.GetHashCode();
       if (PositionOpenTime != 0L) hash ^= PositionOpenTime.GetHashCode();
@@ -763,9 +776,9 @@ namespace Api {
         output.WriteInt64(PositionOpenTime);
       }
       relatedTrades_.WriteTo(output, _repeated_relatedTrades_codec);
-      if (PositionID != 0UL) {
+      if (PositionId != 0UL) {
         output.WriteRawTag(208, 163, 1);
-        output.WriteUInt64(PositionID);
+        output.WriteUInt64(PositionId);
       }
       payments_.WriteTo(output, _repeated_payments_codec);
       if (_unknownFields != null) {
@@ -782,8 +795,8 @@ namespace Api {
       if (Account != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Account);
       }
-      if (PositionID != 0UL) {
-        size += 3 + pb::CodedOutputStream.ComputeUInt64Size(PositionID);
+      if (PositionId != 0UL) {
+        size += 3 + pb::CodedOutputStream.ComputeUInt64Size(PositionId);
       }
       if (TransactTime != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(TransactTime);
@@ -838,8 +851,8 @@ namespace Api {
       if (other.Account != 0UL) {
         Account = other.Account;
       }
-      if (other.PositionID != 0UL) {
-        PositionID = other.PositionID;
+      if (other.PositionId != 0UL) {
+        PositionId = other.PositionId;
       }
       if (other.TransactTime != 0L) {
         TransactTime = other.TransactTime;
@@ -949,7 +962,7 @@ namespace Api {
             break;
           }
           case 20944: {
-            PositionID = input.ReadUInt64();
+            PositionId = input.ReadUInt64();
             break;
           }
           case 321698: {
@@ -988,6 +1001,7 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MassPositionReport(MassPositionReport other) : this() {
       msgType_ = other.msgType_;
+      posReqId_ = other.posReqId_;
       account_ = other.account_;
       transactTime_ = other.transactTime_;
       openPositions_ = other.openPositions_.Clone();
@@ -1010,6 +1024,17 @@ namespace Api {
       get { return msgType_; }
       set {
         msgType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "PosReqId" field.</summary>
+    public const int PosReqIdFieldNumber = 710;
+    private string posReqId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PosReqId {
+      get { return posReqId_; }
+      set {
+        posReqId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1094,6 +1119,7 @@ namespace Api {
         return true;
       }
       if (MsgType != other.MsgType) return false;
+      if (PosReqId != other.PosReqId) return false;
       if (Account != other.Account) return false;
       if (TransactTime != other.TransactTime) return false;
       if(!openPositions_.Equals(other.openPositions_)) return false;
@@ -1107,6 +1133,7 @@ namespace Api {
     public override int GetHashCode() {
       int hash = 1;
       if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
+      if (PosReqId.Length != 0) hash ^= PosReqId.GetHashCode();
       if (Account != 0UL) hash ^= Account.GetHashCode();
       if (TransactTime != 0L) hash ^= TransactTime.GetHashCode();
       hash ^= openPositions_.GetHashCode();
@@ -1146,6 +1173,10 @@ namespace Api {
         output.WriteRawTag(226, 23);
         output.WriteString(RejectReason);
       }
+      if (PosReqId.Length != 0) {
+        output.WriteRawTag(178, 44);
+        output.WriteString(PosReqId);
+      }
       positionHistory_.WriteTo(output, _repeated_positionHistory_codec);
       openPositions_.WriteTo(output, _repeated_openPositions_codec);
       if (_unknownFields != null) {
@@ -1158,6 +1189,9 @@ namespace Api {
       int size = 0;
       if (MsgType.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(MsgType);
+      }
+      if (PosReqId.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(PosReqId);
       }
       if (Account != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Account);
@@ -1186,6 +1220,9 @@ namespace Api {
       }
       if (other.MsgType.Length != 0) {
         MsgType = other.MsgType;
+      }
+      if (other.PosReqId.Length != 0) {
+        PosReqId = other.PosReqId;
       }
       if (other.Account != 0UL) {
         Account = other.Account;
@@ -1232,6 +1269,10 @@ namespace Api {
             RejectReason = input.ReadString();
             break;
           }
+          case 5682: {
+            PosReqId = input.ReadString();
+            break;
+          }
           case 5810: {
             positionHistory_.AddEntriesFrom(input, _repeated_positionHistory_codec);
             break;
@@ -1272,6 +1313,7 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PositionsRequest(PositionsRequest other) : this() {
       msgType_ = other.msgType_;
+      posReqId_ = other.posReqId_;
       account_ = other.account_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1289,6 +1331,17 @@ namespace Api {
       get { return msgType_; }
       set {
         msgType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "PosReqId" field.</summary>
+    public const int PosReqIdFieldNumber = 710;
+    private string posReqId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PosReqId {
+      get { return posReqId_; }
+      set {
+        posReqId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1317,6 +1370,7 @@ namespace Api {
         return true;
       }
       if (MsgType != other.MsgType) return false;
+      if (PosReqId != other.PosReqId) return false;
       if (Account != other.Account) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1325,6 +1379,7 @@ namespace Api {
     public override int GetHashCode() {
       int hash = 1;
       if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
+      if (PosReqId.Length != 0) hash ^= PosReqId.GetHashCode();
       if (Account != 0UL) hash ^= Account.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1347,6 +1402,10 @@ namespace Api {
         output.WriteRawTag(154, 2);
         output.WriteString(MsgType);
       }
+      if (PosReqId.Length != 0) {
+        output.WriteRawTag(178, 44);
+        output.WriteString(PosReqId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1357,6 +1416,9 @@ namespace Api {
       int size = 0;
       if (MsgType.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(MsgType);
+      }
+      if (PosReqId.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(PosReqId);
       }
       if (Account != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Account);
@@ -1374,6 +1436,9 @@ namespace Api {
       }
       if (other.MsgType.Length != 0) {
         MsgType = other.MsgType;
+      }
+      if (other.PosReqId.Length != 0) {
+        PosReqId = other.PosReqId;
       }
       if (other.Account != 0UL) {
         Account = other.Account;
@@ -1395,6 +1460,10 @@ namespace Api {
           }
           case 282: {
             MsgType = input.ReadString();
+            break;
+          }
+          case 5682: {
+            PosReqId = input.ReadString();
             break;
           }
         }
@@ -1429,7 +1498,7 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PositionMaintenanceRequest(PositionMaintenanceRequest other) : this() {
       msgType_ = other.msgType_;
-      posReqID_ = other.posReqID_;
+      posReqId_ = other.posReqId_;
       posTransType_ = other.posTransType_;
       posMaintAction_ = other.posMaintAction_;
       account_ = other.account_;
@@ -1453,14 +1522,14 @@ namespace Api {
       }
     }
 
-    /// <summary>Field number for the "PosReqID" field.</summary>
-    public const int PosReqIDFieldNumber = 710;
-    private string posReqID_ = "";
+    /// <summary>Field number for the "PosReqId" field.</summary>
+    public const int PosReqIdFieldNumber = 710;
+    private string posReqId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string PosReqID {
-      get { return posReqID_; }
+    public string PosReqId {
+      get { return posReqId_; }
       set {
-        posReqID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        posReqId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1522,7 +1591,7 @@ namespace Api {
         return true;
       }
       if (MsgType != other.MsgType) return false;
-      if (PosReqID != other.PosReqID) return false;
+      if (PosReqId != other.PosReqId) return false;
       if (PosTransType != other.PosTransType) return false;
       if (PosMaintAction != other.PosMaintAction) return false;
       if (Account != other.Account) return false;
@@ -1534,7 +1603,7 @@ namespace Api {
     public override int GetHashCode() {
       int hash = 1;
       if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
-      if (PosReqID.Length != 0) hash ^= PosReqID.GetHashCode();
+      if (PosReqId.Length != 0) hash ^= PosReqId.GetHashCode();
       if (PosTransType.Length != 0) hash ^= PosTransType.GetHashCode();
       if (PosMaintAction.Length != 0) hash ^= PosMaintAction.GetHashCode();
       if (Account != 0UL) hash ^= Account.GetHashCode();
@@ -1568,9 +1637,9 @@ namespace Api {
         output.WriteRawTag(170, 44);
         output.WriteString(PosTransType);
       }
-      if (PosReqID.Length != 0) {
+      if (PosReqId.Length != 0) {
         output.WriteRawTag(178, 44);
-        output.WriteString(PosReqID);
+        output.WriteString(PosReqId);
       }
       if (PosMaintAction.Length != 0) {
         output.WriteRawTag(162, 182, 3);
@@ -1587,8 +1656,8 @@ namespace Api {
       if (MsgType.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(MsgType);
       }
-      if (PosReqID.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(PosReqID);
+      if (PosReqId.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(PosReqId);
       }
       if (PosTransType.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(PosTransType);
@@ -1616,8 +1685,8 @@ namespace Api {
       if (other.MsgType.Length != 0) {
         MsgType = other.MsgType;
       }
-      if (other.PosReqID.Length != 0) {
-        PosReqID = other.PosReqID;
+      if (other.PosReqId.Length != 0) {
+        PosReqId = other.PosReqId;
       }
       if (other.PosTransType.Length != 0) {
         PosTransType = other.PosTransType;
@@ -1659,7 +1728,7 @@ namespace Api {
             break;
           }
           case 5682: {
-            PosReqID = input.ReadString();
+            PosReqId = input.ReadString();
             break;
           }
           case 56098: {
@@ -1698,7 +1767,7 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PositionMaintenanceReport(PositionMaintenanceReport other) : this() {
       msgType_ = other.msgType_;
-      posReqID_ = other.posReqID_;
+      posReqId_ = other.posReqId_;
       posTransType_ = other.posTransType_;
       posMaintAction_ = other.posMaintAction_;
       account_ = other.account_;
@@ -1722,14 +1791,14 @@ namespace Api {
       }
     }
 
-    /// <summary>Field number for the "PosReqID" field.</summary>
-    public const int PosReqIDFieldNumber = 710;
-    private string posReqID_ = "";
+    /// <summary>Field number for the "PosReqId" field.</summary>
+    public const int PosReqIdFieldNumber = 710;
+    private string posReqId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string PosReqID {
-      get { return posReqID_; }
+    public string PosReqId {
+      get { return posReqId_; }
       set {
-        posReqID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        posReqId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1791,7 +1860,7 @@ namespace Api {
         return true;
       }
       if (MsgType != other.MsgType) return false;
-      if (PosReqID != other.PosReqID) return false;
+      if (PosReqId != other.PosReqId) return false;
       if (PosTransType != other.PosTransType) return false;
       if (PosMaintAction != other.PosMaintAction) return false;
       if (Account != other.Account) return false;
@@ -1803,7 +1872,7 @@ namespace Api {
     public override int GetHashCode() {
       int hash = 1;
       if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
-      if (PosReqID.Length != 0) hash ^= PosReqID.GetHashCode();
+      if (PosReqId.Length != 0) hash ^= PosReqId.GetHashCode();
       if (PosTransType.Length != 0) hash ^= PosTransType.GetHashCode();
       if (PosMaintAction.Length != 0) hash ^= PosMaintAction.GetHashCode();
       if (Account != 0UL) hash ^= Account.GetHashCode();
@@ -1837,9 +1906,9 @@ namespace Api {
         output.WriteRawTag(170, 44);
         output.WriteString(PosTransType);
       }
-      if (PosReqID.Length != 0) {
+      if (PosReqId.Length != 0) {
         output.WriteRawTag(178, 44);
-        output.WriteString(PosReqID);
+        output.WriteString(PosReqId);
       }
       if (PosMaintAction.Length != 0) {
         output.WriteRawTag(162, 182, 3);
@@ -1856,8 +1925,8 @@ namespace Api {
       if (MsgType.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(MsgType);
       }
-      if (PosReqID.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(PosReqID);
+      if (PosReqId.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(PosReqId);
       }
       if (PosTransType.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(PosTransType);
@@ -1885,8 +1954,8 @@ namespace Api {
       if (other.MsgType.Length != 0) {
         MsgType = other.MsgType;
       }
-      if (other.PosReqID.Length != 0) {
-        PosReqID = other.PosReqID;
+      if (other.PosReqId.Length != 0) {
+        PosReqId = other.PosReqId;
       }
       if (other.PosTransType.Length != 0) {
         PosTransType = other.PosTransType;
@@ -1928,7 +1997,7 @@ namespace Api {
             break;
           }
           case 5682: {
-            PosReqID = input.ReadString();
+            PosReqId = input.ReadString();
             break;
           }
           case 56098: {

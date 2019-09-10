@@ -24,18 +24,22 @@ namespace Api {
     static MarginReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxtYXJnaW4ucHJvdG8SA2FwaSJRCgxNYXJnaW5BbW91bnQSEgoJTWFyZ2lu",
-            "QW10GO0MIAEoCRIWCg1NYXJnaW5BbXRUeXBlGOwMIAEoCRIVCgxNYXJnaW5B",
-            "bXRDY3kY7gwgASgJIqgBChdNYXJnaW5SZXF1aXJlbWVudFJlcG9ydBIPCgdN",
-            "c2dUeXBlGCMgASgJEhsKEk1hcmdpblJlcW10UnB0VHlwZRjHDiABKAkSDwoH",
-            "QWNjb3VudBgBIAEoBBIpCg1NYXJnaW5BbW91bnRzGOsMIAMoCzIRLmFwaS5N",
-            "YXJnaW5BbW91bnQSFQoMUmVqZWN0UmVhc29uGPwCIAEoCRIMCgRUZXh0GDog",
-            "ASgJYgZwcm90bzM="));
+            "CgxtYXJnaW4ucHJvdG8SA2FwaSJ5CgxNYXJnaW5BbW91bnQSHQoJTWFyZ2lu",
+            "QW10GO0MIAEoCVIJbWFyZ2luQW10EiUKDU1hcmdpbkFtdFR5cGUY7AwgASgJ",
+            "Ug1tYXJnaW5BbXRUeXBlEiMKDE1hcmdpbkFtdENjeRjuDCABKAlSDG1hcmdp",
+            "bkFtdENjeSKrAgoXTWFyZ2luUmVxdWlyZW1lbnRSZXBvcnQSGAoHTXNnVHlw",
+            "ZRgjIAEoCVIHbXNnVHlwZRI4ChZBY2NvdW50U3RhdHVzUmVxdWVzdElkGJHM",
+            "AiABKAlSFmFjY291bnRTdGF0dXNSZXF1ZXN0SWQSLwoSTWFyZ2luUmVxbXRS",
+            "cHRUeXBlGMcOIAEoCVISbWFyZ2luUmVxbXRScHRUeXBlEhgKB0FjY291bnQY",
+            "ASABKARSB2FjY291bnQSOAoNTWFyZ2luQW1vdW50cxjrDCADKAsyES5hcGku",
+            "TWFyZ2luQW1vdW50Ug1tYXJnaW5BbW91bnRzEiMKDFJlamVjdFJlYXNvbhj8",
+            "AiABKAlSDHJlamVjdFJlYXNvbhISCgRUZXh0GDogASgJUgR0ZXh0YgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarginAmount), global::Api.MarginAmount.Parser, new[]{ "MarginAmt", "MarginAmtType", "MarginAmtCcy" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarginRequirementReport), global::Api.MarginRequirementReport.Parser, new[]{ "MsgType", "MarginReqmtRptType", "Account", "MarginAmounts", "RejectReason", "Text" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarginRequirementReport), global::Api.MarginRequirementReport.Parser, new[]{ "MsgType", "AccountStatusRequestId", "MarginReqmtRptType", "Account", "MarginAmounts", "RejectReason", "Text" }, null, null, null)
           }));
     }
     #endregion
@@ -253,6 +257,7 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MarginRequirementReport(MarginRequirementReport other) : this() {
       msgType_ = other.msgType_;
+      accountStatusRequestId_ = other.accountStatusRequestId_;
       marginReqmtRptType_ = other.marginReqmtRptType_;
       account_ = other.account_;
       marginAmounts_ = other.marginAmounts_.Clone();
@@ -274,6 +279,17 @@ namespace Api {
       get { return msgType_; }
       set {
         msgType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "AccountStatusRequestId" field.</summary>
+    public const int AccountStatusRequestIdFieldNumber = 42513;
+    private string accountStatusRequestId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string AccountStatusRequestId {
+      get { return accountStatusRequestId_; }
+      set {
+        accountStatusRequestId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -345,6 +361,7 @@ namespace Api {
         return true;
       }
       if (MsgType != other.MsgType) return false;
+      if (AccountStatusRequestId != other.AccountStatusRequestId) return false;
       if (MarginReqmtRptType != other.MarginReqmtRptType) return false;
       if (Account != other.Account) return false;
       if(!marginAmounts_.Equals(other.marginAmounts_)) return false;
@@ -357,6 +374,7 @@ namespace Api {
     public override int GetHashCode() {
       int hash = 1;
       if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
+      if (AccountStatusRequestId.Length != 0) hash ^= AccountStatusRequestId.GetHashCode();
       if (MarginReqmtRptType.Length != 0) hash ^= MarginReqmtRptType.GetHashCode();
       if (Account != 0UL) hash ^= Account.GetHashCode();
       hash ^= marginAmounts_.GetHashCode();
@@ -396,6 +414,10 @@ namespace Api {
         output.WriteRawTag(186, 116);
         output.WriteString(MarginReqmtRptType);
       }
+      if (AccountStatusRequestId.Length != 0) {
+        output.WriteRawTag(138, 225, 20);
+        output.WriteString(AccountStatusRequestId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -406,6 +428,9 @@ namespace Api {
       int size = 0;
       if (MsgType.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(MsgType);
+      }
+      if (AccountStatusRequestId.Length != 0) {
+        size += 3 + pb::CodedOutputStream.ComputeStringSize(AccountStatusRequestId);
       }
       if (MarginReqmtRptType.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(MarginReqmtRptType);
@@ -433,6 +458,9 @@ namespace Api {
       }
       if (other.MsgType.Length != 0) {
         MsgType = other.MsgType;
+      }
+      if (other.AccountStatusRequestId.Length != 0) {
+        AccountStatusRequestId = other.AccountStatusRequestId;
       }
       if (other.MarginReqmtRptType.Length != 0) {
         MarginReqmtRptType = other.MarginReqmtRptType;
@@ -480,6 +508,10 @@ namespace Api {
           }
           case 14906: {
             MarginReqmtRptType = input.ReadString();
+            break;
+          }
+          case 340106: {
+            AccountStatusRequestId = input.ReadString();
             break;
           }
         }

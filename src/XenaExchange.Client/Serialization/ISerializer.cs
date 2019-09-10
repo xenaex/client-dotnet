@@ -8,6 +8,8 @@ namespace XenaExchange.Client.Serialization
     public interface ISerializer
     {
         IMessage Deserialize(string message);
+
+        T Deserialize<T>(string message);
         
         string Serialize<T>(T message) where T : IMessage;
     }

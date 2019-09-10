@@ -3,74 +3,109 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using XenaExchange.Client.Examples.Rest;
 using XenaExchange.Client.Examples.Ws;
-using XenaExchange.Client.Serialization;
-using XenaExchange.Client.WsClient;
-using XenaExchange.Client.WsClient.TradingApi;
+using XenaExchange.Client.Rest;
+using XenaExchange.Client.Serialization.Fix;
+using XenaExchange.Client.Serialization.Rest;
+using XenaExchange.Client.Ws;
+using XenaExchange.Client.Ws.MarketData;
+using XenaExchange.Client.Ws.TradingApi;
 
 namespace XenaExchange.Client.Examples
 {
-    class Program
+    internal static class Program
     {
-        private const string _mdWsUri = "wss://api.xena.exchange/ws/market-data";
-        private const string _tradingWsUri = "wss://api.xena.exchange/ws/trading";
-        private const string _apiKey = "TO_FILL";
-        private const string _apiSecret = "TO_FILL";
+        private const string MdWsUri = "wss://api.xena.exchange/ws/market-data";
+        private const string TradingWsUri = "wss://api.xena.exchange/ws/trading";
+        private const string ApiKey = "TO_FILL";
+        private const string ApiSecret = "TO_FILL";
 
-        private const long _spotAccountId = 1;
-        private const long _marginAccountId = 2;
+        private const long SpotAccountId = 1;
+        private const long MarginAccountId = 2;
 
         private static readonly CancellationToken _token = CancellationToken.None;
 
-        private static readonly TradingWsClientOptions _tradingWsOptions = new TradingWsClientOptions()
+        private static readonly TradingWsClientOptions _tradingWsOptions = new TradingWsClientOptions
         {
-            Uri = _tradingWsUri,
-            Accounts = new List<long> { _spotAccountId, _marginAccountId },
-            ApiKey = _apiKey,
-            ApiSecret = _apiSecret,
+            Uri = TradingWsUri,
+            Accounts = new List<long> { SpotAccountId, MarginAccountId },
+            ApiKey = ApiKey,
+            ApiSecret = ApiSecret,
+        };
+
+        private static readonly TradingRestClientOptions _tradingRestOptions = new TradingRestClientOptions
+        {
+            ApiKey = ApiKey,
+            ApiSecret = ApiSecret,
         };
 
         public static async Task Main(string[] args)
         {
-            // await DIExampleAsync().ConfigureAwait(false);
-            await NoDIExampleAsync().ConfigureAwait(false);
+            await DiExampleAsync().ConfigureAwait(false);
+//            await NoDiExampleAsync().ConfigureAwait(false);
 
             // TODO: handle CTRL+C, IHostBuilder.RunConsoleAsync() in Ubuntu doesn't work.
             await Task.Delay(int.MaxValue).ConfigureAwait(false);
         }
 
-        private static async Task NoDIExampleAsync()
+        private static async Task NoDiExampleAsync()
         {
             var logLevel = LogLevel.Debug;
-            var serializer = new FixSerializer();
 
-            // var mdWsOptions = new MarketDataWsClientOptions{ Uri = _mdWsUri };
-            // var mdLogger = Logging.ConsoleLogger<MarketDataWsClient>(logLevel);
-            // var mdWsClient = new MarketDataWsClient(mdWsOptions, serializer, mdLogger);
-            // var mdExample = new MarketDataExample(mdWsClient, Logging.ConsoleLogger<MarketDataExample>(logLevel));
-            // await mdExample.StartAsync(_token).ConfigureAwait(false);
+            var fixSerializer = new FixSerializer();
+            var restSerializer = new RestSerializer();
 
-            var tradingLogger = Logging.ConsoleLogger<TradingWsClient>(logLevel);
-            var tradingWsClient = new TradingWsClient(_tradingWsOptions, serializer, tradingLogger);
-            var tradingExample = new WsTradingExample(tradingWsClient, _tradingWsOptions, Logging.ConsoleLogger<WsTradingExample>(logLevel));
+            // Market data websocket example
+            var mdWsOptions = new MarketDataWsClientOptions{ Uri = MdWsUri };
+            var mdLogger = Dependencies.ConsoleLogger<MarketDataWsClient>(logLevel);
+            var mdWsClient = new MarketDataWsClient(mdWsOptions, fixSerializer, mdLogger);
+            var mdExample = new MarketDataWsExample(mdWsClient, Dependencies.ConsoleLogger<MarketDataWsExample>(logLevel));
+            await mdExample.StartAsync(_token).ConfigureAwait(false);
+
+            // Trading websocket example
+            var tradingLogger = Dependencies.ConsoleLogger<TradingWsClient>(logLevel);
+            var tradingWsClient = new TradingWsClient(_tradingWsOptions, fixSerializer, tradingLogger);
+            var tradingExample = new TradingWsExample(tradingWsClient, _tradingWsOptions, Dependencies.ConsoleLogger<TradingWsExample>(logLevel));
             await tradingExample.StartAsync(_token).ConfigureAwait(false);
+
+            // Trading rest example
+            var httpClientFactory = Dependencies.CreateHttpClientFactory(
+                TradingRestClient.HttpClientName,
+                "https://api.xena.exchange/trading/");
+
+            var tradingRestClient = new TradingRestClient(
+                httpClientFactory,
+                _tradingRestOptions,
+                restSerializer,
+                Dependencies.ConsoleLogger<TradingRestClient>(logLevel));
+
+            var tradingRestExample = new TradingRestExample(
+                tradingRestClient,
+                Dependencies.ConsoleLogger<TradingRestExample>(logLevel));
+
+            await tradingRestExample.StartAsync(_token).ConfigureAwait(false);
         }
 
-        private static async Task DIExampleAsync()
+        private static async Task DiExampleAsync()
         {
             var services = new ServiceCollection()
-                            .AddExamplesLogging(LogLevel.Trace)
-                            .AddXenaMarketDataWebsocketClient(_mdWsUri)
+                            .AddExamplesLogging(LogLevel.Debug)
+                            .AddXenaMarketDataWebsocketClient(MdWsUri)
                             .AddXenaTradingWebsocketClient(_tradingWsOptions)
-                            .AddSingleton<WsTradingExample>()
-                            .AddSingleton<WsMarketDataExample>()
+                            .AddXenaTradingRestClient(_tradingRestOptions)
+                            .AddSingleton<TradingWsExample>()
+                            .AddSingleton<MarketDataWsExample>()
+                            .AddSingleton<TradingRestExample>()
                             .BuildServiceProvider();
 
-            var tradingExample = services.GetService<WsTradingExample>();
-            var mdExample = services.GetService<WsMarketDataExample>();
+            var tradingWsExample = services.GetService<TradingWsExample>();
+            var mdWsExample = services.GetService<MarketDataWsExample>();
+            var tradingRestExample = services.GetService<TradingRestExample>();
 
-            await tradingExample.StartAsync(_token).ConfigureAwait(false);
-            // await mdExample.StartAsync(_token).ConfigureAwait(false);
+//            await tradingWsExample.StartAsync(_token).ConfigureAwait(false);
+//            await mdWsExample.StartAsync(_token).ConfigureAwait(false);
+            await tradingRestExample.StartAsync(_token).ConfigureAwait(false);
         }
     }
 }

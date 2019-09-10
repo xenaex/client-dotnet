@@ -26,12 +26,12 @@ namespace Api {
           string.Concat(
             "Cgxjb21tb24ucHJvdG8SA2FwaSIgCg1Nc2dUeXBlSGVhZGVyEg8KB01zZ1R5",
             "cGUYIyABKAkiRQoJSGVhcnRiZWF0Eg8KB01zZ1R5cGUYIyABKAkSEQoJVGVz",
-            "dFJlcUlEGHAgASgJEhQKDFRyYW5zYWN0VGltZRg8IAEoA2IGcHJvdG8z"));
+            "dFJlcUlkGHAgASgJEhQKDFRyYW5zYWN0VGltZRg8IAEoA2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.MsgTypeHeader), global::Api.MsgTypeHeader.Parser, new[]{ "MsgType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Heartbeat), global::Api.Heartbeat.Parser, new[]{ "MsgType", "TestReqID", "TransactTime" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Heartbeat), global::Api.Heartbeat.Parser, new[]{ "MsgType", "TestReqId", "TransactTime" }, null, null, null)
           }));
     }
     #endregion
@@ -196,7 +196,7 @@ namespace Api {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Heartbeat(Heartbeat other) : this() {
       msgType_ = other.msgType_;
-      testReqID_ = other.testReqID_;
+      testReqId_ = other.testReqId_;
       transactTime_ = other.transactTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -217,14 +217,14 @@ namespace Api {
       }
     }
 
-    /// <summary>Field number for the "TestReqID" field.</summary>
-    public const int TestReqIDFieldNumber = 112;
-    private string testReqID_ = "";
+    /// <summary>Field number for the "TestReqId" field.</summary>
+    public const int TestReqIdFieldNumber = 112;
+    private string testReqId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string TestReqID {
-      get { return testReqID_; }
+    public string TestReqId {
+      get { return testReqId_; }
       set {
-        testReqID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        testReqId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -253,7 +253,7 @@ namespace Api {
         return true;
       }
       if (MsgType != other.MsgType) return false;
-      if (TestReqID != other.TestReqID) return false;
+      if (TestReqId != other.TestReqId) return false;
       if (TransactTime != other.TransactTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -262,7 +262,7 @@ namespace Api {
     public override int GetHashCode() {
       int hash = 1;
       if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
-      if (TestReqID.Length != 0) hash ^= TestReqID.GetHashCode();
+      if (TestReqId.Length != 0) hash ^= TestReqId.GetHashCode();
       if (TransactTime != 0L) hash ^= TransactTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -285,9 +285,9 @@ namespace Api {
         output.WriteRawTag(224, 3);
         output.WriteInt64(TransactTime);
       }
-      if (TestReqID.Length != 0) {
+      if (TestReqId.Length != 0) {
         output.WriteRawTag(130, 7);
-        output.WriteString(TestReqID);
+        output.WriteString(TestReqId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -300,8 +300,8 @@ namespace Api {
       if (MsgType.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(MsgType);
       }
-      if (TestReqID.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(TestReqID);
+      if (TestReqId.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(TestReqId);
       }
       if (TransactTime != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(TransactTime);
@@ -320,8 +320,8 @@ namespace Api {
       if (other.MsgType.Length != 0) {
         MsgType = other.MsgType;
       }
-      if (other.TestReqID.Length != 0) {
-        TestReqID = other.TestReqID;
+      if (other.TestReqId.Length != 0) {
+        TestReqId = other.TestReqId;
       }
       if (other.TransactTime != 0L) {
         TransactTime = other.TransactTime;
@@ -346,7 +346,7 @@ namespace Api {
             break;
           }
           case 898: {
-            TestReqID = input.ReadString();
+            TestReqId = input.ReadString();
             break;
           }
         }
