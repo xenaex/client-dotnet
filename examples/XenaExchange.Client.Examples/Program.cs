@@ -72,7 +72,7 @@ namespace XenaExchange.Client.Examples
             // Trading rest example
             var httpClientFactory = Dependencies.CreateHttpClientFactory(
                 TradingRestClient.HttpClientName,
-                "https://api.xena.exchange/trading/");
+                "https://api.xena.exchange");
 
             var tradingRestClient = new TradingRestClient(
                 httpClientFactory,

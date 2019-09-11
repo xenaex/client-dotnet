@@ -27,18 +27,19 @@ namespace XenaExchange.Client.Rest
     {
         public const string HttpClientName = "xena.exchange";
 
-        private const string NewOrderPath = "order/new";
-        private const string CancelOrderPath = "order/cancel";
-        private const string ReplaceOrderPath = "order/replace";
-        private const string CollapsePositionsPath = "positions/collapse";
-        private const string AccountsPath = "accounts";
+        private const string TradingPrefix = "trading/";
+        private const string NewOrderPath = TradingPrefix + "order/new";
+        private const string CancelOrderPath = TradingPrefix + "order/cancel";
+        private const string ReplaceOrderPath = TradingPrefix + "order/replace";
+        private const string PositionMaintenancePath = TradingPrefix + "/position/maintenance";
+        private const string AccountsPath = TradingPrefix + "accounts";
 
-        private const string BalancesPathTemplate = "accounts/{0}/balance";
-        private const string MarginRequirementsPathTemplate = "accounts/{0}/margin-requirements";
-        private const string OpenPositionsPathTemplate = "accounts/{0}/positions";
-        private const string PositionsHistoryPathTemplate = "accounts/{0}/positions-history";
-        private const string ActiveOrdersPathTemplate = "accounts/{0}/orders";
-        private const string TradeHistoryPathTemplate = "accounts/{0}/trade-history";
+        private const string BalancesPathTemplate = TradingPrefix + "accounts/{0}/balance";
+        private const string MarginRequirementsPathTemplate = TradingPrefix + "accounts/{0}/margin-requirements";
+        private const string OpenPositionsPathTemplate = TradingPrefix + "accounts/{0}/positions";
+        private const string PositionsHistoryPathTemplate = TradingPrefix + "accounts/{0}/positions-history";
+        private const string ActiveOrdersPathTemplate = TradingPrefix + "accounts/{0}/orders";
+        private const string TradeHistoryPathTemplate = TradingPrefix + "accounts/{0}/trade-history";
 
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly TradingRestClientOptions _options;
@@ -264,10 +265,10 @@ namespace XenaExchange.Client.Rest
 
         /// <inheritdoc />
         public async Task<ExecutionReport> ReplaceOrderAsync(
-            OrderCancelReplaceRequest cmd,
+            OrderCancelReplaceRequest command,
             CancellationToken cancellationToken = default)
         {
-            return await PostAsync<ExecutionReport>(ReplaceOrderPath, cmd, cancellationToken).ConfigureAwait(false);
+            return await PostAsync<ExecutionReport>(ReplaceOrderPath, command, cancellationToken).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
@@ -282,7 +283,7 @@ namespace XenaExchange.Client.Rest
 
             var command = new PositionMaintenanceRequest(account, symbol, requestId);
             return await PostAsync<PositionMaintenanceReport>(
-                CollapsePositionsPath,
+                PositionMaintenancePath,
                 command,
                 cancellationToken).ConfigureAwait(false);
         }
@@ -293,7 +294,8 @@ namespace XenaExchange.Client.Rest
             var responseString = await SendAsync(AccountsPath, HttpMethod.Get, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
-            return JsonConvert.DeserializeObject<AccountInfo[]>(responseString);
+            var response = JsonConvert.DeserializeObject<ListAccountsResponse>(responseString);
+            return response.Accounts;
         }
 
         /// <inheritdoc />
@@ -303,7 +305,7 @@ namespace XenaExchange.Client.Rest
         {
             return await GetAsync<BalanceSnapshotRefresh>(
                 string.Format(BalancesPathTemplate, account),
-                cancellationToken).ConfigureAwait(false);
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
@@ -313,7 +315,7 @@ namespace XenaExchange.Client.Rest
         {
             return await GetAsync<MarginRequirementReport>(
                 string.Format(MarginRequirementsPathTemplate, account),
-                cancellationToken).ConfigureAwait(false);
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
@@ -322,7 +324,7 @@ namespace XenaExchange.Client.Rest
             CancellationToken cancellationToken = default)
         {
             var path = string.Format(OpenPositionsPathTemplate, account);
-            return await ListPositionsInternalAsync(path, cancellationToken);
+            return await ListPositionsInternalAsync(path, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc />
@@ -351,10 +353,8 @@ namespace XenaExchange.Client.Rest
             if (request.Limit.HasValue)
                 parameters.Add("limit="+request.Limit);
 
-            if (parameters.Count > 0)
-                path += "?" + string.Join("&", parameters);
-
-            return await ListPositionsInternalAsync(path, cancellationToken);
+            var query = parameters.Count == 0 ? null : string.Join("&", parameters);
+            return await ListPositionsInternalAsync(path, query, cancellationToken);
         }
 
         /// <inheritdoc />
@@ -391,10 +391,8 @@ namespace XenaExchange.Client.Rest
             if (request.Limit.HasValue)
                 parameters.Add("limit="+request.Limit);
 
-            if (parameters.Count > 0)
-                path += "?" + string.Join("&", parameters);
-
-            var responseString = await SendAsync(path, HttpMethod.Get, cancellationToken: cancellationToken)
+            var query = parameters.Count == 0 ? null : string.Join("&", parameters);
+            var responseString = await SendAsync(path, HttpMethod.Get, query: query, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
             return _serializer.Deserialize<ExecutionReport[]>(responseString);
@@ -402,9 +400,10 @@ namespace XenaExchange.Client.Rest
 
         private async Task<PositionReport[]> ListPositionsInternalAsync(
             string path,
+            string query = null,
             CancellationToken cancellationToken = default)
         {
-            var responseString = await SendAsync(path, HttpMethod.Get, cancellationToken: cancellationToken)
+            var responseString = await SendAsync(path, HttpMethod.Get, query: query, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
             return _serializer.Deserialize<PositionReport[]>(responseString);
@@ -412,10 +411,11 @@ namespace XenaExchange.Client.Rest
 
         private async Task<TResult> GetAsync<TResult>(
             string path,
+            string query = null,
             CancellationToken cancellationToken = default)
             where TResult : IMessage
         {
-            var responseStr = await SendAsync(path, HttpMethod.Get, cancellationToken: cancellationToken)
+            var responseStr = await SendAsync(path, HttpMethod.Get, query: query, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
             return _serializer.Deserialize<TResult>(responseStr);
@@ -423,21 +423,29 @@ namespace XenaExchange.Client.Rest
 
         private async Task<TResult> PostAsync<TResult>(
             string path,
-            IMessage cmd,
+            IMessage command,
             CancellationToken cancellationToken = default)
             where TResult: IMessage
         {
-            var responseStr = await SendAsync(path, HttpMethod.Post, cmd, cancellationToken).ConfigureAwait(false);
+            var responseStr = await SendAsync(path, HttpMethod.Post, command: command, cancellationToken: cancellationToken)
+                .ConfigureAwait(false);
+
             return _serializer.Deserialize<TResult>(responseStr);
         }
 
         private async Task<string> SendAsync(
             string path,
             HttpMethod method,
+            string query = null,
             IMessage command = null,
             CancellationToken cancellationToken = default)
         {
-            var request = new HttpRequestMessage(method, path);
+            var httpClient = HttpClient;
+            var uriBuilder = new UriBuilder(httpClient.BaseAddress) { Path = path };
+            if (!string.IsNullOrWhiteSpace(query))
+                uriBuilder.Query = query;
+
+            var request = new HttpRequestMessage(method, uriBuilder.Uri);
 
             var nonce = (new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds() * 1000000).ToString();
             var authPayload = $"AUTH{nonce}";
@@ -454,7 +462,7 @@ namespace XenaExchange.Client.Rest
                 request.Content = new StringContent(payload, Encoding.UTF8, "application/json");
             }
 
-            var response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            var response = await httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
             switch (response.StatusCode)
             {
                 case HttpStatusCode.OK:

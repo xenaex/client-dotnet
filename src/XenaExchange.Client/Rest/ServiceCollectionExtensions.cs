@@ -20,7 +20,7 @@ namespace XenaExchange.Client.Rest
         public static IServiceCollection AddXenaTradingRestClient(
             this IServiceCollection services,
             TradingRestClientOptions options,
-            string uri = "https://api.xena.exchange/trading/")
+            string uri = "https://api.xena.exchange")
         {
             return services
                 .AddSingleton(options)
