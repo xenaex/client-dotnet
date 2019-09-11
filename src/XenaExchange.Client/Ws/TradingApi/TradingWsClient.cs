@@ -112,34 +112,37 @@ namespace XenaExchange.Client.Ws.TradingApi
         }
 
         /// <inheritdoc />
-        public async Task AccountStatusReportAsync(ulong accountId)
+        public async Task AccountStatusReportAsync(ulong accountId, string requestId = null)
         {
             var request = new AccountStatusReportRequest
             {
                 MsgType = MsgTypes.AccountStatusReportRequest,
                 Account = accountId,
+                AccountStatusRequestId = requestId.Proto(),
             };
             await SendCommandAsync(request).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
-        public async Task GetOrdersAndFillsAsync(ulong accountId)
+        public async Task GetOrdersAndFillsAsync(ulong accountId, string requestId = null)
         {
             var request = new OrderStatusRequest
             {
                 MsgType = MsgTypes.OrderMassStatusRequest,
                 Account = accountId,
+                MassStatusReqId = requestId.Proto(),
             };
             await SendCommandAsync(request).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
-        public async Task GetPositionsAsync(ulong accountId)
+        public async Task GetPositionsAsync(ulong accountId, string requestId = null)
         {
             var request = new PositionsRequest
             {
                 MsgType = MsgTypes.RequestForPositions,
                 Account = accountId,
+                PosReqId = requestId.Proto(),
             };
             await SendCommandAsync(request).ConfigureAwait(false);
         }

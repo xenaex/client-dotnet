@@ -57,7 +57,7 @@ namespace XenaExchange.Client.Examples.Ws
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, $"Reconnect attempt failed, trying again after {reconnectInterval.ToString()}");
+                    _logger.LogError(ex, "Reconnect attempt failed, trying again after {reconnectInterval.ToString()}");
                 }
             });
 
@@ -114,24 +114,24 @@ namespace XenaExchange.Client.Examples.Ws
                 // Handle duplicate.
             }
 
-            // await _wsClient.AccountStatusReportAsync(MarginAccountId).ConfigureAwait(false);
-            // await _wsClient.GetPositionsAsync(MarginAccountId).ConfigureAwait(false);
-            // await _wsClient.GetActiveOrdersAsync(MarginAccountId).ConfigureAwait(false);
-            // await _wsClient.CollapsePositionsAsync(MarginAccountId, "XBTUSD", Guid.NewGuid().ToString()).ConfigureAwait(false);
-
-            await InfinitePlaceCancelAsync().ConfigureAwait(false);
-            // await GetAllOrdersAndCancelAsync().ConfigureAwait(false);
-            // await MarketOrderAsync().ConfigureAwait(false);
-            // await LimitOrderAsync().ConfigureAwait(false);
-            // await StopOrderAsync().ConfigureAwait(false);
-            // await SltpGroupAsync().ConfigureAwait(false);
-            // await StopLossForExistingPositionAsync().ConfigureAwait(false);
-            // await TakeProfitForExistingPositionAsync().ConfigureAwait(false);
-            // await CancelOrdersAsync().ConfigureAwait(false);
-            // await ReplaceAsync().ConfigureAwait(false);
-            // await SyncLimitOrderAsync().ConfigureAwait(false);
-            // await GetOpenPositionsAsync().ConfigureAwait(false);
-            // await GetBalancesAsync().ConfigureAwait(false);
+//            await _wsClient.AccountStatusReportAsync(MarginAccountId).ConfigureAwait(false);
+//            await _wsClient.GetPositionsAsync(MarginAccountId).ConfigureAwait(false);
+//            await _wsClient.CollapsePositionsAsync(MarginAccountId, "XBTUSD", Guid.NewGuid().ToString())
+//                .ConfigureAwait(false);
+//
+//            await InfinitePlaceCancelAsync().ConfigureAwait(false);
+//            await GetAllOrdersAndCancelAsync().ConfigureAwait(false);
+//            await MarketOrderAsync().ConfigureAwait(false);
+//            await LimitOrderAsync().ConfigureAwait(false);
+//            await StopOrderAsync().ConfigureAwait(false);
+//            await SltpGroupAsync().ConfigureAwait(false);
+//            await StopLossForExistingPositionAsync().ConfigureAwait(false);
+//            await TakeProfitForExistingPositionAsync().ConfigureAwait(false);
+//            await CancelOrdersAsync().ConfigureAwait(false);
+//            await ReplaceAsync().ConfigureAwait(false);
+//            await SyncLimitOrderAsync().ConfigureAwait(false);
+//            await GetOpenPositionsAsync().ConfigureAwait(false);
+            await GetBalancesAsync().ConfigureAwait(false);
         }
 
         private async Task InfinitePlaceCancelAsync()
@@ -271,13 +271,17 @@ namespace XenaExchange.Client.Examples.Ws
             _wsClient.RemoveListener<OrderMassStatusResponse>();
             _wsClient.Listen<OrderMassStatusResponse>((client, response) =>
             {
-                _logger.LogInformation($"Received order mass status response with {response.Orders.Count.ToString()} orders");
+                _logger.LogInformation($"Received order mass status response {response.MassStatusReqId} " +
+                                       $"with {response.Orders.Count.ToString()} orders");
+
                 orders = response.Orders.ToArray();
                 ordersReceivedLock.Release();
                 return Task.CompletedTask;
             });
-            await _wsClient.GetOrdersAndFillsAsync(SpotAccountId).ConfigureAwait(false);
+
+            await _wsClient.GetOrdersAndFillsAsync(SpotAccountId, Guid.NewGuid().ToString()).ConfigureAwait(false);
             await ordersReceivedLock.WaitAsync().ConfigureAwait(false);
+
             if (orders.Length == 0)
             {
                 _logger.LogWarning("No orders to cancel");
@@ -357,21 +361,20 @@ namespace XenaExchange.Client.Examples.Ws
             // RemoveListener is here only to override previous ExecutionReport handler. There is no need to use it every time before Listen().
             _wsClient.RemoveListener<MassPositionReport>();
 
-            PositionReport[] openPositions = null;
+            MassPositionReport massPositionReport = null;
             var positionsLock = new SemaphoreSlim(0, 1);
 
             _wsClient.Listen<MassPositionReport>((client, report) =>
             {
-                openPositions = report.OpenPositions.ToArray();
+                massPositionReport = report;
                 positionsLock.Release();
                 return Task.CompletedTask;
             });
 
-            await _wsClient.GetPositionsAsync(MarginAccountId).ConfigureAwait(false);
+            await _wsClient.GetPositionsAsync(MarginAccountId, Guid.NewGuid().ToString()).ConfigureAwait(false);
             await positionsLock.WaitAsync().ConfigureAwait(false);
 
-            var toPrint = string.Join("\n", openPositions.Select(p => p.ToString()));
-            _logger.LogInformation($"Open positions:\n{toPrint}");
+            _logger.LogInformation($"Mass position report: {massPositionReport}");
         }
 
         private async Task GetBalancesAsync()
@@ -379,21 +382,20 @@ namespace XenaExchange.Client.Examples.Ws
             // RemoveListener is here only to override previous ExecutionReport handler. There is no need to use it every time before Listen().
             _wsClient.RemoveListener<BalanceSnapshotRefresh>();
 
-            Balance[] balances = null;
+            BalanceSnapshotRefresh balanceSnapshot = null;
             var balancesLock = new SemaphoreSlim(0, 1);
 
             _wsClient.Listen<BalanceSnapshotRefresh>((client, report) =>
             {
-                balances = report.Balances.ToArray();
+                balanceSnapshot = report;
                 balancesLock.Release();
                 return Task.CompletedTask;
             });
 
-            await _wsClient.AccountStatusReportAsync(MarginAccountId).ConfigureAwait(false);
+            await _wsClient.AccountStatusReportAsync(MarginAccountId, Guid.NewGuid().ToString()).ConfigureAwait(false);
             await balancesLock.WaitAsync().ConfigureAwait(false);
 
-            var balancesToPrint = string.Join("\n", balances.Select(p => p.ToString()));
-            _logger.LogInformation($"Balances:\n{balancesToPrint}");
+            _logger.LogInformation($"Balances snapshot: {balanceSnapshot}");
         }
     }
 }

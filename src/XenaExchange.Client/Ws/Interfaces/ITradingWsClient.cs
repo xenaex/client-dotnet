@@ -222,21 +222,24 @@ namespace XenaExchange.Client.Ws.Interfaces
         /// Requests account status report.
         /// </summary>
         /// <param name="account">Account id.</param>
+        /// <param name="requestId">Request id to be returned in <see cref="BalanceSnapshotRefresh"/>.</param>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
-        Task AccountStatusReportAsync(ulong account);
+        Task AccountStatusReportAsync(ulong account, string requestId = null);
 
         /// <summary>
         /// Requests all orders and fills for specified account.
         /// </summary>
         /// <param name="account">Account id.</param>
+        /// <param name="requestId">Request id to be returned in </param>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
-        Task GetOrdersAndFillsAsync(ulong account);
+        Task GetOrdersAndFillsAsync(ulong account, string requestId = null);
 
         /// <summary>
         /// Requests all positions for specified account.
         /// </summary>
         /// <param name="account">Account id.</param>
+        /// <param name="requestId">Request id to be returned in <see cref="MassPositionReport"/>.</param>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
-        Task GetPositionsAsync(ulong account);
+        Task GetPositionsAsync(ulong account, string requestId = null);
     }
 }
