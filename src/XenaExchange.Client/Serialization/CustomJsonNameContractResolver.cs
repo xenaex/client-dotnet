@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using Newtonsoft.Json;
@@ -24,9 +25,24 @@ namespace XenaExchange.Client.Serialization
             {
                 // Don't serialize empty strings cause they are default values for protobuf messages.
                 property.ShouldSerialize = instance =>
-                {   
-                    var v = instance.GetType().GetProperty(member.Name).GetValue(instance, null) as string;
-                    return !string.IsNullOrWhiteSpace(v);
+                {
+                    var p = instance.GetType().GetProperty(member.Name);
+                    if (p == null)
+                        return false;
+
+                    return !string.IsNullOrWhiteSpace(p.GetValue(instance, null) as string);
+                };
+            }
+            else if (typeof(IEnumerable).IsAssignableFrom(property.PropertyType))
+            {
+                property.ShouldSerialize = instance =>
+                {
+                    var p = instance.GetType().GetProperty(member.Name);
+                    if (p == null)
+                        return false;
+
+                    var e = p.GetValue(instance, null) as IEnumerable;
+                    return e != null && e.GetEnumerator().MoveNext();
                 };
             }
 
