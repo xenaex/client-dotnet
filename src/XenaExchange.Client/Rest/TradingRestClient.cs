@@ -31,7 +31,7 @@ namespace XenaExchange.Client.Rest
         private const string NewOrderPath = TradingPrefix + "order/new";
         private const string CancelOrderPath = TradingPrefix + "order/cancel";
         private const string ReplaceOrderPath = TradingPrefix + "order/replace";
-        private const string PositionMaintenancePath = TradingPrefix + "/position/maintenance";
+        private const string PositionMaintenancePath = TradingPrefix + "position/maintenance";
         private const string AccountsPath = TradingPrefix + "accounts";
 
         private const string BalancesPathTemplate = TradingPrefix + "accounts/{0}/balance";
