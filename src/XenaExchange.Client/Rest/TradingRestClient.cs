@@ -288,12 +288,12 @@ namespace XenaExchange.Client.Rest
         }
 
         /// <inheritdoc />
-        public async Task<ulong[]> ListAccountsAsync(CancellationToken cancellationToken = default)
+        public async Task<AccountInfo[]> ListAccountsAsync(CancellationToken cancellationToken = default)
         {
             var responseString = await SendAsync(AccountsPath, HttpMethod.Get, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
-            return JsonConvert.DeserializeObject<ulong[]>(responseString);
+            return JsonConvert.DeserializeObject<AccountInfo[]>(responseString);
         }
 
         /// <inheritdoc />
@@ -466,10 +466,16 @@ namespace XenaExchange.Client.Rest
 
                 default:
                     var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var error = content;
 
-                    string error = null;
                     if (!string.IsNullOrWhiteSpace(content))
-                        error = JsonConvert.DeserializeObject<ErrorResponse>(content)?.Error;
+                    {
+                        try
+                        {
+                            error = JsonConvert.DeserializeObject<ErrorResponse>(content)?.Error;
+                        }
+                        catch (Exception) {} // If it's not a json, ok, let's return content as is
+                    }
 
                     throw new RestClientException(error, response.StatusCode);
             }

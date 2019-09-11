@@ -178,7 +178,7 @@ namespace XenaExchange.Client.Messages.Constants
         public const string TooLateToCancel = "0";
         public const string UnknownOrder = "1";
         public const string OrderAlreadyInPendingStatus = "3";
-        public const string DuplicateClOrdID = "6";
+        public const string DuplicateClOrdId = "6";
         public const string OtherCxlRejReason = "99";
     }
 
@@ -247,7 +247,13 @@ namespace XenaExchange.Client.Messages.Constants
 
     public static class PartieRole
     {
-        public const string ClientID = "3";
+        public const string ClientId = "3";
         public const string ContraFirm = "17";
+    }
+
+    public static class AccountKind
+    {
+        public const string Spot = "Spot";
+        public const string Margin = "Margin";
     }
 }

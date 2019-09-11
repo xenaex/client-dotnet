@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Api;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -198,7 +199,13 @@ namespace XenaExchange.Client.Tests.Integration
         {
             var accounts = await _restClient.ListAccountsAsync(_token).ConfigureAwait(false);
             accounts.Should().NotBeNull();
-            accounts.Should().BeEquivalentTo(new[] {SpotAccountId, MarginAccountId});
+
+            var expected = new[]
+            {
+                new AccountInfo{Id = SpotAccountId, Kind = AccountKind.Spot},
+                new AccountInfo{Id = MarginAccountId, Kind = AccountKind.Margin, Currency = "BTC"},
+            };
+            accounts.Should().BeEquivalentTo<AccountInfo>(expected);
         }
 
         [Test]

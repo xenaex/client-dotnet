@@ -16,7 +16,7 @@ namespace XenaExchange.Client.Rest
         /// </summary>
         /// <param name="command">New order command.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>New order response.</returns>
+        /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> NewOrderAsync(NewOrderSingle command, CancellationToken cancellationToken = default);
 
@@ -34,6 +34,7 @@ namespace XenaExchange.Client.Rest
         /// <param name="stopLossPrice">Stop loss price.</param>
         /// <param name="takeProfitPrice">Take-profit price.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> NewMarketOrderAsync(
             string clOrdId,
@@ -66,6 +67,7 @@ namespace XenaExchange.Client.Rest
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> NewLimitOrderAsync(
             string clOrdId,
@@ -100,6 +102,7 @@ namespace XenaExchange.Client.Rest
         /// <param name="trailingOffset">Trailing offset value. For trailing stop and attempt zero loss orders.</param>
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
+        /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> NewStopOrderAsync(
             string clOrdId,
@@ -134,6 +137,7 @@ namespace XenaExchange.Client.Rest
         /// <param name="trailingOffset">Trailing offset value. For trailing stop and attempt zero loss orders.</param>
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
+        /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> NewMarketIfTouchOrderAsync(
             string clOrdId,
@@ -156,7 +160,7 @@ namespace XenaExchange.Client.Rest
         /// </summary>
         /// <param name="command">Cancellation command.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>Order cancel response.</returns>
+        /// <returns>Order cancel execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> CancelOrderAsync(
             OrderCancelRequest command,
@@ -171,6 +175,7 @@ namespace XenaExchange.Client.Rest
         /// <param name="side">Side of order to be canceled.</param>
         /// <param name="account">Account id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>Order cancel execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> CancelOrderByClOrdIdAsync(
             string clOrdId,
@@ -189,6 +194,7 @@ namespace XenaExchange.Client.Rest
         /// <param name="side">Side of order to be canceled.</param>
         /// <param name="account">Account id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>Order cancel execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> CancelOrderByOrderIdAsync(
             string clOrdId,
@@ -203,7 +209,7 @@ namespace XenaExchange.Client.Rest
         /// </summary>
         /// <param name="command"></param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>Order cancel response.</returns>
+        /// <returns>Order replace execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> ReplaceOrderAsync(
             OrderCancelReplaceRequest command,
@@ -216,7 +222,7 @@ namespace XenaExchange.Client.Rest
         /// <param name="account">Account id.</param>
         /// <param name="symbol">Symbol.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>Collapse positions response</returns>
+        /// <returns>Position maintenance report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<PositionMaintenanceReport> CollapsePositionsAsync(
             string posReqId,
@@ -228,16 +234,16 @@ namespace XenaExchange.Client.Rest
         /// Lists authorized accounts.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>List accounts response.</returns>
+        /// <returns><see cref="AccountInfo"/>  array.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
-        Task<ulong[]> ListAccountsAsync(CancellationToken cancellationToken = default);
+        Task<AccountInfo[]> ListAccountsAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Returns account balances.
         /// </summary>
         /// <param name="account">Account id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>Get balances response.</returns>
+        /// <returns>Balance snapshot refresh.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<BalanceSnapshotRefresh> GetBalancesAsync(ulong account, CancellationToken cancellationToken = default);
 
@@ -246,7 +252,7 @@ namespace XenaExchange.Client.Rest
         /// </summary>
         /// <param name="account">Account id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>Get requirements response.</returns>
+        /// <returns>Get requirements report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<MarginRequirementReport> GetMarginRequirementsAsync(
             ulong account,
@@ -257,7 +263,7 @@ namespace XenaExchange.Client.Rest
         /// </summary>
         /// <param name="account">Account id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>List open positions response.</returns>
+        /// <returns><see cref="PositionReport"/> array.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<PositionReport[]> ListOpenPositionsAsync(ulong account, CancellationToken cancellationToken = default);
 
@@ -266,7 +272,7 @@ namespace XenaExchange.Client.Rest
         /// </summary>
         /// <param name="request">Positions history request.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>Positions history response.</returns>
+        /// <returns><see cref="PositionReport"/> array.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<PositionReport[]> PositionsHistoryAsync(
             PositionsHistoryRequest request,
@@ -277,7 +283,7 @@ namespace XenaExchange.Client.Rest
         /// </summary>
         /// <param name="account">Account id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>List active orders response.</returns>
+        /// <returns><see cref="ExecutionReport"/> array.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport[]> ListActiveOrdersAsync(
             ulong account,
@@ -288,7 +294,7 @@ namespace XenaExchange.Client.Rest
         /// </summary>
         /// <param name="request">Trade history request.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>Trade history response.</returns>
+        /// <returns><see cref="ExecutionReport"/> array.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport[]> TradeHistoryAsync(
             TradeHistoryRequest request,

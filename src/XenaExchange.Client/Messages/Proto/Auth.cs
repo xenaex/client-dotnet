@@ -28,11 +28,14 @@ namespace Api {
             "EgoKSGVhcnRCdEludBhsIAEoBRITCgpSZWplY3RUZXh0GLAKIAEoCRIPCgdB",
             "Y2NvdW50GAEgAygEEhMKC1NlbmRpbmdUaW1lGDQgASgDEhYKDUNzdG1BcHBs",
             "VmVySWQY6QggASgJEhEKCFVzZXJuYW1lGKkEIAEoCRIRCghQYXNzd29yZBiq",
-            "BCABKAkSDwoHUmF3RGF0YRhgIAEoCWIGcHJvdG8z"));
+            "BCABKAkSDwoHUmF3RGF0YRhgIAEoCSJNCgtBY2NvdW50SW5mbxIOCgJJZBgB",
+            "IAEoBFICaWQSEgoES2luZBgCIAEoCVIEa2luZBIaCghDdXJyZW5jeRgDIAEo",
+            "CVIIY3VycmVuY3liBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Logon), global::Api.Logon.Parser, new[]{ "MsgType", "HeartBtInt", "RejectText", "Account", "SendingTime", "CstmApplVerId", "Username", "Password", "RawData" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Logon), global::Api.Logon.Parser, new[]{ "MsgType", "HeartBtInt", "RejectText", "Account", "SendingTime", "CstmApplVerId", "Username", "Password", "RawData" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.AccountInfo), global::Api.AccountInfo.Parser, new[]{ "Id", "Kind", "Currency" }, null, null, null)
           }));
     }
     #endregion
@@ -380,6 +383,191 @@ namespace Api {
           }
           case 10626: {
             RejectText = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class AccountInfo : pb::IMessage<AccountInfo> {
+    private static readonly pb::MessageParser<AccountInfo> _parser = new pb::MessageParser<AccountInfo>(() => new AccountInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<AccountInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Api.AuthReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccountInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccountInfo(AccountInfo other) : this() {
+      id_ = other.id_;
+      kind_ = other.kind_;
+      currency_ = other.currency_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccountInfo Clone() {
+      return new AccountInfo(this);
+    }
+
+    /// <summary>Field number for the "Id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private ulong id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ulong Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Kind" field.</summary>
+    public const int KindFieldNumber = 2;
+    private string kind_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Kind {
+      get { return kind_; }
+      set {
+        kind_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Currency" field.</summary>
+    public const int CurrencyFieldNumber = 3;
+    private string currency_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Currency {
+      get { return currency_; }
+      set {
+        currency_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as AccountInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(AccountInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Kind != other.Kind) return false;
+      if (Currency != other.Currency) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0UL) hash ^= Id.GetHashCode();
+      if (Kind.Length != 0) hash ^= Kind.GetHashCode();
+      if (Currency.Length != 0) hash ^= Currency.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(Id);
+      }
+      if (Kind.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Kind);
+      }
+      if (Currency.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Currency);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Id);
+      }
+      if (Kind.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Kind);
+      }
+      if (Currency.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Currency);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(AccountInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0UL) {
+        Id = other.Id;
+      }
+      if (other.Kind.Length != 0) {
+        Kind = other.Kind;
+      }
+      if (other.Currency.Length != 0) {
+        Currency = other.Currency;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Id = input.ReadUInt64();
+            break;
+          }
+          case 18: {
+            Kind = input.ReadString();
+            break;
+          }
+          case 26: {
+            Currency = input.ReadString();
             break;
           }
         }

@@ -34,7 +34,6 @@
 
   <ItemGroup>
     <Folder Include="Messages\Proto" />
-    <Folder Include="Rest\Responses" />
   </ItemGroup>
 
 </Project>

@@ -29,13 +29,12 @@ namespace XenaExchange.Client.Examples.Rest
         {
             try
             {
-
+                await TestTradingAsync(cancellationToken).ConfigureAwait(false);
             }
             catch (RestClientException e)
             {
                 _logger.LogError(e, $"Rest client exception: {e.Message}");
             }
-            await TestTradingAsync(cancellationToken).ConfigureAwait(false);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
@@ -58,8 +57,9 @@ namespace XenaExchange.Client.Examples.Rest
 //            await PositionsHistoryAsync(cancellationToken).ConfigureAwait(false);
 //            await ListActiveOrdersAsync(cancellationToken).ConfigureAwait(false);
 //            await TradeHistoryAsync(cancellationToken).ConfigureAwait(false);
-            await GetBalancesAsync(cancellationToken).ConfigureAwait(false);
+//            await GetBalancesAsync(cancellationToken).ConfigureAwait(false);
 //            await GetMarginRequirementsAsync(cancellationToken).ConfigureAwait(false);
+            await ListAccountsAsync(cancellationToken).ConfigureAwait(false);
         }
 
         private async Task MarketOrderAsync(CancellationToken cancellationToken)
@@ -301,6 +301,15 @@ namespace XenaExchange.Client.Examples.Rest
 
             var toPrint = string.Join("\n", report.MarginAmounts.Select(p => p.ToString()));
             _logger.LogInformation($"Margin amounts: {toPrint}");
+        }
+
+        private async Task ListAccountsAsync(CancellationToken cancellationToken)
+        {
+            var accounts = await _restClient.ListAccountsAsync(cancellationToken)
+                .ConfigureAwait(false);
+
+            var toPrint = string.Join("\n", accounts.Select(p => p.ToString()));
+            _logger.LogInformation($"Accounts: {toPrint}");
         }
 
         private void HandleOrderReport(ExecutionReport er)
