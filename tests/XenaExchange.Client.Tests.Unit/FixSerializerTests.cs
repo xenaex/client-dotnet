@@ -82,5 +82,23 @@ namespace XenaExchange.Client.Tests.Unit
             var message = _serializer.Deserialize(json);
             message.Should().BeEquivalentTo(expected);
         }
+
+        [Test]
+        public void PositionMaintenanceRequest_PosMainAction()
+        {
+            var message = new PositionMaintenanceRequest{ PosMaintAction = PosMaintAction.Replace };
+            var actual = _serializer.Serialize(message);
+            var expected = "{\"712\":\"2\"}";
+            expected.Should().Be(actual);
+        }
+
+        [Test]
+        public void PositionMaintenanceReport_PosMainAction()
+        {
+            var message = new PositionMaintenanceReport{ PosMaintAction = PosMaintAction.Replace };
+            var actual = _serializer.Serialize(message);
+            var expected = "{\"712\":\"2\"}";
+            expected.Should().Be(actual);
+        }
     }
 }
