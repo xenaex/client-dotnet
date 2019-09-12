@@ -1,4 +1,4 @@
-# Xena Exchange official websocket client for .netstandard 2.0
+# Xena Exchange official websocket and rest clients for .netstandard 2.0
 
 For API documentation check out [Help Center](https://support.xena.exchange/support/solutions/folders/44000161002)
 
@@ -7,16 +7,16 @@ For API documentation check out [Help Center](https://support.xena.exchange/supp
 
 Add to .csproj:
 ```xml
-<PackageReference Include="XenaExchange.Client.Websocket" Version="0.1.0" />
+<PackageReference Include="XenaExchange.Client" Version="0.2.0" />
 ```
 
 
-#### Market Data example
+#### Market Data websocket example
 
 ```csharp
 var options = new MarketDataWsClientOptions { Uri = "wss://api.xena.exchange/ws/market-data" };
 var serializer = new FixSerializer();
-var logger = CreateLogger(); // Any logger implementation returning ILogger abstraction.
+var logger = CreateLogger(); // Any logger implementation returning ILogger<MarketDataWsClient> abstraction.
 var wsClient = new MarketDataWsClient(options, serializer, logger);
 
 // Disconnections handling
@@ -67,7 +67,7 @@ await Task.Delay(5000).ConfigureAwait(false);
 await wsClient.Unsubscribe(streamId).ConfigureAwait(false);
 ```
 
-#### Trading Example
+#### Trading websocket example
 
 Register an account with [Xena](https://trading.xena.exchange/registration). Generate an API Key and assign relevant permissions.
 	
@@ -83,7 +83,7 @@ var options = new TradingWsClientOptions()
 };
 
 var serializer = new FixSerializer();
-var logger = CreateLogger(); // Any logger implementation returning ILogger abstraction.
+var logger = CreateLogger(); // Any logger implementation returning ILogger<TradingWsClient> abstraction.
 var wsClient = new TradingWsClient(options, serializer, logger);
 
 wsClient.OnDisconnect.Subscribe(async info =>
@@ -120,6 +120,30 @@ await wsClient.NewMarketOrderAsync(
 	Side.Sell,
 	0.01M,
 	SpotAccountId).ConfigureAwait(false);
+```
+
+#### Trading rest example
+
+Register an account with [Xena](https://trading.xena.exchange/registration). Generate an API Key and assign relevant permissions.
+
+```csharp
+// IHttpClientFactory implementation. Check out "examples" folder for details.
+var httpClientFactory = CreateHttpClientFactory();
+
+var options = new TradingRestClientOptions { ApiKey = "TO_FILL", ApiSecret = "TO_FILL" };
+var restSerializer = new RestSerializer();
+var logger = CreateLogger(); // Any logger implementation returning ILogger<TradingRestClient> abstraction.
+
+var restClient = new TradingRestClient(httpClientFactory, options, restSerializer, logger);
+
+var executionReport = await restClient.NewMarketOrderAsync(
+    "market-order-1",
+    "BTC/USDT",
+    Side.Sell,
+    0.01M,
+    12345).ConfigureAwait(false);
+
+HandleOrderReport(executionReport);
 ```
 
 For more examples check out "examples" folder.
