@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>XenaExchange.Client</PackageId>
-    <Title>Xena Exchange official websocket and rest client for .netstandard 2.0</Title>
+    <Title>Xena Exchange official websocket and rest clients for .netstandard 2.0</Title>
     <Description>Xena Exchange official websocket and rest clients for .netstandard 2.0</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
