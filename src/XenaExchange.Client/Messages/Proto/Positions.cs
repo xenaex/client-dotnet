@@ -57,12 +57,12 @@ namespace Api {
             "Y291bnQi0wEKGlBvc2l0aW9uTWFpbnRlbmFuY2VSZXF1ZXN0EhgKB01zZ1R5",
             "cGUYIyABKAlSB21zZ1R5cGUSGwoIUG9zUmVxSWQYxgUgASgJUghwb3NSZXFJ",
             "ZBIjCgxQb3NUcmFuc1R5cGUYxQUgASgJUgxwb3NUcmFuc1R5cGUSJwoOUG9z",
-            "TWFpbnRBY3Rpb24Y5DYgASgJUg5wb3NNYWludEFjdGlvbhIYCgdBY2NvdW50",
+            "TWFpbnRBY3Rpb24YyAUgASgJUg5wb3NNYWludEFjdGlvbhIYCgdBY2NvdW50",
             "GAEgASgEUgdhY2NvdW50EhYKBlN5bWJvbBg3IAEoCVIGc3ltYm9sItIBChlQ",
             "b3NpdGlvbk1haW50ZW5hbmNlUmVwb3J0EhgKB01zZ1R5cGUYIyABKAlSB21z",
             "Z1R5cGUSGwoIUG9zUmVxSWQYxgUgASgJUghwb3NSZXFJZBIjCgxQb3NUcmFu",
             "c1R5cGUYxQUgASgJUgxwb3NUcmFuc1R5cGUSJwoOUG9zTWFpbnRBY3Rpb24Y",
-            "5DYgASgJUg5wb3NNYWludEFjdGlvbhIYCgdBY2NvdW50GAEgASgEUgdhY2Nv",
+            "yAUgASgJUg5wb3NNYWludEFjdGlvbhIYCgdBY2NvdW50GAEgASgEUgdhY2Nv",
             "dW50EhYKBlN5bWJvbBg3IAEoCVIGc3ltYm9sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Api.MarginReflection.Descriptor, },
@@ -1545,7 +1545,7 @@ namespace Api {
     }
 
     /// <summary>Field number for the "PosMaintAction" field.</summary>
-    public const int PosMaintActionFieldNumber = 7012;
+    public const int PosMaintActionFieldNumber = 712;
     private string posMaintAction_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string PosMaintAction {
@@ -1642,7 +1642,7 @@ namespace Api {
         output.WriteString(PosReqId);
       }
       if (PosMaintAction.Length != 0) {
-        output.WriteRawTag(162, 182, 3);
+        output.WriteRawTag(194, 44);
         output.WriteString(PosMaintAction);
       }
       if (_unknownFields != null) {
@@ -1663,7 +1663,7 @@ namespace Api {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(PosTransType);
       }
       if (PosMaintAction.Length != 0) {
-        size += 3 + pb::CodedOutputStream.ComputeStringSize(PosMaintAction);
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(PosMaintAction);
       }
       if (Account != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Account);
@@ -1731,7 +1731,7 @@ namespace Api {
             PosReqId = input.ReadString();
             break;
           }
-          case 56098: {
+          case 5698: {
             PosMaintAction = input.ReadString();
             break;
           }
@@ -1814,7 +1814,7 @@ namespace Api {
     }
 
     /// <summary>Field number for the "PosMaintAction" field.</summary>
-    public const int PosMaintActionFieldNumber = 7012;
+    public const int PosMaintActionFieldNumber = 712;
     private string posMaintAction_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string PosMaintAction {
@@ -1911,7 +1911,7 @@ namespace Api {
         output.WriteString(PosReqId);
       }
       if (PosMaintAction.Length != 0) {
-        output.WriteRawTag(162, 182, 3);
+        output.WriteRawTag(194, 44);
         output.WriteString(PosMaintAction);
       }
       if (_unknownFields != null) {
@@ -1932,7 +1932,7 @@ namespace Api {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(PosTransType);
       }
       if (PosMaintAction.Length != 0) {
-        size += 3 + pb::CodedOutputStream.ComputeStringSize(PosMaintAction);
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(PosMaintAction);
       }
       if (Account != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Account);
@@ -2000,7 +2000,7 @@ namespace Api {
             PosReqId = input.ReadString();
             break;
           }
-          case 56098: {
+          case 5698: {
             PosMaintAction = input.ReadString();
             break;
           }
