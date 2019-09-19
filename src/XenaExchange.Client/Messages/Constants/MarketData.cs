@@ -80,4 +80,15 @@ namespace XenaExchange.Client.Messages.Constants
             public const long Throttling5s = 5000;
         }
     }
+
+    public static class DOMAggregation
+    {
+        public const long Aggregation0 = 0;
+        public const long Aggregation5 = 5;
+        public const long Aggregation10 = 10;
+        public const long Aggregation25 = 25;
+        public const long Aggregation50 = 50;
+        public const long Aggregation100 = 100;
+        public const long Aggregation250 = 250;
+    }
 }

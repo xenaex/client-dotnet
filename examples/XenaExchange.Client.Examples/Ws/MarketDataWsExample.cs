@@ -65,12 +65,12 @@ namespace XenaExchange.Client.Examples.Ws
             // await SubscribeTradesAsync().ConfigureAwait(false);
 
             // Subscribe on market-watch
-            var streamId = await SubscribeMarketWatchAsync().ConfigureAwait(false);
+//            var streamId = await SubscribeMarketWatchAsync().ConfigureAwait(false);
 
             // Unsubscribe from market-watch stream
-            await Task.Delay(5000).ConfigureAwait(false);
-            await _wsClient.Unsubscribe(streamId).ConfigureAwait(false);
-            _logger.LogInformation($"Unsubscribed from {streamId}");
+//            await Task.Delay(5000).ConfigureAwait(false);
+//            await _wsClient.Unsubscribe(streamId).ConfigureAwait(false);
+//            _logger.LogInformation($"Unsubscribed from {streamId}");
         }
 
         private async Task SubscribeCandlesAsync()
@@ -98,7 +98,7 @@ namespace XenaExchange.Client.Examples.Ws
 
         private async Task SubscribeDOMAsync()
         {
-            var symbol = "XBTUSD";
+            var symbol = "BTC/USDT";
             await _wsClient.SubscribeDOMAggregatedAsync(symbol, (client, message) =>
             {
                 switch (message)
@@ -115,7 +115,7 @@ namespace XenaExchange.Client.Examples.Ws
                         break;
                 }
                 return Task.CompletedTask;
-            }).ConfigureAwait(false);
+            }, aggregation: DOMAggregation.Aggregation5).ConfigureAwait(false);
         }
 
         private async Task SubscribeTradesAsync()
