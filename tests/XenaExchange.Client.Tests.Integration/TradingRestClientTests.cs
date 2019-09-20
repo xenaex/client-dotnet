@@ -19,11 +19,11 @@ namespace XenaExchange.Client.Tests.Integration
     {
         private const LogLevel TestsLogLevel = LogLevel.Debug;
 
-        private const string ApiKey = "b0kzGvpw1dYm2ksQ3Lsvu0MywjtjYQkcHykVIa1hmuA=";
-        private const string ApiSecret = "3077020101042007807522912f2f97bc0702820b12e08bb468672cd85095d1864edecc8b923741a00a06082a8648ce3d030107a14403420004f0193792525e957686882e7541b41f608264ed308c2591f61c6d747ac0292f202d582d1c0cc951aad392995671651f3fda8b22cba77e56f5dc1951dca20aa889";
+        private const string ApiKey = "TO_FILL";
+        private const string ApiSecret = "TO_FILL";
 
-        private const long SpotAccountId = 8263118;
-        private const long MarginAccountId = 1012833459;
+        private const long SpotAccountId = 1;
+        private const long MarginAccountId = 2;
 
         private readonly CancellationToken _token = CancellationToken.None;
 
