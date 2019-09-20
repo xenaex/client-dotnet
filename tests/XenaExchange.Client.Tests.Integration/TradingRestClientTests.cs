@@ -11,6 +11,7 @@ using XenaExchange.Client.Messages;
 using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Rest;
 using XenaExchange.Client.Rest.Requests;
+using XenaExchange.Client.Rest.Trading;
 
 namespace XenaExchange.Client.Tests.Integration
 {
@@ -261,7 +262,6 @@ namespace XenaExchange.Client.Tests.Integration
         public async Task Test_ListActiveOrders()
         {
             var orders = await _restClient.ListActiveOrdersAsync(MarginAccountId, _token).ConfigureAwait(false);
-            orders.Should().NotBeNull();
             orders.Should().NotBeNull();
             orders.Length.Should().BeGreaterThan(0);
         }

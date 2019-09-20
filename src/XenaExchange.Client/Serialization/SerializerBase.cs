@@ -4,8 +4,6 @@ using Api;
 using Google.Protobuf;
 using Newtonsoft.Json;
 using XenaExchange.Client.Messages.Constants;
-using XenaExchange.Client.Serialization.Fix;
-using XenaExchange.Client.Serialization.Rest;
 
 namespace XenaExchange.Client.Serialization
 {

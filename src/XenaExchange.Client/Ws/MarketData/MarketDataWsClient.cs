@@ -82,13 +82,18 @@ namespace XenaExchange.Client.Ws.MarketData
         }
 
         /// <inheritdoc />
-        public async Task<string> SubscribeDOMAggregatedAsync(string symbol, XenaMdWsHandler handler, long throttlingMs = 0)
+        public async Task<string> SubscribeDOMAggregatedAsync(
+            string symbol,
+            XenaMdWsHandler handler,
+            long throttlingMs = 0,
+            long aggregation = 0)
         {
             Validator.NotNullOrEmpty(nameof(symbol), symbol);
             Validator.NotNull(nameof(handler), handler);
             Validator.GrThanOrEq(nameof(throttlingMs), throttlingMs, 0);
+            Validator.GrThanOrEq(nameof(aggregation), aggregation, 0);
 
-            return await SubscribeAsync($"DOM", handler, symbol, "aggregated", throttlingMs: throttlingMs).ConfigureAwait(false);
+            return await SubscribeAsync("DOM", handler, symbol, "aggregated", throttlingMs: throttlingMs, aggregation: aggregation).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
@@ -106,7 +111,7 @@ namespace XenaExchange.Client.Ws.MarketData
             Validator.NotNull(nameof(handler), handler);
             Validator.GrThanOrEq(nameof(throttlingMs), throttlingMs, 0);
 
-            return await SubscribeAsync($"trades", handler, symbol, throttlingMs: throttlingMs).ConfigureAwait(false);
+            return await SubscribeAsync("trades", handler, symbol, throttlingMs: throttlingMs).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
@@ -127,7 +132,8 @@ namespace XenaExchange.Client.Ws.MarketData
             XenaMdWsHandler handler,
             string symbol = null,
             string streamPostfix = null,
-            long throttlingMs = 0)
+            long throttlingMs = 0,
+            long aggregation = 0)
         {
             var streamId = streamName;
             if (symbol != null)
@@ -143,6 +149,7 @@ namespace XenaExchange.Client.Ws.MarketData
                 ThrottleType = ThrottleType.OutstandingRequests,
                 ThrottleTimeInterval = throttlingMs,
                 ThrottleTimeUnit = ThrottleTimeUnit.Milliseconds,
+                AggregatedBook = aggregation,
             };
 
             var sub = new Subscription(request, handler);

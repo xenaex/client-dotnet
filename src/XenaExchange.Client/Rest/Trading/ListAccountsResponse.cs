@@ -1,6 +1,6 @@
 using Api;
 
-namespace XenaExchange.Client.Rest
+namespace XenaExchange.Client.Rest.Trading
 {
     /// <summary>
     /// Is used as a container for accounts response deserialization.

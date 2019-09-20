@@ -4,7 +4,7 @@ using Api;
 using XenaExchange.Client.Rest.Exceptions;
 using XenaExchange.Client.Rest.Requests;
 
-namespace XenaExchange.Client.Rest
+namespace XenaExchange.Client.Rest.Trading
 {
     /// <summary>
     /// Xena trading rest client interface.
@@ -102,6 +102,7 @@ namespace XenaExchange.Client.Rest
         /// <param name="trailingOffset">Trailing offset value. For trailing stop and attempt zero loss orders.</param>
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> NewStopOrderAsync(
@@ -137,6 +138,7 @@ namespace XenaExchange.Client.Rest
         /// <param name="trailingOffset">Trailing offset value. For trailing stop and attempt zero loss orders.</param>
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport> NewMarketIfTouchOrderAsync(

@@ -8,6 +8,7 @@ using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Rest;
 using XenaExchange.Client.Rest.Exceptions;
 using XenaExchange.Client.Rest.Requests;
+using XenaExchange.Client.Rest.Trading;
 
 namespace XenaExchange.Client.Examples.Rest
 {
@@ -57,8 +58,8 @@ namespace XenaExchange.Client.Examples.Rest
 //            await PositionsHistoryAsync(cancellationToken).ConfigureAwait(false);
 //            await ListActiveOrdersAsync(cancellationToken).ConfigureAwait(false);
 //            await TradeHistoryAsync(cancellationToken).ConfigureAwait(false);
-//            await GetBalancesAsync(cancellationToken).ConfigureAwait(false);
-//            await GetMarginRequirementsAsync(cancellationToken).ConfigureAwait(false);
+            await GetBalancesAsync(cancellationToken).ConfigureAwait(false);
+            await GetMarginRequirementsAsync(cancellationToken).ConfigureAwait(false);
             await ListAccountsAsync(cancellationToken).ConfigureAwait(false);
         }
 

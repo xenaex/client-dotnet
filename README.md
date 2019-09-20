@@ -143,9 +143,8 @@ var httpClientFactory = CreateHttpClientFactory();
 
 var options = new TradingRestClientOptions { ApiKey = "TO_FILL", ApiSecret = "TO_FILL" };
 var restSerializer = new RestSerializer();
-var logger = CreateLogger(); // Any logger implementation returning ILogger<TradingRestClient> abstraction.
 
-var restClient = new TradingRestClient(httpClientFactory, options, restSerializer, logger);
+var restClient = new TradingRestClient(httpClientFactory, options, restSerializer);
 
 var executionReport = await restClient.NewMarketOrderAsync(
     "market-order-1",
@@ -155,6 +154,30 @@ var executionReport = await restClient.NewMarketOrderAsync(
     12345).ConfigureAwait(false);
 
 HandleOrderReport(executionReport);
+```
+
+#### Market data rest example
+
+```csharp
+// IHttpClientFactory implementation. Check out "examples" folder for details.
+var httpClientFactory = CreateHttpClientFactory();
+
+var fixSerializer = new FixSerializer();
+var restSerializer = new RestSerializer();
+
+var marketDataRestClient = new MarketDataRestClient(httpClientFactory, fixSerializer, restSerializer);
+
+var mdRefresh = await _restClient
+    .GetDomAsync("XBTUSD", cancellationToken: cancellationToken)
+    .ConfigureAwait(false);
+
+foreach (var mdEntry in mdRefresh.MDEntry)
+{
+    if (mdEntry.MDEntryType == MDEntryType.Bid)
+        // Process Bid
+    if (mdEntry.MDEntryType == MDEntryType.Offer)
+        // Process Ask
+}
 ```
 
 For more examples check out "examples" folder.

@@ -55,22 +55,22 @@ namespace XenaExchange.Client.Examples.Ws
 
             // Subscribe on candles stream.
             // Async handler, throttling specified.
-            // await SubscribeCandlesAsync().ConfigureAwait(false);
+//            await SubscribeCandlesAsync().ConfigureAwait(false);
 
             // Subscribe on DOM:aggregated stream.
             // Sync handler, default throttling = 0 ms (every single update is sent).
-            // await SubscribeDOMAsync().ConfigureAwait(false);
+            await SubscribeDOMAsync().ConfigureAwait(false);
 
             // Subscibe on trades
-            // await SubscribeTradesAsync().ConfigureAwait(false);
+//            await SubscribeTradesAsync().ConfigureAwait(false);
 
             // Subscribe on market-watch
-            var streamId = await SubscribeMarketWatchAsync().ConfigureAwait(false);
+//            var streamId = await SubscribeMarketWatchAsync().ConfigureAwait(false);
 
             // Unsubscribe from market-watch stream
-            await Task.Delay(5000).ConfigureAwait(false);
-            await _wsClient.Unsubscribe(streamId).ConfigureAwait(false);
-            _logger.LogInformation($"Unsubscribed from {streamId}");
+//            await Task.Delay(5000).ConfigureAwait(false);
+//            await _wsClient.Unsubscribe(streamId).ConfigureAwait(false);
+//            _logger.LogInformation($"Unsubscribed from {streamId}");
         }
 
         private async Task SubscribeCandlesAsync()
@@ -98,7 +98,7 @@ namespace XenaExchange.Client.Examples.Ws
 
         private async Task SubscribeDOMAsync()
         {
-            var symbol = "XBTUSD";
+            var symbol = "BTC/USDT";
             await _wsClient.SubscribeDOMAggregatedAsync(symbol, (client, message) =>
             {
                 switch (message)
@@ -115,7 +115,7 @@ namespace XenaExchange.Client.Examples.Ws
                         break;
                 }
                 return Task.CompletedTask;
-            }).ConfigureAwait(false);
+            }, aggregation: DOMAggregation.Aggregation5).ConfigureAwait(false);
         }
 
         private async Task SubscribeTradesAsync()

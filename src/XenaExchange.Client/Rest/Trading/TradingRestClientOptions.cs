@@ -1,4 +1,4 @@
-namespace XenaExchange.Client.Rest
+namespace XenaExchange.Client.Rest.Trading
 {
     public class TradingRestClientOptions
     {
