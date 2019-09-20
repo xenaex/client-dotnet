@@ -91,6 +91,7 @@ namespace XenaExchange.Client.Ws.MarketData
             Validator.NotNullOrEmpty(nameof(symbol), symbol);
             Validator.NotNull(nameof(handler), handler);
             Validator.GrThanOrEq(nameof(throttlingMs), throttlingMs, 0);
+            Validator.GrThanOrEq(nameof(aggregation), aggregation, 0);
 
             return await SubscribeAsync("DOM", handler, symbol, "aggregated", throttlingMs: throttlingMs, aggregation: aggregation).ConfigureAwait(false);
         }

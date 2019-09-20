@@ -26,12 +26,67 @@ namespace Api {
           string.Concat(
             "Cgxjb21tb24ucHJvdG8SA2FwaSIgCg1Nc2dUeXBlSGVhZGVyEg8KB01zZ1R5",
             "cGUYIyABKAkiRQoJSGVhcnRiZWF0Eg8KB01zZ1R5cGUYIyABKAkSEQoJVGVz",
-            "dFJlcUlkGHAgASgJEhQKDFRyYW5zYWN0VGltZRg8IAEoA2IGcHJvdG8z"));
+            "dFJlcUlkGHAgASgJEhQKDFRyYW5zYWN0VGltZRg8IAEoAyL9CgoKSW5zdHJ1",
+            "bWVudBIOCgJJRBgBIAEoCVICaWQSEgoEVHlwZRgCIAEoCVIEdHlwZRIWCgZT",
+            "eW1ib2wYAyABKAlSBnN5bWJvbBImChBCYXNlQ3VycmVuY3lOYW1lGAQgASgJ",
+            "UgxiYXNlQ3VycmVuY3kSKAoRUXVvdGVDdXJyZW5jeU5hbWUYBSABKAlSDXF1",
+            "b3RlQ3VycmVuY3kSKAoRU2V0dGxDdXJyZW5jeU5hbWUYBiABKAlSDXNldHRs",
+            "Q3VycmVuY3kSGgoIVGlja1NpemUYByABKAVSCHRpY2tTaXplEiUKC01pbk9y",
+            "ZGVyUXR5GAggASgJUhBtaW5PcmRlclF1YW50aXR5EiIKDE9yZGVyUXR5U3Rl",
+            "cBgJIAEoCVIMb3JkZXJRdHlTdGVwEjQKFUxpbWl0T3JkZXJNYXhEaXN0YW5j",
+            "ZRgKIAEoCVIVbGltaXRPcmRlck1heERpc3RhbmNlEiYKDlByaWNlSW5wdXRN",
+            "YXNrGAsgASgJUg5wcmljZUlucHV0TWFzaxIYCgdJbmRleGVzGAwgAygJUgdp",
+            "bmRleGVzEhgKB0VuYWJsZWQYDSABKAhSB2VuYWJsZWQSNgoWTGlxdWlkYXRp",
+            "b25NYXhEaXN0YW5jZRgOIAEoCVIWbGlxdWlkYXRpb25NYXhEaXN0YW5jZRIk",
+            "Cg1Db250cmFjdFZhbHVlGA8gASgJUg1jb250cmFjdFZhbHVlEioKEENvbnRy",
+            "YWN0Q3VycmVuY3kYECABKAlSEGNvbnRyYWN0Q3VycmVuY3kSGAoHTG90U2l6",
+            "ZRgRIAEoCVIHbG90U2l6ZRIcCglUaWNrVmFsdWUYEiABKAlSCXRpY2tWYWx1",
+            "ZRIgCgtNYXhPcmRlclF0eRgTIAEoCVILbWF4T3JkZXJRdHkSIgoMTWF4UG9z",
+            "Vm9sdW1lGBQgASgJUgxtYXhQb3NWb2x1bWUSEgoETWFyaxgVIAEoCVIEbWFy",
+            "axIeCgpGbG9hdGluZ1BMGBYgASgJUgpmbG9hdGluZ1BMEi4KEkFkZFV2bVRv",
+            "RnJlZU1hcmdpbhgXIAEoCVISYWRkVXZtVG9GcmVlTWFyZ2luEiAKC01pbkxl",
+            "dmVyYWdlGBggASgJUgttaW5MZXZlcmFnZRIgCgtNYXhMZXZlcmFnZRgZIAEo",
+            "CVILbWF4TGV2ZXJhZ2USIwoGTWFyZ2luGBogASgLMgsuYXBpLk1hcmdpblIG",
+            "bWFyZ2luEjQKCENsZWFyaW5nGBsgASgLMhguYXBpLkRlcml2YXRpdmVPcGVy",
+            "YXRpb25SCGNsZWFyaW5nEjQKCEludGVyZXN0GBwgASgLMhguYXBpLkRlcml2",
+            "YXRpdmVPcGVyYXRpb25SCGludGVyZXN0EjIKB1ByZW1pdW0YHSABKAsyGC5h",
+            "cGkuRGVyaXZhdGl2ZU9wZXJhdGlvblIHcHJlbWl1bRJACg5SaXNrQWRqdXN0",
+            "bWVudBgeIAEoCzIYLmFwaS5EZXJpdmF0aXZlT3BlcmF0aW9uUg5yaXNrQWRq",
+            "dXN0bWVudBImCg5QcmljZVByZWNpc2lvbhgfIAEoBVIOcHJpY2VQcmVjaXNp",
+            "b24SLwoKUHJpY2VSYW5nZRggIAEoCzIPLmFwaS5QcmljZVJhbmdlUgpwcmlj",
+            "ZVJhbmdlEjIKC1ByaWNlTGltaXRzGCEgASgLMhAuYXBpLlByaWNlTGltaXRz",
+            "UgtwcmljZUxpbWl0cxIYCgdJbnZlcnNlGCIgASgIUgdpbnZlcnNlEioKEFRy",
+            "YWRpbmdTdGFydERhdGUYIyABKAlSEHRyYWRpbmdTdGFydERhdGUSHgoKRXhw",
+            "aXJ5RGF0ZRgkIAEoCVIKZXhwaXJ5RGF0ZRIUCgVCYXNpcxglIAEoBVIFYmFz",
+            "aXMizQEKBk1hcmdpbhIYCgdOZXR0aW5nGAEgASgJUgduZXR0aW5nEiUKBVJh",
+            "dGVzGAIgAygLMg8uYXBpLk1hcmdpblJhdGVSBXJhdGVzEkoKD1JhdGVNdWx0",
+            "aXBsaWVycxgDIAMoCzIgLmFwaS5NYXJnaW4uUmF0ZU11bHRpcGxpZXJzRW50",
+            "cnlSD3JhdGVNdWx0aXBsaWVycxo2ChRSYXRlTXVsdGlwbGllcnNFbnRyeRIL",
+            "CgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBInYKCk1hcmdpblJhdGUS",
+            "HAoJTWF4Vm9sdW1lGAEgASgJUgltYXhWb2x1bWUSIAoLSW5pdGlhbFJhdGUY",
+            "AiABKAlSC2luaXRpYWxSYXRlEigKD01haW50ZW5hbmNlUmF0ZRgDIAEoCVIP",
+            "bWFpbnRlbmFuY2VSYXRlImoKE0Rlcml2YXRpdmVPcGVyYXRpb24SIQoHRW5h",
+            "YmxlZBgBIAEoCFIQbWF4Vm9sZW5hYmxlZHVtZRIUCgVJbmRleBgCIAEoCVIF",
+            "aW5kZXgSGgoIU2NoZWR1bGUYAyABKANSCHNjaGVkdWxlIsQBCgpQcmljZVJh",
+            "bmdlEhgKB0VuYWJsZWQYASABKAhSB2VuYWJsZWQSGgoIRGlzdGFuY2UYAiAB",
+            "KAlSCGRpc3RhbmNlEiYKDk1vdmluZ0JvdW5kYXJ5GAMgASgJUg5tb3ZpbmdC",
+            "b3VuZGFyeRIeCgpNb3ZpbmdUaW1lGAQgASgDUgptb3ZpbmdUaW1lEhoKCExv",
+            "d0luZGV4GAUgASgJUghsb3dJbmRleBIcCglIaWdoSW5kZXgYBiABKAlSCWhp",
+            "Z2hJbmRleCJ9CgtQcmljZUxpbWl0cxIYCgdFbmFibGVkGAEgASgIUgdlbmFi",
+            "bGVkEhoKCERpc3RhbmNlGAIgASgJUghkaXN0YW5jZRIaCghMb3dJbmRleBgD",
+            "IAEoCVIIbG93SW5kZXgSHAoJSGlnaEluZGV4GAQgASgJUgloaWdoSW5kZXhi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.MsgTypeHeader), global::Api.MsgTypeHeader.Parser, new[]{ "MsgType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Heartbeat), global::Api.Heartbeat.Parser, new[]{ "MsgType", "TestReqId", "TransactTime" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Heartbeat), global::Api.Heartbeat.Parser, new[]{ "MsgType", "TestReqId", "TransactTime" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Instrument), global::Api.Instrument.Parser, new[]{ "ID", "Type", "Symbol", "BaseCurrencyName", "QuoteCurrencyName", "SettlCurrencyName", "TickSize", "MinOrderQty", "OrderQtyStep", "LimitOrderMaxDistance", "PriceInputMask", "Indexes", "Enabled", "LiquidationMaxDistance", "ContractValue", "ContractCurrency", "LotSize", "TickValue", "MaxOrderQty", "MaxPosVolume", "Mark", "FloatingPL", "AddUvmToFreeMargin", "MinLeverage", "MaxLeverage", "Margin", "Clearing", "Interest", "Premium", "RiskAdjustment", "PricePrecision", "PriceRange", "PriceLimits", "Inverse", "TradingStartDate", "ExpiryDate", "Basis" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Margin), global::Api.Margin.Parser, new[]{ "Netting", "Rates", "RateMultipliers" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarginRate), global::Api.MarginRate.Parser, new[]{ "MaxVolume", "InitialRate", "MaintenanceRate" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.DerivativeOperation), global::Api.DerivativeOperation.Parser, new[]{ "Enabled", "Index", "Schedule" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.PriceRange), global::Api.PriceRange.Parser, new[]{ "Enabled", "Distance", "MovingBoundary", "MovingTime", "LowIndex", "HighIndex" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.PriceLimits), global::Api.PriceLimits.Parser, new[]{ "Enabled", "Distance", "LowIndex", "HighIndex" }, null, null, null)
           }));
     }
     #endregion
@@ -347,6 +402,2207 @@ namespace Api {
           }
           case 898: {
             TestReqId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Instrument : pb::IMessage<Instrument> {
+    private static readonly pb::MessageParser<Instrument> _parser = new pb::MessageParser<Instrument>(() => new Instrument());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Instrument> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Api.CommonReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Instrument() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Instrument(Instrument other) : this() {
+      iD_ = other.iD_;
+      type_ = other.type_;
+      symbol_ = other.symbol_;
+      baseCurrencyName_ = other.baseCurrencyName_;
+      quoteCurrencyName_ = other.quoteCurrencyName_;
+      settlCurrencyName_ = other.settlCurrencyName_;
+      tickSize_ = other.tickSize_;
+      minOrderQty_ = other.minOrderQty_;
+      orderQtyStep_ = other.orderQtyStep_;
+      limitOrderMaxDistance_ = other.limitOrderMaxDistance_;
+      priceInputMask_ = other.priceInputMask_;
+      indexes_ = other.indexes_.Clone();
+      enabled_ = other.enabled_;
+      liquidationMaxDistance_ = other.liquidationMaxDistance_;
+      contractValue_ = other.contractValue_;
+      contractCurrency_ = other.contractCurrency_;
+      lotSize_ = other.lotSize_;
+      tickValue_ = other.tickValue_;
+      maxOrderQty_ = other.maxOrderQty_;
+      maxPosVolume_ = other.maxPosVolume_;
+      mark_ = other.mark_;
+      floatingPL_ = other.floatingPL_;
+      addUvmToFreeMargin_ = other.addUvmToFreeMargin_;
+      minLeverage_ = other.minLeverage_;
+      maxLeverage_ = other.maxLeverage_;
+      margin_ = other.margin_ != null ? other.margin_.Clone() : null;
+      clearing_ = other.clearing_ != null ? other.clearing_.Clone() : null;
+      interest_ = other.interest_ != null ? other.interest_.Clone() : null;
+      premium_ = other.premium_ != null ? other.premium_.Clone() : null;
+      riskAdjustment_ = other.riskAdjustment_ != null ? other.riskAdjustment_.Clone() : null;
+      pricePrecision_ = other.pricePrecision_;
+      priceRange_ = other.priceRange_ != null ? other.priceRange_.Clone() : null;
+      priceLimits_ = other.priceLimits_ != null ? other.priceLimits_.Clone() : null;
+      inverse_ = other.inverse_;
+      tradingStartDate_ = other.tradingStartDate_;
+      expiryDate_ = other.expiryDate_;
+      basis_ = other.basis_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Instrument Clone() {
+      return new Instrument(this);
+    }
+
+    /// <summary>Field number for the "ID" field.</summary>
+    public const int IDFieldNumber = 1;
+    private string iD_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ID {
+      get { return iD_; }
+      set {
+        iD_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Type" field.</summary>
+    public const int TypeFieldNumber = 2;
+    private string type_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Type {
+      get { return type_; }
+      set {
+        type_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Symbol" field.</summary>
+    public const int SymbolFieldNumber = 3;
+    private string symbol_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Symbol {
+      get { return symbol_; }
+      set {
+        symbol_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "BaseCurrencyName" field.</summary>
+    public const int BaseCurrencyNameFieldNumber = 4;
+    private string baseCurrencyName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string BaseCurrencyName {
+      get { return baseCurrencyName_; }
+      set {
+        baseCurrencyName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "QuoteCurrencyName" field.</summary>
+    public const int QuoteCurrencyNameFieldNumber = 5;
+    private string quoteCurrencyName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string QuoteCurrencyName {
+      get { return quoteCurrencyName_; }
+      set {
+        quoteCurrencyName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "SettlCurrencyName" field.</summary>
+    public const int SettlCurrencyNameFieldNumber = 6;
+    private string settlCurrencyName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SettlCurrencyName {
+      get { return settlCurrencyName_; }
+      set {
+        settlCurrencyName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "TickSize" field.</summary>
+    public const int TickSizeFieldNumber = 7;
+    private int tickSize_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int TickSize {
+      get { return tickSize_; }
+      set {
+        tickSize_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "MinOrderQty" field.</summary>
+    public const int MinOrderQtyFieldNumber = 8;
+    private string minOrderQty_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MinOrderQty {
+      get { return minOrderQty_; }
+      set {
+        minOrderQty_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "OrderQtyStep" field.</summary>
+    public const int OrderQtyStepFieldNumber = 9;
+    private string orderQtyStep_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string OrderQtyStep {
+      get { return orderQtyStep_; }
+      set {
+        orderQtyStep_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "LimitOrderMaxDistance" field.</summary>
+    public const int LimitOrderMaxDistanceFieldNumber = 10;
+    private string limitOrderMaxDistance_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LimitOrderMaxDistance {
+      get { return limitOrderMaxDistance_; }
+      set {
+        limitOrderMaxDistance_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "PriceInputMask" field.</summary>
+    public const int PriceInputMaskFieldNumber = 11;
+    private string priceInputMask_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PriceInputMask {
+      get { return priceInputMask_; }
+      set {
+        priceInputMask_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Indexes" field.</summary>
+    public const int IndexesFieldNumber = 12;
+    private static readonly pb::FieldCodec<string> _repeated_indexes_codec
+        = pb::FieldCodec.ForString(98);
+    private readonly pbc::RepeatedField<string> indexes_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> Indexes {
+      get { return indexes_; }
+    }
+
+    /// <summary>Field number for the "Enabled" field.</summary>
+    public const int EnabledFieldNumber = 13;
+    private bool enabled_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Enabled {
+      get { return enabled_; }
+      set {
+        enabled_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LiquidationMaxDistance" field.</summary>
+    public const int LiquidationMaxDistanceFieldNumber = 14;
+    private string liquidationMaxDistance_ = "";
+    /// <summary>
+    /// Fields from derivative
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LiquidationMaxDistance {
+      get { return liquidationMaxDistance_; }
+      set {
+        liquidationMaxDistance_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ContractValue" field.</summary>
+    public const int ContractValueFieldNumber = 15;
+    private string contractValue_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ContractValue {
+      get { return contractValue_; }
+      set {
+        contractValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ContractCurrency" field.</summary>
+    public const int ContractCurrencyFieldNumber = 16;
+    private string contractCurrency_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ContractCurrency {
+      get { return contractCurrency_; }
+      set {
+        contractCurrency_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "LotSize" field.</summary>
+    public const int LotSizeFieldNumber = 17;
+    private string lotSize_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LotSize {
+      get { return lotSize_; }
+      set {
+        lotSize_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "TickValue" field.</summary>
+    public const int TickValueFieldNumber = 18;
+    private string tickValue_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string TickValue {
+      get { return tickValue_; }
+      set {
+        tickValue_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MaxOrderQty" field.</summary>
+    public const int MaxOrderQtyFieldNumber = 19;
+    private string maxOrderQty_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MaxOrderQty {
+      get { return maxOrderQty_; }
+      set {
+        maxOrderQty_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MaxPosVolume" field.</summary>
+    public const int MaxPosVolumeFieldNumber = 20;
+    private string maxPosVolume_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MaxPosVolume {
+      get { return maxPosVolume_; }
+      set {
+        maxPosVolume_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Mark" field.</summary>
+    public const int MarkFieldNumber = 21;
+    private string mark_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Mark {
+      get { return mark_; }
+      set {
+        mark_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "FloatingPL" field.</summary>
+    public const int FloatingPLFieldNumber = 22;
+    private string floatingPL_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string FloatingPL {
+      get { return floatingPL_; }
+      set {
+        floatingPL_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "AddUvmToFreeMargin" field.</summary>
+    public const int AddUvmToFreeMarginFieldNumber = 23;
+    private string addUvmToFreeMargin_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string AddUvmToFreeMargin {
+      get { return addUvmToFreeMargin_; }
+      set {
+        addUvmToFreeMargin_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MinLeverage" field.</summary>
+    public const int MinLeverageFieldNumber = 24;
+    private string minLeverage_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MinLeverage {
+      get { return minLeverage_; }
+      set {
+        minLeverage_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MaxLeverage" field.</summary>
+    public const int MaxLeverageFieldNumber = 25;
+    private string maxLeverage_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MaxLeverage {
+      get { return maxLeverage_; }
+      set {
+        maxLeverage_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Margin" field.</summary>
+    public const int MarginFieldNumber = 26;
+    private global::Api.Margin margin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Api.Margin Margin {
+      get { return margin_; }
+      set {
+        margin_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Clearing" field.</summary>
+    public const int ClearingFieldNumber = 27;
+    private global::Api.DerivativeOperation clearing_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Api.DerivativeOperation Clearing {
+      get { return clearing_; }
+      set {
+        clearing_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Interest" field.</summary>
+    public const int InterestFieldNumber = 28;
+    private global::Api.DerivativeOperation interest_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Api.DerivativeOperation Interest {
+      get { return interest_; }
+      set {
+        interest_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Premium" field.</summary>
+    public const int PremiumFieldNumber = 29;
+    private global::Api.DerivativeOperation premium_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Api.DerivativeOperation Premium {
+      get { return premium_; }
+      set {
+        premium_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "RiskAdjustment" field.</summary>
+    public const int RiskAdjustmentFieldNumber = 30;
+    private global::Api.DerivativeOperation riskAdjustment_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Api.DerivativeOperation RiskAdjustment {
+      get { return riskAdjustment_; }
+      set {
+        riskAdjustment_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PricePrecision" field.</summary>
+    public const int PricePrecisionFieldNumber = 31;
+    private int pricePrecision_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PricePrecision {
+      get { return pricePrecision_; }
+      set {
+        pricePrecision_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PriceRange" field.</summary>
+    public const int PriceRangeFieldNumber = 32;
+    private global::Api.PriceRange priceRange_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Api.PriceRange PriceRange {
+      get { return priceRange_; }
+      set {
+        priceRange_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "PriceLimits" field.</summary>
+    public const int PriceLimitsFieldNumber = 33;
+    private global::Api.PriceLimits priceLimits_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Api.PriceLimits PriceLimits {
+      get { return priceLimits_; }
+      set {
+        priceLimits_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Inverse" field.</summary>
+    public const int InverseFieldNumber = 34;
+    private bool inverse_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Inverse {
+      get { return inverse_; }
+      set {
+        inverse_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "TradingStartDate" field.</summary>
+    public const int TradingStartDateFieldNumber = 35;
+    private string tradingStartDate_ = "";
+    /// <summary>
+    /// Futures
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string TradingStartDate {
+      get { return tradingStartDate_; }
+      set {
+        tradingStartDate_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ExpiryDate" field.</summary>
+    public const int ExpiryDateFieldNumber = 36;
+    private string expiryDate_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ExpiryDate {
+      get { return expiryDate_; }
+      set {
+        expiryDate_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Basis" field.</summary>
+    public const int BasisFieldNumber = 37;
+    private int basis_;
+    /// <summary>
+    /// Fields from index
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Basis {
+      get { return basis_; }
+      set {
+        basis_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Instrument);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Instrument other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ID != other.ID) return false;
+      if (Type != other.Type) return false;
+      if (Symbol != other.Symbol) return false;
+      if (BaseCurrencyName != other.BaseCurrencyName) return false;
+      if (QuoteCurrencyName != other.QuoteCurrencyName) return false;
+      if (SettlCurrencyName != other.SettlCurrencyName) return false;
+      if (TickSize != other.TickSize) return false;
+      if (MinOrderQty != other.MinOrderQty) return false;
+      if (OrderQtyStep != other.OrderQtyStep) return false;
+      if (LimitOrderMaxDistance != other.LimitOrderMaxDistance) return false;
+      if (PriceInputMask != other.PriceInputMask) return false;
+      if(!indexes_.Equals(other.indexes_)) return false;
+      if (Enabled != other.Enabled) return false;
+      if (LiquidationMaxDistance != other.LiquidationMaxDistance) return false;
+      if (ContractValue != other.ContractValue) return false;
+      if (ContractCurrency != other.ContractCurrency) return false;
+      if (LotSize != other.LotSize) return false;
+      if (TickValue != other.TickValue) return false;
+      if (MaxOrderQty != other.MaxOrderQty) return false;
+      if (MaxPosVolume != other.MaxPosVolume) return false;
+      if (Mark != other.Mark) return false;
+      if (FloatingPL != other.FloatingPL) return false;
+      if (AddUvmToFreeMargin != other.AddUvmToFreeMargin) return false;
+      if (MinLeverage != other.MinLeverage) return false;
+      if (MaxLeverage != other.MaxLeverage) return false;
+      if (!object.Equals(Margin, other.Margin)) return false;
+      if (!object.Equals(Clearing, other.Clearing)) return false;
+      if (!object.Equals(Interest, other.Interest)) return false;
+      if (!object.Equals(Premium, other.Premium)) return false;
+      if (!object.Equals(RiskAdjustment, other.RiskAdjustment)) return false;
+      if (PricePrecision != other.PricePrecision) return false;
+      if (!object.Equals(PriceRange, other.PriceRange)) return false;
+      if (!object.Equals(PriceLimits, other.PriceLimits)) return false;
+      if (Inverse != other.Inverse) return false;
+      if (TradingStartDate != other.TradingStartDate) return false;
+      if (ExpiryDate != other.ExpiryDate) return false;
+      if (Basis != other.Basis) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ID.Length != 0) hash ^= ID.GetHashCode();
+      if (Type.Length != 0) hash ^= Type.GetHashCode();
+      if (Symbol.Length != 0) hash ^= Symbol.GetHashCode();
+      if (BaseCurrencyName.Length != 0) hash ^= BaseCurrencyName.GetHashCode();
+      if (QuoteCurrencyName.Length != 0) hash ^= QuoteCurrencyName.GetHashCode();
+      if (SettlCurrencyName.Length != 0) hash ^= SettlCurrencyName.GetHashCode();
+      if (TickSize != 0) hash ^= TickSize.GetHashCode();
+      if (MinOrderQty.Length != 0) hash ^= MinOrderQty.GetHashCode();
+      if (OrderQtyStep.Length != 0) hash ^= OrderQtyStep.GetHashCode();
+      if (LimitOrderMaxDistance.Length != 0) hash ^= LimitOrderMaxDistance.GetHashCode();
+      if (PriceInputMask.Length != 0) hash ^= PriceInputMask.GetHashCode();
+      hash ^= indexes_.GetHashCode();
+      if (Enabled != false) hash ^= Enabled.GetHashCode();
+      if (LiquidationMaxDistance.Length != 0) hash ^= LiquidationMaxDistance.GetHashCode();
+      if (ContractValue.Length != 0) hash ^= ContractValue.GetHashCode();
+      if (ContractCurrency.Length != 0) hash ^= ContractCurrency.GetHashCode();
+      if (LotSize.Length != 0) hash ^= LotSize.GetHashCode();
+      if (TickValue.Length != 0) hash ^= TickValue.GetHashCode();
+      if (MaxOrderQty.Length != 0) hash ^= MaxOrderQty.GetHashCode();
+      if (MaxPosVolume.Length != 0) hash ^= MaxPosVolume.GetHashCode();
+      if (Mark.Length != 0) hash ^= Mark.GetHashCode();
+      if (FloatingPL.Length != 0) hash ^= FloatingPL.GetHashCode();
+      if (AddUvmToFreeMargin.Length != 0) hash ^= AddUvmToFreeMargin.GetHashCode();
+      if (MinLeverage.Length != 0) hash ^= MinLeverage.GetHashCode();
+      if (MaxLeverage.Length != 0) hash ^= MaxLeverage.GetHashCode();
+      if (margin_ != null) hash ^= Margin.GetHashCode();
+      if (clearing_ != null) hash ^= Clearing.GetHashCode();
+      if (interest_ != null) hash ^= Interest.GetHashCode();
+      if (premium_ != null) hash ^= Premium.GetHashCode();
+      if (riskAdjustment_ != null) hash ^= RiskAdjustment.GetHashCode();
+      if (PricePrecision != 0) hash ^= PricePrecision.GetHashCode();
+      if (priceRange_ != null) hash ^= PriceRange.GetHashCode();
+      if (priceLimits_ != null) hash ^= PriceLimits.GetHashCode();
+      if (Inverse != false) hash ^= Inverse.GetHashCode();
+      if (TradingStartDate.Length != 0) hash ^= TradingStartDate.GetHashCode();
+      if (ExpiryDate.Length != 0) hash ^= ExpiryDate.GetHashCode();
+      if (Basis != 0) hash ^= Basis.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ID.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ID);
+      }
+      if (Type.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Type);
+      }
+      if (Symbol.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Symbol);
+      }
+      if (BaseCurrencyName.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(BaseCurrencyName);
+      }
+      if (QuoteCurrencyName.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(QuoteCurrencyName);
+      }
+      if (SettlCurrencyName.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(SettlCurrencyName);
+      }
+      if (TickSize != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(TickSize);
+      }
+      if (MinOrderQty.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(MinOrderQty);
+      }
+      if (OrderQtyStep.Length != 0) {
+        output.WriteRawTag(74);
+        output.WriteString(OrderQtyStep);
+      }
+      if (LimitOrderMaxDistance.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(LimitOrderMaxDistance);
+      }
+      if (PriceInputMask.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(PriceInputMask);
+      }
+      indexes_.WriteTo(output, _repeated_indexes_codec);
+      if (Enabled != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(Enabled);
+      }
+      if (LiquidationMaxDistance.Length != 0) {
+        output.WriteRawTag(114);
+        output.WriteString(LiquidationMaxDistance);
+      }
+      if (ContractValue.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteString(ContractValue);
+      }
+      if (ContractCurrency.Length != 0) {
+        output.WriteRawTag(130, 1);
+        output.WriteString(ContractCurrency);
+      }
+      if (LotSize.Length != 0) {
+        output.WriteRawTag(138, 1);
+        output.WriteString(LotSize);
+      }
+      if (TickValue.Length != 0) {
+        output.WriteRawTag(146, 1);
+        output.WriteString(TickValue);
+      }
+      if (MaxOrderQty.Length != 0) {
+        output.WriteRawTag(154, 1);
+        output.WriteString(MaxOrderQty);
+      }
+      if (MaxPosVolume.Length != 0) {
+        output.WriteRawTag(162, 1);
+        output.WriteString(MaxPosVolume);
+      }
+      if (Mark.Length != 0) {
+        output.WriteRawTag(170, 1);
+        output.WriteString(Mark);
+      }
+      if (FloatingPL.Length != 0) {
+        output.WriteRawTag(178, 1);
+        output.WriteString(FloatingPL);
+      }
+      if (AddUvmToFreeMargin.Length != 0) {
+        output.WriteRawTag(186, 1);
+        output.WriteString(AddUvmToFreeMargin);
+      }
+      if (MinLeverage.Length != 0) {
+        output.WriteRawTag(194, 1);
+        output.WriteString(MinLeverage);
+      }
+      if (MaxLeverage.Length != 0) {
+        output.WriteRawTag(202, 1);
+        output.WriteString(MaxLeverage);
+      }
+      if (margin_ != null) {
+        output.WriteRawTag(210, 1);
+        output.WriteMessage(Margin);
+      }
+      if (clearing_ != null) {
+        output.WriteRawTag(218, 1);
+        output.WriteMessage(Clearing);
+      }
+      if (interest_ != null) {
+        output.WriteRawTag(226, 1);
+        output.WriteMessage(Interest);
+      }
+      if (premium_ != null) {
+        output.WriteRawTag(234, 1);
+        output.WriteMessage(Premium);
+      }
+      if (riskAdjustment_ != null) {
+        output.WriteRawTag(242, 1);
+        output.WriteMessage(RiskAdjustment);
+      }
+      if (PricePrecision != 0) {
+        output.WriteRawTag(248, 1);
+        output.WriteInt32(PricePrecision);
+      }
+      if (priceRange_ != null) {
+        output.WriteRawTag(130, 2);
+        output.WriteMessage(PriceRange);
+      }
+      if (priceLimits_ != null) {
+        output.WriteRawTag(138, 2);
+        output.WriteMessage(PriceLimits);
+      }
+      if (Inverse != false) {
+        output.WriteRawTag(144, 2);
+        output.WriteBool(Inverse);
+      }
+      if (TradingStartDate.Length != 0) {
+        output.WriteRawTag(154, 2);
+        output.WriteString(TradingStartDate);
+      }
+      if (ExpiryDate.Length != 0) {
+        output.WriteRawTag(162, 2);
+        output.WriteString(ExpiryDate);
+      }
+      if (Basis != 0) {
+        output.WriteRawTag(168, 2);
+        output.WriteInt32(Basis);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (ID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ID);
+      }
+      if (Type.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Type);
+      }
+      if (Symbol.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Symbol);
+      }
+      if (BaseCurrencyName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BaseCurrencyName);
+      }
+      if (QuoteCurrencyName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(QuoteCurrencyName);
+      }
+      if (SettlCurrencyName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SettlCurrencyName);
+      }
+      if (TickSize != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TickSize);
+      }
+      if (MinOrderQty.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MinOrderQty);
+      }
+      if (OrderQtyStep.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(OrderQtyStep);
+      }
+      if (LimitOrderMaxDistance.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LimitOrderMaxDistance);
+      }
+      if (PriceInputMask.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PriceInputMask);
+      }
+      size += indexes_.CalculateSize(_repeated_indexes_codec);
+      if (Enabled != false) {
+        size += 1 + 1;
+      }
+      if (LiquidationMaxDistance.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LiquidationMaxDistance);
+      }
+      if (ContractValue.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ContractValue);
+      }
+      if (ContractCurrency.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(ContractCurrency);
+      }
+      if (LotSize.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(LotSize);
+      }
+      if (TickValue.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(TickValue);
+      }
+      if (MaxOrderQty.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MaxOrderQty);
+      }
+      if (MaxPosVolume.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MaxPosVolume);
+      }
+      if (Mark.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Mark);
+      }
+      if (FloatingPL.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(FloatingPL);
+      }
+      if (AddUvmToFreeMargin.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(AddUvmToFreeMargin);
+      }
+      if (MinLeverage.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MinLeverage);
+      }
+      if (MaxLeverage.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MaxLeverage);
+      }
+      if (margin_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Margin);
+      }
+      if (clearing_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Clearing);
+      }
+      if (interest_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Interest);
+      }
+      if (premium_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Premium);
+      }
+      if (riskAdjustment_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RiskAdjustment);
+      }
+      if (PricePrecision != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(PricePrecision);
+      }
+      if (priceRange_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(PriceRange);
+      }
+      if (priceLimits_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(PriceLimits);
+      }
+      if (Inverse != false) {
+        size += 2 + 1;
+      }
+      if (TradingStartDate.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(TradingStartDate);
+      }
+      if (ExpiryDate.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(ExpiryDate);
+      }
+      if (Basis != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Basis);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Instrument other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ID.Length != 0) {
+        ID = other.ID;
+      }
+      if (other.Type.Length != 0) {
+        Type = other.Type;
+      }
+      if (other.Symbol.Length != 0) {
+        Symbol = other.Symbol;
+      }
+      if (other.BaseCurrencyName.Length != 0) {
+        BaseCurrencyName = other.BaseCurrencyName;
+      }
+      if (other.QuoteCurrencyName.Length != 0) {
+        QuoteCurrencyName = other.QuoteCurrencyName;
+      }
+      if (other.SettlCurrencyName.Length != 0) {
+        SettlCurrencyName = other.SettlCurrencyName;
+      }
+      if (other.TickSize != 0) {
+        TickSize = other.TickSize;
+      }
+      if (other.MinOrderQty.Length != 0) {
+        MinOrderQty = other.MinOrderQty;
+      }
+      if (other.OrderQtyStep.Length != 0) {
+        OrderQtyStep = other.OrderQtyStep;
+      }
+      if (other.LimitOrderMaxDistance.Length != 0) {
+        LimitOrderMaxDistance = other.LimitOrderMaxDistance;
+      }
+      if (other.PriceInputMask.Length != 0) {
+        PriceInputMask = other.PriceInputMask;
+      }
+      indexes_.Add(other.indexes_);
+      if (other.Enabled != false) {
+        Enabled = other.Enabled;
+      }
+      if (other.LiquidationMaxDistance.Length != 0) {
+        LiquidationMaxDistance = other.LiquidationMaxDistance;
+      }
+      if (other.ContractValue.Length != 0) {
+        ContractValue = other.ContractValue;
+      }
+      if (other.ContractCurrency.Length != 0) {
+        ContractCurrency = other.ContractCurrency;
+      }
+      if (other.LotSize.Length != 0) {
+        LotSize = other.LotSize;
+      }
+      if (other.TickValue.Length != 0) {
+        TickValue = other.TickValue;
+      }
+      if (other.MaxOrderQty.Length != 0) {
+        MaxOrderQty = other.MaxOrderQty;
+      }
+      if (other.MaxPosVolume.Length != 0) {
+        MaxPosVolume = other.MaxPosVolume;
+      }
+      if (other.Mark.Length != 0) {
+        Mark = other.Mark;
+      }
+      if (other.FloatingPL.Length != 0) {
+        FloatingPL = other.FloatingPL;
+      }
+      if (other.AddUvmToFreeMargin.Length != 0) {
+        AddUvmToFreeMargin = other.AddUvmToFreeMargin;
+      }
+      if (other.MinLeverage.Length != 0) {
+        MinLeverage = other.MinLeverage;
+      }
+      if (other.MaxLeverage.Length != 0) {
+        MaxLeverage = other.MaxLeverage;
+      }
+      if (other.margin_ != null) {
+        if (margin_ == null) {
+          margin_ = new global::Api.Margin();
+        }
+        Margin.MergeFrom(other.Margin);
+      }
+      if (other.clearing_ != null) {
+        if (clearing_ == null) {
+          clearing_ = new global::Api.DerivativeOperation();
+        }
+        Clearing.MergeFrom(other.Clearing);
+      }
+      if (other.interest_ != null) {
+        if (interest_ == null) {
+          interest_ = new global::Api.DerivativeOperation();
+        }
+        Interest.MergeFrom(other.Interest);
+      }
+      if (other.premium_ != null) {
+        if (premium_ == null) {
+          premium_ = new global::Api.DerivativeOperation();
+        }
+        Premium.MergeFrom(other.Premium);
+      }
+      if (other.riskAdjustment_ != null) {
+        if (riskAdjustment_ == null) {
+          riskAdjustment_ = new global::Api.DerivativeOperation();
+        }
+        RiskAdjustment.MergeFrom(other.RiskAdjustment);
+      }
+      if (other.PricePrecision != 0) {
+        PricePrecision = other.PricePrecision;
+      }
+      if (other.priceRange_ != null) {
+        if (priceRange_ == null) {
+          priceRange_ = new global::Api.PriceRange();
+        }
+        PriceRange.MergeFrom(other.PriceRange);
+      }
+      if (other.priceLimits_ != null) {
+        if (priceLimits_ == null) {
+          priceLimits_ = new global::Api.PriceLimits();
+        }
+        PriceLimits.MergeFrom(other.PriceLimits);
+      }
+      if (other.Inverse != false) {
+        Inverse = other.Inverse;
+      }
+      if (other.TradingStartDate.Length != 0) {
+        TradingStartDate = other.TradingStartDate;
+      }
+      if (other.ExpiryDate.Length != 0) {
+        ExpiryDate = other.ExpiryDate;
+      }
+      if (other.Basis != 0) {
+        Basis = other.Basis;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ID = input.ReadString();
+            break;
+          }
+          case 18: {
+            Type = input.ReadString();
+            break;
+          }
+          case 26: {
+            Symbol = input.ReadString();
+            break;
+          }
+          case 34: {
+            BaseCurrencyName = input.ReadString();
+            break;
+          }
+          case 42: {
+            QuoteCurrencyName = input.ReadString();
+            break;
+          }
+          case 50: {
+            SettlCurrencyName = input.ReadString();
+            break;
+          }
+          case 56: {
+            TickSize = input.ReadInt32();
+            break;
+          }
+          case 66: {
+            MinOrderQty = input.ReadString();
+            break;
+          }
+          case 74: {
+            OrderQtyStep = input.ReadString();
+            break;
+          }
+          case 82: {
+            LimitOrderMaxDistance = input.ReadString();
+            break;
+          }
+          case 90: {
+            PriceInputMask = input.ReadString();
+            break;
+          }
+          case 98: {
+            indexes_.AddEntriesFrom(input, _repeated_indexes_codec);
+            break;
+          }
+          case 104: {
+            Enabled = input.ReadBool();
+            break;
+          }
+          case 114: {
+            LiquidationMaxDistance = input.ReadString();
+            break;
+          }
+          case 122: {
+            ContractValue = input.ReadString();
+            break;
+          }
+          case 130: {
+            ContractCurrency = input.ReadString();
+            break;
+          }
+          case 138: {
+            LotSize = input.ReadString();
+            break;
+          }
+          case 146: {
+            TickValue = input.ReadString();
+            break;
+          }
+          case 154: {
+            MaxOrderQty = input.ReadString();
+            break;
+          }
+          case 162: {
+            MaxPosVolume = input.ReadString();
+            break;
+          }
+          case 170: {
+            Mark = input.ReadString();
+            break;
+          }
+          case 178: {
+            FloatingPL = input.ReadString();
+            break;
+          }
+          case 186: {
+            AddUvmToFreeMargin = input.ReadString();
+            break;
+          }
+          case 194: {
+            MinLeverage = input.ReadString();
+            break;
+          }
+          case 202: {
+            MaxLeverage = input.ReadString();
+            break;
+          }
+          case 210: {
+            if (margin_ == null) {
+              margin_ = new global::Api.Margin();
+            }
+            input.ReadMessage(margin_);
+            break;
+          }
+          case 218: {
+            if (clearing_ == null) {
+              clearing_ = new global::Api.DerivativeOperation();
+            }
+            input.ReadMessage(clearing_);
+            break;
+          }
+          case 226: {
+            if (interest_ == null) {
+              interest_ = new global::Api.DerivativeOperation();
+            }
+            input.ReadMessage(interest_);
+            break;
+          }
+          case 234: {
+            if (premium_ == null) {
+              premium_ = new global::Api.DerivativeOperation();
+            }
+            input.ReadMessage(premium_);
+            break;
+          }
+          case 242: {
+            if (riskAdjustment_ == null) {
+              riskAdjustment_ = new global::Api.DerivativeOperation();
+            }
+            input.ReadMessage(riskAdjustment_);
+            break;
+          }
+          case 248: {
+            PricePrecision = input.ReadInt32();
+            break;
+          }
+          case 258: {
+            if (priceRange_ == null) {
+              priceRange_ = new global::Api.PriceRange();
+            }
+            input.ReadMessage(priceRange_);
+            break;
+          }
+          case 266: {
+            if (priceLimits_ == null) {
+              priceLimits_ = new global::Api.PriceLimits();
+            }
+            input.ReadMessage(priceLimits_);
+            break;
+          }
+          case 272: {
+            Inverse = input.ReadBool();
+            break;
+          }
+          case 282: {
+            TradingStartDate = input.ReadString();
+            break;
+          }
+          case 290: {
+            ExpiryDate = input.ReadString();
+            break;
+          }
+          case 296: {
+            Basis = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Margin : pb::IMessage<Margin> {
+    private static readonly pb::MessageParser<Margin> _parser = new pb::MessageParser<Margin>(() => new Margin());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Margin> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Api.CommonReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Margin() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Margin(Margin other) : this() {
+      netting_ = other.netting_;
+      rates_ = other.rates_.Clone();
+      rateMultipliers_ = other.rateMultipliers_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Margin Clone() {
+      return new Margin(this);
+    }
+
+    /// <summary>Field number for the "Netting" field.</summary>
+    public const int NettingFieldNumber = 1;
+    private string netting_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Netting {
+      get { return netting_; }
+      set {
+        netting_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Rates" field.</summary>
+    public const int RatesFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Api.MarginRate> _repeated_rates_codec
+        = pb::FieldCodec.ForMessage(18, global::Api.MarginRate.Parser);
+    private readonly pbc::RepeatedField<global::Api.MarginRate> rates_ = new pbc::RepeatedField<global::Api.MarginRate>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Api.MarginRate> Rates {
+      get { return rates_; }
+    }
+
+    /// <summary>Field number for the "RateMultipliers" field.</summary>
+    public const int RateMultipliersFieldNumber = 3;
+    private static readonly pbc::MapField<string, string>.Codec _map_rateMultipliers_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 26);
+    private readonly pbc::MapField<string, string> rateMultipliers_ = new pbc::MapField<string, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, string> RateMultipliers {
+      get { return rateMultipliers_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Margin);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Margin other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Netting != other.Netting) return false;
+      if(!rates_.Equals(other.rates_)) return false;
+      if (!RateMultipliers.Equals(other.RateMultipliers)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Netting.Length != 0) hash ^= Netting.GetHashCode();
+      hash ^= rates_.GetHashCode();
+      hash ^= RateMultipliers.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Netting.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Netting);
+      }
+      rates_.WriteTo(output, _repeated_rates_codec);
+      rateMultipliers_.WriteTo(output, _map_rateMultipliers_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Netting.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Netting);
+      }
+      size += rates_.CalculateSize(_repeated_rates_codec);
+      size += rateMultipliers_.CalculateSize(_map_rateMultipliers_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Margin other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Netting.Length != 0) {
+        Netting = other.Netting;
+      }
+      rates_.Add(other.rates_);
+      rateMultipliers_.Add(other.rateMultipliers_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Netting = input.ReadString();
+            break;
+          }
+          case 18: {
+            rates_.AddEntriesFrom(input, _repeated_rates_codec);
+            break;
+          }
+          case 26: {
+            rateMultipliers_.AddEntriesFrom(input, _map_rateMultipliers_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class MarginRate : pb::IMessage<MarginRate> {
+    private static readonly pb::MessageParser<MarginRate> _parser = new pb::MessageParser<MarginRate>(() => new MarginRate());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MarginRate> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Api.CommonReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MarginRate() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MarginRate(MarginRate other) : this() {
+      maxVolume_ = other.maxVolume_;
+      initialRate_ = other.initialRate_;
+      maintenanceRate_ = other.maintenanceRate_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MarginRate Clone() {
+      return new MarginRate(this);
+    }
+
+    /// <summary>Field number for the "MaxVolume" field.</summary>
+    public const int MaxVolumeFieldNumber = 1;
+    private string maxVolume_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MaxVolume {
+      get { return maxVolume_; }
+      set {
+        maxVolume_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "InitialRate" field.</summary>
+    public const int InitialRateFieldNumber = 2;
+    private string initialRate_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string InitialRate {
+      get { return initialRate_; }
+      set {
+        initialRate_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MaintenanceRate" field.</summary>
+    public const int MaintenanceRateFieldNumber = 3;
+    private string maintenanceRate_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MaintenanceRate {
+      get { return maintenanceRate_; }
+      set {
+        maintenanceRate_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MarginRate);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MarginRate other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MaxVolume != other.MaxVolume) return false;
+      if (InitialRate != other.InitialRate) return false;
+      if (MaintenanceRate != other.MaintenanceRate) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MaxVolume.Length != 0) hash ^= MaxVolume.GetHashCode();
+      if (InitialRate.Length != 0) hash ^= InitialRate.GetHashCode();
+      if (MaintenanceRate.Length != 0) hash ^= MaintenanceRate.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (MaxVolume.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(MaxVolume);
+      }
+      if (InitialRate.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(InitialRate);
+      }
+      if (MaintenanceRate.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(MaintenanceRate);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (MaxVolume.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MaxVolume);
+      }
+      if (InitialRate.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(InitialRate);
+      }
+      if (MaintenanceRate.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MaintenanceRate);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MarginRate other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MaxVolume.Length != 0) {
+        MaxVolume = other.MaxVolume;
+      }
+      if (other.InitialRate.Length != 0) {
+        InitialRate = other.InitialRate;
+      }
+      if (other.MaintenanceRate.Length != 0) {
+        MaintenanceRate = other.MaintenanceRate;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            MaxVolume = input.ReadString();
+            break;
+          }
+          case 18: {
+            InitialRate = input.ReadString();
+            break;
+          }
+          case 26: {
+            MaintenanceRate = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class DerivativeOperation : pb::IMessage<DerivativeOperation> {
+    private static readonly pb::MessageParser<DerivativeOperation> _parser = new pb::MessageParser<DerivativeOperation>(() => new DerivativeOperation());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<DerivativeOperation> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Api.CommonReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DerivativeOperation() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DerivativeOperation(DerivativeOperation other) : this() {
+      enabled_ = other.enabled_;
+      index_ = other.index_;
+      schedule_ = other.schedule_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DerivativeOperation Clone() {
+      return new DerivativeOperation(this);
+    }
+
+    /// <summary>Field number for the "Enabled" field.</summary>
+    public const int EnabledFieldNumber = 1;
+    private bool enabled_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Enabled {
+      get { return enabled_; }
+      set {
+        enabled_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Index" field.</summary>
+    public const int IndexFieldNumber = 2;
+    private string index_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Index {
+      get { return index_; }
+      set {
+        index_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Schedule" field.</summary>
+    public const int ScheduleFieldNumber = 3;
+    private long schedule_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Schedule {
+      get { return schedule_; }
+      set {
+        schedule_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as DerivativeOperation);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(DerivativeOperation other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Enabled != other.Enabled) return false;
+      if (Index != other.Index) return false;
+      if (Schedule != other.Schedule) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Enabled != false) hash ^= Enabled.GetHashCode();
+      if (Index.Length != 0) hash ^= Index.GetHashCode();
+      if (Schedule != 0L) hash ^= Schedule.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Enabled != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Enabled);
+      }
+      if (Index.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Index);
+      }
+      if (Schedule != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(Schedule);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Enabled != false) {
+        size += 1 + 1;
+      }
+      if (Index.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Index);
+      }
+      if (Schedule != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Schedule);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(DerivativeOperation other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Enabled != false) {
+        Enabled = other.Enabled;
+      }
+      if (other.Index.Length != 0) {
+        Index = other.Index;
+      }
+      if (other.Schedule != 0L) {
+        Schedule = other.Schedule;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Enabled = input.ReadBool();
+            break;
+          }
+          case 18: {
+            Index = input.ReadString();
+            break;
+          }
+          case 24: {
+            Schedule = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class PriceRange : pb::IMessage<PriceRange> {
+    private static readonly pb::MessageParser<PriceRange> _parser = new pb::MessageParser<PriceRange>(() => new PriceRange());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<PriceRange> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Api.CommonReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PriceRange() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PriceRange(PriceRange other) : this() {
+      enabled_ = other.enabled_;
+      distance_ = other.distance_;
+      movingBoundary_ = other.movingBoundary_;
+      movingTime_ = other.movingTime_;
+      lowIndex_ = other.lowIndex_;
+      highIndex_ = other.highIndex_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PriceRange Clone() {
+      return new PriceRange(this);
+    }
+
+    /// <summary>Field number for the "Enabled" field.</summary>
+    public const int EnabledFieldNumber = 1;
+    private bool enabled_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Enabled {
+      get { return enabled_; }
+      set {
+        enabled_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Distance" field.</summary>
+    public const int DistanceFieldNumber = 2;
+    private string distance_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Distance {
+      get { return distance_; }
+      set {
+        distance_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MovingBoundary" field.</summary>
+    public const int MovingBoundaryFieldNumber = 3;
+    private string movingBoundary_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MovingBoundary {
+      get { return movingBoundary_; }
+      set {
+        movingBoundary_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MovingTime" field.</summary>
+    public const int MovingTimeFieldNumber = 4;
+    private long movingTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long MovingTime {
+      get { return movingTime_; }
+      set {
+        movingTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LowIndex" field.</summary>
+    public const int LowIndexFieldNumber = 5;
+    private string lowIndex_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LowIndex {
+      get { return lowIndex_; }
+      set {
+        lowIndex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "HighIndex" field.</summary>
+    public const int HighIndexFieldNumber = 6;
+    private string highIndex_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string HighIndex {
+      get { return highIndex_; }
+      set {
+        highIndex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as PriceRange);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(PriceRange other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Enabled != other.Enabled) return false;
+      if (Distance != other.Distance) return false;
+      if (MovingBoundary != other.MovingBoundary) return false;
+      if (MovingTime != other.MovingTime) return false;
+      if (LowIndex != other.LowIndex) return false;
+      if (HighIndex != other.HighIndex) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Enabled != false) hash ^= Enabled.GetHashCode();
+      if (Distance.Length != 0) hash ^= Distance.GetHashCode();
+      if (MovingBoundary.Length != 0) hash ^= MovingBoundary.GetHashCode();
+      if (MovingTime != 0L) hash ^= MovingTime.GetHashCode();
+      if (LowIndex.Length != 0) hash ^= LowIndex.GetHashCode();
+      if (HighIndex.Length != 0) hash ^= HighIndex.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Enabled != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Enabled);
+      }
+      if (Distance.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Distance);
+      }
+      if (MovingBoundary.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(MovingBoundary);
+      }
+      if (MovingTime != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(MovingTime);
+      }
+      if (LowIndex.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(LowIndex);
+      }
+      if (HighIndex.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(HighIndex);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Enabled != false) {
+        size += 1 + 1;
+      }
+      if (Distance.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Distance);
+      }
+      if (MovingBoundary.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MovingBoundary);
+      }
+      if (MovingTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MovingTime);
+      }
+      if (LowIndex.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LowIndex);
+      }
+      if (HighIndex.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(HighIndex);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(PriceRange other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Enabled != false) {
+        Enabled = other.Enabled;
+      }
+      if (other.Distance.Length != 0) {
+        Distance = other.Distance;
+      }
+      if (other.MovingBoundary.Length != 0) {
+        MovingBoundary = other.MovingBoundary;
+      }
+      if (other.MovingTime != 0L) {
+        MovingTime = other.MovingTime;
+      }
+      if (other.LowIndex.Length != 0) {
+        LowIndex = other.LowIndex;
+      }
+      if (other.HighIndex.Length != 0) {
+        HighIndex = other.HighIndex;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Enabled = input.ReadBool();
+            break;
+          }
+          case 18: {
+            Distance = input.ReadString();
+            break;
+          }
+          case 26: {
+            MovingBoundary = input.ReadString();
+            break;
+          }
+          case 32: {
+            MovingTime = input.ReadInt64();
+            break;
+          }
+          case 42: {
+            LowIndex = input.ReadString();
+            break;
+          }
+          case 50: {
+            HighIndex = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class PriceLimits : pb::IMessage<PriceLimits> {
+    private static readonly pb::MessageParser<PriceLimits> _parser = new pb::MessageParser<PriceLimits>(() => new PriceLimits());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<PriceLimits> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Api.CommonReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PriceLimits() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PriceLimits(PriceLimits other) : this() {
+      enabled_ = other.enabled_;
+      distance_ = other.distance_;
+      lowIndex_ = other.lowIndex_;
+      highIndex_ = other.highIndex_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public PriceLimits Clone() {
+      return new PriceLimits(this);
+    }
+
+    /// <summary>Field number for the "Enabled" field.</summary>
+    public const int EnabledFieldNumber = 1;
+    private bool enabled_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Enabled {
+      get { return enabled_; }
+      set {
+        enabled_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Distance" field.</summary>
+    public const int DistanceFieldNumber = 2;
+    private string distance_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Distance {
+      get { return distance_; }
+      set {
+        distance_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "LowIndex" field.</summary>
+    public const int LowIndexFieldNumber = 3;
+    private string lowIndex_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LowIndex {
+      get { return lowIndex_; }
+      set {
+        lowIndex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "HighIndex" field.</summary>
+    public const int HighIndexFieldNumber = 4;
+    private string highIndex_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string HighIndex {
+      get { return highIndex_; }
+      set {
+        highIndex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as PriceLimits);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(PriceLimits other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Enabled != other.Enabled) return false;
+      if (Distance != other.Distance) return false;
+      if (LowIndex != other.LowIndex) return false;
+      if (HighIndex != other.HighIndex) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Enabled != false) hash ^= Enabled.GetHashCode();
+      if (Distance.Length != 0) hash ^= Distance.GetHashCode();
+      if (LowIndex.Length != 0) hash ^= LowIndex.GetHashCode();
+      if (HighIndex.Length != 0) hash ^= HighIndex.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Enabled != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Enabled);
+      }
+      if (Distance.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Distance);
+      }
+      if (LowIndex.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(LowIndex);
+      }
+      if (HighIndex.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(HighIndex);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Enabled != false) {
+        size += 1 + 1;
+      }
+      if (Distance.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Distance);
+      }
+      if (LowIndex.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LowIndex);
+      }
+      if (HighIndex.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(HighIndex);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(PriceLimits other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Enabled != false) {
+        Enabled = other.Enabled;
+      }
+      if (other.Distance.Length != 0) {
+        Distance = other.Distance;
+      }
+      if (other.LowIndex.Length != 0) {
+        LowIndex = other.LowIndex;
+      }
+      if (other.HighIndex.Length != 0) {
+        HighIndex = other.HighIndex;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Enabled = input.ReadBool();
+            break;
+          }
+          case 18: {
+            Distance = input.ReadString();
+            break;
+          }
+          case 26: {
+            LowIndex = input.ReadString();
+            break;
+          }
+          case 34: {
+            HighIndex = input.ReadString();
             break;
           }
         }

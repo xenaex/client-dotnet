@@ -1,32 +1,25 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Api;
 using Google.Protobuf;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using XenaExchange.Client.Messages;
 using XenaExchange.Client.Messages.Constants;
-using XenaExchange.Client.Rest.Exceptions;
 using XenaExchange.Client.Rest.Requests;
-using XenaExchange.Client.Serialization;
 using XenaExchange.Client.Serialization.Rest;
 using XenaExchange.Client.Signature;
 using XenaExchange.Client.Ws.Common;
 
-namespace XenaExchange.Client.Rest
+namespace XenaExchange.Client.Rest.Trading
 {
     /// <summary>
     /// An implementation of Xena trading rest client.
     /// </summary>
-    public class TradingRestClient : ITradingRestClient
+    public class TradingRestClient : RestClientBase, ITradingRestClient
     {
-        public const string HttpClientName = "xena.exchange";
-
         private const string TradingPrefix = "trading/";
         private const string NewOrderPath = TradingPrefix + "order/new";
         private const string CancelOrderPath = TradingPrefix + "order/cancel";
@@ -41,23 +34,16 @@ namespace XenaExchange.Client.Rest
         private const string ActiveOrdersPathTemplate = TradingPrefix + "accounts/{0}/orders";
         private const string TradeHistoryPathTemplate = TradingPrefix + "accounts/{0}/trade-history";
 
-        private readonly IHttpClientFactory _httpClientFactory;
         private readonly TradingRestClientOptions _options;
-        private readonly ISerializer _serializer;
-        private readonly ILogger _logger;
-
-        private HttpClient HttpClient => _httpClientFactory.CreateClient(HttpClientName);
+        private readonly IRestSerializer _serializer;
 
         public TradingRestClient(
             IHttpClientFactory httpClientFactory,
             TradingRestClientOptions options,
-            IRestSerializer serializer,
-            ILogger<TradingRestClient> logger)
+            IRestSerializer serializer) : base(httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
             _options = options;
             _serializer = serializer;
-            _logger = logger;
         }
 
         /// <inheritdoc />
@@ -291,10 +277,9 @@ namespace XenaExchange.Client.Rest
         /// <inheritdoc />
         public async Task<AccountInfo[]> ListAccountsAsync(CancellationToken cancellationToken = default)
         {
-            var responseString = await SendAsync(AccountsPath, HttpMethod.Get, cancellationToken: cancellationToken)
+            var response = await SendAsync<ListAccountsResponse>(AccountsPath, HttpMethod.Get, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
-            var response = JsonConvert.DeserializeObject<ListAccountsResponse>(responseString);
             return response.Accounts;
         }
 
@@ -363,10 +348,8 @@ namespace XenaExchange.Client.Rest
             CancellationToken cancellationToken = default)
         {
             var path = string.Format(ActiveOrdersPathTemplate, account);
-            var responseString = await SendAsync(path, HttpMethod.Get, cancellationToken: cancellationToken)
+            return await SendAsync<ExecutionReport[]>(path, HttpMethod.Get, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
-
-            return _serializer.Deserialize<ExecutionReport[]>(responseString);
         }
 
         /// <inheritdoc />
@@ -392,10 +375,11 @@ namespace XenaExchange.Client.Rest
                 parameters.Add("limit="+request.Limit);
 
             var query = parameters.Count == 0 ? null : string.Join("&", parameters);
-            var responseString = await SendAsync(path, HttpMethod.Get, query: query, cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
-
-            return _serializer.Deserialize<ExecutionReport[]>(responseString);
+            return await SendAsync<ExecutionReport[]>(
+                    path,
+                    HttpMethod.Get,
+                    query: query,
+                    cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         private async Task<PositionReport[]> ListPositionsInternalAsync(
@@ -403,10 +387,11 @@ namespace XenaExchange.Client.Rest
             string query = null,
             CancellationToken cancellationToken = default)
         {
-            var responseString = await SendAsync(path, HttpMethod.Get, query: query, cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
-
-            return _serializer.Deserialize<PositionReport[]>(responseString);
+            return await SendAsync<PositionReport[]>(
+                    path,
+                    HttpMethod.Get,
+                    query: query,
+                    cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         private async Task<TResult> GetAsync<TResult>(
@@ -415,10 +400,8 @@ namespace XenaExchange.Client.Rest
             CancellationToken cancellationToken = default)
             where TResult : IMessage
         {
-            var responseStr = await SendAsync(path, HttpMethod.Get, query: query, cancellationToken: cancellationToken)
+            return await SendAsync<TResult>(path, HttpMethod.Get, query: query, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
-
-            return _serializer.Deserialize<TResult>(responseStr);
         }
 
         private async Task<TResult> PostAsync<TResult>(
@@ -427,25 +410,21 @@ namespace XenaExchange.Client.Rest
             CancellationToken cancellationToken = default)
             where TResult: IMessage
         {
-            var responseStr = await SendAsync(path, HttpMethod.Post, command: command, cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
-
-            return _serializer.Deserialize<TResult>(responseStr);
+            return await SendAsync<TResult>(
+                    path,
+                    HttpMethod.Post,
+                    command: command,
+                    cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        private async Task<string> SendAsync(
+        private async Task<TResult> SendAsync<TResult>(
             string path,
             HttpMethod method,
             string query = null,
             IMessage command = null,
             CancellationToken cancellationToken = default)
         {
-            var httpClient = HttpClient;
-            var uriBuilder = new UriBuilder(httpClient.BaseAddress) { Path = path };
-            if (!string.IsNullOrWhiteSpace(query))
-                uriBuilder.Query = query;
-
-            var request = new HttpRequestMessage(method, uriBuilder.Uri);
+            var request = BuildRequestBase(path, method, query);
 
             var nonce = (new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds() * 1000000).ToString();
             var authPayload = $"AUTH{nonce}";
@@ -462,31 +441,7 @@ namespace XenaExchange.Client.Rest
                 request.Content = new StringContent(payload, Encoding.UTF8, "application/json");
             }
 
-            var response = await httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-            switch (response.StatusCode)
-            {
-                case HttpStatusCode.OK:
-                    return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                case var _ when response.StatusCode < HttpStatusCode.BadRequest:
-                    throw new RestClientException(
-                        $"Only {HttpStatusCode.OK} successful code is supported",
-                        response.StatusCode);
-
-                default:
-                    var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    var error = content;
-
-                    if (!string.IsNullOrWhiteSpace(content))
-                    {
-                        try
-                        {
-                            error = JsonConvert.DeserializeObject<ErrorResponse>(content)?.Error;
-                        }
-                        catch (Exception) {} // If it's not a json, ok, let's return content as is
-                    }
-
-                    throw new RestClientException(error, response.StatusCode);
-            }
+            return await SendAsyncBase<TResult>(request, _serializer, cancellationToken).ConfigureAwait(false);
         }
     }
 }
