@@ -42,6 +42,7 @@ namespace XenaExchange.Client.Rest.MarketData
 
         /// <summary>
         /// List spot and margin instruments.
+        /// Check out Common.cs for available instruments constants.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>List of instruments.</returns>
