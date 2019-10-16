@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
@@ -69,14 +71,10 @@ namespace XenaExchange.Client.Examples
             var tradingLogger = Dependencies.ConsoleLogger<TradingWsClient>(logLevel);
             var tradingWsClient = new TradingWsClient(TradingWsOptions, fixSerializer, tradingLogger);
             var tradingExample = new TradingWsExample(tradingWsClient, TradingWsOptions, Dependencies.ConsoleLogger<TradingWsExample>(logLevel));
-            await tradingExample.StartAsync(Token).ConfigureAwait(false);
 
-            // Trading rest example
-            var httpClientFactory = Dependencies.CreateHttpClientFactory(
-                RestClientBase.HttpClientName,
-                "https://api.xena.exchange");
+            var httpClient = new HttpClient {BaseAddress = new Uri("https://api.xena.exchange")};
 
-            var tradingRestClient = new TradingRestClient(httpClientFactory, TradingRestOptions, restSerializer);
+            var tradingRestClient = new TradingRestClient(TradingRestOptions, restSerializer, httpClient: httpClient);
             var tradingRestExample = new TradingRestExample(
                 tradingRestClient,
                 Dependencies.ConsoleLogger<TradingRestExample>(logLevel));
@@ -84,7 +82,7 @@ namespace XenaExchange.Client.Examples
             await tradingRestExample.StartAsync(Token).ConfigureAwait(false);
 
             // Market data rest example
-            var marketDataRestClient = new MarketDataRestClient(httpClientFactory, fixSerializer, restSerializer);
+            var marketDataRestClient = new MarketDataRestClient(fixSerializer, restSerializer, httpClient: httpClient);
             var marketDataRestExample = new MarketDataRestExample(
                 marketDataRestClient,
                 Dependencies.ConsoleLogger<MarketDataRestExample>(logLevel));

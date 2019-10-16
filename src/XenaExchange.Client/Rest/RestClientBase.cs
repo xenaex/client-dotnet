@@ -14,12 +14,20 @@ namespace XenaExchange.Client.Rest
         public const string HttpClientName = "xena.exchange";
 
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly HttpClient _httpClient;
 
-        protected HttpClient HttpClient => _httpClientFactory.CreateClient(HttpClientName);
+        protected HttpClient HttpClient => _httpClientFactory?.CreateClient(HttpClientName) ?? _httpClient;
 
-        protected RestClientBase(IHttpClientFactory httpClientFactory)
+        protected RestClientBase(IHttpClientFactory httpClientFactory = null, HttpClient httpClient = null)
         {
+            if (httpClientFactory == null && httpClient == null)
+            {
+                var msg = $"Either {nameof(httpClientFactory)} or {nameof(httpClient)} should be specified.";
+                throw new ArgumentNullException(msg);
+            }
+
             _httpClientFactory = httpClientFactory;
+            _httpClient = httpClient;
         }
 
         protected HttpRequestMessage BuildRequestBase(string path, HttpMethod method, string query = null)
@@ -63,7 +71,7 @@ namespace XenaExchange.Client.Rest
                         } // If it's not a json, ok, let's return content as is
                     }
 
-                    throw new RestClientException(error, response.StatusCode);
+                    throw new RestClientException(error, response.StatusCode, request.RequestUri.AbsoluteUri);
             }
         }
     }

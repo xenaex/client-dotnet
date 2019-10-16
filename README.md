@@ -137,14 +137,12 @@ await wsClient.NewMarketOrderAsync(
 
 Register an account with [Xena](https://trading.xena.exchange/registration). Generate an API Key and assign relevant permissions.
 
-```csharp
-// IHttpClientFactory implementation. Check out "examples" folder for details.
-var httpClientFactory = CreateHttpClientFactory();
-
+```csharpvar
+httpClient = new HttpClient {BaseAddress = new Uri("https://api.xena.exchange")};
 var options = new TradingRestClientOptions { ApiKey = "TO_FILL", ApiSecret = "TO_FILL" };
 var restSerializer = new RestSerializer();
 
-var restClient = new TradingRestClient(httpClientFactory, options, restSerializer);
+var restClient = new TradingRestClient(options, restSerializer, httpClient: httpClient);
 
 var executionReport = await restClient.NewMarketOrderAsync(
     "market-order-1",
@@ -159,13 +157,11 @@ HandleOrderReport(executionReport);
 #### Market data rest example
 
 ```csharp
-// IHttpClientFactory implementation. Check out "examples" folder for details.
-var httpClientFactory = CreateHttpClientFactory();
-
+httpClient = new HttpClient {BaseAddress = new Uri("https://api.xena.exchange")};
 var fixSerializer = new FixSerializer();
 var restSerializer = new RestSerializer();
 
-var marketDataRestClient = new MarketDataRestClient(httpClientFactory, fixSerializer, restSerializer);
+var marketDataRestClient = new MarketDataRestClient(fixSerializer, restSerializer, httpClient: httpClient);
 
 var mdRefresh = await _restClient
     .GetDomAsync("XBTUSD", cancellationToken: cancellationToken)

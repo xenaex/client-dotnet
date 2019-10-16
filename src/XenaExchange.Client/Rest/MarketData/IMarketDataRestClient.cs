@@ -30,15 +30,9 @@ namespace XenaExchange.Client.Rest.MarketData
         /// Get L2 snapshot for specified symbol.
         /// </summary>
         /// <param name="symbol">Symbol.</param>
-        /// <param name="aggregation">DOM prices are rounded to TickSize*aggregation and than aggregated.
-        /// Symbol TickSize could be obtained from https://trading.xena.exchange/en/platform-specification/instruments
-        /// Available aggregation values are listed in DOMAggregation constants.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns><see cref="MarketDataRefresh"/> with bids and asks enumerated in <see cref="MarketDataRefresh.MDEntry"/>.</returns>
-        Task<MarketDataRefresh> GetDomAsync(
-            string symbol,
-            long aggregation = 0,
-            CancellationToken cancellationToken = default);
+        Task<MarketDataRefresh> GetDomAsync(string symbol, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List spot and margin instruments.

@@ -25,10 +25,20 @@ namespace XenaExchange.Client.Rest.MarketData
         private readonly IFixSerializer _fixSerializer;
         private readonly IRestSerializer _restSerializer;
 
+        /// <summary>
+        /// Creates an instance of market data rest client.
+        /// Either <paramref name="httpClientFactory"/> or <paramref name="httpClient"/> should be specified.
+        /// If both are present, <paramref name="httpClientFactory"/> will be used.
+        /// </summary>
+        /// <param name="fixSerializer">Fix serializer.</param>
+        /// <param name="restSerializer">Rest serializer.</param>
+        /// <param name="httpClientFactory">Http client factory.</param>
+        /// <param name="httpClient">Http client.</param>
         public MarketDataRestClient(
-            IHttpClientFactory httpClientFactory,
             IFixSerializer fixSerializer,
-            IRestSerializer restSerializer) : base(httpClientFactory)
+            IRestSerializer restSerializer,
+            IHttpClientFactory httpClientFactory = null,
+            HttpClient httpClient = null) : base(httpClientFactory, httpClient)
         {
             _fixSerializer = fixSerializer;
             _restSerializer = restSerializer;
@@ -64,22 +74,13 @@ namespace XenaExchange.Client.Rest.MarketData
         }
 
         /// <inheritdoc />
-        public async Task<MarketDataRefresh> GetDomAsync(
-            string symbol,
-            long aggregation = 0,
-            CancellationToken cancellationToken = default)
+        public async Task<MarketDataRefresh> GetDomAsync(string symbol, CancellationToken cancellationToken = default)
         {
             Validator.NotNullOrEmpty(nameof(symbol), symbol);
-            Validator.GrThanOrEq(nameof(aggregation), aggregation, 0);
 
             var path = $"{DomBasePath}/{symbol}";
-            var query = aggregation == 0 ? null : $"aggr={aggregation}";
-
-            return await GetAsync<MarketDataRefresh>(
-                    path,
-                    _fixSerializer,
-                    query: query,
-                    cancellationToken: cancellationToken).ConfigureAwait(false);
+            return await GetAsync<MarketDataRefresh>(path, _fixSerializer, cancellationToken: cancellationToken)
+                .ConfigureAwait(false);
         }
 
         /// <inheritdoc />

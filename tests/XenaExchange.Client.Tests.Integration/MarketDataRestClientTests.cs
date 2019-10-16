@@ -72,7 +72,7 @@ namespace XenaExchange.Client.Tests.Integration
         public async Task Test_GetDomAsync()
         {
             var mdRefresh = await _restClient
-                .GetDomAsync("XBTUSD", aggregation: DOMAggregation.Aggregation250, cancellationToken: _token)
+                .GetDomAsync("XBTUSD", cancellationToken: _token)
                 .ConfigureAwait(false);
 
             mdRefresh.Should().NotBeNull();

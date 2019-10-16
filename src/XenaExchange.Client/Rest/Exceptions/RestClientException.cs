@@ -11,28 +11,34 @@ namespace XenaExchange.Client.Rest.Exceptions
     {
         public readonly HttpStatusCode StatusCode;
 
-        public RestClientException(HttpStatusCode statusCode)
+        public readonly string RequestAbsoluteUri;
+
+        public RestClientException(HttpStatusCode statusCode, string requestAbsoluteUri)
         {
             StatusCode = statusCode;
+            RequestAbsoluteUri = requestAbsoluteUri;
         }
 
-        protected RestClientException(SerializationInfo info, StreamingContext context, HttpStatusCode statusCode)
+        protected RestClientException(SerializationInfo info, StreamingContext context, HttpStatusCode statusCode, string requestAbsoluteUri)
             : base(info, context)
         {
             StatusCode = statusCode;
+            RequestAbsoluteUri = requestAbsoluteUri;
         }
 
-        public RestClientException(string message, HttpStatusCode statusCode) : base(message)
+        public RestClientException(string message, HttpStatusCode statusCode, string requestAbsoluteUri = null) : base(message)
         {
             StatusCode = statusCode;
+            RequestAbsoluteUri = requestAbsoluteUri;
         }
 
-        public RestClientException(string message, Exception innerException, HttpStatusCode statusCode)
+        public RestClientException(string message, Exception innerException, HttpStatusCode statusCode, string requestAbsoluteUri)
             : base(message, innerException)
         {
             StatusCode = statusCode;
+            RequestAbsoluteUri = requestAbsoluteUri;
         }
 
-        public override string Message => $"Status code: {StatusCode}, Message: {base.Message}";
+        public override string Message => $"Uri: {RequestAbsoluteUri}, Status code: {StatusCode}, Message: {base.Message}";
     }
 }

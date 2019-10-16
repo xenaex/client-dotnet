@@ -37,10 +37,20 @@ namespace XenaExchange.Client.Rest.Trading
         private readonly TradingRestClientOptions _options;
         private readonly IRestSerializer _serializer;
 
+        /// <summary>
+        /// Creates an instance of trading rest client.
+        /// Either <paramref name="httpClientFactory"/> or <paramref name="httpClient"/> should be specified.
+        /// If both are present, <paramref name="httpClientFactory"/> will be used.
+        /// </summary>
+        /// <param name="options">Trading rest client options.</param>
+        /// <param name="serializer">Rest serializer.</param>
+        /// <param name="httpClientFactory">Http client factory.</param>
+        /// <param name="httpClient">Http client.</param>
         public TradingRestClient(
-            IHttpClientFactory httpClientFactory,
             TradingRestClientOptions options,
-            IRestSerializer serializer) : base(httpClientFactory)
+            IRestSerializer serializer,
+            IHttpClientFactory httpClientFactory = null,
+            HttpClient httpClient = null) : base(httpClientFactory, httpClient)
         {
             _options = options;
             _serializer = serializer;
