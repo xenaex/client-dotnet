@@ -385,6 +385,10 @@ namespace XenaExchange.Client.Ws.TradingApi
                     await HandleConcreteAsync(marginRequirementReport, handler).ConfigureAwait(false);
                     break;
 
+                case PositionReport positionReport:
+                    await HandleConcreteAsync(positionReport, handler).ConfigureAwait(false);
+                    break;
+
                 case MassPositionReport massPositionReport:
                     await HandleConcreteAsync(massPositionReport, handler).ConfigureAwait(false);
                     break;
@@ -403,6 +407,10 @@ namespace XenaExchange.Client.Ws.TradingApi
 
                 case OrderCancelReject orderCancelReject:
                     await HandleConcreteAsync(orderCancelReject, handler).ConfigureAwait(false);
+                    break;
+
+                default:
+                    Logger.LogError($"RouteToHandlerAsync not implemented for {msg.GetType().Name}");
                     break;
             }
         }
