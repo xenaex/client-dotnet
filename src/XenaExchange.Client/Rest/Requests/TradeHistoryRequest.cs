@@ -48,7 +48,7 @@ namespace XenaExchange.Client.Rest.Requests
         public int? Limit { get; set; }
 
         /// <summary>
-        ///
+        /// Creates new instance of trade history request.
         /// </summary>
         /// <param name="account">Account ID.</param>
         /// <param name="tradeId">ID of a concrete trade to get an only one.</param>

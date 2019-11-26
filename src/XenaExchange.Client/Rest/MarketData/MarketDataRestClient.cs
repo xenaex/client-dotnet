@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Api;
 using XenaExchange.Client.Messages.Constants;
+using XenaExchange.Client.Rest.Requests;
 using XenaExchange.Client.Serialization;
 using XenaExchange.Client.Serialization.Fix;
 using XenaExchange.Client.Serialization.Rest;
@@ -22,6 +23,7 @@ namespace XenaExchange.Client.Rest.MarketData
         private const string DomBasePath = MdPrefix + "dom";
         private const string InstrumentPath = "public/instruments";
         private const string ServerTimePath = MdPrefix + "server-time";
+        private const string TradesBasePath = MdPrefix + "trades";
 
         private readonly IFixSerializer _fixSerializer;
         private readonly IRestSerializer _restSerializer;
@@ -97,6 +99,33 @@ namespace XenaExchange.Client.Rest.MarketData
                 .ConfigureAwait(false);
 
             return Functions.FromUnixNano(response.TransactTime);
+        }
+
+        public async Task<MarketDataRefresh> TradeHistoryAsync(TradeHistoryMdRequest request, CancellationToken cancellationToken = default)
+        {
+            Validator.NotNull(nameof(request) ,request);
+            Validator.NotNullOrEmpty(nameof(request.Symbol), request.Symbol);
+
+            var path = $"{TradesBasePath}/{request.Symbol}";
+            var parameters = new List<string>();
+            if (request.From.HasValue)
+                parameters.Add($"from={request.From.Value.ToUnixNano()}");
+            if (request.To.HasValue)
+                parameters.Add($"to={request.To.Value.ToUnixNano()}");
+            if (request.PageNumber.HasValue)
+                parameters.Add($"page={request.PageNumber}");
+            if (request.Limit.HasValue)
+                parameters.Add($"limit={request.Limit}");
+
+            string query = null;
+            if (parameters.Count > 0)
+                query = string.Join("&", parameters);
+
+            return await GetAsync<MarketDataRefresh>(
+                path,
+                _fixSerializer,
+                query: query,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         private async Task<TResult> GetAsync<TResult>(
