@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace XenaExchange.Client.Ws.Common
+namespace XenaExchange.Client.Messages
 {
-    public static class Validator
+    internal static class Validator
     {
         public static void NotNullOrEmpty(string paramName, string value)
         {

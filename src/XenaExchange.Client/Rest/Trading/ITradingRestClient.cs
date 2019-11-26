@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Api;
+using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Rest.Exceptions;
 using XenaExchange.Client.Rest.Requests;
 
@@ -300,6 +301,25 @@ namespace XenaExchange.Client.Rest.Trading
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport[]> TradeHistoryAsync(
             TradeHistoryRequest request,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Creates OrderMassCancelRequest and send request.
+        /// To receive response, client has to listen <see cref="OrderMassCancelReport"/>.
+        /// </summary>
+        /// <param name="account">Account id.</param>
+        /// <param name="clOrdId">Client order id for current cancelling order.</param>
+        /// <param name="symbol">Orders' symbol to cancel (optional).</param>
+        /// <param name="side">Orders' side to cancel (optional).</param>
+        /// <param name="positionEffect">Orders' position effect to cancel (optional).</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="OrderMassCancelReport"/>Order mass cancel report.</returns>
+        /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
+        Task<OrderMassCancelReport> OrderMassCancelAsync(ulong account,
+            string clOrdId,
+            string symbol = null,
+            string side = null,
+            string positionEffect = PositionEffect.Default,
             CancellationToken cancellationToken = default);
     }
 }

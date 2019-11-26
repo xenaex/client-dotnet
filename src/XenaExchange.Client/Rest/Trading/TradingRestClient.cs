@@ -24,6 +24,7 @@ namespace XenaExchange.Client.Rest.Trading
         private const string NewOrderPath = TradingPrefix + "order/new";
         private const string CancelOrderPath = TradingPrefix + "order/cancel";
         private const string ReplaceOrderPath = TradingPrefix + "order/replace";
+        private const string MassCancelPath = TradingPrefix + "order/mass-cancel";
         private const string PositionMaintenancePath = TradingPrefix + "position/maintenance";
         private const string AccountsPath = TradingPrefix + "accounts";
 
@@ -390,6 +391,21 @@ namespace XenaExchange.Client.Rest.Trading
                     HttpMethod.Get,
                     query: query,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<OrderMassCancelReport> OrderMassCancelAsync(
+            ulong account,
+            string clOrdId,
+            string symbol = null,
+            string side = null,
+            string positionEffect = PositionEffect.Default,
+            CancellationToken cancellationToken = default)
+        {
+            var command = new OrderMassCancelRequest(account, clOrdId, symbol, side, positionEffect);
+            command.Validate();
+
+            return await PostAsync<OrderMassCancelReport>(MassCancelPath, command, cancellationToken)
+                .ConfigureAwait(false);
         }
 
         private async Task<PositionReport[]> ListPositionsInternalAsync(

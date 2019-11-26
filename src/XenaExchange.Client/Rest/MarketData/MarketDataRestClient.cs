@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Api;
+using XenaExchange.Client.Messages;
 using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Rest.Requests;
 using XenaExchange.Client.Serialization;

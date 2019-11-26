@@ -98,49 +98,64 @@ namespace Api {
             "KAlSCW9yZFN0YXR1cxIrChBDeGxSZWpSZXNwb25zZVRvGLIDIAEoCVIQY3hs",
             "UmVqUmVzcG9uc2VUbxIiCgxDeGxSZWpSZWFzb24YZiABKAlSDGN4bFJlalJl",
             "YXNvbhIfCgpSZWplY3RUZXh0GLAKIAEoCVIKcmVqZWN0VGV4dBIiCgxUcmFu",
-            "c2FjdFRpbWUYPCABKANSDHRyYW5zYWN0VGltZSJzChJPcmRlclN0YXR1c1Jl",
-            "cXVlc3QSGAoHTXNnVHlwZRgjIAEoCVIHbXNnVHlwZRIpCg9NYXNzU3RhdHVz",
-            "UmVxSWQYyAQgASgJUg9tYXNzU3RhdHVzUmVxSWQSGAoHQWNjb3VudBgBIAEo",
-            "BFIHYWNjb3VudCJbCgZSZWplY3QSGAoHTXNnVHlwZRgjIAEoCVIHbXNnVHlw",
-            "ZRIjCgxSZWplY3RSZWFzb24Y/AIgASgJUgxyZWplY3RSZWFzb24SEgoEVGV4",
-            "dBg6IAEoCVIEdGV4dCKNAgoXT3JkZXJNYXNzU3RhdHVzUmVzcG9uc2USGAoH",
-            "TXNnVHlwZRgjIAEoCVIHbXNnVHlwZRIpCg9NYXNzU3RhdHVzUmVxSWQYyAQg",
-            "ASgJUg9tYXNzU3RhdHVzUmVxSWQSGAoHQWNjb3VudBgBIAEoBFIHYWNjb3Vu",
-            "dBItCgZPcmRlcnMY9AkgAygLMhQuYXBpLkV4ZWN1dGlvblJlcG9ydFIGb3Jk",
-            "ZXJzEisKBUZpbGxzGPUJIAMoCzIULmFwaS5FeGVjdXRpb25SZXBvcnRSBWZp",
-            "bGxzEiMKDFJlamVjdFJlYXNvbhj8AiABKAlSDHJlamVjdFJlYXNvbhISCgRU",
-            "ZXh0GDogASgJUgR0ZXh0Io0EChlPcmRlckNhbmNlbFJlcGxhY2VSZXF1ZXN0",
-            "EhgKB01zZ1R5cGUYIyABKAlSB21zZ1R5cGUSGAoHQ2xPcmRJZBgLIAEoCVIH",
-            "Y2xPcmRJZBIgCgtPcmlnQ2xPcmRJZBgpIAEoCVILb3JpZ0NsT3JkSWQSGAoH",
-            "T3JkZXJJZBglIAEoCVIHb3JkZXJJZBIWCgZTeW1ib2wYNyABKAlSBnN5bWJv",
-            "bBISCgRTaWRlGDYgASgJUgRzaWRlEiIKDFRyYW5zYWN0VGltZRg8IAEoA1IM",
-            "dHJhbnNhY3RUaW1lEhgKB0FjY291bnQYASABKARSB2FjY291bnQSGgoIRXhl",
-            "Y0luc3QYEiADKAlSCGV4ZWNJbnN0EhoKCE9yZGVyUXR5GCYgASgJUghvcmRl",
-            "clF0eRIUCgVQcmljZRgsIAEoCVIFcHJpY2USFgoGU3RvcFB4GGMgASgJUgZz",
-            "dG9wUHgSGwoIQ2FwUHJpY2UYrwkgASgJUghjYXBQcmljZRIjCgxQZWdQcmlj",
-            "ZVR5cGUYxgggASgJUgxwZWdQcmljZVR5cGUSJQoNUGVnT2Zmc2V0VHlwZRjE",
-            "BiABKAlSDXBlZ09mZnNldFR5cGUSJwoOUGVnT2Zmc2V0VmFsdWUY0wEgASgJ",
-            "Ug5wZWdPZmZzZXRWYWx1ZRIeCgRTTFRQGIgnIAMoCzIJLmFwaS5TTFRQUgRz",
-            "bHRwIu0CCgxOZXdPcmRlckxpc3QSGAoHTXNnVHlwZRgjIAEoCVIHbXNnVHlw",
-            "ZRIWCgZMaXN0SWQYQiABKAlSBmxpc3RJZBIZCgdCaWRUeXBlGIoDIAEoCVIH",
-            "YmlkVHlwZRIgCgtUb3ROb09yZGVycxhEIAEoBVILdG90Tm9PcmRlcnMSKQoP",
-            "Q29udGluZ2VuY3lUeXBlGOkKIAEoCVIPY29udGluZ2VuY3lUeXBlEjMKCkxp",
-            "c3RPcmRHcnAYSSADKAsyEy5hcGkuTmV3T3JkZXJTaW5nbGVSCmxpc3RPcmRH",
-            "cnASOAoNTmVzdGVkTGlzdEdycBjtDSADKAsyES5hcGkuTmV3T3JkZXJMaXN0",
-            "Ug1uZXN0ZWRMaXN0R3JwEhYKBlN5bWJvbBg3IAEoCVIGc3ltYm9sEiIKDFRy",
-            "YW5zYWN0VGltZRg8IAEoA1IMdHJhbnNhY3RUaW1lEhgKB0FjY291bnQYASAB",
-            "KARSB2FjY291bnQiVgoPT3JkZXJMaXN0QWN0aW9uEikKD0NvbnRpbmdlbmN5",
-            "VHlwZRjpCiABKAlSD2NvbnRpbmdlbmN5VHlwZRIYCgdPcmRlcklkGCUgAygJ",
-            "UgdvcmRlcklkIqoDCgpMaXN0U3RhdHVzEhgKB01zZ1R5cGUYIyABKAlSB21z",
-            "Z1R5cGUSGAoHQWNjb3VudBgBIAEoBFIHYWNjb3VudBIWCgZMaXN0SWQYQiAB",
-            "KAlSBmxpc3RJZBIWCgZTeW1ib2wYNyABKAlSBnN5bWJvbBInCg5MaXN0U3Rh",
-            "dHVzVHlwZRitAyABKAlSDmxpc3RTdGF0dXNUeXBlEikKD0xpc3RPcmRlclN0",
-            "YXR1cxivAyABKAlSD2xpc3RPcmRlclN0YXR1cxIpCg9Db250aW5nZW5jeVR5",
-            "cGUY6QogASgJUg9jb250aW5nZW5jeVR5cGUSKwoQTGlzdFJlamVjdFJlYXNv",
-            "bhjqCiABKAlSEGxpc3RSZWplY3RSZWFzb24SPwoPTGlzdFJlamVjdE9yZGVy",
-            "GOsKIAEoCzIULmFwaS5FeGVjdXRpb25SZXBvcnRSD2xpc3RSZWplY3RPcmRl",
-            "chIiCgxUcmFuc2FjdFRpbWUYPCABKANSDHRyYW5zYWN0VGltZRInCg5MaXN0",
-            "U3RhdHVzVGV4dBi8AyABKAlSDmxpc3RTdGF0dXNUZXh0YgZwcm90bzM="));
+            "c2FjdFRpbWUYPCABKANSDHRyYW5zYWN0VGltZSLxAQoWT3JkZXJNYXNzQ2Fu",
+            "Y2VsUmVxdWVzdBIYCgdNc2dUeXBlGCMgASgJUgdtc2dUeXBlEhgKB0NsT3Jk",
+            "SWQYCyABKAlSB2NsT3JkSWQSNQoVTWFzc0NhbmNlbFJlcXVlc3RUeXBlGJIE",
+            "IAEoCVIVbWFzc0NhbmNlbFJlcXVlc3RUeXBlEhYKBlN5bWJvbBg3IAEoCVIG",
+            "c3ltYm9sEhIKBFNpZGUYNiABKAlSBHNpZGUSJgoOUG9zaXRpb25FZmZlY3QY",
+            "TSABKAlSDnBvc2l0aW9uRWZmZWN0EhgKB0FjY291bnQYASABKARSB2FjY291",
+            "bnQipAMKFU9yZGVyTWFzc0NhbmNlbFJlcG9ydBIYCgdNc2dUeXBlGCMgASgJ",
+            "Ugdtc2dUeXBlEhgKB0NsT3JkSWQYCyABKAlSB2NsT3JkSWQSLwoSTWFzc0Fj",
+            "dGlvblJlcG9ydElEGNkKIAEoCVISbWFzc0FjdGlvblJlcG9ydElEEi8KEk1h",
+            "c3NDYW5jZWxSZXNwb25zZRiTBCABKAlSEm1hc3NDYW5jZWxSZXNwb25zZRI3",
+            "ChZNYXNzQ2FuY2VsUmVqZWN0UmVhc29uGJQEIAEoCVIWbWFzc0NhbmNlbFJl",
+            "amVjdFJlYXNvbhIfCgpSZWplY3RUZXh0GLAKIAEoCVIKcmVqZWN0VGV4dBIW",
+            "CgZTeW1ib2wYNyABKAlSBnN5bWJvbBISCgRTaWRlGDYgASgJUgRzaWRlEiIK",
+            "DFRyYW5zYWN0VGltZRg8IAEoA1IMdHJhbnNhY3RUaW1lEjEKE1RvdGFsQWZm",
+            "ZWN0ZWRPcmRlcnMYlQQgASgDUhN0b3RhbEFmZmVjdGVkT3JkZXJzEhgKB0Fj",
+            "Y291bnQYASABKARSB2FjY291bnQicwoST3JkZXJTdGF0dXNSZXF1ZXN0EhgK",
+            "B01zZ1R5cGUYIyABKAlSB21zZ1R5cGUSKQoPTWFzc1N0YXR1c1JlcUlkGMgE",
+            "IAEoCVIPbWFzc1N0YXR1c1JlcUlkEhgKB0FjY291bnQYASABKARSB2FjY291",
+            "bnQiWwoGUmVqZWN0EhgKB01zZ1R5cGUYIyABKAlSB21zZ1R5cGUSIwoMUmVq",
+            "ZWN0UmVhc29uGPwCIAEoCVIMcmVqZWN0UmVhc29uEhIKBFRleHQYOiABKAlS",
+            "BHRleHQijQIKF09yZGVyTWFzc1N0YXR1c1Jlc3BvbnNlEhgKB01zZ1R5cGUY",
+            "IyABKAlSB21zZ1R5cGUSKQoPTWFzc1N0YXR1c1JlcUlkGMgEIAEoCVIPbWFz",
+            "c1N0YXR1c1JlcUlkEhgKB0FjY291bnQYASABKARSB2FjY291bnQSLQoGT3Jk",
+            "ZXJzGPQJIAMoCzIULmFwaS5FeGVjdXRpb25SZXBvcnRSBm9yZGVycxIrCgVG",
+            "aWxscxj1CSADKAsyFC5hcGkuRXhlY3V0aW9uUmVwb3J0UgVmaWxscxIjCgxS",
+            "ZWplY3RSZWFzb24Y/AIgASgJUgxyZWplY3RSZWFzb24SEgoEVGV4dBg6IAEo",
+            "CVIEdGV4dCKNBAoZT3JkZXJDYW5jZWxSZXBsYWNlUmVxdWVzdBIYCgdNc2dU",
+            "eXBlGCMgASgJUgdtc2dUeXBlEhgKB0NsT3JkSWQYCyABKAlSB2NsT3JkSWQS",
+            "IAoLT3JpZ0NsT3JkSWQYKSABKAlSC29yaWdDbE9yZElkEhgKB09yZGVySWQY",
+            "JSABKAlSB29yZGVySWQSFgoGU3ltYm9sGDcgASgJUgZzeW1ib2wSEgoEU2lk",
+            "ZRg2IAEoCVIEc2lkZRIiCgxUcmFuc2FjdFRpbWUYPCABKANSDHRyYW5zYWN0",
+            "VGltZRIYCgdBY2NvdW50GAEgASgEUgdhY2NvdW50EhoKCEV4ZWNJbnN0GBIg",
+            "AygJUghleGVjSW5zdBIaCghPcmRlclF0eRgmIAEoCVIIb3JkZXJRdHkSFAoF",
+            "UHJpY2UYLCABKAlSBXByaWNlEhYKBlN0b3BQeBhjIAEoCVIGc3RvcFB4EhsK",
+            "CENhcFByaWNlGK8JIAEoCVIIY2FwUHJpY2USIwoMUGVnUHJpY2VUeXBlGMYI",
+            "IAEoCVIMcGVnUHJpY2VUeXBlEiUKDVBlZ09mZnNldFR5cGUYxAYgASgJUg1w",
+            "ZWdPZmZzZXRUeXBlEicKDlBlZ09mZnNldFZhbHVlGNMBIAEoCVIOcGVnT2Zm",
+            "c2V0VmFsdWUSHgoEU0xUUBiIJyADKAsyCS5hcGkuU0xUUFIEc2x0cCLtAgoM",
+            "TmV3T3JkZXJMaXN0EhgKB01zZ1R5cGUYIyABKAlSB21zZ1R5cGUSFgoGTGlz",
+            "dElkGEIgASgJUgZsaXN0SWQSGQoHQmlkVHlwZRiKAyABKAlSB2JpZFR5cGUS",
+            "IAoLVG90Tm9PcmRlcnMYRCABKAVSC3RvdE5vT3JkZXJzEikKD0NvbnRpbmdl",
+            "bmN5VHlwZRjpCiABKAlSD2NvbnRpbmdlbmN5VHlwZRIzCgpMaXN0T3JkR3Jw",
+            "GEkgAygLMhMuYXBpLk5ld09yZGVyU2luZ2xlUgpsaXN0T3JkR3JwEjgKDU5l",
+            "c3RlZExpc3RHcnAY7Q0gAygLMhEuYXBpLk5ld09yZGVyTGlzdFINbmVzdGVk",
+            "TGlzdEdycBIWCgZTeW1ib2wYNyABKAlSBnN5bWJvbBIiCgxUcmFuc2FjdFRp",
+            "bWUYPCABKANSDHRyYW5zYWN0VGltZRIYCgdBY2NvdW50GAEgASgEUgdhY2Nv",
+            "dW50IlYKD09yZGVyTGlzdEFjdGlvbhIpCg9Db250aW5nZW5jeVR5cGUY6Qog",
+            "ASgJUg9jb250aW5nZW5jeVR5cGUSGAoHT3JkZXJJZBglIAMoCVIHb3JkZXJJ",
+            "ZCKqAwoKTGlzdFN0YXR1cxIYCgdNc2dUeXBlGCMgASgJUgdtc2dUeXBlEhgK",
+            "B0FjY291bnQYASABKARSB2FjY291bnQSFgoGTGlzdElkGEIgASgJUgZsaXN0",
+            "SWQSFgoGU3ltYm9sGDcgASgJUgZzeW1ib2wSJwoOTGlzdFN0YXR1c1R5cGUY",
+            "rQMgASgJUg5saXN0U3RhdHVzVHlwZRIpCg9MaXN0T3JkZXJTdGF0dXMYrwMg",
+            "ASgJUg9saXN0T3JkZXJTdGF0dXMSKQoPQ29udGluZ2VuY3lUeXBlGOkKIAEo",
+            "CVIPY29udGluZ2VuY3lUeXBlEisKEExpc3RSZWplY3RSZWFzb24Y6gogASgJ",
+            "UhBsaXN0UmVqZWN0UmVhc29uEj8KD0xpc3RSZWplY3RPcmRlchjrCiABKAsy",
+            "FC5hcGkuRXhlY3V0aW9uUmVwb3J0Ug9saXN0UmVqZWN0T3JkZXISIgoMVHJh",
+            "bnNhY3RUaW1lGDwgASgDUgx0cmFuc2FjdFRpbWUSJwoOTGlzdFN0YXR1c1Rl",
+            "eHQYvAMgASgJUg5saXN0U3RhdHVzVGV4dGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -151,6 +166,8 @@ namespace Api {
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.ExecutionReport), global::Api.ExecutionReport.Parser, new[]{ "MsgType", "Account", "ClOrdId", "OrigClOrdId", "OrderId", "ListId", "Symbol", "OrdType", "Price", "StopPx", "ExecInst", "TimeInForce", "TransactTime", "ExecId", "ExecType", "ExecRestatementReason", "TradeId", "OrdStatus", "OrdRejReason", "Side", "OrderQty", "LeavesQty", "CumQty", "LastQty", "CapPrice", "LastPx", "AvgPx", "CalculatedCcyLastQty", "Currency", "SettlCurrency", "SettlType", "NetMoney", "LastLiquidityInd", "Commission", "CommRate", "CommCurrency", "RejectText", "PegPriceType", "PegOffsetType", "PegOffsetValue", "PositionId", "PositionEffect", "MarginAmt", "MarginAmtType", "MarginAmtCcy", "SLTP" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.OrderCancelRequest), global::Api.OrderCancelRequest.Parser, new[]{ "MsgType", "ClOrdId", "OrigClOrdId", "OrderId", "Symbol", "Side", "TransactTime", "Account" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.OrderCancelReject), global::Api.OrderCancelReject.Parser, new[]{ "MsgType", "Account", "Symbol", "ClOrdId", "OrigClOrdId", "OrderId", "OrdStatus", "CxlRejResponseTo", "CxlRejReason", "RejectText", "TransactTime" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.OrderMassCancelRequest), global::Api.OrderMassCancelRequest.Parser, new[]{ "MsgType", "ClOrdId", "MassCancelRequestType", "Symbol", "Side", "PositionEffect", "Account" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.OrderMassCancelReport), global::Api.OrderMassCancelReport.Parser, new[]{ "MsgType", "ClOrdId", "MassActionReportID", "MassCancelResponse", "MassCancelRejectReason", "RejectText", "Symbol", "Side", "TransactTime", "TotalAffectedOrders", "Account" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.OrderStatusRequest), global::Api.OrderStatusRequest.Parser, new[]{ "MsgType", "MassStatusReqId", "Account" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.Reject), global::Api.Reject.Parser, new[]{ "MsgType", "RejectReason", "Text" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.OrderMassStatusResponse), global::Api.OrderMassStatusResponse.Parser, new[]{ "MsgType", "MassStatusReqId", "Account", "Orders", "Fills", "RejectReason", "Text" }, null, null, null),
@@ -3795,6 +3812,712 @@ namespace Api {
 
   }
 
+  public sealed partial class OrderMassCancelRequest : pb::IMessage<OrderMassCancelRequest> {
+    private static readonly pb::MessageParser<OrderMassCancelRequest> _parser = new pb::MessageParser<OrderMassCancelRequest>(() => new OrderMassCancelRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<OrderMassCancelRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Api.OrderReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OrderMassCancelRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OrderMassCancelRequest(OrderMassCancelRequest other) : this() {
+      msgType_ = other.msgType_;
+      clOrdId_ = other.clOrdId_;
+      massCancelRequestType_ = other.massCancelRequestType_;
+      symbol_ = other.symbol_;
+      side_ = other.side_;
+      positionEffect_ = other.positionEffect_;
+      account_ = other.account_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OrderMassCancelRequest Clone() {
+      return new OrderMassCancelRequest(this);
+    }
+
+    /// <summary>Field number for the "MsgType" field.</summary>
+    public const int MsgTypeFieldNumber = 35;
+    private string msgType_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MsgType {
+      get { return msgType_; }
+      set {
+        msgType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ClOrdId" field.</summary>
+    public const int ClOrdIdFieldNumber = 11;
+    private string clOrdId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClOrdId {
+      get { return clOrdId_; }
+      set {
+        clOrdId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MassCancelRequestType" field.</summary>
+    public const int MassCancelRequestTypeFieldNumber = 530;
+    private string massCancelRequestType_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MassCancelRequestType {
+      get { return massCancelRequestType_; }
+      set {
+        massCancelRequestType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Symbol" field.</summary>
+    public const int SymbolFieldNumber = 55;
+    private string symbol_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Symbol {
+      get { return symbol_; }
+      set {
+        symbol_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Side" field.</summary>
+    public const int SideFieldNumber = 54;
+    private string side_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Side {
+      get { return side_; }
+      set {
+        side_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "PositionEffect" field.</summary>
+    public const int PositionEffectFieldNumber = 77;
+    private string positionEffect_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string PositionEffect {
+      get { return positionEffect_; }
+      set {
+        positionEffect_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Account" field.</summary>
+    public const int AccountFieldNumber = 1;
+    private ulong account_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ulong Account {
+      get { return account_; }
+      set {
+        account_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as OrderMassCancelRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(OrderMassCancelRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MsgType != other.MsgType) return false;
+      if (ClOrdId != other.ClOrdId) return false;
+      if (MassCancelRequestType != other.MassCancelRequestType) return false;
+      if (Symbol != other.Symbol) return false;
+      if (Side != other.Side) return false;
+      if (PositionEffect != other.PositionEffect) return false;
+      if (Account != other.Account) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
+      if (ClOrdId.Length != 0) hash ^= ClOrdId.GetHashCode();
+      if (MassCancelRequestType.Length != 0) hash ^= MassCancelRequestType.GetHashCode();
+      if (Symbol.Length != 0) hash ^= Symbol.GetHashCode();
+      if (Side.Length != 0) hash ^= Side.GetHashCode();
+      if (PositionEffect.Length != 0) hash ^= PositionEffect.GetHashCode();
+      if (Account != 0UL) hash ^= Account.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Account != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(Account);
+      }
+      if (ClOrdId.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(ClOrdId);
+      }
+      if (MsgType.Length != 0) {
+        output.WriteRawTag(154, 2);
+        output.WriteString(MsgType);
+      }
+      if (Side.Length != 0) {
+        output.WriteRawTag(178, 3);
+        output.WriteString(Side);
+      }
+      if (Symbol.Length != 0) {
+        output.WriteRawTag(186, 3);
+        output.WriteString(Symbol);
+      }
+      if (PositionEffect.Length != 0) {
+        output.WriteRawTag(234, 4);
+        output.WriteString(PositionEffect);
+      }
+      if (MassCancelRequestType.Length != 0) {
+        output.WriteRawTag(146, 33);
+        output.WriteString(MassCancelRequestType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (MsgType.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MsgType);
+      }
+      if (ClOrdId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClOrdId);
+      }
+      if (MassCancelRequestType.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MassCancelRequestType);
+      }
+      if (Symbol.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Symbol);
+      }
+      if (Side.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Side);
+      }
+      if (PositionEffect.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(PositionEffect);
+      }
+      if (Account != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Account);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(OrderMassCancelRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MsgType.Length != 0) {
+        MsgType = other.MsgType;
+      }
+      if (other.ClOrdId.Length != 0) {
+        ClOrdId = other.ClOrdId;
+      }
+      if (other.MassCancelRequestType.Length != 0) {
+        MassCancelRequestType = other.MassCancelRequestType;
+      }
+      if (other.Symbol.Length != 0) {
+        Symbol = other.Symbol;
+      }
+      if (other.Side.Length != 0) {
+        Side = other.Side;
+      }
+      if (other.PositionEffect.Length != 0) {
+        PositionEffect = other.PositionEffect;
+      }
+      if (other.Account != 0UL) {
+        Account = other.Account;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Account = input.ReadUInt64();
+            break;
+          }
+          case 90: {
+            ClOrdId = input.ReadString();
+            break;
+          }
+          case 282: {
+            MsgType = input.ReadString();
+            break;
+          }
+          case 434: {
+            Side = input.ReadString();
+            break;
+          }
+          case 442: {
+            Symbol = input.ReadString();
+            break;
+          }
+          case 618: {
+            PositionEffect = input.ReadString();
+            break;
+          }
+          case 4242: {
+            MassCancelRequestType = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class OrderMassCancelReport : pb::IMessage<OrderMassCancelReport> {
+    private static readonly pb::MessageParser<OrderMassCancelReport> _parser = new pb::MessageParser<OrderMassCancelReport>(() => new OrderMassCancelReport());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<OrderMassCancelReport> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Api.OrderReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OrderMassCancelReport() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OrderMassCancelReport(OrderMassCancelReport other) : this() {
+      msgType_ = other.msgType_;
+      clOrdId_ = other.clOrdId_;
+      massActionReportID_ = other.massActionReportID_;
+      massCancelResponse_ = other.massCancelResponse_;
+      massCancelRejectReason_ = other.massCancelRejectReason_;
+      rejectText_ = other.rejectText_;
+      symbol_ = other.symbol_;
+      side_ = other.side_;
+      transactTime_ = other.transactTime_;
+      totalAffectedOrders_ = other.totalAffectedOrders_;
+      account_ = other.account_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public OrderMassCancelReport Clone() {
+      return new OrderMassCancelReport(this);
+    }
+
+    /// <summary>Field number for the "MsgType" field.</summary>
+    public const int MsgTypeFieldNumber = 35;
+    private string msgType_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MsgType {
+      get { return msgType_; }
+      set {
+        msgType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ClOrdId" field.</summary>
+    public const int ClOrdIdFieldNumber = 11;
+    private string clOrdId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClOrdId {
+      get { return clOrdId_; }
+      set {
+        clOrdId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MassActionReportID" field.</summary>
+    public const int MassActionReportIDFieldNumber = 1369;
+    private string massActionReportID_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MassActionReportID {
+      get { return massActionReportID_; }
+      set {
+        massActionReportID_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MassCancelResponse" field.</summary>
+    public const int MassCancelResponseFieldNumber = 531;
+    private string massCancelResponse_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MassCancelResponse {
+      get { return massCancelResponse_; }
+      set {
+        massCancelResponse_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MassCancelRejectReason" field.</summary>
+    public const int MassCancelRejectReasonFieldNumber = 532;
+    private string massCancelRejectReason_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MassCancelRejectReason {
+      get { return massCancelRejectReason_; }
+      set {
+        massCancelRejectReason_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "RejectText" field.</summary>
+    public const int RejectTextFieldNumber = 1328;
+    private string rejectText_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string RejectText {
+      get { return rejectText_; }
+      set {
+        rejectText_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Symbol" field.</summary>
+    public const int SymbolFieldNumber = 55;
+    private string symbol_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Symbol {
+      get { return symbol_; }
+      set {
+        symbol_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Side" field.</summary>
+    public const int SideFieldNumber = 54;
+    private string side_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Side {
+      get { return side_; }
+      set {
+        side_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "TransactTime" field.</summary>
+    public const int TransactTimeFieldNumber = 60;
+    private long transactTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long TransactTime {
+      get { return transactTime_; }
+      set {
+        transactTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "TotalAffectedOrders" field.</summary>
+    public const int TotalAffectedOrdersFieldNumber = 533;
+    private long totalAffectedOrders_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long TotalAffectedOrders {
+      get { return totalAffectedOrders_; }
+      set {
+        totalAffectedOrders_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Account" field.</summary>
+    public const int AccountFieldNumber = 1;
+    private ulong account_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ulong Account {
+      get { return account_; }
+      set {
+        account_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as OrderMassCancelReport);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(OrderMassCancelReport other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MsgType != other.MsgType) return false;
+      if (ClOrdId != other.ClOrdId) return false;
+      if (MassActionReportID != other.MassActionReportID) return false;
+      if (MassCancelResponse != other.MassCancelResponse) return false;
+      if (MassCancelRejectReason != other.MassCancelRejectReason) return false;
+      if (RejectText != other.RejectText) return false;
+      if (Symbol != other.Symbol) return false;
+      if (Side != other.Side) return false;
+      if (TransactTime != other.TransactTime) return false;
+      if (TotalAffectedOrders != other.TotalAffectedOrders) return false;
+      if (Account != other.Account) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MsgType.Length != 0) hash ^= MsgType.GetHashCode();
+      if (ClOrdId.Length != 0) hash ^= ClOrdId.GetHashCode();
+      if (MassActionReportID.Length != 0) hash ^= MassActionReportID.GetHashCode();
+      if (MassCancelResponse.Length != 0) hash ^= MassCancelResponse.GetHashCode();
+      if (MassCancelRejectReason.Length != 0) hash ^= MassCancelRejectReason.GetHashCode();
+      if (RejectText.Length != 0) hash ^= RejectText.GetHashCode();
+      if (Symbol.Length != 0) hash ^= Symbol.GetHashCode();
+      if (Side.Length != 0) hash ^= Side.GetHashCode();
+      if (TransactTime != 0L) hash ^= TransactTime.GetHashCode();
+      if (TotalAffectedOrders != 0L) hash ^= TotalAffectedOrders.GetHashCode();
+      if (Account != 0UL) hash ^= Account.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Account != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(Account);
+      }
+      if (ClOrdId.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(ClOrdId);
+      }
+      if (MsgType.Length != 0) {
+        output.WriteRawTag(154, 2);
+        output.WriteString(MsgType);
+      }
+      if (Side.Length != 0) {
+        output.WriteRawTag(178, 3);
+        output.WriteString(Side);
+      }
+      if (Symbol.Length != 0) {
+        output.WriteRawTag(186, 3);
+        output.WriteString(Symbol);
+      }
+      if (TransactTime != 0L) {
+        output.WriteRawTag(224, 3);
+        output.WriteInt64(TransactTime);
+      }
+      if (MassCancelResponse.Length != 0) {
+        output.WriteRawTag(154, 33);
+        output.WriteString(MassCancelResponse);
+      }
+      if (MassCancelRejectReason.Length != 0) {
+        output.WriteRawTag(162, 33);
+        output.WriteString(MassCancelRejectReason);
+      }
+      if (TotalAffectedOrders != 0L) {
+        output.WriteRawTag(168, 33);
+        output.WriteInt64(TotalAffectedOrders);
+      }
+      if (RejectText.Length != 0) {
+        output.WriteRawTag(130, 83);
+        output.WriteString(RejectText);
+      }
+      if (MassActionReportID.Length != 0) {
+        output.WriteRawTag(202, 85);
+        output.WriteString(MassActionReportID);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (MsgType.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MsgType);
+      }
+      if (ClOrdId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClOrdId);
+      }
+      if (MassActionReportID.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MassActionReportID);
+      }
+      if (MassCancelResponse.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MassCancelResponse);
+      }
+      if (MassCancelRejectReason.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MassCancelRejectReason);
+      }
+      if (RejectText.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(RejectText);
+      }
+      if (Symbol.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Symbol);
+      }
+      if (Side.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Side);
+      }
+      if (TransactTime != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(TransactTime);
+      }
+      if (TotalAffectedOrders != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(TotalAffectedOrders);
+      }
+      if (Account != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Account);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(OrderMassCancelReport other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MsgType.Length != 0) {
+        MsgType = other.MsgType;
+      }
+      if (other.ClOrdId.Length != 0) {
+        ClOrdId = other.ClOrdId;
+      }
+      if (other.MassActionReportID.Length != 0) {
+        MassActionReportID = other.MassActionReportID;
+      }
+      if (other.MassCancelResponse.Length != 0) {
+        MassCancelResponse = other.MassCancelResponse;
+      }
+      if (other.MassCancelRejectReason.Length != 0) {
+        MassCancelRejectReason = other.MassCancelRejectReason;
+      }
+      if (other.RejectText.Length != 0) {
+        RejectText = other.RejectText;
+      }
+      if (other.Symbol.Length != 0) {
+        Symbol = other.Symbol;
+      }
+      if (other.Side.Length != 0) {
+        Side = other.Side;
+      }
+      if (other.TransactTime != 0L) {
+        TransactTime = other.TransactTime;
+      }
+      if (other.TotalAffectedOrders != 0L) {
+        TotalAffectedOrders = other.TotalAffectedOrders;
+      }
+      if (other.Account != 0UL) {
+        Account = other.Account;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Account = input.ReadUInt64();
+            break;
+          }
+          case 90: {
+            ClOrdId = input.ReadString();
+            break;
+          }
+          case 282: {
+            MsgType = input.ReadString();
+            break;
+          }
+          case 434: {
+            Side = input.ReadString();
+            break;
+          }
+          case 442: {
+            Symbol = input.ReadString();
+            break;
+          }
+          case 480: {
+            TransactTime = input.ReadInt64();
+            break;
+          }
+          case 4250: {
+            MassCancelResponse = input.ReadString();
+            break;
+          }
+          case 4258: {
+            MassCancelRejectReason = input.ReadString();
+            break;
+          }
+          case 4264: {
+            TotalAffectedOrders = input.ReadInt64();
+            break;
+          }
+          case 10626: {
+            RejectText = input.ReadString();
+            break;
+          }
+          case 10954: {
+            MassActionReportID = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class OrderStatusRequest : pb::IMessage<OrderStatusRequest> {
     private static readonly pb::MessageParser<OrderStatusRequest> _parser = new pb::MessageParser<OrderStatusRequest>(() => new OrderStatusRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -3803,7 +4526,7 @@ namespace Api {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Api.OrderReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Api.OrderReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3988,7 +4711,7 @@ namespace Api {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Api.OrderReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Api.OrderReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4176,7 +4899,7 @@ namespace Api {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Api.OrderReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Api.OrderReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4460,7 +5183,7 @@ namespace Api {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Api.OrderReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Api.OrderReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5042,7 +5765,7 @@ namespace Api {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Api.OrderReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Api.OrderReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5413,7 +6136,7 @@ namespace Api {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Api.OrderReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Api.OrderReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5562,7 +6285,7 @@ namespace Api {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Api.OrderReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Api.OrderReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

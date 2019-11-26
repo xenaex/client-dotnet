@@ -61,9 +61,10 @@ namespace XenaExchange.Client.Messages.Constants
 
     public static class PositionEffect
     {
-        public const string Open = "0";
         public const string Close = "C";
-        public static readonly IReadOnlyCollection<string> All = new[] { Open, Close };
+        public const string Default = "D";
+        public const string Open = "O";
+        public static readonly IReadOnlyCollection<string> All = new[] { Close, Open, Default };
     }
 
     public static class PosTransType
@@ -255,5 +256,11 @@ namespace XenaExchange.Client.Messages.Constants
     {
         public const string Spot = "Spot";
         public const string Margin = "Margin";
+    }
+
+    public static class MassCancelRequestType
+    {
+        public const string CancelOrdersForASecurity = "1";
+        public const string CancelAllOrders = "7";
     }
 }

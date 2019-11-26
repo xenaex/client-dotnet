@@ -131,7 +131,8 @@ namespace XenaExchange.Client.Examples.Ws
 //            await ReplaceAsync().ConfigureAwait(false);
 //            await SyncLimitOrderAsync().ConfigureAwait(false);
 //            await GetOpenPositionsAsync().ConfigureAwait(false);
-            await GetBalancesAsync().ConfigureAwait(false);
+//            await GetBalancesAsync().ConfigureAwait(false);
+            await OrderMassCancelAsync().ConfigureAwait(false);
         }
 
         private async Task InfinitePlaceCancelAsync()
@@ -396,6 +397,33 @@ namespace XenaExchange.Client.Examples.Ws
             await balancesLock.WaitAsync().ConfigureAwait(false);
 
             _logger.LogInformation($"Balances snapshot: {balanceSnapshot}");
+        }
+
+        private async Task OrderMassCancelAsync()
+        {
+            _wsClient.Listen<OrderMassCancelReport>((client, report) =>
+            {
+                _logger.LogInformation($"Order mass cancel report: {report}");
+                return Task.CompletedTask;
+            });
+
+            // cancel orders that will open positions for specific symbol and side
+            await _wsClient.OrderMassCancelAsync(MarginAccountId, CommonFuncs.NewClOrdId("mass-cancel-1"), "XBTUSD",
+                Side.Buy, PositionEffect.Open).ConfigureAwait(false);
+
+            // cancel all orders for specific symbol and side
+            await _wsClient.OrderMassCancelAsync(MarginAccountId, CommonFuncs.NewClOrdId("mass-cancel-2"), "XBTUSD",
+                Side.Buy).ConfigureAwait(false);
+
+            // cancel all orders for specific symbol
+            await _wsClient.OrderMassCancelAsync(MarginAccountId, CommonFuncs.NewClOrdId("mass-cancel-3"), "XBTUSD")
+                .ConfigureAwait(false);
+
+            // cancel all order for account
+            await _wsClient.OrderMassCancelAsync(MarginAccountId, CommonFuncs.NewClOrdId("mass-cancel-4"))
+                .ConfigureAwait(false);
+
+            await Task.Delay(100).ConfigureAwait(false);
         }
     }
 }

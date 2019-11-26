@@ -8,6 +8,7 @@ using Api;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
 using Websocket.Client;
+using XenaExchange.Client.Messages;
 using XenaExchange.Client.Serialization;
 using XenaExchange.Client.Serialization.Fix;
 using XenaExchange.Client.Ws.Common;

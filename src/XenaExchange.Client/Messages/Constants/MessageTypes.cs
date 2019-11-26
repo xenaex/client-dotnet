@@ -29,5 +29,7 @@ namespace XenaExchange.Client.Messages.Constants
         public const string ExecutionReport = "8";
         public const string Reject = "3";
         public const string ListStatus = "N";
+        public const string OrderMassCancelRequest = "q";
+        public const string OrderMassCancelReport = "r";
     }
 }

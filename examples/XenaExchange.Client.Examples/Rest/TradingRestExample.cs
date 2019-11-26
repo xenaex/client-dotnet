@@ -5,7 +5,6 @@ using Api;
 using Microsoft.Extensions.Logging;
 using XenaExchange.Client.Messages;
 using XenaExchange.Client.Messages.Constants;
-using XenaExchange.Client.Rest;
 using XenaExchange.Client.Rest.Exceptions;
 using XenaExchange.Client.Rest.Requests;
 using XenaExchange.Client.Rest.Trading;
@@ -58,9 +57,10 @@ namespace XenaExchange.Client.Examples.Rest
 //            await PositionsHistoryAsync(cancellationToken).ConfigureAwait(false);
 //            await ListActiveOrdersAsync(cancellationToken).ConfigureAwait(false);
 //            await TradeHistoryAsync(cancellationToken).ConfigureAwait(false);
-            await GetBalancesAsync(cancellationToken).ConfigureAwait(false);
-            await GetMarginRequirementsAsync(cancellationToken).ConfigureAwait(false);
-            await ListAccountsAsync(cancellationToken).ConfigureAwait(false);
+//            await GetBalancesAsync(cancellationToken).ConfigureAwait(false);
+//            await GetMarginRequirementsAsync(cancellationToken).ConfigureAwait(false);
+//            await ListAccountsAsync(cancellationToken).ConfigureAwait(false);
+            await MassCancelAsync(cancellationToken).ConfigureAwait(false);
         }
 
         private async Task MarketOrderAsync(CancellationToken cancellationToken)
@@ -311,6 +311,33 @@ namespace XenaExchange.Client.Examples.Rest
 
             var toPrint = string.Join("\n", accounts.Select(p => p.ToString()));
             _logger.LogInformation($"Accounts: {toPrint}");
+        }
+
+        private async Task MassCancelAsync(CancellationToken cancellationToken)
+        {
+            // cancel orders that will open positions for specific symbol and side
+            var report = await _restClient.OrderMassCancelAsync(MarginAccountId, CommonFuncs.NewClOrdId("mass-cancel-1"),
+                "XBTUSD", Side.Buy, PositionEffect.Open).ConfigureAwait(false);
+
+            _logger.LogInformation($"Order mass cancel report 1: {report}");
+
+            // cancel all orders for specific symbol and side
+            report = await _restClient.OrderMassCancelAsync(MarginAccountId, CommonFuncs.NewClOrdId("mass-cancel-2"),
+                "XBTUSD", Side.Buy).ConfigureAwait(false);
+
+            _logger.LogInformation($"Order mass cancel report 2: {report}");
+
+            // cancel all orders for specific symbol
+            report = await _restClient.OrderMassCancelAsync(MarginAccountId, CommonFuncs.NewClOrdId("mass-cancel-3"),
+                    "XBTUSD").ConfigureAwait(false);
+
+            _logger.LogInformation($"Order mass cancel report 3: {report}");
+
+            // cancel all order for account
+            report = await _restClient.OrderMassCancelAsync(MarginAccountId, CommonFuncs.NewClOrdId("mass-cancel-4"))
+                .ConfigureAwait(false);
+
+            _logger.LogInformation($"Order mass cancel report 4: {report}");
         }
 
         private void HandleOrderReport(ExecutionReport er)
