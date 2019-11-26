@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 
 namespace XenaExchange.Client.Examples
 {
@@ -12,7 +13,10 @@ namespace XenaExchange.Client.Examples
             return serviceCollection.AddLogging(loggingBuilder =>
                 {
                     loggingBuilder.SetMinimumLevel(logLevel);
-                    loggingBuilder.AddConsole();
+                    loggingBuilder.ClearProviders();
+
+                    // NLog is used to be able to see underlying websocket library logs.
+                    loggingBuilder.AddNLog();
                 });
         }
 

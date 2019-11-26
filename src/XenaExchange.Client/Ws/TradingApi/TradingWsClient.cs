@@ -148,6 +148,20 @@ namespace XenaExchange.Client.Ws.TradingApi
         }
 
         /// <inheritdoc />
+        public async Task OrderMassCancelAsync(
+            ulong account,
+            string clOrdId,
+            string symbol = null,
+            string side = null,
+            string positionEffect = PositionEffect.Default)
+        {
+            var request = new OrderMassCancelRequest(account, clOrdId, symbol, side, positionEffect);
+            request.Validate();
+
+            await SendCommandAsync(request).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
         public async Task NewMarketOrderAsync(
             string clOrdId,
             string symbol,
@@ -407,6 +421,10 @@ namespace XenaExchange.Client.Ws.TradingApi
 
                 case OrderCancelReject orderCancelReject:
                     await HandleConcreteAsync(orderCancelReject, handler).ConfigureAwait(false);
+                    break;
+
+                case OrderMassCancelReport orderMassCancelReport:
+                    await HandleConcreteAsync(orderMassCancelReport, handler).ConfigureAwait(false);
                     break;
 
                 default:

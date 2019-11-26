@@ -6,9 +6,16 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="1.6.1" />
     <!-- <PackageReference Include="XenaExchange.Client" Version="0.2.1"/> -->
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\XenaExchange.Client\XenaExchange.Client.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="nlog.config" />
+    <Content Include="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

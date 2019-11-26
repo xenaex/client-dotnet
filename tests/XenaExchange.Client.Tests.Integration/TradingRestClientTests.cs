@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Api;
@@ -283,6 +282,31 @@ namespace XenaExchange.Client.Tests.Integration
             trades.Should().NotBeNull();
             trades.Should().NotBeNull();
             trades.Length.Should().BeGreaterThan(0);
+        }
+
+        [Test]
+        public async Task Test_MassCancel()
+        {
+            var clOrdId = NewClOrdId("mass-cancel");
+            const string symbol = "XBTUSD";
+            const string side = Side.Buy;
+
+            var report = await _restClient.OrderMassCancelAsync(
+                MarginAccountId,
+                clOrdId,
+                symbol,
+                side,
+                cancellationToken: _token).ConfigureAwait(false);
+
+            report.MsgType.Should().Be(MsgTypes.OrderMassCancelReport);
+            report.Account.Should().Be(MarginAccountId);
+            report.Side.Should().Be(side);
+            report.Symbol.Should().Be(symbol);
+            report.ClOrdId.Should().Be(clOrdId);
+            report.TotalAffectedOrders.Should().Be(0);
+            report.MassActionReportID.Should().NotBeNullOrWhiteSpace();
+            report.MassCancelRejectReason.Should().BeNullOrEmpty();
+            report.RejectText.Should().BeNullOrEmpty();
         }
 
         private static string NewClOrdId(string prefix) => $"{prefix}-{DateTime.UtcNow.Ticks.ToString()}";

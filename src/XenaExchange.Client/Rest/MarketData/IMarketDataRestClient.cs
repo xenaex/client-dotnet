@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Api;
+using XenaExchange.Client.Rest.Requests;
 
 namespace XenaExchange.Client.Rest.MarketData
 {
@@ -41,5 +42,22 @@ namespace XenaExchange.Client.Rest.MarketData
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>List of instruments.</returns>
         Task<Instrument[]> ListInstrumentsAsync(CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Returns backend server time.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>Server time.</returns>
+        Task<DateTime> GetServerTimeAsync(CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Returns last trades for specified symbol.
+        /// </summary>
+        /// <param name="request">Request parameters.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>MarketDataRefresh with trades listed in MDEntry property.</returns>
+        Task<MarketDataRefresh> TradeHistoryAsync(
+            TradeHistoryMdRequest request,
+            CancellationToken cancellationToken = default);
     }
 }

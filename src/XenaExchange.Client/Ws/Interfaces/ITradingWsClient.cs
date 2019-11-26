@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Api;
 using Google.Protobuf;
 using XenaExchange.Client.Messages;
+using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Ws.Interfaces.Exceptions;
 
 namespace XenaExchange.Client.Ws.Interfaces
@@ -241,5 +242,22 @@ namespace XenaExchange.Client.Ws.Interfaces
         /// <param name="requestId">Request id to be returned in <see cref="MassPositionReport"/>.</param>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
         Task GetPositionsAsync(ulong account, string requestId = null);
+
+        /// <summary>
+        /// Creates OrderMassCancelRequest and send request.
+        /// To receive response, client has to listen <see cref="OrderMassCancelReport"/>.
+        /// </summary>
+        /// <param name="account">Account id.</param>
+        /// <param name="clOrdId">Client order id for current cancelling order.</param>
+        /// <param name="symbol">Orders' symbol to cancel (optional).</param>
+        /// <param name="side">Orders' side to cancel (optional).</param>
+        /// <param name="positionEffect">Orders' position effect to cancel (optional).</param>
+        /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
+        Task OrderMassCancelAsync(
+            ulong account,
+            string clOrdId,
+            string symbol = null,
+            string side = null,
+            string positionEffect = PositionEffect.Default);
     }
 }

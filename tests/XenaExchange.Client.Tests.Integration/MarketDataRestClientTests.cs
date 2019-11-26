@@ -8,6 +8,7 @@ using NUnit.Framework;
 using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Rest;
 using XenaExchange.Client.Rest.MarketData;
+using XenaExchange.Client.Rest.Requests;
 using XenaExchange.Client.Ws.Common;
 
 namespace XenaExchange.Client.Tests.Integration
@@ -84,6 +85,40 @@ namespace XenaExchange.Client.Tests.Integration
         {
             var instruments = await _restClient.ListInstrumentsAsync(_token).ConfigureAwait(false);
             instruments.Should().HaveCountGreaterThan(0);
+        }
+
+        [Test]
+        public async Task Test_ServerTime()
+        {
+            var utcNow = DateTime.UtcNow;
+            var serverTime = await _restClient.GetServerTimeAsync(_token).ConfigureAwait(false);
+            serverTime.Should().BeAfter(utcNow.Subtract(TimeSpan.FromSeconds(5)));
+        }
+
+        [Test]
+        public async Task Test_TradeHistoryAsync()
+        {
+            const string symbol = "XBTUSD";
+            var request = new TradeHistoryMdRequest(symbol)
+            {
+//                From = Functions.FromUnixNano(1574162455620117000),
+//                To = Functions.FromUnixNano(1574162518887000000),
+                PageNumber = 2,
+                Limit = 10,
+            };
+            var mdRefresh = await _restClient.TradeHistoryAsync(request, _token).ConfigureAwait(false);
+
+            mdRefresh.Symbol.Should().Be(symbol);
+            mdRefresh.MDEntry.Should().HaveCountGreaterThan(0);
+
+            var entry = mdRefresh.MDEntry[0];
+            entry.MDEntryType.Should().Be("2");
+            entry.TradeId.Should().NotBeNullOrWhiteSpace();
+            entry.TransactTime.Should().BeGreaterThan(0);
+            entry.MDEntryPx.Should().NotBeNullOrWhiteSpace().And.NotBe("0");
+            entry.MDEntrySize.Should().NotBeNullOrWhiteSpace().And.NotBe("0");
+
+            Assert.Fail(mdRefresh.ToString());
         }
     }
 }

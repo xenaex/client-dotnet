@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Api;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
+using XenaExchange.Client.Messages;
 using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Serialization.Fix;
 using XenaExchange.Client.Ws.Common;

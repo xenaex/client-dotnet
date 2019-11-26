@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Rest.Exceptions;
 using XenaExchange.Client.Rest.MarketData;
+using XenaExchange.Client.Rest.Requests;
 
 namespace XenaExchange.Client.Examples.Rest
 {
@@ -41,6 +42,8 @@ namespace XenaExchange.Client.Examples.Rest
             await TestGetCandlesAsync(cancellationToken).ConfigureAwait(false);
             await TestGetDomAsync(cancellationToken).ConfigureAwait(false);
             await TestListInstrumentsAsync(cancellationToken).ConfigureAwait(false);
+            await TestServerTimeAsync(cancellationToken).ConfigureAwait(false);
+            await TestTradeHistoryAsync(cancellationToken).ConfigureAwait(false);
         }
 
         private async Task TestGetCandlesAsync(CancellationToken cancellationToken)
@@ -74,6 +77,26 @@ namespace XenaExchange.Client.Examples.Rest
 
             var toPrint = string.Join('\n', instruments.Select(i => i.ToString()));
             _logger.LogInformation($"Instruments:\n{toPrint}");
+        }
+
+        private async Task TestServerTimeAsync(CancellationToken cancellationToken)
+        {
+            var serverTime = await _restClient.GetServerTimeAsync(cancellationToken).ConfigureAwait(false);
+            _logger.LogInformation($"Server time: {serverTime:G}");
+        }
+
+        private async Task TestTradeHistoryAsync(CancellationToken cancellationToken)
+        {
+            const string symbol = "XBTUSD";
+            var request = new TradeHistoryMdRequest(symbol)
+            {
+//                From = Functions.FromUnixNano(1574162455620117000),
+//                To = Functions.FromUnixNano(1574162518887000000),
+                PageNumber = 2,
+                Limit = 10,
+            };
+            var mdRefresh = await _restClient.TradeHistoryAsync(request, cancellationToken).ConfigureAwait(false);
+            _logger.LogInformation($"Trade history response: {mdRefresh}");
         }
     }
 }

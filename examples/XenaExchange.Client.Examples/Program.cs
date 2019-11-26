@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using NLog;
 using XenaExchange.Client.Examples.Rest;
 using XenaExchange.Client.Examples.Ws;
 using XenaExchange.Client.Rest;
@@ -15,6 +15,7 @@ using XenaExchange.Client.Serialization.Rest;
 using XenaExchange.Client.Ws;
 using XenaExchange.Client.Ws.MarketData;
 using XenaExchange.Client.Ws.TradingApi;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace XenaExchange.Client.Examples
 {
@@ -114,8 +115,8 @@ namespace XenaExchange.Client.Examples
 
 //            await tradingWsExample.StartAsync(Token).ConfigureAwait(false);
 //            await mdWsExample.StartAsync(Token).ConfigureAwait(false);
-//            await tradingRestExample.StartAsync(Token).ConfigureAwait(false);
-            await mdRestExample.StartAsync(Token).ConfigureAwait(false);
+            await tradingRestExample.StartAsync(Token).ConfigureAwait(false);
+//            await mdRestExample.StartAsync(Token).ConfigureAwait(false);
         }
     }
 }

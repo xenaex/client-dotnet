@@ -35,6 +35,7 @@ namespace XenaExchange.Client.Serialization
             { MsgTypes.Reject, typeof(Reject) },
             { MsgTypes.OrderCancelReject, typeof(OrderCancelReject) },
             { MsgTypes.ListStatus, typeof(ListStatus) },
+            { MsgTypes.OrderMassCancelReport, typeof(OrderMassCancelReport) },
         };
 
         private readonly JsonSerializerSettings _jsonSerializerSettings;

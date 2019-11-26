@@ -53,7 +53,7 @@ wsClient.OnDisconnect.Subscribe(async info =>
 await wsClient.ConnectAsync().ConfigureAwait(false);
 
 // Subscribe on dom stream.
-var streamId = var symbol = "BTC/USDT";
+var symbol = "BTC/USDT";
 var timeframe = CandlesTimeframe.Timeframe1m;
 var streamId = await wsClient.SubscribeCandlesAsync(symbol, timeframe, async (client, message) =>
 {
@@ -137,8 +137,8 @@ await wsClient.NewMarketOrderAsync(
 
 Register an account with [Xena](https://trading.xena.exchange/registration). Generate an API Key and assign relevant permissions.
 
-```csharpvar
-httpClient = new HttpClient {BaseAddress = new Uri("https://api.xena.exchange")};
+```csharp
+var httpClient = new HttpClient {BaseAddress = new Uri("https://api.xena.exchange")};
 var options = new TradingRestClientOptions { ApiKey = "TO_FILL", ApiSecret = "TO_FILL" };
 var restSerializer = new RestSerializer();
 

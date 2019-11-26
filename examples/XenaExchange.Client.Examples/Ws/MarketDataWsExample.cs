@@ -115,7 +115,7 @@ namespace XenaExchange.Client.Examples.Ws
                         break;
                 }
                 return Task.CompletedTask;
-            }, aggregation: DOMAggregation.Aggregation5).ConfigureAwait(false);
+            }, throttlingMs: 500, aggregation: DOMAggregation.Aggregation5).ConfigureAwait(false);
         }
 
         private async Task SubscribeTradesAsync()
