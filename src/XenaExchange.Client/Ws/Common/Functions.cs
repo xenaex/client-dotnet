@@ -15,5 +15,10 @@ namespace XenaExchange.Client.Ws.Common
         {
             return (dateTime - _epochStart).Ticks * 100;
         }
+
+        public static DateTime FromUnixNano(long unixNano)
+        {
+            return DateTimeOffset.FromUnixTimeMilliseconds(unixNano / 1000000).UtcDateTime;
+        }
     }
 }

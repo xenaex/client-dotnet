@@ -21,6 +21,7 @@ namespace XenaExchange.Client.Rest.MarketData
         private const string CandlesBasePath = MdPrefix + "candles";
         private const string DomBasePath = MdPrefix + "dom";
         private const string InstrumentPath = "public/instruments";
+        private const string ServerTimePath = MdPrefix + "server-time";
 
         private readonly IFixSerializer _fixSerializer;
         private readonly IRestSerializer _restSerializer;
@@ -88,6 +89,14 @@ namespace XenaExchange.Client.Rest.MarketData
         {
             return await GetAsync<Instrument[]>(InstrumentPath, _restSerializer, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
+        }
+
+        public async Task<DateTime> GetServerTimeAsync(CancellationToken cancellationToken = default)
+        {
+            var response = await GetAsync<Heartbeat>(ServerTimePath, _fixSerializer, cancellationToken: cancellationToken)
+                .ConfigureAwait(false);
+
+            return Functions.FromUnixNano(response.TransactTime);
         }
 
         private async Task<TResult> GetAsync<TResult>(

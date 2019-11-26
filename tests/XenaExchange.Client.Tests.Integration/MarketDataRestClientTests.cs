@@ -85,5 +85,13 @@ namespace XenaExchange.Client.Tests.Integration
             var instruments = await _restClient.ListInstrumentsAsync(_token).ConfigureAwait(false);
             instruments.Should().HaveCountGreaterThan(0);
         }
+
+        [Test]
+        public async Task Test_ServerTime()
+        {
+            var utcNow = DateTime.UtcNow;
+            var serverTime = await _restClient.GetServerTimeAsync(_token).ConfigureAwait(false);
+            serverTime.Should().BeAfter(utcNow.Subtract(TimeSpan.FromSeconds(5)));
+        }
     }
 }

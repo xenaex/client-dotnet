@@ -41,6 +41,7 @@ namespace XenaExchange.Client.Examples.Rest
             await TestGetCandlesAsync(cancellationToken).ConfigureAwait(false);
             await TestGetDomAsync(cancellationToken).ConfigureAwait(false);
             await TestListInstrumentsAsync(cancellationToken).ConfigureAwait(false);
+            await TestServerTimeAsync(cancellationToken).ConfigureAwait(false);
         }
 
         private async Task TestGetCandlesAsync(CancellationToken cancellationToken)
@@ -74,6 +75,12 @@ namespace XenaExchange.Client.Examples.Rest
 
             var toPrint = string.Join('\n', instruments.Select(i => i.ToString()));
             _logger.LogInformation($"Instruments:\n{toPrint}");
+        }
+
+        private async Task TestServerTimeAsync(CancellationToken cancellationToken)
+        {
+            var serverTime = await _restClient.GetServerTimeAsync(cancellationToken).ConfigureAwait(false);
+            _logger.LogInformation($"Server time: {serverTime:G}");
         }
     }
 }
