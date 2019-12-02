@@ -9,6 +9,8 @@ namespace XenaExchange.Client.Ws
     {
         public string Uri { get; set; }
 
-        public TimeSpan PingInteral { get; set; } = TimeSpan.FromSeconds(5);
+        public TimeSpan PingInterval { get; set; } = TimeSpan.FromSeconds(5);
+
+        public TimeSpan CheckHeartbeatsInterval { get; set; } = TimeSpan.FromMilliseconds(500);
     }
 }

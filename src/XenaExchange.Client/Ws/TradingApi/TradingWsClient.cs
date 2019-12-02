@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Api;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
+using Websocket.Client;
 using XenaExchange.Client.Messages;
 using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Serialization.Fix;
@@ -41,8 +42,6 @@ namespace XenaExchange.Client.Ws.TradingApi
         {
             _tradingOptions = options ?? throw new ArgumentNullException(nameof(options));
             _handlers = new ConcurrentDictionary<Type, Delegate>();
-
-            WsClient.DisconnectionHappened.Subscribe(t => _disconnectedSubject.OnNext(new DisconnectInfo<ITradingWsClient>(this, t)));
         }
 
         /// <inheritdoc />
@@ -72,6 +71,11 @@ namespace XenaExchange.Client.Ws.TradingApi
                 tasks.Add(RouteToHandlerAsync(message, handler));
 
             await Task.WhenAll(tasks).ConfigureAwait(false);
+        }
+
+        protected override void OnDisconnectBase(DisconnectionType type)
+        {
+            _disconnectedSubject.OnNext(new DisconnectInfo<ITradingWsClient>(this, type));
         }
 
         /// <inheritdoc />

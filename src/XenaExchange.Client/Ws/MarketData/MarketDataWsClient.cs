@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Api;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
+using Websocket.Client;
 using XenaExchange.Client.Messages;
 using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Serialization.Fix;
-using XenaExchange.Client.Ws.Common;
 using XenaExchange.Client.Ws.Interfaces;
 using XenaExchange.Client.Ws.Interfaces.Exceptions;
 
@@ -33,11 +33,6 @@ namespace XenaExchange.Client.Ws.MarketData
         {
             _mdOptions = options ?? throw new ArgumentNullException(nameof(options));
             _subscriptions = new ConcurrentDictionary<string, Subscription>();
-            WsClient.DisconnectionHappened.Subscribe(type =>
-            {
-                _subscriptions.Clear();
-                _disconnectedSubject.OnNext(new DisconnectInfo<IMarketDataWsClient>(this, type));
-            });
         }
 
         protected override async Task OnMessage(IMessage message)
@@ -58,6 +53,12 @@ namespace XenaExchange.Client.Ws.MarketData
                     Logger.LogWarning($"Received unexpected md message of type {message.GetType().Name}: {message}");
                     break;
             }
+        }
+
+        protected override void OnDisconnectBase(DisconnectionType type)
+        {
+            _subscriptions.Clear();
+            _disconnectedSubject.OnNext(new DisconnectInfo<IMarketDataWsClient>(this, type));
         }
 
         /// <inheritdoc />
