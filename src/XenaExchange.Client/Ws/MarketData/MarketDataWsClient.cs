@@ -18,7 +18,7 @@ namespace XenaExchange.Client.Ws.MarketData
     /// <summary>
     /// Provides methods to Xena market data websocket API.
     /// </summary>
-    public class MarketDataWsClient : WsClientBase, IMarketDataWsClient
+    public class MarketDataWsClient : XenaWsClientBase, IMarketDataWsClient
     {
         private readonly MarketDataWsClientOptions _mdOptions;
 

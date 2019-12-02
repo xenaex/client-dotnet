@@ -4,27 +4,17 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Api;
-using Google.Protobuf;
 using Microsoft.Extensions.Logging;
 using Websocket.Client;
-using XenaExchange.Client.Messages;
-using XenaExchange.Client.Serialization;
-using XenaExchange.Client.Serialization.Fix;
-using XenaExchange.Client.Ws.Interfaces;
 using XenaExchange.Client.Ws.Interfaces.Exceptions;
 
 namespace XenaExchange.Client.Ws
 {
-    public abstract class WsClientBase : IWsClient
+    public abstract class WsClientBase
     {
-        protected const string PingMsg = "{\"35\":\"0\"}";
-
         protected readonly WsClientOptionsBase Options;
 
         protected readonly ILogger Logger;
-
-        protected readonly ISerializer Serializer;
 
         private readonly SemaphoreSlim _wsLock = new SemaphoreSlim(1, 1);
 
@@ -35,14 +25,14 @@ namespace XenaExchange.Client.Ws
         private long _lastSentTs;
         private long _lastReceivedTs;
 
-        protected WsClientBase(WsClientOptionsBase options, IFixSerializer serializer, ILogger logger)
+        protected WsClientBase(WsClientOptionsBase options, ILogger logger)
         {
             Options = options ?? throw new ArgumentNullException(nameof(options));
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
 
-        protected abstract Task OnMessage(IMessage message);
+        protected abstract string PingMessage { get; }
+        protected abstract Task OnTextMessage(string message);
         protected abstract void OnDisconnectBase(DisconnectionType type);
 
         protected async Task ConnectBaseAsync()
@@ -63,13 +53,20 @@ namespace XenaExchange.Client.Ws
             HeartbeatsAsync(_pingCts.Token);
         }
 
-        public async Task SendCommandAsync<T>(T message)
-            where T : IMessage
+        protected async Task SendAsync(string message)
         {
-            Validator.NotNull(nameof(message), message);
-
-            var msg = Serializer.Serialize(message);
-            await SendAsync(msg).ConfigureAwait(false);
+            EnsureConnected();
+            await _wsLock.WaitAsync().ConfigureAwait(false);
+            try
+            {
+                EnsureConnected();
+                await WsClient.SendInstant(message).ConfigureAwait(false);
+                MarkLastSentTs();
+            }
+            finally
+            {
+                _wsLock.Release();
+            }
         }
 
         public async Task CloseAsync()
@@ -108,10 +105,7 @@ namespace XenaExchange.Client.Ws
                 .Concat()
                 .Subscribe();
 
-            WsClient.DisconnectionHappened
-                .Select(m => Observable.FromAsync(async () => await HandleDisconnectAsync(m).ConfigureAwait(false)))
-                .Concat()
-                .Subscribe();
+            WsClient.DisconnectionHappened.Subscribe(HandleDisconnect);
         }
 
         private void EnsureConnected()
@@ -119,22 +113,6 @@ namespace XenaExchange.Client.Ws
             var client = WsClient;
             if (client?.IsRunning != true)
                 throw new WsNotConnectedException();
-        }
-
-        private async Task SendAsync(string message)
-        {
-            EnsureConnected();
-            await _wsLock.WaitAsync().ConfigureAwait(false);
-            try
-            {
-                EnsureConnected();
-                await WsClient.SendInstant(message).ConfigureAwait(false);
-                MarkLastSentTs();
-            }
-            finally
-            {
-                _wsLock.Release();
-            }
         }
 
         private async Task HeartbeatsAsync(CancellationToken cancellationToken)
@@ -149,51 +127,62 @@ namespace XenaExchange.Client.Ws
 
                 await Task.Delay(Options.CheckHeartbeatsInterval, cancellationToken).ConfigureAwait(false);
 
-                var lastReceived = new DateTime(_lastReceivedTs, DateTimeKind.Utc);
-                var lastSent = new DateTime(_lastSentTs, DateTimeKind.Utc);
-
                 if (cancellationToken.IsCancellationRequested)
                     return;
 
-                var now = DateTime.UtcNow;
-                var sinceLastReceived = now - lastReceived;
-                var sinceLastSent = now - lastSent;
-                var disconnectTimeout = TimeSpan.FromTicks((long)(1.5 * Options.PingInterval.Ticks));
+                var isActive = await CheckServerInactivityAsync().ConfigureAwait(false);
+                if (isActive)
+                    await SendPingIfNeededAsync().ConfigureAwait(false);
+            }
+        }
 
-                // Check last msg ts from server
-                if (sinceLastReceived > disconnectTimeout)
-                {
-                    Logger.LogError($"No new messages from server for {sinceLastReceived}, disconnecting");
-                    try
-                    {
-                        await ResetWsClientAsync().ConfigureAwait(false);
-                        Logger.LogDebug("WsClient Stopped.");
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.LogError(ex, $"Failed to stop {Options.Uri} gracefully");
-                    }
-                    return;
-                }
+        private async Task<bool> CheckServerInactivityAsync()
+        {
+            var now = DateTime.UtcNow;
+            var lastReceived = new DateTime(_lastReceivedTs, DateTimeKind.Utc);
+            var sinceLastReceived = now - lastReceived;
 
-                // Check if ping needed
-                if (sinceLastSent < Options.PingInterval)
-                    continue;
+            var disconnectTimeout = TimeSpan.FromTicks((long)(1.5 * Options.PingInterval.Ticks));
+            if (sinceLastReceived <= disconnectTimeout)
+                return true;
 
-                // Send ping
-                try
-                {
-                    await SendAsync(PingMsg).ConfigureAwait(false);
-                    MarkLastSentTs();
-                }
-                catch (TaskCanceledException)
-                {
-                    return;
-                }
-                catch (Exception ex)
-                {
-                    Logger.LogError(ex, "Failed to send ping message");
-                }
+            Logger.LogError($"No new messages from server for {sinceLastReceived}, disconnecting");
+            try
+            {
+                await ResetWsClientAsync().ConfigureAwait(false);
+                Logger.LogDebug("WsClient Stopped.");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, $"Failed to stop {Options.Uri} gracefully");
+            }
+
+            return false;
+        }
+
+        private async Task SendPingIfNeededAsync()
+        {
+            var now = DateTime.UtcNow;
+            var lastSent = new DateTime(_lastSentTs, DateTimeKind.Utc);
+            var sinceLastSent = now - lastSent;
+
+            // Check if ping needed
+            if (sinceLastSent < Options.PingInterval)
+                return;
+
+            // Send ping
+            try
+            {
+                await SendAsync(PingMessage).ConfigureAwait(false);
+                MarkLastSentTs();
+            }
+            catch (TaskCanceledException)
+            {
+                // Do nothing, task was canceled.
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Failed to send ping message");
             }
         }
 
@@ -209,34 +198,14 @@ namespace XenaExchange.Client.Ws
                     return;
                 case WebSocketMessageType.Text:
                     MarkLastReceivedTs();
-                    IMessage msg;
-                    try
-                    {
-                        msg = Serializer.Deserialize(message.Text);
-                    }
-                    catch (MsgNotSupportedException ex)
-                    {
-                        Logger.LogWarning(ex.Message);
-                        return;
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.LogError(ex, $"Failed to deserialize message {message.Text}: {ex.Message}");
-                        throw;
-                    }
-
-                    if (msg is Heartbeat)
-                        return;
-
-                    await OnMessage(msg).ConfigureAwait(false);
-
+                    await OnTextMessage(message.Text).ConfigureAwait(false);
                     return;
                 default:
                     throw new NotSupportedException($"WebSocketMessageType {message.MessageType} not supported");
             }
         }
 
-        private async Task HandleDisconnectAsync(DisconnectionType type)
+        private void HandleDisconnect(DisconnectionType type)
         {
             var msg = $"Disconnected with type {type}";
             switch (type)
