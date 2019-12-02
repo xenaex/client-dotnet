@@ -23,7 +23,7 @@ namespace XenaExchange.Client.Ws.TradingApi
     /// <summary>
     /// Provides methods to Xena trading websocket API.
     /// </summary>
-    public class TradingWsClient : WsClientBase, ITradingWsClient
+    public class TradingWsClient : XenaWsClientBase, ITradingWsClient
     {
         private readonly TradingWsClientOptions _tradingOptions;
 
