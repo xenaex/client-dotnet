@@ -47,7 +47,7 @@ namespace XenaExchange.Client.Ws
             }
 
             await WsClient.Start().ConfigureAwait(false);
-            EnsureConnected();
+            await EnsureConnectedOnStartAsync().ConfigureAwait(false);
 
             _pingCts = new CancellationTokenSource();
             HeartbeatsAsync(_pingCts.Token);
@@ -69,7 +69,7 @@ namespace XenaExchange.Client.Ws
             }
         }
 
-        public async Task CloseAsync()
+        public virtual async Task CloseAsync()
         {
             var client = WsClient;
             if (client?.IsRunning != true)
@@ -80,9 +80,10 @@ namespace XenaExchange.Client.Ws
 
             try
             {
-                if (!WsClient?.IsRunning != true)
+                if (WsClient?.IsRunning != true)
                     return;
 
+                CancelHeartbeats();
                 await WsClient.Stop(WebSocketCloseStatus.NormalClosure, "").ConfigureAwait(false);
             }
             finally
@@ -109,6 +110,37 @@ namespace XenaExchange.Client.Ws
                 .Select(m => Observable.FromAsync(async () => await HandleDisconnectAsync(m).ConfigureAwait(false)))
                 .Concat()
                 .Subscribe();
+        }
+
+        private async Task EnsureConnectedOnStartAsync()
+        {
+            // Ensure connection with 1s timeout
+            var interval = TimeSpan.FromMilliseconds(10);
+            var attemptsLeft = 100;
+            var connected = false;
+
+            while (true)
+            {
+                var client = WsClient;
+
+                // Could be disposed on disconnect
+                if (client == null)
+                    break;
+
+                if (client.IsRunning)
+                {
+                    connected = true;
+                    break;
+                }
+
+                if (--attemptsLeft == 0)
+                    break;
+
+                await Task.Delay(interval).ConfigureAwait(false);
+            }
+
+            if (!connected)
+                throw new WsNotConnectedException();
         }
 
         private void EnsureConnected()
@@ -222,9 +254,7 @@ namespace XenaExchange.Client.Ws
                     break;
             }
 
-            _pingCts?.Cancel();
-            _pingCts = null;
-
+            CancelHeartbeats();
             await OnDisconnectBaseAsync(type).ConfigureAwait(false);
         }
 
@@ -260,6 +290,16 @@ namespace XenaExchange.Client.Ws
         private void MarkLastReceivedTs()
         {
             _lastReceivedTs = DateTime.UtcNow.Ticks;
+        }
+
+        private void CancelHeartbeats()
+        {
+            var cts = _pingCts;
+            if (cts != null)
+            {
+                cts.Cancel();
+                _pingCts = null;
+            }
         }
 
         public void Dispose()
