@@ -35,6 +35,12 @@ namespace XenaExchange.Client.Ws.MarketData
             _subscriptions = new ConcurrentDictionary<string, Subscription>();
         }
 
+        public override async Task CloseAsync()
+        {
+            await base.CloseAsync().ConfigureAwait(false);
+            _subscriptions.Clear();
+        }
+
         protected override async Task OnMessageAsync(IMessage message)
         {
             switch (message)
