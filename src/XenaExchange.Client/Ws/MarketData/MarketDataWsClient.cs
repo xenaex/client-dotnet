@@ -35,7 +35,7 @@ namespace XenaExchange.Client.Ws.MarketData
             _subscriptions = new ConcurrentDictionary<string, Subscription>();
         }
 
-        protected override async Task OnMessage(IMessage message)
+        protected override async Task OnMessageAsync(IMessage message)
         {
             switch (message)
             {
@@ -55,10 +55,11 @@ namespace XenaExchange.Client.Ws.MarketData
             }
         }
 
-        protected override void OnDisconnectBase(DisconnectionType type)
+        protected override Task OnDisconnectBaseAsync(DisconnectionType type)
         {
             _subscriptions.Clear();
             _disconnectedSubject.OnNext(new DisconnectInfo<IMarketDataWsClient>(this, type));
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />

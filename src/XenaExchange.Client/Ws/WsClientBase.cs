@@ -32,8 +32,8 @@ namespace XenaExchange.Client.Ws
         }
 
         protected abstract string PingMessage { get; }
-        protected abstract Task OnTextMessage(string message);
-        protected abstract void OnDisconnectBase(DisconnectionType type);
+        protected abstract Task OnTextMessageAsync(string message);
+        protected abstract Task OnDisconnectBaseAsync(DisconnectionType type);
 
         protected async Task ConnectBaseAsync()
         {
@@ -101,11 +101,14 @@ namespace XenaExchange.Client.Ws
             };
 
             WsClient.MessageReceived
-                .Select(m => Observable.FromAsync(async () => await HandleMessage(m).ConfigureAwait(false)))
+                .Select(m => Observable.FromAsync(async () => await HandleMessageAsync(m).ConfigureAwait(false)))
                 .Concat()
                 .Subscribe();
 
-            WsClient.DisconnectionHappened.Subscribe(HandleDisconnect);
+            WsClient.DisconnectionHappened
+                .Select(m => Observable.FromAsync(async () => await HandleDisconnectAsync(m).ConfigureAwait(false)))
+                .Concat()
+                .Subscribe();
         }
 
         private void EnsureConnected()
@@ -186,7 +189,7 @@ namespace XenaExchange.Client.Ws
             }
         }
 
-        private async Task HandleMessage(ResponseMessage message)
+        private async Task HandleMessageAsync(ResponseMessage message)
         {
             switch (message.MessageType)
             {
@@ -198,14 +201,14 @@ namespace XenaExchange.Client.Ws
                     return;
                 case WebSocketMessageType.Text:
                     MarkLastReceivedTs();
-                    await OnTextMessage(message.Text).ConfigureAwait(false);
+                    await OnTextMessageAsync(message.Text).ConfigureAwait(false);
                     return;
                 default:
                     throw new NotSupportedException($"WebSocketMessageType {message.MessageType} not supported");
             }
         }
 
-        private void HandleDisconnect(DisconnectionType type)
+        private async Task HandleDisconnectAsync(DisconnectionType type)
         {
             var msg = $"Disconnected with type {type}";
             switch (type)
@@ -222,7 +225,7 @@ namespace XenaExchange.Client.Ws
             _pingCts?.Cancel();
             _pingCts = null;
 
-            OnDisconnectBase(type);
+            await OnDisconnectBaseAsync(type).ConfigureAwait(false);
         }
 
         /// <summary>
