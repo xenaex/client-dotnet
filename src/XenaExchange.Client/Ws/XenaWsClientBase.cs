@@ -22,11 +22,11 @@ namespace XenaExchange.Client.Ws
             Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
 
-        protected abstract Task OnMessage(IMessage message);
+        protected abstract Task OnMessageAsync(IMessage message);
 
         protected override string PingMessage => HeartbeatMsg;
 
-        protected override async Task OnTextMessage(string message)
+        protected override async Task OnTextMessageAsync(string message)
         {
             IMessage msg;
             try
@@ -47,7 +47,7 @@ namespace XenaExchange.Client.Ws
             if (msg is Heartbeat)
                 return;
 
-            await OnMessage(msg).ConfigureAwait(false);
+            await OnMessageAsync(msg).ConfigureAwait(false);
         }
 
         public async Task SendCommandAsync<T>(T message)

@@ -47,11 +47,11 @@ namespace XenaExchange.Client.Ws.TradingApi
         /// <inheritdoc />
         public async Task<Logon> ConnectAndLogonAsync()
         {
-            await base.ConnectBaseAsync().ConfigureAwait(false);
+            await ConnectBaseAsync().ConfigureAwait(false);
             return await LogonAsync().ConfigureAwait(false);
         }
 
-        protected override async Task OnMessage(IMessage message)
+        protected override async Task OnMessageAsync(IMessage message)
         {
             if (message is Logon logon)
             {
@@ -73,9 +73,10 @@ namespace XenaExchange.Client.Ws.TradingApi
             await Task.WhenAll(tasks).ConfigureAwait(false);
         }
 
-        protected override void OnDisconnectBase(DisconnectionType type)
+        protected override Task OnDisconnectBaseAsync(DisconnectionType type)
         {
             _disconnectedSubject.OnNext(new DisconnectInfo<ITradingWsClient>(this, type));
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />
