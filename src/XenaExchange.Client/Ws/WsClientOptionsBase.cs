@@ -12,5 +12,9 @@ namespace XenaExchange.Client.Ws
         public TimeSpan PingInterval { get; set; } = TimeSpan.FromSeconds(5);
 
         public TimeSpan CheckHeartbeatsInterval { get; set; } = TimeSpan.FromMilliseconds(500);
+
+        public TimeSpan HandleMessageWarnThreshold { get; set; } = TimeSpan.FromMinutes(2);
+
+        public int BufferWarnThreshold { get; set; } = 400;
     }
 }

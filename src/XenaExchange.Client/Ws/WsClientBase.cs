@@ -1,9 +1,11 @@
 using System;
+using System.Diagnostics;
 using System.Net.WebSockets;
 using System.Reactive.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using Microsoft.Extensions.Logging;
 using Websocket.Client;
 using XenaExchange.Client.Ws.Interfaces.Exceptions;
@@ -18,6 +20,9 @@ namespace XenaExchange.Client.Ws
 
         private readonly SemaphoreSlim _wsLock = new SemaphoreSlim(1, 1);
 
+        private readonly BufferBlock<string> _receiveBuffer = new BufferBlock<string>();
+
+        private readonly CancellationTokenSource _handleMessagesCts = new CancellationTokenSource();
         private CancellationTokenSource _pingCts;
 
         protected WebsocketClient WsClient;
@@ -29,6 +34,8 @@ namespace XenaExchange.Client.Ws
         {
             Options = options ?? throw new ArgumentNullException(nameof(options));
             Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+            _ = HandleMessagesAsync(_handleMessagesCts.Token);
         }
 
         protected abstract string PingMessage { get; }
@@ -50,7 +57,7 @@ namespace XenaExchange.Client.Ws
             await EnsureConnectedOnStartAsync().ConfigureAwait(false);
 
             _pingCts = new CancellationTokenSource();
-            HeartbeatsAsync(_pingCts.Token);
+            _ = HeartbeatsAsync(_pingCts.Token);
         }
 
         protected async Task SendAsync(string message)
@@ -102,7 +109,7 @@ namespace XenaExchange.Client.Ws
             };
 
             WsClient.MessageReceived
-                .Select(m => Observable.FromAsync(async () => await HandleMessageAsync(m).ConfigureAwait(false)))
+                .Select(m => Observable.FromAsync(async () => await HandleWsMessageAsync(m).ConfigureAwait(false)))
                 .Concat()
                 .Subscribe();
 
@@ -221,7 +228,31 @@ namespace XenaExchange.Client.Ws
             }
         }
 
-        private async Task HandleMessageAsync(ResponseMessage message)
+        private async Task HandleMessagesAsync(CancellationToken cancellationToken)
+        {
+            while (await _receiveBuffer.OutputAvailableAsync(cancellationToken))
+            {
+                if (cancellationToken.IsCancellationRequested)
+                    return;
+
+                var msg = await _receiveBuffer.ReceiveAsync(cancellationToken).ConfigureAwait(false);
+
+                if (cancellationToken.IsCancellationRequested)
+                    return;
+
+                var sw = Stopwatch.StartNew();
+                await OnTextMessageAsync(msg).ConfigureAwait(false);
+                sw.Stop();
+
+                if (sw.Elapsed > Options.HandleMessageWarnThreshold)
+                    Logger.LogWarning($"{GetType().Name} message handling took {sw.Elapsed.ToString()}");
+
+                if (cancellationToken.IsCancellationRequested)
+                    return;
+            }
+        }
+
+        private async Task HandleWsMessageAsync(ResponseMessage message)
         {
             switch (message.MessageType)
             {
@@ -233,7 +264,11 @@ namespace XenaExchange.Client.Ws
                     return;
                 case WebSocketMessageType.Text:
                     MarkLastReceivedTs();
-                    await OnTextMessageAsync(message.Text).ConfigureAwait(false);
+                    await _receiveBuffer.SendAsync(message.Text).ConfigureAwait(false);
+
+                    if (_receiveBuffer.Count > Options.BufferWarnThreshold)
+                        Logger.LogWarning($"{GetType().Name} buffer count is {_receiveBuffer.Count.ToString()}");
+
                     return;
                 default:
                     throw new NotSupportedException($"WebSocketMessageType {message.MessageType} not supported");
@@ -304,6 +339,9 @@ namespace XenaExchange.Client.Ws
 
         public void Dispose()
         {
+            _receiveBuffer.Complete();
+            _handleMessagesCts.Cancel();
+
             // TODO: isn't thread safe, could crush on app terminating.
             WsClient?.Dispose();
         }
