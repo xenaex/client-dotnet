@@ -55,22 +55,22 @@ namespace XenaExchange.Client.Examples.Ws
 
             // Subscribe on candles stream.
             // Async handler, throttling specified.
-//            await SubscribeCandlesAsync().ConfigureAwait(false);
+            // await SubscribeCandlesAsync().ConfigureAwait(false);
 
             // Subscribe on DOM:aggregated stream.
             // Sync handler, default throttling = 0 ms (every single update is sent).
             await SubscribeDOMAsync().ConfigureAwait(false);
 
             // Subscibe on trades
-//            await SubscribeTradesAsync().ConfigureAwait(false);
+            // await SubscribeTradesAsync().ConfigureAwait(false);
 
             // Subscribe on market-watch
-//            var streamId = await SubscribeMarketWatchAsync().ConfigureAwait(false);
+            // var streamId = await SubscribeMarketWatchAsync().ConfigureAwait(false);
 
             // Unsubscribe from market-watch stream
-//            await Task.Delay(5000).ConfigureAwait(false);
-//            await _wsClient.Unsubscribe(streamId).ConfigureAwait(false);
-//            _logger.LogInformation($"Unsubscribed from {streamId}");
+            // await Task.Delay(5000).ConfigureAwait(false);
+            // await _wsClient.Unsubscribe(streamId).ConfigureAwait(false);
+            // _logger.LogInformation($"Unsubscribed from {streamId}");
         }
 
         private async Task SubscribeCandlesAsync()

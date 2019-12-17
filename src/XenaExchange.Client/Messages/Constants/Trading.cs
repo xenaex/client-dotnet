@@ -81,9 +81,13 @@ namespace XenaExchange.Client.Messages.Constants
 
     public static class ExecInst
     {
+        public const string StayOnOfferSide = "0";
+        public const string PegToOfferSide = "9";
+        public const string AllOrNone = "G";
         public const string IgnoreNotionalValueChecks = "x";
-        public const string Open = "O";
-        public static readonly IReadOnlyCollection<string> All = new[] { IgnoreNotionalValueChecks, Open };
+        public const string Suspend = "s";
+        public const string LiquidationOrder = "Y";
+        public static readonly IReadOnlyCollection<string> All = new[] { StayOnOfferSide, PegToOfferSide, AllOrNone, IgnoreNotionalValueChecks, Suspend, LiquidationOrder };
     }
 
     public static class PegOffsetType
