@@ -122,7 +122,7 @@ namespace XenaExchange.Client.Examples.Ws
 //            await InfinitePlaceCancelAsync().ConfigureAwait(false);
 //            await GetAllOrdersAndCancelAsync().ConfigureAwait(false);
 //            await MarketOrderAsync().ConfigureAwait(false);
-//            await LimitOrderAsync().ConfigureAwait(false);
+            await LimitOrderAsync().ConfigureAwait(false);
 //            await StopOrderAsync().ConfigureAwait(false);
 //            await SltpGroupAsync().ConfigureAwait(false);
 //            await StopLossForExistingPositionAsync().ConfigureAwait(false);
@@ -132,7 +132,7 @@ namespace XenaExchange.Client.Examples.Ws
 //            await SyncLimitOrderAsync().ConfigureAwait(false);
 //            await GetOpenPositionsAsync().ConfigureAwait(false);
 //            await GetBalancesAsync().ConfigureAwait(false);
-            await OrderMassCancelAsync().ConfigureAwait(false);
+            // await OrderMassCancelAsync().ConfigureAwait(false);
         }
 
         private async Task InfinitePlaceCancelAsync()
@@ -183,9 +183,25 @@ namespace XenaExchange.Client.Examples.Ws
 
         private async Task LimitOrderAsync()
         {
-            await _wsClient.NewLimitOrderAsync(CommonFuncs.NewClOrdId("limit-order"), "BTC/USDT", Side.Sell, 0.01M, SpotAccountId, 10500).ConfigureAwait(false);
+            await _wsClient.NewLimitOrderAsync(
+                    CommonFuncs.NewClOrdId("limit-order"),
+                    "BTC/USDT",
+                    Side.Sell,
+                    0.01M,
+                    SpotAccountId,
+                    10500,
+                    text: "order comment 1")
+                .ConfigureAwait(false);
 
-            var command = OrderExtensions.NewLimitOrder(CommonFuncs.NewClOrdId("limit-order"), "BTC/USDT", Side.Sell, 0.01M, SpotAccountId, 10500);
+            var command = OrderExtensions.NewLimitOrder(
+                CommonFuncs.NewClOrdId("limit-order"),
+                "BTC/USDT",
+                Side.Sell,
+                0.01M,
+                SpotAccountId,
+                10500,
+                text: "order comment 2");
+
             await _wsClient.SendCommandAsync(command).ConfigureAwait(false);
         }
 

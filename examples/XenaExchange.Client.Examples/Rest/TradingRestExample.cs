@@ -45,7 +45,7 @@ namespace XenaExchange.Client.Examples.Rest
         private async Task TestTradingAsync(CancellationToken cancellationToken)
         {
 //            await MarketOrderAsync(cancellationToken).ConfigureAwait(false);
-//            await LimitOrderAsync(cancellationToken).ConfigureAwait(false);
+            await LimitOrderAsync(cancellationToken).ConfigureAwait(false);
 //            await StopOrderAsync(cancellationToken).ConfigureAwait(false);
 //            await SltpGroupAsync(cancellationToken).ConfigureAwait(false);
 //            await StopLossForExistingPositionAsync(cancellationToken).ConfigureAwait(false);
@@ -60,7 +60,7 @@ namespace XenaExchange.Client.Examples.Rest
 //            await GetBalancesAsync(cancellationToken).ConfigureAwait(false);
 //            await GetMarginRequirementsAsync(cancellationToken).ConfigureAwait(false);
 //            await ListAccountsAsync(cancellationToken).ConfigureAwait(false);
-            await MassCancelAsync(cancellationToken).ConfigureAwait(false);
+            // await MassCancelAsync(cancellationToken).ConfigureAwait(false);
         }
 
         private async Task MarketOrderAsync(CancellationToken cancellationToken)
@@ -85,6 +85,7 @@ namespace XenaExchange.Client.Examples.Rest
                 0.01M,
                 SpotAccountId,
                 10500,
+                text: "order comment 1",
                 cancellationToken: cancellationToken).ConfigureAwait(false);
 
             HandleOrderReport(executionReport);

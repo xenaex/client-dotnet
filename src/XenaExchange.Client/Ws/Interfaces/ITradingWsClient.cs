@@ -68,6 +68,7 @@ namespace XenaExchange.Client.Ws.Interfaces
         /// <param name="positionId">Position id to close.</param>
         /// <param name="stopLossPrice">Stop loss price.</param>
         /// <param name="takeProfitPrice">Take-profit price.</param>
+        /// <param name="text">Free format text string.</param>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
         Task NewMarketOrderAsync(
             string clOrdId,
@@ -79,7 +80,8 @@ namespace XenaExchange.Client.Ws.Interfaces
             string[] execInst = null,
             ulong positionId = 0,
             decimal stopLossPrice=0,
-            decimal takeProfitPrice=0);
+            decimal takeProfitPrice=0,
+            string text = null);
 
         /// <summary>
         /// Places new limit order.
@@ -98,6 +100,7 @@ namespace XenaExchange.Client.Ws.Interfaces
         /// <param name="trailingOffset">Trailing offset value. For trailing stop and attempt zero loss orders.</param>
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
+        /// <param name="text">Free format text string.</param>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
         Task NewLimitOrderAsync(
             string clOrdId,
@@ -112,7 +115,8 @@ namespace XenaExchange.Client.Ws.Interfaces
             decimal stopLossPrice=0,
             decimal takeProfitPrice=0,
             decimal trailingOffset=0,
-            decimal capPrice=0);
+            decimal capPrice=0,
+            string text = null);
 
         /// <summary>
         /// Places new stop order.
@@ -131,6 +135,7 @@ namespace XenaExchange.Client.Ws.Interfaces
         /// <param name="trailingOffset">Trailing offset value. For trailing stop and attempt zero loss orders.</param>
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
+        /// <param name="text">Free format text string.</param>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
         Task NewStopOrderAsync(
             string clOrdId,
@@ -145,7 +150,8 @@ namespace XenaExchange.Client.Ws.Interfaces
             decimal stopLossPrice=0,
             decimal takeProfitPrice=0,
             decimal trailingOffset=0,
-            decimal capPrice=0);
+            decimal capPrice=0,
+            string text = null);
 
         /// <summary>
         /// Places new market-if-touch order.
@@ -164,6 +170,7 @@ namespace XenaExchange.Client.Ws.Interfaces
         /// <param name="trailingOffset">Trailing offset value. For trailing stop and attempt zero loss orders.</param>
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
+        /// <param name="text">Free format text string.</param>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
         Task NewMarketIfTouchOrderAsync(
             string clOrdId,
@@ -178,7 +185,8 @@ namespace XenaExchange.Client.Ws.Interfaces
             decimal stopLossPrice=0,
             decimal takeProfitPrice=0,
             decimal trailingOffset=0,
-            decimal capPrice=0);
+            decimal capPrice=0,
+            string text = null);
 
         /// <summary>
         /// Cancels an existing order by provided original client order id.

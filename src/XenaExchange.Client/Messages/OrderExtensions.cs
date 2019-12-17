@@ -22,10 +22,11 @@ namespace XenaExchange.Client.Messages
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0)
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
+            string text = null)
         {
             var command = new NewOrderSingle
             {
@@ -40,6 +41,7 @@ namespace XenaExchange.Client.Messages
                 StopPx = stopPx.ToFixString(),
                 TimeInForce = timeInForce.Proto(),
                 PositionId = positionId,
+                Text = text.Proto(),
             };
 
             if (positionId != 0)
@@ -69,7 +71,8 @@ namespace XenaExchange.Client.Messages
             string[] execInst = null,
             ulong positionId = 0,
             decimal stopLossPrice=0,
-            decimal takeProfitPrice=0)
+            decimal takeProfitPrice=0,
+            string text = null)
         {
             return NewOrderSingle(
                 clOrdId,
@@ -82,7 +85,8 @@ namespace XenaExchange.Client.Messages
                 execInst: execInst,
                 positionId: positionId,
                 stopLossPrice: stopLossPrice,
-                takeProfitPrice: takeProfitPrice);
+                takeProfitPrice: takeProfitPrice,
+                text: text);
         }
 
         public static NewOrderSingle NewLimitOrder(
@@ -95,10 +99,11 @@ namespace XenaExchange.Client.Messages
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0)
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
+            string text = null)
         {
             return NewOrderSingle(
                 clOrdId,
@@ -114,7 +119,8 @@ namespace XenaExchange.Client.Messages
                 stopLossPrice: stopLossPrice,
                 takeProfitPrice: takeProfitPrice,
                 trailingOffset: trailingOffset,
-                capPrice: capPrice);
+                capPrice: capPrice,
+                text: text);
         }
 
         public static NewOrderSingle NewStopOrder(
@@ -127,10 +133,11 @@ namespace XenaExchange.Client.Messages
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0)
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
+            string text = null)
         {
             return NewOrderSingle(
                 clOrdId,
@@ -146,7 +153,8 @@ namespace XenaExchange.Client.Messages
                 stopLossPrice: stopLossPrice,
                 takeProfitPrice: takeProfitPrice,
                 trailingOffset: trailingOffset,
-                capPrice: capPrice);
+                capPrice: capPrice,
+                text: text);
         }
 
         public static NewOrderSingle NewMarketIfTouchOrder(
@@ -159,10 +167,11 @@ namespace XenaExchange.Client.Messages
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0)
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
+            string text = null)
         {
             return NewOrderSingle(
                 clOrdId,
@@ -178,7 +187,8 @@ namespace XenaExchange.Client.Messages
                 stopLossPrice: stopLossPrice,
                 takeProfitPrice: takeProfitPrice,
                 trailingOffset: trailingOffset,
-                capPrice: capPrice);
+                capPrice: capPrice,
+                text: text);
         }
 
         public static void AddStopLoss(this NewOrderSingle command, decimal stopPrice)

@@ -34,6 +34,7 @@ namespace XenaExchange.Client.Rest.Trading
         /// <param name="positionId">Position id to close.</param>
         /// <param name="stopLossPrice">Stop loss price.</param>
         /// <param name="takeProfitPrice">Take-profit price.</param>
+        /// <param name="text">Free format text string.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
@@ -46,8 +47,9 @@ namespace XenaExchange.Client.Rest.Trading
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            string text = null,
             CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -67,6 +69,7 @@ namespace XenaExchange.Client.Rest.Trading
         /// <param name="trailingOffset">Trailing offset value. For trailing stop and attempt zero loss orders.</param>
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
+        /// <param name="text">Free format text string.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
@@ -84,6 +87,7 @@ namespace XenaExchange.Client.Rest.Trading
             decimal takeProfitPrice=0,
             decimal trailingOffset=0,
             decimal capPrice=0,
+            string text = null,
             CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -103,6 +107,7 @@ namespace XenaExchange.Client.Rest.Trading
         /// <param name="trailingOffset">Trailing offset value. For trailing stop and attempt zero loss orders.</param>
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
+        /// <param name="text">Free format text string.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
@@ -120,6 +125,7 @@ namespace XenaExchange.Client.Rest.Trading
             decimal takeProfitPrice=0,
             decimal trailingOffset=0,
             decimal capPrice=0,
+            string text = null,
             CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -139,6 +145,7 @@ namespace XenaExchange.Client.Rest.Trading
         /// <param name="trailingOffset">Trailing offset value. For trailing stop and attempt zero loss orders.</param>
         /// <param name="capPrice">For trailing stop orders — empty. For attempt zero loss orders — stop loss price limit.
         /// If CapPrice = 0, CapPrice = Open price.</param>
+        /// <param name="text">Free format text string.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>New order execution report.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
@@ -156,6 +163,7 @@ namespace XenaExchange.Client.Rest.Trading
             decimal takeProfitPrice=0,
             decimal trailingOffset=0,
             decimal capPrice=0,
+            string text = null,
             CancellationToken cancellationToken = default);
 
         /// <summary>

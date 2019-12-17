@@ -176,8 +176,9 @@ namespace XenaExchange.Client.Ws.TradingApi
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0)
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            string text = null)
         {
             var command = OrderExtensions.NewMarketOrder(
                 clOrdId,
@@ -189,7 +190,8 @@ namespace XenaExchange.Client.Ws.TradingApi
                 execInst,
                 positionId,
                 stopLossPrice,
-                takeProfitPrice);
+                takeProfitPrice,
+                text);
 
             await SendCommandAsync(command).ConfigureAwait(false);
         }
@@ -205,10 +207,11 @@ namespace XenaExchange.Client.Ws.TradingApi
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0)
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
+            string text = null)
         {
             var command = OrderExtensions.NewLimitOrder(
                 clOrdId,
@@ -223,7 +226,8 @@ namespace XenaExchange.Client.Ws.TradingApi
                 stopLossPrice,
                 takeProfitPrice,
                 trailingOffset,
-                capPrice);
+                capPrice,
+                text);
 
             await SendCommandAsync(command).ConfigureAwait(false);
         }
@@ -239,10 +243,11 @@ namespace XenaExchange.Client.Ws.TradingApi
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0)
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
+            string text = null)
         {
             var command = OrderExtensions.NewStopOrder(
                 clOrdId,
@@ -257,7 +262,8 @@ namespace XenaExchange.Client.Ws.TradingApi
                 stopLossPrice,
                 takeProfitPrice,
                 trailingOffset,
-                capPrice);
+                capPrice,
+                text);
 
             await SendCommandAsync(command).ConfigureAwait(false);
         }
@@ -273,10 +279,11 @@ namespace XenaExchange.Client.Ws.TradingApi
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0)
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
+            string text = null)
         {
             var command = OrderExtensions.NewMarketIfTouchOrder(
                 clOrdId,
@@ -291,7 +298,8 @@ namespace XenaExchange.Client.Ws.TradingApi
                 stopLossPrice,
                 takeProfitPrice,
                 trailingOffset,
-                capPrice);
+                capPrice,
+                text);
 
             await SendCommandAsync(command).ConfigureAwait(false);
         }
