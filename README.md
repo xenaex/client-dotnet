@@ -1,7 +1,6 @@
 # Xena Exchange official websocket and rest clients for .netstandard 2.0
 
-For API documentation check out [Help Center](https://support.xena.exchange/support/solutions/folders/44000161002)
-
+For API documentation check out [Help Center](https://support.xena.exchange/support/solutions/44000803719)
 
 #### Install
 
@@ -81,7 +80,7 @@ await wsClient.Unsubscribe(streamId).ConfigureAwait(false);
 #### Trading websocket example
 
 Register an account with [Xena](https://trading.xena.exchange/registration). Generate an API Key and assign relevant permissions.
-	
+
 ```csharp
 var spotAccountId = 1;
 var marginAccountId = 2;

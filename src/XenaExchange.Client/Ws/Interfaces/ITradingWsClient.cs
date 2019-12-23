@@ -9,9 +9,9 @@ namespace XenaExchange.Client.Ws.Interfaces
 {
     /// <summary>
     /// Xena Trading websocket client interface.
-    /// 
+    ///
     /// All details about trading websocket API could be found here:
-    /// https://support.xena.exchange/support/solutions/articles/44000222082-ws-trading-api
+    /// https://support.xena.exchange/support/solutions/articles/44001795000-ws-trading-api
     /// </summary>
     public interface ITradingWsClient : IWsClient, IOnDisconnect<ITradingWsClient>
     {
@@ -24,10 +24,10 @@ namespace XenaExchange.Client.Ws.Interfaces
 
         /// <summary>
         /// Starts to route all received from websocket messages to provided handler.
-        /// 
+        ///
         /// Is is possible to listen all messages and any concrete message simultaneously.
         /// This way each message will be duplicated in a general handler and in a concrete handler.
-        /// 
+        ///
         /// If an attempt to subscribe twice on all messages is made <see cref="DuplicateSubscriptionException"/> will be thrown.
         /// </summary>
         /// <param name="handler">Messages handler.</param>
@@ -37,10 +37,10 @@ namespace XenaExchange.Client.Ws.Interfaces
 
         /// <summary>
         /// Starts to route messages with specified type to provided handler.
-        /// 
+        ///
         /// Is is possible to listen all messages and any concrete message simultaneously.
         /// This way each message will be duplicated in a general handler and in a concrete handler.
-        /// 
+        ///
         /// If an attempt to subscribe twice on all messages is made <see cref="DuplicateSubscriptionException"/> will be thrown.
         /// </summary>
         /// <param name="handler">Messages handler.</param>
@@ -79,8 +79,8 @@ namespace XenaExchange.Client.Ws.Interfaces
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
             string text = null);
 
         /// <summary>
@@ -112,10 +112,10 @@ namespace XenaExchange.Client.Ws.Interfaces
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0,
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
             string text = null);
 
         /// <summary>
@@ -147,10 +147,10 @@ namespace XenaExchange.Client.Ws.Interfaces
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0,
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
             string text = null);
 
         /// <summary>
@@ -182,10 +182,10 @@ namespace XenaExchange.Client.Ws.Interfaces
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0,
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
             string text = null);
 
         /// <summary>
