@@ -5,7 +5,7 @@
     <Description>Xena Exchange official websocket and rest clients for .netstandard 2.0</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <PackageVersion>0.7.0</PackageVersion>
+    <PackageVersion>0.8.0</PackageVersion>
     <Authors>Xena Financial Systems</Authors>
     <Company>Xena Financial Systems</Company>
     <RepositoryType>git</RepositoryType>
