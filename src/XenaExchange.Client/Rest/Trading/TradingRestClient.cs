@@ -75,8 +75,9 @@ namespace XenaExchange.Client.Rest.Trading
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            string text = null,
             CancellationToken cancellationToken = default)
         {
             var command = OrderExtensions.NewMarketOrder(
@@ -89,7 +90,8 @@ namespace XenaExchange.Client.Rest.Trading
                 execInst,
                 positionId,
                 stopLossPrice,
-                takeProfitPrice);
+                takeProfitPrice,
+                text);
 
             return await NewOrderAsync(command, cancellationToken).ConfigureAwait(false);
         }
@@ -104,10 +106,11 @@ namespace XenaExchange.Client.Rest.Trading
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0,
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
+            string text = null,
             CancellationToken cancellationToken = default)
         {
             var command = OrderExtensions.NewLimitOrder(
@@ -123,7 +126,8 @@ namespace XenaExchange.Client.Rest.Trading
                 stopLossPrice,
                 takeProfitPrice,
                 trailingOffset,
-                capPrice);
+                capPrice,
+                text);
 
             return await NewOrderAsync(command, cancellationToken).ConfigureAwait(false);
         }
@@ -138,10 +142,11 @@ namespace XenaExchange.Client.Rest.Trading
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0,
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
+            string text = null,
             CancellationToken cancellationToken = default)
         {
             var command = OrderExtensions.NewStopOrder(
@@ -157,7 +162,8 @@ namespace XenaExchange.Client.Rest.Trading
                 stopLossPrice,
                 takeProfitPrice,
                 trailingOffset,
-                capPrice);
+                capPrice,
+                text);
 
             return await NewOrderAsync(command, cancellationToken).ConfigureAwait(false);
         }
@@ -172,10 +178,11 @@ namespace XenaExchange.Client.Rest.Trading
             string timeInForce = null,
             string[] execInst = null,
             ulong positionId = 0,
-            decimal stopLossPrice=0,
-            decimal takeProfitPrice=0,
-            decimal trailingOffset=0,
-            decimal capPrice=0,
+            decimal stopLossPrice = 0,
+            decimal takeProfitPrice = 0,
+            decimal trailingOffset = 0,
+            decimal capPrice = 0,
+            string text = null,
             CancellationToken cancellationToken = default)
         {
             var command = OrderExtensions.NewMarketIfTouchOrder(
@@ -191,7 +198,8 @@ namespace XenaExchange.Client.Rest.Trading
                 stopLossPrice,
                 takeProfitPrice,
                 trailingOffset,
-                capPrice);
+                capPrice,
+                text);
 
             return await NewOrderAsync(command, cancellationToken).ConfigureAwait(false);
         }

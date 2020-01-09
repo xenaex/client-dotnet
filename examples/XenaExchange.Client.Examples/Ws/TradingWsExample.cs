@@ -114,25 +114,26 @@ namespace XenaExchange.Client.Examples.Ws
                 // Handle duplicate.
             }
 
-//            await _wsClient.AccountStatusReportAsync(MarginAccountId).ConfigureAwait(false);
-//            await _wsClient.GetPositionsAsync(MarginAccountId).ConfigureAwait(false);
-//            await _wsClient.CollapsePositionsAsync(MarginAccountId, "XBTUSD", Guid.NewGuid().ToString())
-//                .ConfigureAwait(false);
-//
-//            await InfinitePlaceCancelAsync().ConfigureAwait(false);
-//            await GetAllOrdersAndCancelAsync().ConfigureAwait(false);
-//            await MarketOrderAsync().ConfigureAwait(false);
-//            await LimitOrderAsync().ConfigureAwait(false);
-//            await StopOrderAsync().ConfigureAwait(false);
-//            await SltpGroupAsync().ConfigureAwait(false);
-//            await StopLossForExistingPositionAsync().ConfigureAwait(false);
-//            await TakeProfitForExistingPositionAsync().ConfigureAwait(false);
-//            await CancelOrdersAsync().ConfigureAwait(false);
-//            await ReplaceAsync().ConfigureAwait(false);
-//            await SyncLimitOrderAsync().ConfigureAwait(false);
-//            await GetOpenPositionsAsync().ConfigureAwait(false);
-//            await GetBalancesAsync().ConfigureAwait(false);
-            await OrderMassCancelAsync().ConfigureAwait(false);
+            // await _wsClient.AccountStatusReportAsync(MarginAccountId).ConfigureAwait(false);
+            // await _wsClient.GetPositionsAsync(MarginAccountId).ConfigureAwait(false);
+            // await _wsClient.CollapsePositionsAsync(MarginAccountId, "XBTUSD", Guid.NewGuid().ToString())
+            //     .ConfigureAwait(false);
+
+            // await InfinitePlaceCancelAsync().ConfigureAwait(false);
+            // await GetAllOrdersAndCancelAsync().ConfigureAwait(false);
+            // await MarketOrderAsync().ConfigureAwait(false);
+            await LimitOrderAsync().ConfigureAwait(false);
+            // await LimitOrderPostOnlyAsync().ConfigureAwait(false);
+            // await StopOrderAsync().ConfigureAwait(false);
+            // await SltpGroupAsync().ConfigureAwait(false);
+            // await StopLossForExistingPositionAsync().ConfigureAwait(false);
+            // await TakeProfitForExistingPositionAsync().ConfigureAwait(false);
+            // await CancelOrdersAsync().ConfigureAwait(false);
+            // await ReplaceAsync().ConfigureAwait(false);
+            // await SyncLimitOrderAsync().ConfigureAwait(false);
+            // await GetOpenPositionsAsync().ConfigureAwait(false);
+            // await GetBalancesAsync().ConfigureAwait(false);
+            // await OrderMassCancelAsync().ConfigureAwait(false);
         }
 
         private async Task InfinitePlaceCancelAsync()
@@ -183,10 +184,49 @@ namespace XenaExchange.Client.Examples.Ws
 
         private async Task LimitOrderAsync()
         {
-            await _wsClient.NewLimitOrderAsync(CommonFuncs.NewClOrdId("limit-order"), "BTC/USDT", Side.Sell, 0.01M, SpotAccountId, 10500).ConfigureAwait(false);
+            await _wsClient.NewLimitOrderAsync(
+                    CommonFuncs.NewClOrdId("limit-order"),
+                    "BTC/USDT",
+                    Side.Sell,
+                    0.01M,
+                    SpotAccountId,
+                    10500,
+                    text: "order comment 1")
+                .ConfigureAwait(false);
 
-            var command = OrderExtensions.NewLimitOrder(CommonFuncs.NewClOrdId("limit-order"), "BTC/USDT", Side.Sell, 0.01M, SpotAccountId, 10500);
+            var command = OrderExtensions.NewLimitOrder(
+                CommonFuncs.NewClOrdId("limit-order"),
+                "BTC/USDT",
+                Side.Sell,
+                0.01M,
+                SpotAccountId,
+                10500,
+                text: "order comment 2");
+
             await _wsClient.SendCommandAsync(command).ConfigureAwait(false);
+        }
+
+        private async Task LimitOrderPostOnlyAsync()
+        {
+            await _wsClient.NewLimitOrderAsync(
+                    CommonFuncs.NewClOrdId("limit-order"),
+                    "BTC/USDT",
+                    Side.Buy,
+                    0.01M,
+                    SpotAccountId,
+                    10000,
+                    execInst: new []{ExecInst.StayOnOfferSide})
+                .ConfigureAwait(false);
+
+            await _wsClient.NewLimitOrderAsync(
+                    CommonFuncs.NewClOrdId("limit-order"),
+                    "BTC/USDT",
+                    Side.Buy,
+                    0.01M,
+                    SpotAccountId,
+                    10000,
+                    execInst: new []{ExecInst.PegToOfferSide})
+                .ConfigureAwait(false);
         }
 
         private async Task StopOrderAsync()

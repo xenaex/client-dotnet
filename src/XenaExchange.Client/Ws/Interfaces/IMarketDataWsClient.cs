@@ -6,9 +6,9 @@ namespace XenaExchange.Client.Ws.Interfaces
 {
     /// <summary>
     /// Xena Market Data websocket client interface.
-    /// 
+    ///
     /// All details about market data websocket API could be found here:
-    /// https://support.xena.exchange/support/solutions/articles/44000222067-market-data-api
+    /// https://support.xena.exchange/support/solutions/articles/44001794992-market-data-api
     /// </summary>
     public interface IMarketDataWsClient : IWsClient, IOnDisconnect<IMarketDataWsClient>
     {

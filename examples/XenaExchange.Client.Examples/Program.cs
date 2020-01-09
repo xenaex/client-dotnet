@@ -48,7 +48,7 @@ namespace XenaExchange.Client.Examples
         public static async Task Main(string[] args)
         {
             await DiExampleAsync().ConfigureAwait(false);
-//            await NoDiExampleAsync().ConfigureAwait(false);
+            // await NoDiExampleAsync().ConfigureAwait(false);
 
             // TODO: handle CTRL+C, IHostBuilder.RunConsoleAsync() in Ubuntu doesn't work.
             await Task.Delay(int.MaxValue).ConfigureAwait(false);
@@ -113,10 +113,10 @@ namespace XenaExchange.Client.Examples
             var tradingRestExample = services.GetService<TradingRestExample>();
             var mdRestExample = services.GetService<MarketDataRestExample>();
 
-//            await tradingWsExample.StartAsync(Token).ConfigureAwait(false);
-//            await mdWsExample.StartAsync(Token).ConfigureAwait(false);
+            // await tradingWsExample.StartAsync(Token).ConfigureAwait(false);
+            // await mdWsExample.StartAsync(Token).ConfigureAwait(false);
             await tradingRestExample.StartAsync(Token).ConfigureAwait(false);
-//            await mdRestExample.StartAsync(Token).ConfigureAwait(false);
+            // await mdRestExample.StartAsync(Token).ConfigureAwait(false);
         }
     }
 }

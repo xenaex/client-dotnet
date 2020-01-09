@@ -6,6 +6,7 @@ using XenaExchange.Client.Messages.Constants;
 using XenaExchange.Client.Rest.Exceptions;
 using XenaExchange.Client.Rest.MarketData;
 using XenaExchange.Client.Rest.Requests;
+using XenaExchange.Client.Ws.Common;
 
 namespace XenaExchange.Client.Examples.Rest
 {
@@ -90,8 +91,8 @@ namespace XenaExchange.Client.Examples.Rest
             const string symbol = "XBTUSD";
             var request = new TradeHistoryMdRequest(symbol)
             {
-//                From = Functions.FromUnixNano(1574162455620117000),
-//                To = Functions.FromUnixNano(1574162518887000000),
+                // From = Functions.FromUnixNano(1574162455620117000),
+                // To = Functions.FromUnixNano(1574162518887000000),
                 PageNumber = 2,
                 Limit = 10,
             };
