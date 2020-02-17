@@ -34,7 +34,7 @@ namespace XenaExchange.Client.Examples
         private static readonly TradingWsClientOptions TradingWsOptions = new TradingWsClientOptions
         {
             Uri = TradingWsUri,
-            Accounts = new List<long> { SpotAccountId, MarginAccountId },
+            Accounts = new List<ulong> { SpotAccountId, MarginAccountId },
             ApiKey = ApiKey,
             ApiSecret = ApiSecret,
         };

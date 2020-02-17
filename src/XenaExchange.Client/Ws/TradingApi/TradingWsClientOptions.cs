@@ -12,7 +12,7 @@ namespace XenaExchange.Client.Ws.TradingApi
         /// Account ids to logon with.
         /// </summary>
         /// <value></value>
-        public List<long> Accounts { get; set; }
+        public List<ulong> Accounts { get; set; }
 
         /// <summary>
         /// Api key.
