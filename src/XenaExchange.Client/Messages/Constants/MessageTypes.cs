@@ -31,5 +31,6 @@ namespace XenaExchange.Client.Messages.Constants
         public const string ListStatus = "N";
         public const string OrderMassCancelRequest = "q";
         public const string OrderMassCancelReport = "r";
+        public const string ApplicationHeartbeat = "XAH";
     }
 }

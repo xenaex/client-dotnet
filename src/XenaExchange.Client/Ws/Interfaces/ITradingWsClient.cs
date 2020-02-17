@@ -81,7 +81,8 @@ namespace XenaExchange.Client.Ws.Interfaces
             ulong positionId = 0,
             decimal stopLossPrice = 0,
             decimal takeProfitPrice = 0,
-            string text = null);
+            string text = null,
+            string groupId = null);
 
         /// <summary>
         /// Places new limit order.
@@ -116,7 +117,8 @@ namespace XenaExchange.Client.Ws.Interfaces
             decimal takeProfitPrice = 0,
             decimal trailingOffset = 0,
             decimal capPrice = 0,
-            string text = null);
+            string text = null,
+            string groupId = null);
 
         /// <summary>
         /// Places new stop order.
@@ -151,7 +153,8 @@ namespace XenaExchange.Client.Ws.Interfaces
             decimal takeProfitPrice = 0,
             decimal trailingOffset = 0,
             decimal capPrice = 0,
-            string text = null);
+            string text = null,
+            string groupId = null);
 
         /// <summary>
         /// Places new market-if-touch order.
@@ -186,7 +189,8 @@ namespace XenaExchange.Client.Ws.Interfaces
             decimal takeProfitPrice = 0,
             decimal trailingOffset = 0,
             decimal capPrice = 0,
-            string text = null);
+            string text = null,
+            string groupId = null);
 
         /// <summary>
         /// Cancels an existing order by provided original client order id.
@@ -267,5 +271,11 @@ namespace XenaExchange.Client.Ws.Interfaces
             string symbol = null,
             string side = null,
             string positionEffect = PositionEffect.Default);
+
+        /// <summary>SendApplicationHeartbeat sends application heartbeat.</summary>
+        /// <param name="groupId">Group id.</param>
+        /// <param name="HeartBeatIntervalInSec">HeartBeat interval in seconds.</param>
+        /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
+        Task SendApplicationHeartbeat(string groupId, int HeartBeatIntervalInSec);
     }
 }
