@@ -1349,31 +1349,31 @@ namespace Api {
       }
       if (other.margin_ != null) {
         if (margin_ == null) {
-          margin_ = new global::Api.Margin();
+          Margin = new global::Api.Margin();
         }
         Margin.MergeFrom(other.Margin);
       }
       if (other.clearing_ != null) {
         if (clearing_ == null) {
-          clearing_ = new global::Api.DerivativeOperation();
+          Clearing = new global::Api.DerivativeOperation();
         }
         Clearing.MergeFrom(other.Clearing);
       }
       if (other.interest_ != null) {
         if (interest_ == null) {
-          interest_ = new global::Api.DerivativeOperation();
+          Interest = new global::Api.DerivativeOperation();
         }
         Interest.MergeFrom(other.Interest);
       }
       if (other.premium_ != null) {
         if (premium_ == null) {
-          premium_ = new global::Api.DerivativeOperation();
+          Premium = new global::Api.DerivativeOperation();
         }
         Premium.MergeFrom(other.Premium);
       }
       if (other.riskAdjustment_ != null) {
         if (riskAdjustment_ == null) {
-          riskAdjustment_ = new global::Api.DerivativeOperation();
+          RiskAdjustment = new global::Api.DerivativeOperation();
         }
         RiskAdjustment.MergeFrom(other.RiskAdjustment);
       }
@@ -1382,13 +1382,13 @@ namespace Api {
       }
       if (other.priceRange_ != null) {
         if (priceRange_ == null) {
-          priceRange_ = new global::Api.PriceRange();
+          PriceRange = new global::Api.PriceRange();
         }
         PriceRange.MergeFrom(other.PriceRange);
       }
       if (other.priceLimits_ != null) {
         if (priceLimits_ == null) {
-          priceLimits_ = new global::Api.PriceLimits();
+          PriceLimits = new global::Api.PriceLimits();
         }
         PriceLimits.MergeFrom(other.PriceLimits);
       }
@@ -1517,37 +1517,37 @@ namespace Api {
           }
           case 210: {
             if (margin_ == null) {
-              margin_ = new global::Api.Margin();
+              Margin = new global::Api.Margin();
             }
-            input.ReadMessage(margin_);
+            input.ReadMessage(Margin);
             break;
           }
           case 218: {
             if (clearing_ == null) {
-              clearing_ = new global::Api.DerivativeOperation();
+              Clearing = new global::Api.DerivativeOperation();
             }
-            input.ReadMessage(clearing_);
+            input.ReadMessage(Clearing);
             break;
           }
           case 226: {
             if (interest_ == null) {
-              interest_ = new global::Api.DerivativeOperation();
+              Interest = new global::Api.DerivativeOperation();
             }
-            input.ReadMessage(interest_);
+            input.ReadMessage(Interest);
             break;
           }
           case 234: {
             if (premium_ == null) {
-              premium_ = new global::Api.DerivativeOperation();
+              Premium = new global::Api.DerivativeOperation();
             }
-            input.ReadMessage(premium_);
+            input.ReadMessage(Premium);
             break;
           }
           case 242: {
             if (riskAdjustment_ == null) {
-              riskAdjustment_ = new global::Api.DerivativeOperation();
+              RiskAdjustment = new global::Api.DerivativeOperation();
             }
-            input.ReadMessage(riskAdjustment_);
+            input.ReadMessage(RiskAdjustment);
             break;
           }
           case 248: {
@@ -1556,16 +1556,16 @@ namespace Api {
           }
           case 258: {
             if (priceRange_ == null) {
-              priceRange_ = new global::Api.PriceRange();
+              PriceRange = new global::Api.PriceRange();
             }
-            input.ReadMessage(priceRange_);
+            input.ReadMessage(PriceRange);
             break;
           }
           case 266: {
             if (priceLimits_ == null) {
-              priceLimits_ = new global::Api.PriceLimits();
+              PriceLimits = new global::Api.PriceLimits();
             }
-            input.ReadMessage(priceLimits_);
+            input.ReadMessage(PriceLimits);
             break;
           }
           case 272: {

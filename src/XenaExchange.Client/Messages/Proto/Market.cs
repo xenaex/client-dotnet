@@ -41,20 +41,20 @@ namespace Api {
             "UHgYkpYCIAEoCRIUCgpMb3dMaW1pdFB4GJOWAiABKAkSFQoLSGlnaExpbWl0",
             "UHgYlJYCIAEoCRIUCgpDbGVhcmluZ1B4GJWWAiABKAkSEAoHQmVzdEJpZBje",
             "CyABKAkSEAoHQmVzdEFzaxjfCyABKAkSHgoHTURFbnRyeRiMAiADKAsyDC5h",
-            "cGkuTURFbnRyeRIdCgZSYXRpb3MY4AsgAygLMgwuYXBpLk1ERW50cnkixQEK",
+            "cGkuTURFbnRyeRIdCgZSYXRpb3MY4AsgAygLMgwuYXBpLk1ERW50cnki2wEK",
             "EU1hcmtldERhdGFSZXF1ZXN0Eg8KB01zZ1R5cGUYIyABKAkSEwoKTURTdHJl",
             "YW1JZBjcCyABKAkSIAoXU3Vic2NyaXB0aW9uUmVxdWVzdFR5cGUYhwIgASgJ",
             "EhUKDFRocm90dGxlVHlwZRjMDCABKAkSHQoUVGhyb3R0bGVUaW1lSW50ZXJ2",
             "YWwYzgwgASgDEhkKEFRocm90dGxlVGltZVVuaXQYzwwgASgJEhcKDkFnZ3Jl",
-            "Z2F0ZWRCb29rGIoCIAEoAyJUChdNYXJrZXREYXRhUmVxdWVzdFJlamVjdBIP",
-            "CgdNc2dUeXBlGCMgASgJEhMKCk1EU3RyZWFtSWQY3AsgASgJEhMKClJlamVj",
-            "dFRleHQYsAogASgJYgZwcm90bzM="));
+            "Z2F0ZWRCb29rGIoCIAEoAxIUCgtNYXJrZXREZXB0aBiIAiABKAMiVAoXTWFy",
+            "a2V0RGF0YVJlcXVlc3RSZWplY3QSDwoHTXNnVHlwZRgjIAEoCRITCgpNRFN0",
+            "cmVhbUlkGNwLIAEoCRITCgpSZWplY3RUZXh0GLAKIAEoCWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.MDEntry), global::Api.MDEntry.Parser, new[]{ "Symbol", "MDUpdateAction", "MDEntryType", "MDEntryPx", "MDEntrySize", "NumberOfOrders", "TransactTime", "TradeId", "AggressorSide", "FirstPx", "LastPx", "HighPx", "LowPx", "BuyVolume", "SellVolume", "Bid", "Ask", "LowRangePx", "HighRangePx", "LowLimitPx", "HighLimitPx", "ClearingPx" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRefresh), global::Api.MarketDataRefresh.Parser, new[]{ "MsgType", "MDStreamId", "LastUpdateTime", "MDBookType", "Symbol", "LowRangePx", "HighRangePx", "LowLimitPx", "HighLimitPx", "ClearingPx", "BestBid", "BestAsk", "MDEntry", "Ratios" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRequest), global::Api.MarketDataRequest.Parser, new[]{ "MsgType", "MDStreamId", "SubscriptionRequestType", "ThrottleType", "ThrottleTimeInterval", "ThrottleTimeUnit", "AggregatedBook" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRequest), global::Api.MarketDataRequest.Parser, new[]{ "MsgType", "MDStreamId", "SubscriptionRequestType", "ThrottleType", "ThrottleTimeInterval", "ThrottleTimeUnit", "AggregatedBook", "MarketDepth" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRequestReject), global::Api.MarketDataRequestReject.Parser, new[]{ "MsgType", "MDStreamId", "RejectText" }, null, null, null)
           }));
     }
@@ -1288,6 +1288,7 @@ namespace Api {
       throttleTimeInterval_ = other.throttleTimeInterval_;
       throttleTimeUnit_ = other.throttleTimeUnit_;
       aggregatedBook_ = other.aggregatedBook_;
+      marketDepth_ = other.marketDepth_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1373,6 +1374,17 @@ namespace Api {
       }
     }
 
+    /// <summary>Field number for the "MarketDepth" field.</summary>
+    public const int MarketDepthFieldNumber = 264;
+    private long marketDepth_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long MarketDepth {
+      get { return marketDepth_; }
+      set {
+        marketDepth_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as MarketDataRequest);
@@ -1393,6 +1405,7 @@ namespace Api {
       if (ThrottleTimeInterval != other.ThrottleTimeInterval) return false;
       if (ThrottleTimeUnit != other.ThrottleTimeUnit) return false;
       if (AggregatedBook != other.AggregatedBook) return false;
+      if (MarketDepth != other.MarketDepth) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1406,6 +1419,7 @@ namespace Api {
       if (ThrottleTimeInterval != 0L) hash ^= ThrottleTimeInterval.GetHashCode();
       if (ThrottleTimeUnit.Length != 0) hash ^= ThrottleTimeUnit.GetHashCode();
       if (AggregatedBook != 0L) hash ^= AggregatedBook.GetHashCode();
+      if (MarketDepth != 0L) hash ^= MarketDepth.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1426,6 +1440,10 @@ namespace Api {
       if (SubscriptionRequestType.Length != 0) {
         output.WriteRawTag(186, 16);
         output.WriteString(SubscriptionRequestType);
+      }
+      if (MarketDepth != 0L) {
+        output.WriteRawTag(192, 16);
+        output.WriteInt64(MarketDepth);
       }
       if (AggregatedBook != 0L) {
         output.WriteRawTag(208, 16);
@@ -1476,6 +1494,9 @@ namespace Api {
       if (AggregatedBook != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(AggregatedBook);
       }
+      if (MarketDepth != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(MarketDepth);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1508,6 +1529,9 @@ namespace Api {
       if (other.AggregatedBook != 0L) {
         AggregatedBook = other.AggregatedBook;
       }
+      if (other.MarketDepth != 0L) {
+        MarketDepth = other.MarketDepth;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1525,6 +1549,10 @@ namespace Api {
           }
           case 2106: {
             SubscriptionRequestType = input.ReadString();
+            break;
+          }
+          case 2112: {
+            MarketDepth = input.ReadInt64();
             break;
           }
           case 2128: {
