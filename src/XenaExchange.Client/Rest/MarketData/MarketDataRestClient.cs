@@ -78,9 +78,16 @@ namespace XenaExchange.Client.Rest.MarketData
         }
 
         /// <inheritdoc />
-        public async Task<MarketDataRefresh> GetDomAsync(string symbol, CancellationToken cancellationToken = default)
+        public async Task<MarketDataRefresh> GetDomAsync(string symbol, long depth = 0, long aggregation = 0, CancellationToken cancellationToken = default)
         {
             Validator.NotNullOrEmpty(nameof(symbol), symbol);
+
+            var parameters = new List<string>();
+            parameters.Add($"depth={depth}");
+            parameters.Add($"aggr={aggregation}");
+
+            string query = null;
+            query = string.Join("&", parameters);
 
             var path = $"{DomBasePath}/{symbol}";
             return await GetAsync<MarketDataRefresh>(path, _fixSerializer, cancellationToken: cancellationToken)
@@ -104,7 +111,7 @@ namespace XenaExchange.Client.Rest.MarketData
 
         public async Task<MarketDataRefresh> TradeHistoryAsync(TradeHistoryMdRequest request, CancellationToken cancellationToken = default)
         {
-            Validator.NotNull(nameof(request) ,request);
+            Validator.NotNull(nameof(request), request);
             Validator.NotNullOrEmpty(nameof(request.Symbol), request.Symbol);
 
             var path = $"{TradesBasePath}/{request.Symbol}";

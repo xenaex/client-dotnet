@@ -52,7 +52,7 @@ namespace XenaExchange.Client.Ws.Interfaces
         /// <returns>Stream id which can be used later to unsubscribe.</returns>
         /// <exception cref="DuplicateSubscriptionException">Already subsribed on DOM stream with provided symbol.</exception>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
-        Task<string> SubscribeDOMAggregatedAsync(string symbol, XenaMdWsHandler handler, long throttlingMs = 0, long aggregation = 0);
+        Task<string> SubscribeDOMAggregatedAsync(string symbol, XenaMdWsHandler handler, long throttlingMs = 0, long aggregation = 0, long depth = 0);
 
         /// <summary>
         /// Subscribes to market-watch stream.

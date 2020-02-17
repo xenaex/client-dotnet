@@ -60,7 +60,7 @@ namespace XenaExchange.Client.Examples.Rest
         private async Task TestGetDomAsync(CancellationToken cancellationToken)
         {
             var symbol = "XBTUSD";
-            var mdRefresh = await _restClient.GetDomAsync(symbol, cancellationToken: cancellationToken)
+            var mdRefresh = await _restClient.GetDomAsync(symbol, aggregation: DOMAggregation.Aggregation5, depth: MDMarketDepth.Depth10, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
             foreach (var mdEntry in mdRefresh.MDEntry)

@@ -86,7 +86,7 @@ namespace XenaExchange.Client.Ws.MarketData
             Validator.OneOf(nameof(timeframe), timeframe, CandlesTimeframe.All);
             Validator.NotNull(nameof(handler), handler);
             Validator.GrThanOrEq(nameof(throttlingMs), throttlingMs, 0);
-            
+
             return await SubscribeAsync("candles", handler, symbol, timeframe, throttlingMs).ConfigureAwait(false);
         }
 
@@ -95,14 +95,16 @@ namespace XenaExchange.Client.Ws.MarketData
             string symbol,
             XenaMdWsHandler handler,
             long throttlingMs = 0,
-            long aggregation = 0)
+            long aggregation = 0,
+            long depth = 0)
         {
             Validator.NotNullOrEmpty(nameof(symbol), symbol);
             Validator.NotNull(nameof(handler), handler);
             Validator.GrThanOrEq(nameof(throttlingMs), throttlingMs, 0);
             Validator.GrThanOrEq(nameof(aggregation), aggregation, 0);
+            Validator.GrThanOrEq(nameof(depth), depth, 0);
 
-            return await SubscribeAsync("DOM", handler, symbol, "aggregated", throttlingMs: throttlingMs, aggregation: aggregation).ConfigureAwait(false);
+            return await SubscribeAsync("DOM", handler, symbol, "aggregated", throttlingMs: throttlingMs, aggregation: aggregation, depth: depth).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
@@ -142,7 +144,8 @@ namespace XenaExchange.Client.Ws.MarketData
             string symbol = null,
             string streamPostfix = null,
             long throttlingMs = 0,
-            long aggregation = 0)
+            long aggregation = 0,
+            long depth = 0)
         {
             var streamId = streamName;
             if (symbol != null)
