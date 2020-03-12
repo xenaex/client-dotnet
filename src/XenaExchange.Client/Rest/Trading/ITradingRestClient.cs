@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Api;
@@ -297,11 +298,72 @@ namespace XenaExchange.Client.Rest.Trading
         /// Lists account's active orders.
         /// </summary>
         /// <param name="account">Account id.</param>
+        /// <param name="symbol">Symbol id.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns><see cref="ExecutionReport"/> array.</returns>
         /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
         Task<ExecutionReport[]> ListActiveOrdersAsync(
             ulong account,
+            string symbol = "",
+            CancellationToken cancellationToken = default);
+
+
+        /// <summary>
+        /// returns last execution report for order or cancel/replace request.
+        /// </summary>
+        /// <param name="account">Account id.</param>
+        /// <param name="orderId">Order id.</param>
+        /// <param name="clOrdId">Client order id.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="ExecutionReport"/> array.</returns>
+        /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
+        Task<ExecutionReport> GetOrderAsync(
+            ulong account,
+            string orderId = "",
+            string clOrdId = "",
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// return list of last execution reports for non-active orders.
+        /// </summary>
+        /// <param name="account">Account id.</param>
+        /// <param name="orderId">Order id.</param>
+        /// <param name="clOrdId">Client order id.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="ExecutionReport"/> array.</returns>
+        /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
+        Task<ExecutionReport[]> GetLastOrderStatusesAsync(
+            ulong account,
+            string symbol = "",
+            DateTime? from = null,
+            DateTime? to = null,
+            int? pageNumber = null,
+            int? limit = null,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// return list of historical execution reports.
+        /// </summary>
+        /// <param name="account">Account id.</param>
+        /// <param name="symbol">Symbol id.</param>
+        /// <param name="orderId">Order id.</param>
+        /// <param name="clOrdId">Client order id.</param>
+        /// <param name="from">From.</param>
+        /// <param name="to">To.</param>
+        /// <param name="pageNumber">Page number.</param>
+        /// <param name="limit">Limit.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="ExecutionReport"/> array.</returns>
+        /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
+        Task<ExecutionReport[]> GetOrderHistoryAsync(
+            ulong account,
+            string symbol = "",
+            string orderId = "",
+            string clOrdId = "",
+            DateTime? from = null,
+            DateTime? to = null,
+            int? pageNumber = null,
+            int? limit = null,
             CancellationToken cancellationToken = default);
 
         /// <summary>

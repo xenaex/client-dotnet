@@ -20,6 +20,7 @@ namespace XenaExchange.Client.Messages.Constants
         public const string PositionMaintenanceReport = "AM";
         public const string PositionReport = "AP";
         public const string OrderMassStatusRequest = "AF";
+        public const string OrderStatusRequest = "H";
         public const string RequestForPositions = "AN";
         public const string MassPositionReport = "MAP";
         public const string NewOrderSingle = "D";
@@ -32,5 +33,7 @@ namespace XenaExchange.Client.Messages.Constants
         public const string OrderMassCancelRequest = "q";
         public const string OrderMassCancelReport = "r";
         public const string ApplicationHeartbeat = "XAH";
+        public const string TradeCaptureReportRequest = "AD";
+        public const string MassTradeCaptureReportResponse = "U9";
     }
 }

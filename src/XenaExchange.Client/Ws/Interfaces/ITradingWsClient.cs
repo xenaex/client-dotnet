@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Api;
 using Google.Protobuf;
@@ -246,6 +247,65 @@ namespace XenaExchange.Client.Ws.Interfaces
         /// <param name="requestId">Request id to be returned in </param>
         /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
         Task GetOrdersAndFillsAsync(ulong account, string requestId = null);
+
+        /// <summary>
+        /// request for last execution report for order or cancel/replace requests.
+        /// To receive a response, the client should listen for ListenExecutionReport.
+        /// </summary>
+        /// <param name="account">Account id.</param>
+        /// <param name="symbol">Symbol id.</param>
+        /// <param name="orderId">Order id.</param>
+        /// <param name="requestId">requestId.</param>
+        /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
+        Task GetOrderAsync(ulong account, string orderId = "", string clOrdId = "", string requestId = null);
+
+        /// <summary>
+        /// requests list of last execution reports for active orders.
+        /// To receive a response, the client should listen for OrderMassStatusResponse.
+        /// </summary>
+        /// <param name="account">Account id.</param>
+        /// <param name="symbol">Symbol id.</param>
+        /// <param name="requestId">requestId.</param>
+        /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
+        Task GetActiveOrdersAsync(ulong account, string symbol = "", string requestId = "");
+
+        /// <summary>
+        /// requests list of last execution reports for non-active orders.
+        /// To receive a response, the client should listen for OrderMassStatusResponse.
+        /// </summary>
+        /// <param name="account">Account id.</param>
+        /// <param name="symbol">Symbol id.</param>
+        /// <param name="from">From.</param>
+        /// <param name="to">To.</param>
+        /// <param name="requestId">requestId.</param>
+        /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
+        Task GetLastOrderStatusesAsync(ulong account, string symbol = "", DateTime? from = null, DateTime? to = null, string requestId = "");
+
+        /// <summary>
+        /// requests list of historical execution reports.
+        /// To receive a response, the client should listen for OrderMassStatusResponse.
+        /// </summary>
+        /// <param name="account">Account id.</param>
+        /// <param name="symbol">Symbol id.</param>
+        /// <param name="orderId">Order id.</param>
+        /// <param name="clOrdId">Client order id.</param>
+        /// <param name="from">From.</param>
+        /// <param name="to">To.</param>
+        /// <param name="requestId">requestId.</param>
+        /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
+        Task GetOrderHistoryAsync(ulong account, string symbol = "", string orderId = "", string clOrdId = "", DateTime? from = null, DateTime? to = null, string requestId = "");
+
+        /// <summary>
+        /// requests list of historical execution reports.
+        /// To receive a response, the client should listen for MassTradeCaptureReportResponse.
+        /// </summary>
+        /// <param name="account">Account id.</param>
+        /// <param name="symbol">Symbol id.</param>
+        /// <param name="from">From.</param>
+        /// <param name="to">To.</param>
+        /// <param name="requestId">requestId.</param>
+        /// <exception cref="WsNotConnectedException">No websocket connection with server.</exception>
+        Task GetTradeHistoryAsync(ulong account, string symbol = null, DateTime? from = null, DateTime? to = null, string requestId = "");
 
         /// <summary>
         /// Requests all positions for specified account.

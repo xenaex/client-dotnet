@@ -57,6 +57,10 @@ namespace XenaExchange.Client.Examples.Rest
             // await GetOpenPositionsAsync(cancellationToken).ConfigureAwait(false);
             // await PositionsHistoryAsync(cancellationToken).ConfigureAwait(false);
             // await ListActiveOrdersAsync(cancellationToken).ConfigureAwait(false);
+            // await ListActiveOrdersAsync(cancellationToken).ConfigureAwait(false);
+            // await ListOrderAsync(cancellationToken).ConfigureAwait(false);
+            // await ListLastOrderStatusesAsync(cancellationToken).ConfigureAwait(false);
+            // await ListOrderHistoryAsync(cancellationToken).ConfigureAwait(false);
             // await TradeHistoryAsync(cancellationToken).ConfigureAwait(false);
             // await GetBalancesAsync(cancellationToken).ConfigureAwait(false);
             // await GetMarginRequirementsAsync(cancellationToken).ConfigureAwait(false);
@@ -101,7 +105,7 @@ namespace XenaExchange.Client.Examples.Rest
                     0.01M,
                     SpotAccountId,
                     10000,
-                    execInst: new []{ExecInst.StayOnOfferSide},
+                    execInst: new[] { ExecInst.StayOnOfferSide },
                     cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
@@ -114,7 +118,7 @@ namespace XenaExchange.Client.Examples.Rest
                     0.01M,
                     SpotAccountId,
                     10000,
-                    execInst: new []{ExecInst.PegToOfferSide},
+                    execInst: new[] { ExecInst.PegToOfferSide },
                     cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
@@ -173,7 +177,7 @@ namespace XenaExchange.Client.Examples.Rest
             executionReport = await _restClient.NewStopOrderAsync(
                     CommonFuncs.NewClOrdId("stop-order-2"),
                     "XBTUSD",
-                    Side.Sell,1M,
+                    Side.Sell, 1M,
                     MarginAccountId,
                     9500,
                     positionId: 12345,
@@ -299,11 +303,36 @@ namespace XenaExchange.Client.Examples.Rest
 
         private async Task ListActiveOrdersAsync(CancellationToken cancellationToken)
         {
-            var orders = await _restClient.ListActiveOrdersAsync(MarginAccountId, cancellationToken)
+            var orders = await _restClient.ListActiveOrdersAsync(MarginAccountId, string.Empty, cancellationToken)
                 .ConfigureAwait(false);
 
-                var toPrint = string.Join("\n", orders.Select(p => p.ToString()));
-                _logger.LogInformation($"Active orders: {toPrint}");
+            var toPrint = string.Join("\n", orders.Select(p => p.ToString()));
+            _logger.LogInformation($"Active orders: {toPrint}");
+        }
+
+        private async Task ListOrderAsync(CancellationToken cancellationToken)
+        {
+            var order = await _restClient.GetOrderAsync(MarginAccountId, string.Empty, "o83821gee", cancellationToken)
+                .ConfigureAwait(false);
+
+            _logger.LogInformation($"Active orders: {order.ToString()}");
+        }
+
+        private async Task ListLastOrderStatusesAsync(CancellationToken cancellationToken)
+        {
+            var orders = await _restClient.GetLastOrderStatusesAsync(MarginAccountId, "XBTUSD", null, null, null, null, cancellationToken)
+                .ConfigureAwait(false);
+
+            var toPrint = string.Join("\n", orders.Select(p => p.ToString()));
+            _logger.LogInformation($"Active orders: {toPrint}");
+        }
+        private async Task ListOrderHistoryAsync(CancellationToken cancellationToken)
+        {
+            var orders = await _restClient.GetOrderHistoryAsync(MarginAccountId, "XBTUSD", string.Empty, string.Empty, null, null, null, null, cancellationToken)
+                .ConfigureAwait(false);
+
+            var toPrint = string.Join("\n", orders.Select(p => p.ToString()));
+            _logger.LogInformation($"Active orders: {toPrint}");
         }
 
         private async Task TradeHistoryAsync(CancellationToken cancellationToken)

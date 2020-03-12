@@ -33,7 +33,10 @@ namespace XenaExchange.Client.Rest.Trading
         private const string MarginRequirementsPathTemplate = TradingPrefix + "accounts/{0}/margin-requirements";
         private const string OpenPositionsPathTemplate = TradingPrefix + "accounts/{0}/positions";
         private const string PositionsHistoryPathTemplate = TradingPrefix + "accounts/{0}/positions-history";
-        private const string ActiveOrdersPathTemplate = TradingPrefix + "accounts/{0}/orders";
+        private const string ActiveOrdersPathTemplate = TradingPrefix + "accounts/{0}/active-orders";
+        private const string OrderPathTemplate = TradingPrefix + "accounts/{0}/order";
+        private const string LastOrderStatusesPathTemplate = TradingPrefix + "accounts/{0}/last-order-statuses";
+        private const string OrderHistoryPathTemplate = TradingPrefix + "accounts/{0}/order-history";
         private const string TradeHistoryPathTemplate = TradingPrefix + "accounts/{0}/trade-history";
 
         private readonly TradingRestClientOptions _options;
@@ -373,11 +376,134 @@ namespace XenaExchange.Client.Rest.Trading
         /// <inheritdoc />
         public async Task<ExecutionReport[]> ListActiveOrdersAsync(
             ulong account,
+            string symbol = "",
             CancellationToken cancellationToken = default)
         {
             var path = string.Format(ActiveOrdersPathTemplate, account);
-            return await SendAsync<ExecutionReport[]>(path, HttpMethod.Get, cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
+
+            var parameters = new List<string>();
+            if (!string.IsNullOrWhiteSpace(symbol))
+                parameters.Add("symbol=" + symbol);
+
+            var query = parameters.Count == 0 ? null : string.Join("&", parameters);
+
+            return await SendAsync<ExecutionReport[]>(
+                path,
+                HttpMethod.Get,
+                query: query,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task<ExecutionReport> GetOrderAsync(
+            ulong account,
+            string orderId = "",
+            string clOrdId = "",
+            CancellationToken cancellationToken = default)
+        {
+            var path = string.Format(OrderPathTemplate, account);
+
+            var parameters = new List<string>();
+            if (!string.IsNullOrWhiteSpace(orderId))
+                parameters.Add("order_id=" + orderId);
+            if (!string.IsNullOrWhiteSpace(clOrdId))
+                parameters.Add("client_order_id=" + clOrdId);
+
+            var query = parameters.Count == 0 ? null : string.Join("&", parameters);
+
+            return await SendAsync<ExecutionReport>(
+                path,
+                HttpMethod.Get,
+                query: query,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task<ExecutionReport[]> GetLastOrderStatusesAsync(
+             ulong accountId,
+             string symbol = "",
+             DateTime? from = null,
+             DateTime? to = null,
+             int? pageNumber = null,
+             int? limit = null,
+             CancellationToken cancellationToken = default)
+        {
+            var path = string.Format(LastOrderStatusesPathTemplate, accountId);
+
+            var parameters = new List<string>();
+            if (!string.IsNullOrWhiteSpace(symbol))
+                parameters.Add("symbol=" + symbol);
+            if (from.HasValue)
+                parameters.Add("from=" + from);
+            if (to.HasValue)
+                parameters.Add("to=" + to);
+            if (pageNumber.HasValue)
+                parameters.Add("page=" + pageNumber);
+            if (limit.HasValue)
+                parameters.Add("limit=" + limit);
+
+            var query = parameters.Count == 0 ? null : string.Join("&", parameters);
+
+            return await SendAsync<ExecutionReport[]>(
+                path,
+                HttpMethod.Get,
+                query: query,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// return list of historical execution reports.
+        /// </summary>
+        /// <param name="accountId">Account id.</param>
+        /// <param name="symbol">Symbol id.</param>
+        /// <param name="orderId">Order id.</param>
+        /// <param name="clOrdId">Client order id.</param>
+        /// <param name="from">From.</param>
+        /// <param name="to">To.</param>
+        /// <param name="pageNumber">Page number.</param>
+        /// <param name="limit">Limit.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="ExecutionReport"/> array.</returns>
+        /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
+
+        /// <inheritdoc />
+        public async Task<ExecutionReport[]> GetOrderHistoryAsync(
+            ulong accountId,
+            string symbol = "",
+            string orderId = "",
+            string clOrdId = "",
+            DateTime? from = null,
+            DateTime? to = null,
+            int? pageNumber = null,
+            int? limit = null,
+            CancellationToken cancellationToken = default)
+        {
+
+            var path = string.Format(OrderHistoryPathTemplate, accountId);
+
+            var parameters = new List<string>();
+            if (!string.IsNullOrWhiteSpace(symbol))
+                parameters.Add("symbol=" + symbol);
+            if (from.HasValue)
+                parameters.Add("from=" + from);
+            if (to.HasValue)
+                parameters.Add("to=" + to);
+            if (pageNumber.HasValue)
+                parameters.Add("page=" + pageNumber);
+            if (limit.HasValue)
+                parameters.Add("limit=" + limit);
+            if (!string.IsNullOrWhiteSpace(orderId))
+                parameters.Add("order_id=" + orderId);
+            if (!string.IsNullOrWhiteSpace(clOrdId))
+                parameters.Add("client_order_id=" + clOrdId);
+
+            var query = parameters.Count == 0 ? null : string.Join("&", parameters);
+
+            return await SendAsync<ExecutionReport[]>(
+                path,
+                HttpMethod.Get,
+                query: query,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <inheritdoc />

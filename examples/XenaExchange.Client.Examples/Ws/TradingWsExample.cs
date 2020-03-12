@@ -123,6 +123,12 @@ namespace XenaExchange.Client.Examples.Ws
             // await GetAllOrdersAndCancelAsync().ConfigureAwait(false);
             // await MarketOrderAsync().ConfigureAwait(false);
             await LimitOrderAsync().ConfigureAwait(false);
+            // await GetAllOrdersAndCancelAsync().ConfigureAwait(false);
+            // await GetOrderAsync().ConfigureAwait(false);
+            // await GetActiveOrdersAsync().ConfigureAwait(false);
+            // await GetAllLastOrderStatusesAsync().ConfigureAwait(false);
+            // await GetOrdersHistoryAsync().ConfigureAwait(false);
+            // await GetTradeHistoryAsync().ConfigureAwait(false);
             // await LimitOrderPostOnlyAsync().ConfigureAwait(false);
             // await StopOrderAsync().ConfigureAwait(false);
             // await SltpGroupAsync().ConfigureAwait(false);
@@ -215,7 +221,7 @@ namespace XenaExchange.Client.Examples.Ws
                     0.01M,
                     SpotAccountId,
                     10000,
-                    execInst: new []{ExecInst.StayOnOfferSide})
+                    execInst: new[] { ExecInst.StayOnOfferSide })
                 .ConfigureAwait(false);
 
             await _wsClient.NewLimitOrderAsync(
@@ -225,7 +231,7 @@ namespace XenaExchange.Client.Examples.Ws
                     0.01M,
                     SpotAccountId,
                     10000,
-                    execInst: new []{ExecInst.PegToOfferSide})
+                    execInst: new[] { ExecInst.PegToOfferSide })
                 .ConfigureAwait(false);
         }
 
@@ -313,14 +319,14 @@ namespace XenaExchange.Client.Examples.Ws
             _wsClient.Listen<OrderMassStatusResponse>((client, response) =>
             {
                 _logger.LogInformation($"Received order mass status response {response.MassStatusReqId} " +
-                                       $"with {response.Orders.Count.ToString()} orders");
+                                       $"with {response.ExecutionReports.Count.ToString()} orders");
 
-                orders = response.Orders.ToArray();
+                orders = response.ExecutionReports.ToArray();
                 ordersReceivedLock.Release();
                 return Task.CompletedTask;
             });
 
-            await _wsClient.GetOrdersAndFillsAsync(SpotAccountId, Guid.NewGuid().ToString()).ConfigureAwait(false);
+            await _wsClient.GetOrdersAndFillsAsync(MarginAccountId, Guid.NewGuid().ToString()).ConfigureAwait(false);
             await ordersReceivedLock.WaitAsync().ConfigureAwait(false);
 
             if (orders.Length == 0)
@@ -347,6 +353,133 @@ namespace XenaExchange.Client.Examples.Ws
 
             await ordersCanceledLock.WaitAsync().ConfigureAwait(false);
         }
+
+        private async Task GetOrderAsync()
+        {
+            // RemoveListener is here only to override previous ExecutionReport handler. There is no need to use it every time before Listen().
+            _wsClient.RemoveListener<ExecutionReport>();
+
+            ExecutionReport order = null;
+            var ordersReceivedLock = new SemaphoreSlim(0, 1);
+
+            _wsClient.RemoveListener<ExecutionReport>();
+            _wsClient.Listen<ExecutionReport>((client, response) =>
+            {
+                _logger.LogInformation($"Received order response {response.ExecId}");
+
+                order = response;
+                ordersReceivedLock.Release();
+                return Task.CompletedTask;
+            });
+
+            await _wsClient.GetOrderAsync(MarginAccountId, Guid.NewGuid().ToString()).ConfigureAwait(false);
+            await ordersReceivedLock.WaitAsync().ConfigureAwait(false);
+            _wsClient.RemoveListener<ExecutionReport>();
+        }
+
+        private async Task GetActiveOrdersAsync()
+        {
+            // RemoveListener is here only to override previous ExecutionReport handler. There is no need to use it every time before Listen().
+            _wsClient.RemoveListener<ExecutionReport>();
+
+            ExecutionReport[] orders = null;
+            var ordersReceivedLock = new SemaphoreSlim(0, 1);
+
+            _wsClient.RemoveListener<OrderMassStatusResponse>();
+            _wsClient.Listen<OrderMassStatusResponse>((client, response) =>
+            {
+                _logger.LogInformation($"Received order mass status response {response.MassStatusReqId} " +
+                                       $"with {response.ExecutionReports.Count.ToString()} orders");
+
+                orders = response.ExecutionReports.ToArray();
+                ordersReceivedLock.Release();
+                return Task.CompletedTask;
+            });
+
+            await _wsClient.GetActiveOrdersAsync(SpotAccountId, "XBTUSD").ConfigureAwait(false);
+            await ordersReceivedLock.WaitAsync().ConfigureAwait(false);
+            _wsClient.RemoveListener<OrderMassStatusResponse>();
+        }
+
+        private async Task GetAllLastOrderStatusesAsync()
+        {
+            // examples["last-order-statuses"] = exampleLastOrderStatuses
+            // RemoveListener is here only to override previous ExecutionReport handler. There is no need to use it every time before Listen().
+            _wsClient.RemoveListener<ExecutionReport>();
+
+            ExecutionReport[] orders = null;
+            var ordersReceivedLock = new SemaphoreSlim(0, 1);
+
+            _wsClient.RemoveListener<OrderMassStatusResponse>();
+            _wsClient.Listen<OrderMassStatusResponse>((client, response) =>
+            {
+                _logger.LogInformation($"Received order mass status response {response.MassStatusReqId} " +
+                                       $"with {response.ExecutionReports.Count.ToString()} orders");
+
+                orders = response.ExecutionReports.ToArray();
+                ordersReceivedLock.Release();
+                return Task.CompletedTask;
+            });
+
+            await _wsClient.GetLastOrderStatusesAsync(MarginAccountId, "XBTUSD").ConfigureAwait(false);
+            await ordersReceivedLock.WaitAsync().ConfigureAwait(false);
+            _wsClient.RemoveListener<OrderMassStatusResponse>();
+        }
+
+        private async Task GetOrdersHistoryAsync()
+        {
+            // RemoveListener is here only to override previous ExecutionReport handler. There is no need to use it every time before Listen().
+            _wsClient.RemoveListener<ExecutionReport>();
+
+            ExecutionReport[] orders = null;
+            var ordersReceivedLock = new SemaphoreSlim(0, 1);
+
+            _wsClient.RemoveListener<OrderMassStatusResponse>();
+            _wsClient.Listen<OrderMassStatusResponse>((client, response) =>
+            {
+                _logger.LogInformation($"Received order mass status response {response.MassStatusReqId} " +
+                                       $"with {response.ExecutionReports.Count.ToString()} orders");
+
+                orders = response.ExecutionReports.ToArray();
+                ordersReceivedLock.Release();
+                return Task.CompletedTask;
+            });
+
+            await _wsClient.GetOrderHistoryAsync(MarginAccountId, "XBTUSD").ConfigureAwait(false);
+            await ordersReceivedLock.WaitAsync().ConfigureAwait(false);
+            _wsClient.RemoveListener<OrderMassStatusResponse>();
+        }
+
+        private async Task GetTradeHistoryAsync()
+        {
+            // RemoveListener is here only to override previous ExecutionReport handler. There is no need to use it every time before Listen().
+            _wsClient.RemoveListener<ExecutionReport>();
+
+            ExecutionReport[] orders = null;
+            var ordersReceivedLock = new SemaphoreSlim(0, 1);
+
+            _wsClient.RemoveListener<MassTradeCaptureReportResponse>();
+            _wsClient.Listen<MassTradeCaptureReportResponse>((client, response) =>
+            {
+                _logger.LogInformation($"Received order mass status response {response.TradeRequestID} " +
+                                       $"with {response.ExecutionReports.Count.ToString()} orders");
+
+                orders = response.ExecutionReports.ToArray();
+                ordersReceivedLock.Release();
+                return Task.CompletedTask;
+            });
+            _wsClient.Listen<Reject>((client, response) =>
+            {
+                _logger.LogInformation($"Received order mass status response {response}");
+
+                return Task.CompletedTask;
+            });
+
+            await _wsClient.GetTradeHistoryAsync(MarginAccountId, "XBTUSD").ConfigureAwait(false);
+            await ordersReceivedLock.WaitAsync().ConfigureAwait(false);
+            _wsClient.RemoveListener<MassTradeCaptureReportResponse>();
+        }
+
 
         private async Task ReplaceAsync()
         {
