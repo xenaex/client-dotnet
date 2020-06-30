@@ -25,57 +25,57 @@ namespace Api {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cgxjb21tb24ucHJvdG8SA2FwaSIgCg1Nc2dUeXBlSGVhZGVyEg8KB01zZ1R5",
-            "cGUYIyABKAkiRQoJSGVhcnRiZWF0Eg8KB01zZ1R5cGUYIyABKAkSEQoJVGVz",
-            "dFJlcUlkGHAgASgJEhQKDFRyYW5zYWN0VGltZRg8IAEoAyL9CgoKSW5zdHJ1",
-            "bWVudBIOCgJJRBgBIAEoCVICaWQSEgoEVHlwZRgCIAEoCVIEdHlwZRIWCgZT",
-            "eW1ib2wYAyABKAlSBnN5bWJvbBImChBCYXNlQ3VycmVuY3lOYW1lGAQgASgJ",
-            "UgxiYXNlQ3VycmVuY3kSKAoRUXVvdGVDdXJyZW5jeU5hbWUYBSABKAlSDXF1",
-            "b3RlQ3VycmVuY3kSKAoRU2V0dGxDdXJyZW5jeU5hbWUYBiABKAlSDXNldHRs",
-            "Q3VycmVuY3kSGgoIVGlja1NpemUYByABKAVSCHRpY2tTaXplEiUKC01pbk9y",
-            "ZGVyUXR5GAggASgJUhBtaW5PcmRlclF1YW50aXR5EiIKDE9yZGVyUXR5U3Rl",
-            "cBgJIAEoCVIMb3JkZXJRdHlTdGVwEjQKFUxpbWl0T3JkZXJNYXhEaXN0YW5j",
-            "ZRgKIAEoCVIVbGltaXRPcmRlck1heERpc3RhbmNlEiYKDlByaWNlSW5wdXRN",
-            "YXNrGAsgASgJUg5wcmljZUlucHV0TWFzaxIYCgdJbmRleGVzGAwgAygJUgdp",
-            "bmRleGVzEhgKB0VuYWJsZWQYDSABKAhSB2VuYWJsZWQSNgoWTGlxdWlkYXRp",
-            "b25NYXhEaXN0YW5jZRgOIAEoCVIWbGlxdWlkYXRpb25NYXhEaXN0YW5jZRIk",
-            "Cg1Db250cmFjdFZhbHVlGA8gASgJUg1jb250cmFjdFZhbHVlEioKEENvbnRy",
-            "YWN0Q3VycmVuY3kYECABKAlSEGNvbnRyYWN0Q3VycmVuY3kSGAoHTG90U2l6",
-            "ZRgRIAEoCVIHbG90U2l6ZRIcCglUaWNrVmFsdWUYEiABKAlSCXRpY2tWYWx1",
-            "ZRIgCgtNYXhPcmRlclF0eRgTIAEoCVILbWF4T3JkZXJRdHkSIgoMTWF4UG9z",
-            "Vm9sdW1lGBQgASgJUgxtYXhQb3NWb2x1bWUSEgoETWFyaxgVIAEoCVIEbWFy",
-            "axIeCgpGbG9hdGluZ1BMGBYgASgJUgpmbG9hdGluZ1BMEi4KEkFkZFV2bVRv",
-            "RnJlZU1hcmdpbhgXIAEoCVISYWRkVXZtVG9GcmVlTWFyZ2luEiAKC01pbkxl",
-            "dmVyYWdlGBggASgJUgttaW5MZXZlcmFnZRIgCgtNYXhMZXZlcmFnZRgZIAEo",
-            "CVILbWF4TGV2ZXJhZ2USIwoGTWFyZ2luGBogASgLMgsuYXBpLk1hcmdpblIG",
-            "bWFyZ2luEjQKCENsZWFyaW5nGBsgASgLMhguYXBpLkRlcml2YXRpdmVPcGVy",
-            "YXRpb25SCGNsZWFyaW5nEjQKCEludGVyZXN0GBwgASgLMhguYXBpLkRlcml2",
-            "YXRpdmVPcGVyYXRpb25SCGludGVyZXN0EjIKB1ByZW1pdW0YHSABKAsyGC5h",
-            "cGkuRGVyaXZhdGl2ZU9wZXJhdGlvblIHcHJlbWl1bRJACg5SaXNrQWRqdXN0",
-            "bWVudBgeIAEoCzIYLmFwaS5EZXJpdmF0aXZlT3BlcmF0aW9uUg5yaXNrQWRq",
-            "dXN0bWVudBImCg5QcmljZVByZWNpc2lvbhgfIAEoBVIOcHJpY2VQcmVjaXNp",
-            "b24SLwoKUHJpY2VSYW5nZRggIAEoCzIPLmFwaS5QcmljZVJhbmdlUgpwcmlj",
-            "ZVJhbmdlEjIKC1ByaWNlTGltaXRzGCEgASgLMhAuYXBpLlByaWNlTGltaXRz",
-            "UgtwcmljZUxpbWl0cxIYCgdJbnZlcnNlGCIgASgIUgdpbnZlcnNlEioKEFRy",
-            "YWRpbmdTdGFydERhdGUYIyABKAlSEHRyYWRpbmdTdGFydERhdGUSHgoKRXhw",
-            "aXJ5RGF0ZRgkIAEoCVIKZXhwaXJ5RGF0ZRIUCgVCYXNpcxglIAEoBVIFYmFz",
-            "aXMizQEKBk1hcmdpbhIYCgdOZXR0aW5nGAEgASgJUgduZXR0aW5nEiUKBVJh",
-            "dGVzGAIgAygLMg8uYXBpLk1hcmdpblJhdGVSBXJhdGVzEkoKD1JhdGVNdWx0",
-            "aXBsaWVycxgDIAMoCzIgLmFwaS5NYXJnaW4uUmF0ZU11bHRpcGxpZXJzRW50",
-            "cnlSD3JhdGVNdWx0aXBsaWVycxo2ChRSYXRlTXVsdGlwbGllcnNFbnRyeRIL",
-            "CgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBInYKCk1hcmdpblJhdGUS",
-            "HAoJTWF4Vm9sdW1lGAEgASgJUgltYXhWb2x1bWUSIAoLSW5pdGlhbFJhdGUY",
-            "AiABKAlSC2luaXRpYWxSYXRlEigKD01haW50ZW5hbmNlUmF0ZRgDIAEoCVIP",
-            "bWFpbnRlbmFuY2VSYXRlImoKE0Rlcml2YXRpdmVPcGVyYXRpb24SIQoHRW5h",
-            "YmxlZBgBIAEoCFIQbWF4Vm9sZW5hYmxlZHVtZRIUCgVJbmRleBgCIAEoCVIF",
-            "aW5kZXgSGgoIU2NoZWR1bGUYAyABKANSCHNjaGVkdWxlIsQBCgpQcmljZVJh",
-            "bmdlEhgKB0VuYWJsZWQYASABKAhSB2VuYWJsZWQSGgoIRGlzdGFuY2UYAiAB",
-            "KAlSCGRpc3RhbmNlEiYKDk1vdmluZ0JvdW5kYXJ5GAMgASgJUg5tb3ZpbmdC",
-            "b3VuZGFyeRIeCgpNb3ZpbmdUaW1lGAQgASgDUgptb3ZpbmdUaW1lEhoKCExv",
-            "d0luZGV4GAUgASgJUghsb3dJbmRleBIcCglIaWdoSW5kZXgYBiABKAlSCWhp",
-            "Z2hJbmRleCJ9CgtQcmljZUxpbWl0cxIYCgdFbmFibGVkGAEgASgIUgdlbmFi",
-            "bGVkEhoKCERpc3RhbmNlGAIgASgJUghkaXN0YW5jZRIaCghMb3dJbmRleBgD",
-            "IAEoCVIIbG93SW5kZXgSHAoJSGlnaEluZGV4GAQgASgJUgloaWdoSW5kZXhi",
-            "BnByb3RvMw=="));
+            "cGUYIyABKAkiZwoJSGVhcnRiZWF0EhgKB01zZ1R5cGUYIyABKAlSB21zZ1R5",
+            "cGUSHAoJVGVzdFJlcUlkGHAgASgJUgl0ZXN0UmVxSWQSIgoMVHJhbnNhY3RU",
+            "aW1lGDwgASgDUgx0cmFuc2FjdFRpbWUi/QoKCkluc3RydW1lbnQSDgoCSUQY",
+            "ASABKAlSAmlkEhIKBFR5cGUYAiABKAlSBHR5cGUSFgoGU3ltYm9sGAMgASgJ",
+            "UgZzeW1ib2wSJgoQQmFzZUN1cnJlbmN5TmFtZRgEIAEoCVIMYmFzZUN1cnJl",
+            "bmN5EigKEVF1b3RlQ3VycmVuY3lOYW1lGAUgASgJUg1xdW90ZUN1cnJlbmN5",
+            "EigKEVNldHRsQ3VycmVuY3lOYW1lGAYgASgJUg1zZXR0bEN1cnJlbmN5EhoK",
+            "CFRpY2tTaXplGAcgASgFUgh0aWNrU2l6ZRIlCgtNaW5PcmRlclF0eRgIIAEo",
+            "CVIQbWluT3JkZXJRdWFudGl0eRIiCgxPcmRlclF0eVN0ZXAYCSABKAlSDG9y",
+            "ZGVyUXR5U3RlcBI0ChVMaW1pdE9yZGVyTWF4RGlzdGFuY2UYCiABKAlSFWxp",
+            "bWl0T3JkZXJNYXhEaXN0YW5jZRImCg5QcmljZUlucHV0TWFzaxgLIAEoCVIO",
+            "cHJpY2VJbnB1dE1hc2sSGAoHSW5kZXhlcxgMIAMoCVIHaW5kZXhlcxIYCgdF",
+            "bmFibGVkGA0gASgIUgdlbmFibGVkEjYKFkxpcXVpZGF0aW9uTWF4RGlzdGFu",
+            "Y2UYDiABKAlSFmxpcXVpZGF0aW9uTWF4RGlzdGFuY2USJAoNQ29udHJhY3RW",
+            "YWx1ZRgPIAEoCVINY29udHJhY3RWYWx1ZRIqChBDb250cmFjdEN1cnJlbmN5",
+            "GBAgASgJUhBjb250cmFjdEN1cnJlbmN5EhgKB0xvdFNpemUYESABKAlSB2xv",
+            "dFNpemUSHAoJVGlja1ZhbHVlGBIgASgJUgl0aWNrVmFsdWUSIAoLTWF4T3Jk",
+            "ZXJRdHkYEyABKAlSC21heE9yZGVyUXR5EiIKDE1heFBvc1ZvbHVtZRgUIAEo",
+            "CVIMbWF4UG9zVm9sdW1lEhIKBE1hcmsYFSABKAlSBG1hcmsSHgoKRmxvYXRp",
+            "bmdQTBgWIAEoCVIKZmxvYXRpbmdQTBIuChJBZGRVdm1Ub0ZyZWVNYXJnaW4Y",
+            "FyABKAlSEmFkZFV2bVRvRnJlZU1hcmdpbhIgCgtNaW5MZXZlcmFnZRgYIAEo",
+            "CVILbWluTGV2ZXJhZ2USIAoLTWF4TGV2ZXJhZ2UYGSABKAlSC21heExldmVy",
+            "YWdlEiMKBk1hcmdpbhgaIAEoCzILLmFwaS5NYXJnaW5SBm1hcmdpbhI0CghD",
+            "bGVhcmluZxgbIAEoCzIYLmFwaS5EZXJpdmF0aXZlT3BlcmF0aW9uUghjbGVh",
+            "cmluZxI0CghJbnRlcmVzdBgcIAEoCzIYLmFwaS5EZXJpdmF0aXZlT3BlcmF0",
+            "aW9uUghpbnRlcmVzdBIyCgdQcmVtaXVtGB0gASgLMhguYXBpLkRlcml2YXRp",
+            "dmVPcGVyYXRpb25SB3ByZW1pdW0SQAoOUmlza0FkanVzdG1lbnQYHiABKAsy",
+            "GC5hcGkuRGVyaXZhdGl2ZU9wZXJhdGlvblIOcmlza0FkanVzdG1lbnQSJgoO",
+            "UHJpY2VQcmVjaXNpb24YHyABKAVSDnByaWNlUHJlY2lzaW9uEi8KClByaWNl",
+            "UmFuZ2UYICABKAsyDy5hcGkuUHJpY2VSYW5nZVIKcHJpY2VSYW5nZRIyCgtQ",
+            "cmljZUxpbWl0cxghIAEoCzIQLmFwaS5QcmljZUxpbWl0c1ILcHJpY2VMaW1p",
+            "dHMSGAoHSW52ZXJzZRgiIAEoCFIHaW52ZXJzZRIqChBUcmFkaW5nU3RhcnRE",
+            "YXRlGCMgASgJUhB0cmFkaW5nU3RhcnREYXRlEh4KCkV4cGlyeURhdGUYJCAB",
+            "KAlSCmV4cGlyeURhdGUSFAoFQmFzaXMYJSABKAVSBWJhc2lzIs0BCgZNYXJn",
+            "aW4SGAoHTmV0dGluZxgBIAEoCVIHbmV0dGluZxIlCgVSYXRlcxgCIAMoCzIP",
+            "LmFwaS5NYXJnaW5SYXRlUgVyYXRlcxJKCg9SYXRlTXVsdGlwbGllcnMYAyAD",
+            "KAsyIC5hcGkuTWFyZ2luLlJhdGVNdWx0aXBsaWVyc0VudHJ5Ug9yYXRlTXVs",
+            "dGlwbGllcnMaNgoUUmF0ZU11bHRpcGxpZXJzRW50cnkSCwoDa2V5GAEgASgJ",
+            "Eg0KBXZhbHVlGAIgASgJOgI4ASJ2CgpNYXJnaW5SYXRlEhwKCU1heFZvbHVt",
+            "ZRgBIAEoCVIJbWF4Vm9sdW1lEiAKC0luaXRpYWxSYXRlGAIgASgJUgtpbml0",
+            "aWFsUmF0ZRIoCg9NYWludGVuYW5jZVJhdGUYAyABKAlSD21haW50ZW5hbmNl",
+            "UmF0ZSJqChNEZXJpdmF0aXZlT3BlcmF0aW9uEiEKB0VuYWJsZWQYASABKAhS",
+            "EG1heFZvbGVuYWJsZWR1bWUSFAoFSW5kZXgYAiABKAlSBWluZGV4EhoKCFNj",
+            "aGVkdWxlGAMgASgDUghzY2hlZHVsZSLEAQoKUHJpY2VSYW5nZRIYCgdFbmFi",
+            "bGVkGAEgASgIUgdlbmFibGVkEhoKCERpc3RhbmNlGAIgASgJUghkaXN0YW5j",
+            "ZRImCg5Nb3ZpbmdCb3VuZGFyeRgDIAEoCVIObW92aW5nQm91bmRhcnkSHgoK",
+            "TW92aW5nVGltZRgEIAEoA1IKbW92aW5nVGltZRIaCghMb3dJbmRleBgFIAEo",
+            "CVIIbG93SW5kZXgSHAoJSGlnaEluZGV4GAYgASgJUgloaWdoSW5kZXgifQoL",
+            "UHJpY2VMaW1pdHMSGAoHRW5hYmxlZBgBIAEoCFIHZW5hYmxlZBIaCghEaXN0",
+            "YW5jZRgCIAEoCVIIZGlzdGFuY2USGgoITG93SW5kZXgYAyABKAlSCGxvd0lu",
+            "ZGV4EhwKCUhpZ2hJbmRleBgEIAEoCVIJaGlnaEluZGV4YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -1349,31 +1349,31 @@ namespace Api {
       }
       if (other.margin_ != null) {
         if (margin_ == null) {
-          Margin = new global::Api.Margin();
+          margin_ = new global::Api.Margin();
         }
         Margin.MergeFrom(other.Margin);
       }
       if (other.clearing_ != null) {
         if (clearing_ == null) {
-          Clearing = new global::Api.DerivativeOperation();
+          clearing_ = new global::Api.DerivativeOperation();
         }
         Clearing.MergeFrom(other.Clearing);
       }
       if (other.interest_ != null) {
         if (interest_ == null) {
-          Interest = new global::Api.DerivativeOperation();
+          interest_ = new global::Api.DerivativeOperation();
         }
         Interest.MergeFrom(other.Interest);
       }
       if (other.premium_ != null) {
         if (premium_ == null) {
-          Premium = new global::Api.DerivativeOperation();
+          premium_ = new global::Api.DerivativeOperation();
         }
         Premium.MergeFrom(other.Premium);
       }
       if (other.riskAdjustment_ != null) {
         if (riskAdjustment_ == null) {
-          RiskAdjustment = new global::Api.DerivativeOperation();
+          riskAdjustment_ = new global::Api.DerivativeOperation();
         }
         RiskAdjustment.MergeFrom(other.RiskAdjustment);
       }
@@ -1382,13 +1382,13 @@ namespace Api {
       }
       if (other.priceRange_ != null) {
         if (priceRange_ == null) {
-          PriceRange = new global::Api.PriceRange();
+          priceRange_ = new global::Api.PriceRange();
         }
         PriceRange.MergeFrom(other.PriceRange);
       }
       if (other.priceLimits_ != null) {
         if (priceLimits_ == null) {
-          PriceLimits = new global::Api.PriceLimits();
+          priceLimits_ = new global::Api.PriceLimits();
         }
         PriceLimits.MergeFrom(other.PriceLimits);
       }
@@ -1517,37 +1517,37 @@ namespace Api {
           }
           case 210: {
             if (margin_ == null) {
-              Margin = new global::Api.Margin();
+              margin_ = new global::Api.Margin();
             }
-            input.ReadMessage(Margin);
+            input.ReadMessage(margin_);
             break;
           }
           case 218: {
             if (clearing_ == null) {
-              Clearing = new global::Api.DerivativeOperation();
+              clearing_ = new global::Api.DerivativeOperation();
             }
-            input.ReadMessage(Clearing);
+            input.ReadMessage(clearing_);
             break;
           }
           case 226: {
             if (interest_ == null) {
-              Interest = new global::Api.DerivativeOperation();
+              interest_ = new global::Api.DerivativeOperation();
             }
-            input.ReadMessage(Interest);
+            input.ReadMessage(interest_);
             break;
           }
           case 234: {
             if (premium_ == null) {
-              Premium = new global::Api.DerivativeOperation();
+              premium_ = new global::Api.DerivativeOperation();
             }
-            input.ReadMessage(Premium);
+            input.ReadMessage(premium_);
             break;
           }
           case 242: {
             if (riskAdjustment_ == null) {
-              RiskAdjustment = new global::Api.DerivativeOperation();
+              riskAdjustment_ = new global::Api.DerivativeOperation();
             }
-            input.ReadMessage(RiskAdjustment);
+            input.ReadMessage(riskAdjustment_);
             break;
           }
           case 248: {
@@ -1556,16 +1556,16 @@ namespace Api {
           }
           case 258: {
             if (priceRange_ == null) {
-              PriceRange = new global::Api.PriceRange();
+              priceRange_ = new global::Api.PriceRange();
             }
-            input.ReadMessage(PriceRange);
+            input.ReadMessage(priceRange_);
             break;
           }
           case 266: {
             if (priceLimits_ == null) {
-              PriceLimits = new global::Api.PriceLimits();
+              priceLimits_ = new global::Api.PriceLimits();
             }
-            input.ReadMessage(PriceLimits);
+            input.ReadMessage(priceLimits_);
             break;
           }
           case 272: {

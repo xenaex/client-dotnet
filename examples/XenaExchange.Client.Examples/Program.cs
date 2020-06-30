@@ -83,7 +83,7 @@ namespace XenaExchange.Client.Examples
             await tradingRestExample.StartAsync(Token).ConfigureAwait(false);
 
             // Market data rest example
-            var marketDataRestClient = new MarketDataRestClient(fixSerializer, restSerializer, httpClient: httpClient);
+            var marketDataRestClient = new MarketDataRestClient(restSerializer, httpClient: httpClient);
             var marketDataRestExample = new MarketDataRestExample(
                 marketDataRestClient,
                 Dependencies.ConsoleLogger<MarketDataRestExample>(logLevel));

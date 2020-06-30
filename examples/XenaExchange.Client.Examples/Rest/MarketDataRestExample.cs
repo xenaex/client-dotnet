@@ -50,8 +50,8 @@ namespace XenaExchange.Client.Examples.Rest
         private async Task TestGetCandlesAsync(CancellationToken cancellationToken)
         {
             var mdRefresh = await _restClient.GetCandlesAsync(
-                    "BTC/USDT",
-                    CandlesTimeframe.Timeframe1h,
+                    "XBTUSD",
+                    CandlesTimeframe.Timeframe1m,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
             _logger.LogInformation($"Candles: {mdRefresh}");
