@@ -28,7 +28,7 @@ namespace XenaExchange.Client.Messages.Constants
         /// except after execution it will be converted to market order with certain
         /// price.
         /// </summary>
-        public const string StopLimit = "3";
+        public const string StopLimit = "4";
 
         public const string MarketIfTouched = "J";
 
