@@ -50,8 +50,8 @@ namespace XenaExchange.Client.Examples.Rest
         private async Task TestGetCandlesAsync(CancellationToken cancellationToken)
         {
             var mdRefresh = await _restClient.GetCandlesAsync(
-                    "BTC/USDT",
-                    CandlesTimeframe.Timeframe1h,
+                    "XBTUSD",
+                    CandlesTimeframe.Timeframe1m,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
             _logger.LogInformation($"Candles: {mdRefresh}");
@@ -60,7 +60,7 @@ namespace XenaExchange.Client.Examples.Rest
         private async Task TestGetDomAsync(CancellationToken cancellationToken)
         {
             var symbol = "XBTUSD";
-            var mdRefresh = await _restClient.GetDomAsync(symbol, cancellationToken: cancellationToken)
+            var mdRefresh = await _restClient.GetDomAsync(symbol, aggregation: DOMAggregation.Aggregation5, depth: MDMarketDepth.Depth10, cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
             foreach (var mdEntry in mdRefresh.MDEntry)

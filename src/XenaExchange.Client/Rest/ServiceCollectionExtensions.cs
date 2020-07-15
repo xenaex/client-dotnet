@@ -36,7 +36,6 @@ namespace XenaExchange.Client.Rest
         /// <summary>
         /// Adds to service collection:
         ///     - specified options as singleton;
-        ///     - <see cref="FixSerializer"/> as <see cref="IFixSerializer"/> as singleton;
         ///     - <see cref="RestSerializer"/> as <see cref="IRestSerializer"/> as singleton;
         ///     - HttpClient with name <see cref="TradingRestClient.HttpClientName"/>;
         ///     - <see cref="IMarketDataRestClient"/>.
@@ -49,7 +48,6 @@ namespace XenaExchange.Client.Rest
             string uri = "https://api.xena.exchange")
         {
             return services
-                .AddSingleton<IFixSerializer, FixSerializer>()
                 .AddSingleton<IRestSerializer, RestSerializer>()
                 .AddTransient<IMarketDataRestClient, MarketDataRestClient>()
                 .AddHttpClient(RestClientBase.HttpClientName, client => client.BaseAddress = new Uri(uri))

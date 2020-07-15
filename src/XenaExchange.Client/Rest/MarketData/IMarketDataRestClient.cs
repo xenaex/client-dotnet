@@ -33,7 +33,7 @@ namespace XenaExchange.Client.Rest.MarketData
         /// <param name="symbol">Symbol.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns><see cref="MarketDataRefresh"/> with bids and asks enumerated in <see cref="MarketDataRefresh.MDEntry"/>.</returns>
-        Task<MarketDataRefresh> GetDomAsync(string symbol, CancellationToken cancellationToken = default);
+        Task<MarketDataRefresh> GetDomAsync(string symbol, long depth = 0, long aggregation = 0, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List spot and margin instruments.

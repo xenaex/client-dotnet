@@ -6,19 +6,19 @@ For API documentation check out [Help Center](https://support.xena.exchange/supp
 
 Package Manager:
 ```text
-PM> Install-Package XenaExchange.Client -Version 0.4.0
+PM> Install-Package XenaExchange.Client -Version 0.9.0
 ```
 .NET CLI:
 ```text
-> dotnet add package XenaExchange.Client --version 0.4.0
+> dotnet add package XenaExchange.Client --version 0.9.0
 ```
 PackageReference:
 ```xml
-<PackageReference Include="XenaExchange.Client" Version="0.4.0" />
+<PackageReference Include="XenaExchange.Client" Version="0.9.0" />
 ```
 Packet CLI:
 ```text
-> paket add XenaExchange.Client --version 0.4.0
+> paket add XenaExchange.Client --version 0.9.0
 ```
 
 #### Market Data websocket example
@@ -157,10 +157,9 @@ HandleOrderReport(executionReport);
 
 ```csharp
 httpClient = new HttpClient {BaseAddress = new Uri("https://api.xena.exchange")};
-var fixSerializer = new FixSerializer();
 var restSerializer = new RestSerializer();
 
-var marketDataRestClient = new MarketDataRestClient(fixSerializer, restSerializer, httpClient: httpClient);
+var marketDataRestClient = new MarketDataRestClient(restSerializer, httpClient: httpClient);
 
 var mdRefresh = await _restClient
     .GetDomAsync("XBTUSD", cancellationToken: cancellationToken)

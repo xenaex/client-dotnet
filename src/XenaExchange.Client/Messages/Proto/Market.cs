@@ -24,38 +24,49 @@ namespace Api {
     static MarketReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxtYXJrZXQucHJvdG8SA2FwaSLDAwoHTURFbnRyeRIOCgZTeW1ib2wYNyAB",
-            "KAkSFwoOTURVcGRhdGVBY3Rpb24YlwIgASgJEhQKC01ERW50cnlUeXBlGI0C",
-            "IAEoCRISCglNREVudHJ5UHgYjgIgASgJEhQKC01ERW50cnlTaXplGI8CIAEo",
-            "CRIXCg5OdW1iZXJPZk9yZGVycxjaAiABKA0SFAoMVHJhbnNhY3RUaW1lGDwg",
-            "ASgDEhAKB1RyYWRlSWQY6wcgASgJEhYKDUFnZ3Jlc3NvclNpZGUY3QsgASgJ",
-            "EhAKB0ZpcnN0UHgYgQggASgJEg4KBkxhc3RQeBgfIAEoCRIPCgZIaWdoUHgY",
-            "zAIgASgJEg4KBUxvd1B4GM0CIAEoCRISCglCdXlWb2x1bWUYygIgASgJEhMK",
-            "ClNlbGxWb2x1bWUYywIgASgJEgwKA0JpZBjeCyABKAkSDAoDQXNrGN8LIAEo",
-            "CRIUCgpMb3dSYW5nZVB4GJGWAiABKAkSFQoLSGlnaFJhbmdlUHgYkpYCIAEo",
-            "CRIUCgpMb3dMaW1pdFB4GJOWAiABKAkSFQoLSGlnaExpbWl0UHgYlJYCIAEo",
-            "CRIUCgpDbGVhcmluZ1B4GJWWAiABKAkiygIKEU1hcmtldERhdGFSZWZyZXNo",
-            "Eg8KB01zZ1R5cGUYIyABKAkSEwoKTURTdHJlYW1JZBjcCyABKAkSFwoOTGFz",
-            "dFVwZGF0ZVRpbWUYiwYgASgDEhMKCk1EQm9va1R5cGUY/QcgASgJEg4KBlN5",
-            "bWJvbBg3IAEoCRIUCgpMb3dSYW5nZVB4GJGWAiABKAkSFQoLSGlnaFJhbmdl",
-            "UHgYkpYCIAEoCRIUCgpMb3dMaW1pdFB4GJOWAiABKAkSFQoLSGlnaExpbWl0",
-            "UHgYlJYCIAEoCRIUCgpDbGVhcmluZ1B4GJWWAiABKAkSEAoHQmVzdEJpZBje",
-            "CyABKAkSEAoHQmVzdEFzaxjfCyABKAkSHgoHTURFbnRyeRiMAiADKAsyDC5h",
-            "cGkuTURFbnRyeRIdCgZSYXRpb3MY4AsgAygLMgwuYXBpLk1ERW50cnkixQEK",
-            "EU1hcmtldERhdGFSZXF1ZXN0Eg8KB01zZ1R5cGUYIyABKAkSEwoKTURTdHJl",
-            "YW1JZBjcCyABKAkSIAoXU3Vic2NyaXB0aW9uUmVxdWVzdFR5cGUYhwIgASgJ",
-            "EhUKDFRocm90dGxlVHlwZRjMDCABKAkSHQoUVGhyb3R0bGVUaW1lSW50ZXJ2",
-            "YWwYzgwgASgDEhkKEFRocm90dGxlVGltZVVuaXQYzwwgASgJEhcKDkFnZ3Jl",
-            "Z2F0ZWRCb29rGIoCIAEoAyJUChdNYXJrZXREYXRhUmVxdWVzdFJlamVjdBIP",
-            "CgdNc2dUeXBlGCMgASgJEhMKCk1EU3RyZWFtSWQY3AsgASgJEhMKClJlamVj",
-            "dFRleHQYsAogASgJYgZwcm90bzM="));
+            "CgxtYXJrZXQucHJvdG8SA2FwaSK1BQoHTURFbnRyeRIWCgZTeW1ib2wYNyAB",
+            "KAlSBnN5bWJvbBInCg5NRFVwZGF0ZUFjdGlvbhiXAiABKAlSDm1kVXBkYXRl",
+            "QWN0aW9uEiEKC01ERW50cnlUeXBlGI0CIAEoCVILbWRFbnRyeVR5cGUSHQoJ",
+            "TURFbnRyeVB4GI4CIAEoCVIJbWRFbnRyeVB4EiEKC01ERW50cnlTaXplGI8C",
+            "IAEoCVILbWRFbnRyeVNpemUSJwoOTnVtYmVyT2ZPcmRlcnMY2gIgASgNUg5u",
+            "dW1iZXJPZk9yZGVycxIiCgxUcmFuc2FjdFRpbWUYPCABKANSDHRyYW5zYWN0",
+            "VGltZRIZCgdUcmFkZUlkGOsHIAEoCVIHdHJhZGVJZBIlCg1BZ2dyZXNzb3JT",
+            "aWRlGN0LIAEoCVINYWdncmVzc29yU2lkZRIZCgdGaXJzdFB4GIEIIAEoCVIH",
+            "Zmlyc3RQeBIWCgZMYXN0UHgYHyABKAlSBmxhc3RQeBIXCgZIaWdoUHgYzAIg",
+            "ASgJUgZoaWdoUHgSFQoFTG93UHgYzQIgASgJUgVsb3dQeBIdCglCdXlWb2x1",
+            "bWUYygIgASgJUglidXlWb2x1bWUSHwoKU2VsbFZvbHVtZRjLAiABKAlSCnNl",
+            "bGxWb2x1bWUSEQoDQmlkGN4LIAEoCVIDYmlkEhEKA0FzaxjfCyABKAlSA2Fz",
+            "axIgCgpMb3dSYW5nZVB4GJGWAiABKAlSCmxvd1JhbmdlUHgSIgoLSGlnaFJh",
+            "bmdlUHgYkpYCIAEoCVILaGlnaFJhbmdlUHgSIAoKTG93TGltaXRQeBiTlgIg",
+            "ASgJUgpsb3dMaW1pdFB4EiIKC0hpZ2hMaW1pdFB4GJSWAiABKAlSC2hpZ2hM",
+            "aW1pdFB4EiAKCkNsZWFyaW5nUHgYlZYCIAEoCVIKY2xlYXJpbmdQeCLkAwoR",
+            "TWFya2V0RGF0YVJlZnJlc2gSGAoHTXNnVHlwZRgjIAEoCVIHbXNnVHlwZRIf",
+            "CgpNRFN0cmVhbUlkGNwLIAEoCVIKbWRTdHJlYW1JZBInCg5MYXN0VXBkYXRl",
+            "VGltZRiLBiABKANSDmxhc3RVcGRhdGVUaW1lEh8KCk1EQm9va1R5cGUY/Qcg",
+            "ASgJUgptZEJvb2tUeXBlEhYKBlN5bWJvbBg3IAEoCVIGc3ltYm9sEiAKCkxv",
+            "d1JhbmdlUHgYkZYCIAEoCVIKbG93UmFuZ2VQeBIiCgtIaWdoUmFuZ2VQeBiS",
+            "lgIgASgJUgtoaWdoUmFuZ2VQeBIgCgpMb3dMaW1pdFB4GJOWAiABKAlSCmxv",
+            "d0xpbWl0UHgSIgoLSGlnaExpbWl0UHgYlJYCIAEoCVILaGlnaExpbWl0UHgS",
+            "IAoKQ2xlYXJpbmdQeBiVlgIgASgJUgpjbGVhcmluZ1B4EhkKB0Jlc3RCaWQY",
+            "3gsgASgJUgdiZXN0QmlkEhkKB0Jlc3RBc2sY3wsgASgJUgdiZXN0QXNrEicK",
+            "B01ERW50cnkYjAIgAygLMgwuYXBpLk1ERW50cnlSB21kRW50cnkSJQoGUmF0",
+            "aW9zGOALIAMoCzIMLmFwaS5NREVudHJ5UgZyYXRpb3Mi2wEKEU1hcmtldERh",
+            "dGFSZXF1ZXN0Eg8KB01zZ1R5cGUYIyABKAkSEwoKTURTdHJlYW1JZBjcCyAB",
+            "KAkSIAoXU3Vic2NyaXB0aW9uUmVxdWVzdFR5cGUYhwIgASgJEhUKDFRocm90",
+            "dGxlVHlwZRjMDCABKAkSHQoUVGhyb3R0bGVUaW1lSW50ZXJ2YWwYzgwgASgD",
+            "EhkKEFRocm90dGxlVGltZVVuaXQYzwwgASgJEhcKDkFnZ3JlZ2F0ZWRCb29r",
+            "GIoCIAEoAxIUCgtNYXJrZXREZXB0aBiIAiABKAMiVAoXTWFya2V0RGF0YVJl",
+            "cXVlc3RSZWplY3QSDwoHTXNnVHlwZRgjIAEoCRITCgpNRFN0cmVhbUlkGNwL",
+            "IAEoCRITCgpSZWplY3RUZXh0GLAKIAEoCSIvCgRCYXJzEicKB01ERW50cnkY",
+            "jAIgAygLMgwuYXBpLk1ERW50cnlSB21kRW50cnliBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.MDEntry), global::Api.MDEntry.Parser, new[]{ "Symbol", "MDUpdateAction", "MDEntryType", "MDEntryPx", "MDEntrySize", "NumberOfOrders", "TransactTime", "TradeId", "AggressorSide", "FirstPx", "LastPx", "HighPx", "LowPx", "BuyVolume", "SellVolume", "Bid", "Ask", "LowRangePx", "HighRangePx", "LowLimitPx", "HighLimitPx", "ClearingPx" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRefresh), global::Api.MarketDataRefresh.Parser, new[]{ "MsgType", "MDStreamId", "LastUpdateTime", "MDBookType", "Symbol", "LowRangePx", "HighRangePx", "LowLimitPx", "HighLimitPx", "ClearingPx", "BestBid", "BestAsk", "MDEntry", "Ratios" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRequest), global::Api.MarketDataRequest.Parser, new[]{ "MsgType", "MDStreamId", "SubscriptionRequestType", "ThrottleType", "ThrottleTimeInterval", "ThrottleTimeUnit", "AggregatedBook" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRequestReject), global::Api.MarketDataRequestReject.Parser, new[]{ "MsgType", "MDStreamId", "RejectText" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRequest), global::Api.MarketDataRequest.Parser, new[]{ "MsgType", "MDStreamId", "SubscriptionRequestType", "ThrottleType", "ThrottleTimeInterval", "ThrottleTimeUnit", "AggregatedBook", "MarketDepth" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.MarketDataRequestReject), global::Api.MarketDataRequestReject.Parser, new[]{ "MsgType", "MDStreamId", "RejectText" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Api.Bars), global::Api.Bars.Parser, new[]{ "MDEntry" }, null, null, null)
           }));
     }
     #endregion
@@ -1288,6 +1299,7 @@ namespace Api {
       throttleTimeInterval_ = other.throttleTimeInterval_;
       throttleTimeUnit_ = other.throttleTimeUnit_;
       aggregatedBook_ = other.aggregatedBook_;
+      marketDepth_ = other.marketDepth_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1373,6 +1385,17 @@ namespace Api {
       }
     }
 
+    /// <summary>Field number for the "MarketDepth" field.</summary>
+    public const int MarketDepthFieldNumber = 264;
+    private long marketDepth_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long MarketDepth {
+      get { return marketDepth_; }
+      set {
+        marketDepth_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as MarketDataRequest);
@@ -1393,6 +1416,7 @@ namespace Api {
       if (ThrottleTimeInterval != other.ThrottleTimeInterval) return false;
       if (ThrottleTimeUnit != other.ThrottleTimeUnit) return false;
       if (AggregatedBook != other.AggregatedBook) return false;
+      if (MarketDepth != other.MarketDepth) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1406,6 +1430,7 @@ namespace Api {
       if (ThrottleTimeInterval != 0L) hash ^= ThrottleTimeInterval.GetHashCode();
       if (ThrottleTimeUnit.Length != 0) hash ^= ThrottleTimeUnit.GetHashCode();
       if (AggregatedBook != 0L) hash ^= AggregatedBook.GetHashCode();
+      if (MarketDepth != 0L) hash ^= MarketDepth.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1426,6 +1451,10 @@ namespace Api {
       if (SubscriptionRequestType.Length != 0) {
         output.WriteRawTag(186, 16);
         output.WriteString(SubscriptionRequestType);
+      }
+      if (MarketDepth != 0L) {
+        output.WriteRawTag(192, 16);
+        output.WriteInt64(MarketDepth);
       }
       if (AggregatedBook != 0L) {
         output.WriteRawTag(208, 16);
@@ -1476,6 +1505,9 @@ namespace Api {
       if (AggregatedBook != 0L) {
         size += 2 + pb::CodedOutputStream.ComputeInt64Size(AggregatedBook);
       }
+      if (MarketDepth != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(MarketDepth);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1508,6 +1540,9 @@ namespace Api {
       if (other.AggregatedBook != 0L) {
         AggregatedBook = other.AggregatedBook;
       }
+      if (other.MarketDepth != 0L) {
+        MarketDepth = other.MarketDepth;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1525,6 +1560,10 @@ namespace Api {
           }
           case 2106: {
             SubscriptionRequestType = input.ReadString();
+            break;
+          }
+          case 2112: {
+            MarketDepth = input.ReadInt64();
             break;
           }
           case 2128: {
@@ -1730,6 +1769,127 @@ namespace Api {
           }
           case 12002: {
             MDStreamId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Bars : pb::IMessage<Bars> {
+    private static readonly pb::MessageParser<Bars> _parser = new pb::MessageParser<Bars>(() => new Bars());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Bars> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Api.MarketReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Bars() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Bars(Bars other) : this() {
+      mDEntry_ = other.mDEntry_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Bars Clone() {
+      return new Bars(this);
+    }
+
+    /// <summary>Field number for the "MDEntry" field.</summary>
+    public const int MDEntryFieldNumber = 268;
+    private static readonly pb::FieldCodec<global::Api.MDEntry> _repeated_mDEntry_codec
+        = pb::FieldCodec.ForMessage(2146, global::Api.MDEntry.Parser);
+    private readonly pbc::RepeatedField<global::Api.MDEntry> mDEntry_ = new pbc::RepeatedField<global::Api.MDEntry>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Api.MDEntry> MDEntry {
+      get { return mDEntry_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Bars);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Bars other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!mDEntry_.Equals(other.mDEntry_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= mDEntry_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      mDEntry_.WriteTo(output, _repeated_mDEntry_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += mDEntry_.CalculateSize(_repeated_mDEntry_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Bars other) {
+      if (other == null) {
+        return;
+      }
+      mDEntry_.Add(other.mDEntry_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 2146: {
+            mDEntry_.AddEntriesFrom(input, _repeated_mDEntry_codec);
             break;
           }
         }

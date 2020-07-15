@@ -87,6 +87,7 @@ namespace XenaExchange.Client.Messages.Constants
         public const string IgnoreNotionalValueChecks = "x";
         public const string Suspend = "s";
         public const string LiquidationOrder = "Y";
+        public const string CancelOnConnectionLoss = "o";
         public static readonly IReadOnlyCollection<string> All = new[] { StayOnOfferSide, PegToOfferSide, AllOrNone, IgnoreNotionalValueChecks, Suspend, LiquidationOrder };
     }
 
@@ -266,5 +267,12 @@ namespace XenaExchange.Client.Messages.Constants
     {
         public const string CancelOrdersForASecurity = "1";
         public const string CancelAllOrders = "7";
+    }
+
+    public static class MassStatusReqType
+    {
+        public const string ActiveOrders = "11";
+        public const string DoneOrdersLastStatus = "12";
+        public const string History = "13";
     }
 }

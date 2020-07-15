@@ -135,8 +135,115 @@ namespace XenaExchange.Client.Ws.TradingApi
             {
                 MsgType = MsgTypes.OrderMassStatusRequest,
                 Account = accountId,
-                MassStatusReqId = requestId.Proto(),
+                OrdStatusReqId = requestId.Proto(),
             };
+            await SendCommandAsync(request).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task GetOrderAsync(ulong account, string orderId = "", string clOrdId = "", string requestId = null)
+        {
+            var request = new OrderStatusRequest
+            {
+                MsgType = MsgTypes.OrderStatusRequest,
+                Account = account,
+                OrdStatusReqId = requestId.Proto(),
+                OrderId = orderId.Proto(),
+                ClOrdId = clOrdId.Proto(),
+            };
+            await SendCommandAsync(request).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task GetActiveOrdersAsync(ulong account, string symbol = "", string requestId = "")
+        {
+            var request = new OrderMassStatusRequest
+            {
+                MsgType = MsgTypes.OrderMassStatusRequest,
+                Account = account,
+                MassStatusReqId = requestId.Proto(),
+                MassStatusReqType = MassStatusReqType.ActiveOrders,
+                Symbol = symbol.Proto(),
+            };
+            await SendCommandAsync(request).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task GetLastOrderStatusesAsync(ulong account, string symbol = "", DateTime? from = null, DateTime? to = null, string requestId = "")
+        {
+            var request = new OrderMassStatusRequest
+            {
+                MsgType = MsgTypes.OrderMassStatusRequest,
+                Account = account,
+                MassStatusReqId = requestId.Proto(),
+                MassStatusReqType = MassStatusReqType.DoneOrdersLastStatus,
+            };
+
+            if (from.HasValue)
+            {
+                request.TransactTime.Add(from.Value.ToUnixNano());
+            }
+            if (to.HasValue)
+            {
+                if (!from.HasValue)
+                {
+                    throw new ArgumentNullException(nameof(from), "Option From is required");
+                }
+                request.TransactTime.Add(to.Value.ToUnixNano());
+            }
+            await SendCommandAsync(request).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task GetOrderHistoryAsync(ulong account, string symbol = "", string orderId = "", string clOrdId = "", DateTime? from = null, DateTime? to = null, string requestId = "")
+        {
+            var request = new OrderMassStatusRequest
+            {
+                MsgType = MsgTypes.OrderMassStatusRequest,
+                Account = account,
+                MassStatusReqId = requestId.Proto(),
+                MassStatusReqType = MassStatusReqType.History,
+                Symbol = symbol.Proto(),
+            };
+
+            if (from.HasValue)
+            {
+                request.TransactTime.Add(from.Value.ToUnixNano());
+            }
+            if (to.HasValue)
+            {
+                if (!from.HasValue)
+                {
+                    throw new ArgumentNullException(nameof(from), "Option From is required");
+                }
+                request.TransactTime.Add(to.Value.ToUnixNano());
+            }
+            await SendCommandAsync(request).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task GetTradeHistoryAsync(ulong account, string symbol = null, DateTime? from = null, DateTime? to = null, string requestId = "")
+        {
+            var request = new TradeCaptureReportRequest
+            {
+                MsgType = MsgTypes.TradeCaptureReportRequest,
+                Account = account,
+                TradeRequestID = requestId.Proto(),
+                Symbol = symbol.Proto(),
+            };
+
+            if (from.HasValue)
+            {
+                request.TransactTime.Add(from.Value.ToUnixNano());
+            }
+            if (to.HasValue)
+            {
+                if (!from.HasValue)
+                {
+                    throw new ArgumentNullException(nameof(from), "Option From is required");
+                }
+                request.TransactTime.Add(to.Value.ToUnixNano());
+            }
             await SendCommandAsync(request).ConfigureAwait(false);
         }
 
@@ -178,7 +285,8 @@ namespace XenaExchange.Client.Ws.TradingApi
             ulong positionId = 0,
             decimal stopLossPrice = 0,
             decimal takeProfitPrice = 0,
-            string text = null)
+            string text = null,
+            string groupId = null)
         {
             var command = OrderExtensions.NewMarketOrder(
                 clOrdId,
@@ -191,7 +299,8 @@ namespace XenaExchange.Client.Ws.TradingApi
                 positionId,
                 stopLossPrice,
                 takeProfitPrice,
-                text);
+                text,
+                groupId);
 
             await SendCommandAsync(command).ConfigureAwait(false);
         }
@@ -211,7 +320,8 @@ namespace XenaExchange.Client.Ws.TradingApi
             decimal takeProfitPrice = 0,
             decimal trailingOffset = 0,
             decimal capPrice = 0,
-            string text = null)
+            string text = null,
+            string groupId = null)
         {
             var command = OrderExtensions.NewLimitOrder(
                 clOrdId,
@@ -227,7 +337,8 @@ namespace XenaExchange.Client.Ws.TradingApi
                 takeProfitPrice,
                 trailingOffset,
                 capPrice,
-                text);
+                text,
+                groupId);
 
             await SendCommandAsync(command).ConfigureAwait(false);
         }
@@ -247,7 +358,8 @@ namespace XenaExchange.Client.Ws.TradingApi
             decimal takeProfitPrice = 0,
             decimal trailingOffset = 0,
             decimal capPrice = 0,
-            string text = null)
+            string text = null,
+            string groupId = null)
         {
             var command = OrderExtensions.NewStopOrder(
                 clOrdId,
@@ -263,7 +375,8 @@ namespace XenaExchange.Client.Ws.TradingApi
                 takeProfitPrice,
                 trailingOffset,
                 capPrice,
-                text);
+                text,
+                groupId);
 
             await SendCommandAsync(command).ConfigureAwait(false);
         }
@@ -283,7 +396,8 @@ namespace XenaExchange.Client.Ws.TradingApi
             decimal takeProfitPrice = 0,
             decimal trailingOffset = 0,
             decimal capPrice = 0,
-            string text = null)
+            string text = null,
+            string groupId = null)
         {
             var command = OrderExtensions.NewMarketIfTouchOrder(
                 clOrdId,
@@ -299,7 +413,8 @@ namespace XenaExchange.Client.Ws.TradingApi
                 takeProfitPrice,
                 trailingOffset,
                 capPrice,
-                text);
+                text,
+                groupId);
 
             await SendCommandAsync(command).ConfigureAwait(false);
         }
@@ -352,6 +467,18 @@ namespace XenaExchange.Client.Ws.TradingApi
         public async Task CancelReplaceOrderAsync(OrderCancelReplaceRequest request)
         {
             await SendCommandAsync(request).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task SendApplicationHeartbeat(string groupId, int HeartBeatIntervalInSec)
+        {
+            var command = new ApplicationHeartbeat
+            {
+                MsgType = MsgTypes.ApplicationHeartbeat,
+                GrpID = groupId,
+                HeartBtInt = HeartBeatIntervalInSec,
+            };
+            await SendCommandAsync(command).ConfigureAwait(false);
         }
 
         private async Task<Logon> LogonAsync()
@@ -438,6 +565,10 @@ namespace XenaExchange.Client.Ws.TradingApi
 
                 case OrderMassCancelReport orderMassCancelReport:
                     await HandleConcreteAsync(orderMassCancelReport, handler).ConfigureAwait(false);
+                    break;
+
+                case MassTradeCaptureReportResponse massTradeCaptureReportResponse:
+                    await HandleConcreteAsync(massTradeCaptureReportResponse, handler).ConfigureAwait(false);
                     break;
 
                 default:

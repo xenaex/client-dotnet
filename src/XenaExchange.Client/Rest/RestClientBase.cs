@@ -74,5 +74,37 @@ namespace XenaExchange.Client.Rest
                     throw new RestClientException(error, response.StatusCode, request.RequestUri.AbsoluteUri);
             }
         }
+
+        protected async Task SendAsyncBaseWithoutResponse(
+            HttpRequestMessage request,
+            CancellationToken cancellationToken = default)
+        {
+            var response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            switch (response.StatusCode)
+            {
+                case HttpStatusCode.OK:
+                    return;
+                case var _ when response.StatusCode < HttpStatusCode.BadRequest:
+                    throw new RestClientException(
+                        $"Only {HttpStatusCode.OK} successful code is supported",
+                        response.StatusCode);
+                default:
+                    var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var error = content;
+
+                    if (!string.IsNullOrWhiteSpace(content))
+                    {
+                        try
+                        {
+                            error = JsonConvert.DeserializeObject<ErrorResponse>(content)?.Error;
+                        }
+                        catch (Exception)
+                        {
+                        } // If it's not a json, ok, let's return content as is
+                    }
+
+                    throw new RestClientException(error, response.StatusCode, request.RequestUri.AbsoluteUri);
+            }
+        }
     }
 }

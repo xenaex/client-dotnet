@@ -12,15 +12,15 @@ namespace XenaExchange.Client.Ws.TradingApi
         /// Account ids to logon with.
         /// </summary>
         /// <value></value>
-        public List<long> Accounts { get; set; }
+        public List<ulong> Accounts { get; set; }
 
         /// <summary>
         /// Api key.
         /// </summary>
         public string ApiKey { get; set; }
-        
+
         /// <summary>
-        /// Api key secret. 
+        /// Api key secret.
         /// </summary>
         /// <value></value>
         public string ApiSecret { get; set; }
@@ -29,6 +29,6 @@ namespace XenaExchange.Client.Ws.TradingApi
         /// Timeout to wait between Logon message was sent and Logon response was received.
         /// </summary>
         /// <returns></returns>
-        public TimeSpan LogonResponseTimeout { get;set; } = TimeSpan.FromSeconds(5);
+        public TimeSpan LogonResponseTimeout { get; set; } = TimeSpan.FromSeconds(5);
     }
 }

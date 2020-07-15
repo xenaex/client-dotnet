@@ -25,6 +25,7 @@ namespace XenaExchange.Client.Rest.Trading
         private const string CancelOrderPath = TradingPrefix + "order/cancel";
         private const string ReplaceOrderPath = TradingPrefix + "order/replace";
         private const string MassCancelPath = TradingPrefix + "order/mass-cancel";
+        private const string HeartbeatPath = TradingPrefix + "order/heartbeat";
         private const string PositionMaintenancePath = TradingPrefix + "position/maintenance";
         private const string AccountsPath = TradingPrefix + "accounts";
 
@@ -32,7 +33,10 @@ namespace XenaExchange.Client.Rest.Trading
         private const string MarginRequirementsPathTemplate = TradingPrefix + "accounts/{0}/margin-requirements";
         private const string OpenPositionsPathTemplate = TradingPrefix + "accounts/{0}/positions";
         private const string PositionsHistoryPathTemplate = TradingPrefix + "accounts/{0}/positions-history";
-        private const string ActiveOrdersPathTemplate = TradingPrefix + "accounts/{0}/orders";
+        private const string ActiveOrdersPathTemplate = TradingPrefix + "accounts/{0}/active-orders";
+        private const string OrderPathTemplate = TradingPrefix + "accounts/{0}/order";
+        private const string LastOrderStatusesPathTemplate = TradingPrefix + "accounts/{0}/last-order-statuses";
+        private const string OrderHistoryPathTemplate = TradingPrefix + "accounts/{0}/order-history";
         private const string TradeHistoryPathTemplate = TradingPrefix + "accounts/{0}/trade-history";
 
         private readonly TradingRestClientOptions _options;
@@ -78,6 +82,7 @@ namespace XenaExchange.Client.Rest.Trading
             decimal stopLossPrice = 0,
             decimal takeProfitPrice = 0,
             string text = null,
+            string groupId = null,
             CancellationToken cancellationToken = default)
         {
             var command = OrderExtensions.NewMarketOrder(
@@ -91,7 +96,8 @@ namespace XenaExchange.Client.Rest.Trading
                 positionId,
                 stopLossPrice,
                 takeProfitPrice,
-                text);
+                text,
+                groupId);
 
             return await NewOrderAsync(command, cancellationToken).ConfigureAwait(false);
         }
@@ -111,6 +117,7 @@ namespace XenaExchange.Client.Rest.Trading
             decimal trailingOffset = 0,
             decimal capPrice = 0,
             string text = null,
+            string groupId = null,
             CancellationToken cancellationToken = default)
         {
             var command = OrderExtensions.NewLimitOrder(
@@ -127,7 +134,8 @@ namespace XenaExchange.Client.Rest.Trading
                 takeProfitPrice,
                 trailingOffset,
                 capPrice,
-                text);
+                text,
+                groupId);
 
             return await NewOrderAsync(command, cancellationToken).ConfigureAwait(false);
         }
@@ -147,6 +155,7 @@ namespace XenaExchange.Client.Rest.Trading
             decimal trailingOffset = 0,
             decimal capPrice = 0,
             string text = null,
+            string groupId = null,
             CancellationToken cancellationToken = default)
         {
             var command = OrderExtensions.NewStopOrder(
@@ -163,7 +172,8 @@ namespace XenaExchange.Client.Rest.Trading
                 takeProfitPrice,
                 trailingOffset,
                 capPrice,
-                text);
+                text,
+                groupId);
 
             return await NewOrderAsync(command, cancellationToken).ConfigureAwait(false);
         }
@@ -183,6 +193,7 @@ namespace XenaExchange.Client.Rest.Trading
             decimal trailingOffset = 0,
             decimal capPrice = 0,
             string text = null,
+            string groupId = null,
             CancellationToken cancellationToken = default)
         {
             var command = OrderExtensions.NewMarketIfTouchOrder(
@@ -199,7 +210,8 @@ namespace XenaExchange.Client.Rest.Trading
                 takeProfitPrice,
                 trailingOffset,
                 capPrice,
-                text);
+                text,
+                groupId);
 
             return await NewOrderAsync(command, cancellationToken).ConfigureAwait(false);
         }
@@ -339,23 +351,23 @@ namespace XenaExchange.Client.Rest.Trading
             var path = string.Format(PositionsHistoryPathTemplate, request.Account);
             var parameters = new List<string>();
             if (request.PositionId.HasValue)
-                parameters.Add("id="+request.PositionId);
+                parameters.Add("id=" + request.PositionId);
             if (request.ParentPositionId.HasValue)
-                parameters.Add("parentid="+request.ParentPositionId);
+                parameters.Add("parentid=" + request.ParentPositionId);
             if (!string.IsNullOrWhiteSpace(request.Symbol))
-                parameters.Add("symbol="+request.Symbol);
+                parameters.Add("symbol=" + request.Symbol);
             if (request.OpenFrom.HasValue)
-                parameters.Add("openfrom="+request.OpenFrom.Value.ToUnixNano());
+                parameters.Add("openfrom=" + request.OpenFrom.Value.ToUnixNano());
             if (request.OpenTo.HasValue)
-                parameters.Add("opento="+request.OpenTo.Value.ToUnixNano());
+                parameters.Add("opento=" + request.OpenTo.Value.ToUnixNano());
             if (request.CloseFrom.HasValue)
-                parameters.Add("closefrom="+request.CloseFrom.Value.ToUnixNano());
+                parameters.Add("closefrom=" + request.CloseFrom.Value.ToUnixNano());
             if (request.CloseTo.HasValue)
-                parameters.Add("closeto="+request.CloseTo.Value.ToUnixNano());
+                parameters.Add("closeto=" + request.CloseTo.Value.ToUnixNano());
             if (request.PageNumber.HasValue)
-                parameters.Add("page="+request.PageNumber);
+                parameters.Add("page=" + request.PageNumber);
             if (request.Limit.HasValue)
-                parameters.Add("limit="+request.Limit);
+                parameters.Add("limit=" + request.Limit);
 
             var query = parameters.Count == 0 ? null : string.Join("&", parameters);
             return await ListPositionsInternalAsync(path, query, cancellationToken);
@@ -364,11 +376,134 @@ namespace XenaExchange.Client.Rest.Trading
         /// <inheritdoc />
         public async Task<ExecutionReport[]> ListActiveOrdersAsync(
             ulong account,
+            string symbol = "",
             CancellationToken cancellationToken = default)
         {
             var path = string.Format(ActiveOrdersPathTemplate, account);
-            return await SendAsync<ExecutionReport[]>(path, HttpMethod.Get, cancellationToken: cancellationToken)
-                .ConfigureAwait(false);
+
+            var parameters = new List<string>();
+            if (!string.IsNullOrWhiteSpace(symbol))
+                parameters.Add("symbol=" + symbol);
+
+            var query = parameters.Count == 0 ? null : string.Join("&", parameters);
+
+            return await SendAsync<ExecutionReport[]>(
+                path,
+                HttpMethod.Get,
+                query: query,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task<ExecutionReport> GetOrderAsync(
+            ulong account,
+            string orderId = "",
+            string clOrdId = "",
+            CancellationToken cancellationToken = default)
+        {
+            var path = string.Format(OrderPathTemplate, account);
+
+            var parameters = new List<string>();
+            if (!string.IsNullOrWhiteSpace(orderId))
+                parameters.Add("order_id=" + orderId);
+            if (!string.IsNullOrWhiteSpace(clOrdId))
+                parameters.Add("client_order_id=" + clOrdId);
+
+            var query = parameters.Count == 0 ? null : string.Join("&", parameters);
+
+            return await SendAsync<ExecutionReport>(
+                path,
+                HttpMethod.Get,
+                query: query,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task<ExecutionReport[]> GetLastOrderStatusesAsync(
+             ulong accountId,
+             string symbol = "",
+             DateTime? from = null,
+             DateTime? to = null,
+             int? pageNumber = null,
+             int? limit = null,
+             CancellationToken cancellationToken = default)
+        {
+            var path = string.Format(LastOrderStatusesPathTemplate, accountId);
+
+            var parameters = new List<string>();
+            if (!string.IsNullOrWhiteSpace(symbol))
+                parameters.Add("symbol=" + symbol);
+            if (from.HasValue)
+                parameters.Add("from=" + from);
+            if (to.HasValue)
+                parameters.Add("to=" + to);
+            if (pageNumber.HasValue)
+                parameters.Add("page=" + pageNumber);
+            if (limit.HasValue)
+                parameters.Add("limit=" + limit);
+
+            var query = parameters.Count == 0 ? null : string.Join("&", parameters);
+
+            return await SendAsync<ExecutionReport[]>(
+                path,
+                HttpMethod.Get,
+                query: query,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// return list of historical execution reports.
+        /// </summary>
+        /// <param name="accountId">Account id.</param>
+        /// <param name="symbol">Symbol id.</param>
+        /// <param name="orderId">Order id.</param>
+        /// <param name="clOrdId">Client order id.</param>
+        /// <param name="from">From.</param>
+        /// <param name="to">To.</param>
+        /// <param name="pageNumber">Page number.</param>
+        /// <param name="limit">Limit.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="ExecutionReport"/> array.</returns>
+        /// <exception cref="RestClientException">Any HTTP status code other than 200 OK.</exception>
+
+        /// <inheritdoc />
+        public async Task<ExecutionReport[]> GetOrderHistoryAsync(
+            ulong accountId,
+            string symbol = "",
+            string orderId = "",
+            string clOrdId = "",
+            DateTime? from = null,
+            DateTime? to = null,
+            int? pageNumber = null,
+            int? limit = null,
+            CancellationToken cancellationToken = default)
+        {
+
+            var path = string.Format(OrderHistoryPathTemplate, accountId);
+
+            var parameters = new List<string>();
+            if (!string.IsNullOrWhiteSpace(symbol))
+                parameters.Add("symbol=" + symbol);
+            if (from.HasValue)
+                parameters.Add("from=" + from);
+            if (to.HasValue)
+                parameters.Add("to=" + to);
+            if (pageNumber.HasValue)
+                parameters.Add("page=" + pageNumber);
+            if (limit.HasValue)
+                parameters.Add("limit=" + limit);
+            if (!string.IsNullOrWhiteSpace(orderId))
+                parameters.Add("order_id=" + orderId);
+            if (!string.IsNullOrWhiteSpace(clOrdId))
+                parameters.Add("client_order_id=" + clOrdId);
+
+            var query = parameters.Count == 0 ? null : string.Join("&", parameters);
+
+            return await SendAsync<ExecutionReport[]>(
+                path,
+                HttpMethod.Get,
+                query: query,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
@@ -379,19 +514,19 @@ namespace XenaExchange.Client.Rest.Trading
             var path = string.Format(TradeHistoryPathTemplate, request.Account);
             var parameters = new List<string>();
             if (!string.IsNullOrWhiteSpace(request.TradeId))
-                parameters.Add("trade_id="+request.TradeId);
+                parameters.Add("trade_id=" + request.TradeId);
             if (!string.IsNullOrWhiteSpace(request.ClOrdId))
-                parameters.Add("client_order_id="+request.ClOrdId);
+                parameters.Add("client_order_id=" + request.ClOrdId);
             if (!string.IsNullOrWhiteSpace(request.Symbol))
-                parameters.Add("symbol="+request.Symbol);
+                parameters.Add("symbol=" + request.Symbol);
             if (request.From.HasValue)
-                parameters.Add("from="+request.From.Value.ToUnixNano());
+                parameters.Add("from=" + request.From.Value.ToUnixNano());
             if (request.To.HasValue)
-                parameters.Add("to="+request.To.Value.ToUnixNano());
+                parameters.Add("to=" + request.To.Value.ToUnixNano());
             if (request.PageNumber.HasValue)
-                parameters.Add("page="+request.PageNumber);
+                parameters.Add("page=" + request.PageNumber);
             if (request.Limit.HasValue)
-                parameters.Add("limit="+request.Limit);
+                parameters.Add("limit=" + request.Limit);
 
             var query = parameters.Count == 0 ? null : string.Join("&", parameters);
             return await SendAsync<ExecutionReport[]>(
@@ -414,6 +549,26 @@ namespace XenaExchange.Client.Rest.Trading
 
             return await PostAsync<OrderMassCancelReport>(MassCancelPath, command, cancellationToken)
                 .ConfigureAwait(false);
+        }
+
+        public async Task SendApplicationHeartbeat(
+            string groupId,
+             int HeartBeatIntervalInSec,
+              CancellationToken cancellationToken = default)
+        {
+            var command = new ApplicationHeartbeat
+            {
+                MsgType = MsgTypes.ApplicationHeartbeat,
+                GrpID = groupId,
+                HeartBtInt = HeartBeatIntervalInSec,
+            };
+            await SendWithoutResponceAsync(
+                HeartbeatPath,
+                HttpMethod.Post,
+                command: command,
+                cancellationToken: cancellationToken)
+               .ConfigureAwait(false);
+            return;
         }
 
         private async Task<PositionReport[]> ListPositionsInternalAsync(
@@ -442,7 +597,7 @@ namespace XenaExchange.Client.Rest.Trading
             string path,
             IMessage command,
             CancellationToken cancellationToken = default)
-            where TResult: IMessage
+            where TResult : IMessage
         {
             return await SendAsync<TResult>(
                     path,
@@ -476,6 +631,34 @@ namespace XenaExchange.Client.Rest.Trading
             }
 
             return await SendAsyncBase<TResult>(request, _serializer, cancellationToken).ConfigureAwait(false);
+        }
+
+        private async Task SendWithoutResponceAsync(
+            string path,
+            HttpMethod method,
+            string query = null,
+            IMessage command = null,
+            CancellationToken cancellationToken = default)
+        {
+            var request = BuildRequestBase(path, method, query);
+
+            var nonce = (new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds() * 1000000).ToString();
+            var authPayload = $"AUTH{nonce}";
+            var signature = XenaSignature.Sign(_options.ApiSecret, authPayload);
+
+            request.Headers.Add("X-AUTH-API-KEY", _options.ApiKey);
+            request.Headers.Add("X-AUTH-API-PAYLOAD", authPayload);
+            request.Headers.Add("X-AUTH-API-SIGNATURE", signature);
+            request.Headers.Add("X-AUTH-API-NONCE", nonce);
+
+            if (command != null)
+            {
+                var payload = _serializer.Serialize(command);
+                request.Content = new StringContent(payload, Encoding.UTF8, "application/json");
+            }
+
+            await SendAsyncBaseWithoutResponse(request, cancellationToken).ConfigureAwait(false);
+            return;
         }
     }
 }

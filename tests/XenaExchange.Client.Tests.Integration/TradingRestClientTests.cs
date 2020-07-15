@@ -242,14 +242,14 @@ namespace XenaExchange.Client.Tests.Integration
         {
             var request = new PositionsHistoryRequest(MarginAccountId)
             {
-//                PositionId =130722413,
-//                Symbol = "XBTUSD",
-//                OpenFrom = DateTime.Parse("2019-08-02T08:04:40Z").ToUniversalTime(),
-//                OpenTo = DateTime.Parse("2019-08-02T08:04:50Z").ToUniversalTime(),
-//                CloseFrom = DateTime.Parse("2019-07-26T13:51:04Z").ToUniversalTime(),
-//                CloseTo = DateTime.Parse("2019-07-26T13:51:06Z").ToUniversalTime(),
-//                PageNumber = 2,
-//                Limit = 2,
+                //                PositionId =130722413,
+                //                Symbol = "XBTUSD",
+                //                OpenFrom = DateTime.Parse("2019-08-02T08:04:40Z").ToUniversalTime(),
+                //                OpenTo = DateTime.Parse("2019-08-02T08:04:50Z").ToUniversalTime(),
+                //                CloseFrom = DateTime.Parse("2019-07-26T13:51:04Z").ToUniversalTime(),
+                //                CloseTo = DateTime.Parse("2019-07-26T13:51:06Z").ToUniversalTime(),
+                //                PageNumber = 2,
+                //                Limit = 2,
             };
             var positions = await _restClient.PositionsHistoryAsync(request, _token).ConfigureAwait(false);
             positions.Should().NotBeNull();
@@ -260,7 +260,7 @@ namespace XenaExchange.Client.Tests.Integration
         [Test]
         public async Task Test_ListActiveOrders()
         {
-            var orders = await _restClient.ListActiveOrdersAsync(MarginAccountId, _token).ConfigureAwait(false);
+            var orders = await _restClient.ListActiveOrdersAsync(MarginAccountId, cancellationToken: _token).ConfigureAwait(false);
             orders.Should().NotBeNull();
             orders.Length.Should().BeGreaterThan(0);
         }
@@ -270,13 +270,13 @@ namespace XenaExchange.Client.Tests.Integration
         {
             var request = new TradeHistoryRequest(MarginAccountId)
             {
-//                TradeId = "177ed192-03e8-4f7c-9f69-bbfc32101cab",
-//                ClOrdId = "KwdVbYloR",
-//                Symbol = "XBTUSD",
-//                From = DateTime.Parse("2019-08-02T08:04:42Z").ToUniversalTime(),
-//                To = DateTime.Parse("2019-08-02T08:04:44Z").ToUniversalTime(),
-//                PageNumber = 2,
-//                Limit = 2,
+                //                TradeId = "177ed192-03e8-4f7c-9f69-bbfc32101cab",
+                //                ClOrdId = "KwdVbYloR",
+                //                Symbol = "XBTUSD",
+                //                From = DateTime.Parse("2019-08-02T08:04:42Z").ToUniversalTime(),
+                //                To = DateTime.Parse("2019-08-02T08:04:44Z").ToUniversalTime(),
+                //                PageNumber = 2,
+                //                Limit = 2,
             };
             var trades = await _restClient.TradeHistoryAsync(request, _token).ConfigureAwait(false);
             trades.Should().NotBeNull();

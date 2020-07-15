@@ -34,7 +34,7 @@ namespace XenaExchange.Client.Examples
         private static readonly TradingWsClientOptions TradingWsOptions = new TradingWsClientOptions
         {
             Uri = TradingWsUri,
-            Accounts = new List<long> { SpotAccountId, MarginAccountId },
+            Accounts = new List<ulong> { SpotAccountId, MarginAccountId },
             ApiKey = ApiKey,
             ApiSecret = ApiSecret,
         };
@@ -62,7 +62,7 @@ namespace XenaExchange.Client.Examples
             var restSerializer = new RestSerializer();
 
             // Market data websocket example
-            var mdWsOptions = new MarketDataWsClientOptions{ Uri = MdWsUri };
+            var mdWsOptions = new MarketDataWsClientOptions { Uri = MdWsUri };
             var mdLogger = Dependencies.ConsoleLogger<MarketDataWsClient>(logLevel);
             var mdWsClient = new MarketDataWsClient(mdWsOptions, fixSerializer, mdLogger);
             var mdExample = new MarketDataWsExample(mdWsClient, Dependencies.ConsoleLogger<MarketDataWsExample>(logLevel));
@@ -73,7 +73,7 @@ namespace XenaExchange.Client.Examples
             var tradingWsClient = new TradingWsClient(TradingWsOptions, fixSerializer, tradingLogger);
             var tradingExample = new TradingWsExample(tradingWsClient, TradingWsOptions, Dependencies.ConsoleLogger<TradingWsExample>(logLevel));
 
-            var httpClient = new HttpClient {BaseAddress = new Uri("https://api.xena.exchange")};
+            var httpClient = new HttpClient { BaseAddress = new Uri("https://api.xena.exchange") };
 
             var tradingRestClient = new TradingRestClient(TradingRestOptions, restSerializer, httpClient: httpClient);
             var tradingRestExample = new TradingRestExample(
@@ -83,7 +83,7 @@ namespace XenaExchange.Client.Examples
             await tradingRestExample.StartAsync(Token).ConfigureAwait(false);
 
             // Market data rest example
-            var marketDataRestClient = new MarketDataRestClient(fixSerializer, restSerializer, httpClient: httpClient);
+            var marketDataRestClient = new MarketDataRestClient(restSerializer, httpClient: httpClient);
             var marketDataRestExample = new MarketDataRestExample(
                 marketDataRestClient,
                 Dependencies.ConsoleLogger<MarketDataRestExample>(logLevel));
