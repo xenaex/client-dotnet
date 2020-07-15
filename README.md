@@ -6,19 +6,19 @@ For API documentation check out [Help Center](https://support.xena.exchange/supp
 
 Package Manager:
 ```text
-PM> Install-Package XenaExchange.Client -Version 0.9.0
+PM> Install-Package XenaExchange.Client -Version 0.9.1
 ```
 .NET CLI:
 ```text
-> dotnet add package XenaExchange.Client --version 0.9.0
+> dotnet add package XenaExchange.Client --version 0.9.1
 ```
 PackageReference:
 ```xml
-<PackageReference Include="XenaExchange.Client" Version="0.9.0" />
+<PackageReference Include="XenaExchange.Client" Version="0.9.1" />
 ```
 Packet CLI:
 ```text
-> paket add XenaExchange.Client --version 0.9.0
+> paket add XenaExchange.Client --version 0.9.1
 ```
 
 #### Market Data websocket example
