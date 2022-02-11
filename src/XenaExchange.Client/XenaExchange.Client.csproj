@@ -25,7 +25,7 @@
     <PackageReference Include="Websocket.Client" Version="3.2.59" />
     <PackageReference Include="System.Threading.Tasks.Dataflow" Version="4.9.0" />
     <PackageReference Include="System.Reactive" Version="4.1.6" />
-    <PackageReference Include="Google.Protobuf" Version="3.9.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.15.0" />
   </ItemGroup>
 
   <ItemGroup>
